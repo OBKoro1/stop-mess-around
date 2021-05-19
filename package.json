@@ -2,13 +2,19 @@
   "name": "stop-mess-around",
   "version": "1.0.0",
   "description": "Chrome停止摸鱼插件，停止下意识的摸鱼，自动关闭摸鱼网站，滚去学习，滚去做对未来有益的事情！",
-  "private": true,
   "scripts": {
     "serve": "npm run build-watch",
     "build": "vue-cli-service build",
     "lint": "eslint --ext .js,.vue src --fix",
     "build-watch": "vue-cli-service build-watch",
+    "prepare": "husky install",
     "analyze": "npm run build --report"
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "npm run lint",
+      "git add"
+    ]
   },
   "dependencies": {
     "core-js": "^2.6.5",
@@ -16,6 +22,8 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
     "@vue/cli-service": "^3.7.0",
@@ -26,6 +34,8 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.2",
     "eslint-plugin-vue": "^5.0.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
     "vue-cli-plugin-chrome-ext": "0.0.5",
     "vue-template-compiler": "^2.5.21",
     "webpack-bundle-analyzer": "^4.4.2",

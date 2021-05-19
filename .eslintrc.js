@@ -15,10 +15,11 @@ module.exports = {
     chrome: true,
   },
   rules: {
-    semi: ["error", "never"],
+    semi: ['error', 'never', { beforeStatementContinuationChars: 'never' }],
     'no-console': 'off',
     'no-restricted-syntax': 'off',
     'no-continue': 'off',
+    'max-len': 'off',
     // 禁止使用 var
     'no-var': 'error',
   },

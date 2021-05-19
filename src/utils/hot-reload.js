@@ -1,7 +1,7 @@
 // 代码来源：https://github.com/xpl/crx-hotreload/edit/master/hot-reload.js
 const filesInDirectory = (dir) => new Promise((resolve) => dir.createReader().readEntries((entries) => Promise.all(entries.filter((e) => e.name[0] !== '.').map((e) => (e.isDirectory
   ? filesInDirectory(e)
-  : new Promise((resolve) => e.file(resolve)))))
+  : new Promise((resolveFn) => e.file(resolveFn)))))
   .then((files) => [].concat(...files))
   .then(resolve)))
 
