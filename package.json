@@ -1,0 +1,43 @@
+{
+  "name": "stop-mess-around",
+  "version": "1.0.0",
+  "description": "Chrome停止摸鱼插件，停止下意识的摸鱼，自动关闭摸鱼网站，滚去学习，滚去做对未来有益的事情！",
+  "private": true,
+  "scripts": {
+    "serve": "npm run build-watch",
+    "build": "vue-cli-service build",
+    "lint": "eslint --ext .js,.vue src --fix",
+    "build-watch": "vue-cli-service build-watch",
+    "analyze": "npm run build --report"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "element-ui": "^2.8.2",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-eslint": "^3.7.0",
+    "@vue/cli-service": "^3.7.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-component": "^1.1.1",
+    "copy-webpack-plugin": "^4.6.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.2",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-cli-plugin-chrome-ext": "0.0.5",
+    "vue-template-compiler": "^2.5.21",
+    "webpack-bundle-analyzer": "^4.4.2",
+    "zip-webpack-plugin": "^3.0.0"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}

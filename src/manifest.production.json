@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "stop-mess-around",
+  "description": "停止下意识的摸鱼, 自动关闭摸鱼网站，滚去学习，滚去做对未来有益的事情！",
+  "version": "1.0.0",
+  "options_page": "options.html",
+  "browser_action": {
+    "default_icon": "img/48.png",
+    "default_title": "停止下意识的摸鱼，滚去学习, 滚去做对未来有益的事情！",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "img/48.png",
+    "48": "img/48.png",
+    "128": "img/48.png"
+  },
+  "permissions": [
+    "contextMenus", // 右键菜单
+    "tabs", // 标签
+    "notifications", // 通知
+    "webRequest", // web请求
+    "webRequestBlocking",
+    "storage", // 插件本地存储
+    "http://*/*", // 可以通过executeScript或者insertCSS访问的网站
+    "https://*/*" // 可以通过executeScript或者insertCSS访问的网站
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["css/content.css"],
+      "js": ["js/content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": ["fonts/*"],
+  "description": "__MSG_pluginDesc__",
+  // 默认语言
+  "default_locale": "zh_CN"
+}
