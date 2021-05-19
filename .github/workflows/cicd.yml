@@ -58,7 +58,6 @@ jobs:
      - run: yarn # 安装依赖
      - run: npm run build # 打包
      - run: ls
-    #  - run: cd dist && ls
      # 上传插件包
      - name: Upload Release Asset
        uses: actions/upload-release-asset@v1.0.2 # 使用上传资源的插件
@@ -70,4 +69,3 @@ jobs:
          asset_name: stop-mess-around-${{ steps.vars.outputs.tag }}.zip # 更改资源名
          asset_content_type: application # 一个包
 
-        #  zip -q -r -o '/Users/koro/work/web_my/stop-mess-arround/test.zip' '/Users/koro/work/web_my/stop-mess-arround/dist'
