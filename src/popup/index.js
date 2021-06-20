@@ -1,15 +1,16 @@
 import Vue from 'vue'
-import {
-  Card,
-  Button,
-} from 'element-ui'
-import AppComponent from './App/App.vue'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import './global.css'
+import NET from '../utils/net'
+import GlobalFunction from '../utils'
+import AppComponent from './App/popup.vue'
 
-// TODO: 提醒用户某个网站不要访问 浪费时间 应该滚去学习
 Vue.component('app-component', AppComponent)
 
-Vue.use(Card)
-Vue.use(Button)
+Vue.use(GlobalFunction)
+Vue.use(ElementUI)
+Vue.prototype.NET = NET
 
 // eslint-disable-next-line no-new
 new Vue({

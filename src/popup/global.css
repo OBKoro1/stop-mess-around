@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+}
+
+.center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.marginRL {
+  margin: 0 10px;
+}
+.dialog_title{
+  line-height: 24px;
+  font-size: 18px;
+  color: #303133;
+}
