@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "stop-mess-around",
-  "version": "1.0.0",
-  "description": "chrome插件:上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站，滚去学习，滚去做对未来有益的事情！",
+  "version": "{{VERSION}}",
+  "description": "{{DESCRIPTION}}",
   "options_page": "options.html",
   "homepage_url": "https://github.com/OBKoro1/stop-mess-around",
   "background": {
@@ -10,7 +10,7 @@
   },
   "browser_action": {
     "default_icon": "img/48.png",
-    "default_title": "chrome插件:上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站，滚去学习，滚去做对未来有益的事情！",
+    "default_title": "{{DESCRIPTION}}",
     "default_popup": "popup.html"
   },
   "icons": {
