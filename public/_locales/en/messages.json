@@ -1,4 +1,4 @@
 {
-	"pluginDesc": {"message": "A simple chrome extension demo"},
-	"helloWorld": {"message": "Hello World!"}
+  "pluginName": { "message": "stop-mess-around" },
+	"useDoc": {"message": "use document"}
 }
