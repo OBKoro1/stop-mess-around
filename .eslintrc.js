@@ -22,5 +22,10 @@ module.exports = {
     'max-len': 'off',
     // 禁止使用 var
     'no-var': 'error',
+    'consistent-return': 'off',
+    'no-param-reassign': 'off',
+    'no-use-before-define': 'off',
+    'import/prefer-default-export': 'off',
+    'no-useless-return': 'off'
   },
 }
