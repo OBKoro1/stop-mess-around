@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 15:14:20
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-18 17:14:01
+ * LastEditTime : 2021-06-22 00:46:47
  * FilePath     : /stop-mess-around/src/options/App/settingPage/RandomTip.vue
  * Description  : 内卷随机提示增删改查
  * koroFileheader插件
@@ -50,65 +50,67 @@
       </el-tab-pane>
       <el-tab-pane label="随机标题"
                    name="titleArr">
-        <el-table class="random-content"
-                  :show-header="false"
-                  :data="titleArr"
-                  style="width: 100%">
-          <el-table-column type="index"
-                           width="50">
-          </el-table-column>
-          <el-table-column label="标题"
-                           show-overflow-tooltip
-                           width="300">
-            <template slot-scope="scope">
-              <p>{{ scope.row }}</p>
-            </template>
-          </el-table-column>
-          <el-table-column label="操作">
-            <template slot-scope="scope">
-              <el-button size="mini"
-                         @click="showEdit(scope.$index, scope.row)">编辑</el-button>
-              <el-popconfirm title="确认删除？"
-                             @confirm="handleDelete(scope.$index)">
+        <div class="random-content">
+          <el-table :show-header="false"
+                    :data="titleArr"
+                    style="width: 100%">
+            <el-table-column type="index"
+                             width="50">
+            </el-table-column>
+            <el-table-column label="标题"
+                             show-overflow-tooltip
+                             width="300">
+              <template slot-scope="scope">
+                <p>{{ scope.row }}</p>
+              </template>
+            </el-table-column>
+            <el-table-column label="操作">
+              <template slot-scope="scope">
                 <el-button size="mini"
-                           class="marginRL"
-                           slot="reference"
-                           type="danger">{{'删除'}}</el-button>
-              </el-popconfirm>
-            </template>
-          </el-table-column>
-        </el-table>
+                           @click="showEdit(scope.$index, scope.row)">编辑</el-button>
+                <el-popconfirm title="确认删除？"
+                               @confirm="handleDelete(scope.$index)">
+                  <el-button size="mini"
+                             class="marginRL"
+                             slot="reference"
+                             type="danger">{{'删除'}}</el-button>
+                </el-popconfirm>
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
       </el-tab-pane>
       <el-tab-pane label="随机按钮"
                    name="confirmArr">
-        <el-table class="random-content"
-                  :show-header="false"
-                  :data="confirmArr"
-                  style="width: 100%">
-          <el-table-column type="index"
-                           width="50">
-          </el-table-column>
-          <el-table-column label="按钮"
-                           show-overflow-tooltip
-                           width="300">
-            <template slot-scope="scope">
-              <p>{{ scope.row }}</p>
-            </template>
-          </el-table-column>
-          <el-table-column label="操作">
-            <template slot-scope="scope">
-              <el-button size="mini"
-                         @click="showEdit(scope.$index, scope.row)">编辑</el-button>
-              <el-popconfirm title="确认删除？"
-                             @confirm="handleDelete(scope.$index)">
+        <div class="random-content">
+          <el-table :show-header="false"
+                    :data="confirmArr"
+                    style="width: 100%">
+            <el-table-column type="index"
+                             width="50">
+            </el-table-column>
+            <el-table-column label="按钮"
+                             show-overflow-tooltip
+                             width="300">
+              <template slot-scope="scope">
+                <p>{{ scope.row }}</p>
+              </template>
+            </el-table-column>
+            <el-table-column label="操作">
+              <template slot-scope="scope">
                 <el-button size="mini"
-                           class="marginRL"
-                           slot="reference"
-                           type="danger">{{'删除'}}</el-button>
-              </el-popconfirm>
-            </template>
-          </el-table-column>
-        </el-table>
+                           @click="showEdit(scope.$index, scope.row)">编辑</el-button>
+                <el-popconfirm title="确认删除？"
+                               @confirm="handleDelete(scope.$index)">
+                  <el-button size="mini"
+                             class="marginRL"
+                             slot="reference"
+                             type="danger">{{'删除'}}</el-button>
+                </el-popconfirm>
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
       </el-tab-pane>
       <el-tab-pane label="添加"
                    name="add">
