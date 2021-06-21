@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-24 11:02:13
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-22 01:21:33
+ * LastEditTime : 2021-06-22 01:32:58
  * FilePath     : /stop-mess-around/src/options/App/table/Table.vue
  * Description  : 表格
  * koroFileheader插件
@@ -72,9 +72,9 @@
       <el-table-column prop="matchRule"
                        width="120">
         <template slot="header">
-          <el-tooltip :content="'默认网址匹配为包含，只要包含这个网址则表示匹配到, 严格匹配网址必须一模一样，才能匹配到。'"
+            <el-tooltip :content="'网址匹配规则: 开头全等 => 前面的必须一模一样，包含=> 包含即可，严格相等=>一模一样'"
                       placement="top">
-            <span>{{'网址严格相等'}}</span>
+            <span>{{'匹配规则'}}</span>
           </el-tooltip>
         </template>
         <template slot-scope="scope">
