@@ -101,9 +101,16 @@ export default {
     await this.initData()
   },
   methods: {
+    // 切换启用
     checkoutOpen() {
       if (!this.item) return
-      this.item.open = !this.item.open
+      const value = !this.item.open
+      if (value) {
+        this.item.closeTime = 0
+      } else {
+        this.item.closeTime = Date.now()
+      }
+      this.item.open = value
       this.tableData.splice(this.index, 1, this.item)
       this.updateArr(this.tableData)
     },
@@ -137,9 +144,14 @@ export default {
     },
     // 一键开启/关闭
     checkoutAll() {
-      const val = this.open
+      const val = !this.open
       const arr = this.tableData.map((item) => {
-        item.open = !val
+        item.open = val
+        if (val) {
+          item.closeTime = 0
+        } else {
+          item.closeTime = Date.now()
+        }
         return item
       })
       this.updateArr(arr)

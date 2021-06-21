@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-24 11:02:13
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-20 18:10:29
+ * LastEditTime : 2021-06-22 01:21:33
  * FilePath     : /stop-mess-around/src/options/App/table/Table.vue
  * Description  : 表格
  * koroFileheader插件
@@ -69,7 +69,7 @@
           </el-tooltip>
         </template>
       </el-table-column>
-      <el-table-column prop="strict"
+      <el-table-column prop="matchRule"
                        width="120">
         <template slot="header">
           <el-tooltip :content="'默认网址匹配为包含，只要包含这个网址则表示匹配到, 严格匹配网址必须一模一样，才能匹配到。'"
@@ -78,7 +78,7 @@
           </el-tooltip>
         </template>
         <template slot-scope="scope">
-          <span>{{ scope.row.strict ? '开启' : '关闭'}}</span>
+          <span>{{ getMatch(scope.row) }}</span>
         </template>
       </el-table-column>
       <el-table-column prop="jump"
@@ -176,6 +176,16 @@ export default {
     EditorItem,
   },
   methods: {
+    getMatch(row) {
+      if (row.matchRule === 'start') {
+        return '开头全等'
+      } if (row.matchRule === 'includes') {
+        return '包含'
+      } if (row.matchRule === 'strict') {
+        return '严格相等'
+      }
+      return ''
+    },
     // 获取随机tip或者本地tip
     getTip(row) {
       if (row.tip) {
@@ -199,9 +209,15 @@ export default {
     closeEditor() {
       this.showEditorItem = false
     },
+    // 切换启用
     checkoutFn(val, row, index) {
-      row.open = val
-      const obj = row
+      const obj = JSON.parse(JSON.stringify(row))
+      if (val) {
+        obj.closeTime = 0
+      } else {
+        obj.closeTime = Date.now()
+      }
+      obj.open = val
       this.tableDataSpliceUpdate(index, 1, obj)
     },
     move(type, index, row) {

@@ -56,6 +56,7 @@ export const tipArr = [
   '我从来不认为半小时是微不足道的一段时间 - 达尔文',
   '三延四拖，你就是时间的小偷。',
   '明日复明日，明日何其多。日日传明日，万事成蹉跎。世人皆被明日累，明日无穷老将至。晨昏滚滚水东流，今古悠悠日西坠。百年明日能几何，请君听我明日歌。- 文嘉',
+  '多做重要而不紧急的事情, 合理规划时间成为一个从容的人。',
 ]
 
 // 确认按钮
@@ -77,7 +78,6 @@ export const defaultList = [
   {
     site: 'https://www.douyu.com/',
     labelName: '斗鱼直播',
-    strict: true,
   },
   {
     site: 'https://www.huya.com/',
@@ -91,17 +91,15 @@ export const defaultList = [
     site: 'https://www.zhihu.com/',
     labelName: '知乎首页',
     // 下意识打开首页进行摸鱼 但是搜索和通过百度查找相关资料不应该被屏蔽
-    strict: true,
+    matchRule: 'strict',
   },
   {
     site: 'https://www.zhihu.com/hot',
     labelName: '知乎热榜',
-    // 下意识打开首页进行摸鱼 但是搜索和通过百度查找相关资料不应该被屏蔽
   },
   {
     site: 'https://www.bilibili.com/',
     labelName: 'B站',
-    strict: true,
   },
   {
     site: 'https://weibo.com/',
@@ -121,6 +119,7 @@ export const defaultSetting = {
   defaultList, // 默认的摸鱼网站
   titleArr, // 标题随机提示数组
   confirmArr, // 随机确认按钮数组
+  matchRule: 'start',
   tipArr, // 随机内卷提示数组
   // 默认值数量更新判断
   defaultNum: {
@@ -133,8 +132,10 @@ export const defaultSetting = {
 
 // 摸鱼网站对象属性
 export const itemProto = [
-  'strict',
+  'matchRule',
   'time',
+  'checkoutStudy',
+  'closeTime',
   'jump',
   'jumpUrl',
   'open',

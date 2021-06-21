@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 14:24:51
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-16 15:35:22
+ * LastEditTime : 2021-06-21 17:05:20
  * FilePath     : /stop-mess-around/src/options/App/settingPage/SetPage.vue
  * Description  : 设置
  * koroFileheader插件
@@ -97,9 +97,14 @@ export default {
     },
     // 一键开启/关闭
     checkoutAll() {
-      const val = this.open
+      const val = !this.open
       const arr = this.getTableData().map((item) => {
-        item.open = !val
+        item.open = val
+        if (val) {
+          item.closeTime = 0
+        } else {
+          item.closeTime = Date.now()
+        }
         return item
       })
       this.updateArr(arr)
