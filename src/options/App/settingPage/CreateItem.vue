@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 15:18:00
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-16 15:56:46
+ * LastEditTime : 2021-06-22 01:11:40
  * FilePath     : /stop-mess-around/src/options/App/settingPage/CreateItem.vue
  * Description  : 新增摸鱼网站
  * koroFileheader插件
@@ -31,12 +31,12 @@
                       required>
           <span slot="label">{{'摸鱼网址'}}: </span>
           <el-input class="input-class"
-                    :placeholder="'添加摸鱼网址'"
+                    :placeholder="'添加摸鱼网址(唯一)'"
                     v-model="ruleForm.site"></el-input>
         </el-form-item>
         <el-form-item prop="tip">
           <span slot="label">
-            <el-tooltip :content="'为空默认使用全局内卷提示'"
+            <el-tooltip :content="'匹配到摸鱼网站时显示的提示信息'"
                         placement="top">
               <span>{{'内卷提示'}}</span>
             </el-tooltip>
@@ -56,18 +56,31 @@
           <el-input v-model.number="ruleForm.time"
                     autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item prop="strict"
+        <el-form-item prop="checkoutStudy"
                       required>
           <span slot="label">
-            <el-tooltip :content="'默认网址匹配为包含，只要包含这个网址则表示匹配到, 严格匹配网址必须一模一样，才能匹配到。'"
+            <el-tooltip :content="'关闭检测后多少分钟后重新启用检测'"
                         placement="top">
-              <span>{{'网址严格相等'}}</span>
+              <span>{{'自动开启'}}</span>
             </el-tooltip>
           </span>
-          <el-radio v-model="ruleForm.strict"
-                    :label="true">{{'开启'}}</el-radio>
-          <el-radio v-model="ruleForm.strict"
-                    :label="false">{{'关闭'}}</el-radio>
+          <el-input v-model.number="ruleForm.checkoutStudy"
+                    autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item prop="matchRule"
+                      required>
+          <span slot="label">
+            <el-tooltip :content="'网址匹配规则: 开头全等 => 前面的必须一模一样，包含=> 包含即可，严格相等=>一模一样'"
+                        placement="top">
+              <span>{{'匹配规则'}}</span>
+            </el-tooltip>
+          </span>
+          <el-radio v-model="ruleForm.matchRule"
+                    label="start">{{'开头全等'}}</el-radio>
+          <el-radio v-model="ruleForm.matchRule"
+                    label="includes">{{'包含'}}</el-radio>
+          <el-radio v-model="ruleForm.matchRule"
+                    label="strict">{{'严格相等'}}</el-radio>
         </el-form-item>
         <el-form-item prop="jump"
                       required>
@@ -99,10 +112,11 @@
           <span slot="label">
             <span>{{'是否启用'}}</span>
           </span>
-          <el-radio v-model="ruleForm.open"
-                    :label="true">{{'开启'}}</el-radio>
-          <el-radio v-model="ruleForm.open"
-                    :label="false">{{'关闭'}}</el-radio>
+          <el-radio-group v-model="ruleForm.open"
+                          @change="checkoutFn">
+            <el-radio :label="true">{{'开启'}}</el-radio>
+            <el-radio :label="false">{{'关闭'}}</el-radio>
+          </el-radio-group>
         </el-form-item>
       </el-form>
     </div>
@@ -133,12 +147,14 @@ export default {
       ruleForm: {
         labelName: '', // 摸鱼网站名字
         site: '', // 摸鱼网站地址
-        strict: false, // 网站地址是否严格相等
+        matchRule: 'start', // 匹配规则 start/strict/includes
         time: 0, // 是否立即关闭摸鱼网站
+        checkoutStudy: 0, // 定时自动开启
         jump: false, // 检测到摸鱼网址后 跳转到哪个页面
         jumpUrl: '', // 跳转页面
         open: true, // 是否检测该摸鱼网站
         tip: '', // 内卷提示
+        closeTime: 0, // 啥时候关闭
       },
       rules: {
         labelName: [
@@ -154,6 +170,11 @@ export default {
           { message: '请输入内卷提示', trigger: 'blur' },
         ],
         time: [
+          {
+            required: true, type: 'number', message: '必须为数字值', trigger: 'blur',
+          },
+        ],
+        checkoutStudy: [
           {
             required: true, type: 'number', message: '必须为数字值', trigger: 'blur',
           },
@@ -218,6 +239,14 @@ export default {
           return false
         }
       })
+    },
+    // 切换启用状态 设置关闭
+    checkoutFn(val) {
+      if (val) {
+        this.ruleForm.closeTime = 0
+      } else {
+        this.ruleForm.closeTime = Date.now()
+      }
     },
     close() {
       this.$refs.ruleForm.resetFields()

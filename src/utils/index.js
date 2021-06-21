@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-17 16:17:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-17 16:59:03
+ * LastEditTime : 2021-06-22 01:17:32
  * FilePath     : /stop-mess-around/src/utils/index.js
  * Description  : 全局方法
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -63,10 +63,15 @@ export const utils = {
     const len = tableArr.length
     for (let i = 0; i < len; i += 1) {
       const item = tableArr[i]
-      if (item.strict) {
+      if (item.matchRule === 'strict') {
         // 严格相等
         if (url === item.site) isMatch = true
-      } else {
+      } else if (item.matchRule === 'includes') {
+        const index = url.indexOf(item.site)
+        if (index !== -1) {
+          isMatch = true
+        }
+      } else if (item.matchRule === 'start') {
         // 网址以开头匹配
         isMatch = url.startsWith(item.site)
       }

@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 22:45:36
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-15 15:12:29
+ * LastEditTime : 2021-06-22 01:19:16
  * FilePath     : /stop-mess-around/src/options/App/settingPage/Setting.vue
  * Description  : 全局设置
  * koroFileheader插件
@@ -40,6 +40,21 @@
           </span>
           <el-input v-model.number="ruleForm.checkoutStudy"
                     autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item prop="matchRule"
+                      required>
+          <span slot="label">
+            <el-tooltip :content="'网址匹配规则: 开头全等 => 前面的必须一模一样，包含=> 包含即可，严格相等=>一模一样'"
+                        placement="top">
+              <span>{{'匹配规则'}}</span>
+            </el-tooltip>
+          </span>
+          <el-radio v-model="ruleForm.matchRule"
+                    label="start">{{'开头全等'}}</el-radio>
+          <el-radio v-model="ruleForm.matchRule"
+                    label="includes">{{'包含'}}</el-radio>
+          <el-radio v-model="ruleForm.matchRule"
+                    label="strict">{{'严格相等'}}</el-radio>
         </el-form-item>
         <el-form-item prop="open"
                       required>
