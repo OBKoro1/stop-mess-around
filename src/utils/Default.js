@@ -133,11 +133,9 @@ export const defaultSetting = {
 // 摸鱼网站对象属性
 export const itemProto = [
   'matchRule',
-  'time',
-  'checkoutStudy',
-  'closeTime',
   'jump',
   'jumpUrl',
   'open',
+  'closeTime',
   'tip',
 ]
