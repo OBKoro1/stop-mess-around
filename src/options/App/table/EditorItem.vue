@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 15:18:00
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-22 01:12:30
+ * LastEditTime : 2021-06-22 11:31:09
  * FilePath     : /stop-mess-around/src/options/App/table/EditorItem.vue
  * Description  : 编辑摸鱼网站
  * koroFileheader插件
@@ -44,8 +44,7 @@
                     v-model="ruleForm.tip"
                     :placeholder="'为空则为随机内卷提示'"></el-input>
         </el-form-item>
-        <el-form-item prop="time"
-                      required>
+        <el-form-item prop="time">
           <span slot="label">
             <el-tooltip :content="'检测到摸鱼网址后，停留几秒关闭网页'"
                         placement="top">
@@ -53,10 +52,10 @@
             </el-tooltip>
           </span>
           <el-input v-model.number="ruleForm.time"
+                    :placeholder="'为空则为全局设置的停留时间'"
                     autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item prop="checkoutStudy"
-                      required>
+        <el-form-item prop="checkoutStudy">
           <span slot="label">
             <el-tooltip :content="'关闭检测后多少分钟后重新启用检测'"
                         placement="top">
@@ -64,6 +63,7 @@
             </el-tooltip>
           </span>
           <el-input v-model.number="ruleForm.checkoutStudy"
+                    :placeholder="'为空则为全局设置的自动开启时间'"
                     autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item prop="matchRule"
@@ -111,7 +111,8 @@
           <span slot="label">
             <span>{{'是否启用'}}</span>
           </span>
-          <el-radio-group v-model="ruleForm.open" @change="checkoutFn">
+          <el-radio-group v-model="ruleForm.open"
+                          @change="checkoutFn">
             <el-radio :label="true">{{'开启'}}</el-radio>
             <el-radio :label="false">{{'关闭'}}</el-radio>
           </el-radio-group>
@@ -150,8 +151,8 @@ export default {
         labelName: '', // 摸鱼网站名字
         site: '', // 摸鱼网站地址
         matchRule: 'start', // 匹配规则 start/strict/includes
-        time: 0, // 是否立即关闭摸鱼网站
-        checkoutStudy: 0, // 定时自动开启
+        time: undefined, // 是否立即关闭摸鱼网站
+        checkoutStudy: undefined, // 定时自动开启
         closeTime: 0, // 关闭的时间
         jump: false, // 检测到摸鱼网址后 跳转到哪个页面
         jumpUrl: '', // 跳转页面
@@ -170,16 +171,6 @@ export default {
         ],
         tip: [
           { message: '请输入内卷提示', trigger: 'blur' },
-        ],
-        time: [
-          {
-            required: true, type: 'number', message: '必须为数字值', trigger: 'blur',
-          },
-        ],
-        checkoutStudy: [
-          {
-            required: true, type: 'number', message: '必须为数字值', trigger: 'blur',
-          },
         ],
         jumpUrl: [
           { required: true, message: '请输入跳转网址', trigger: 'blur' },

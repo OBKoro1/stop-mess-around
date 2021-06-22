@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-20 17:26:09
+ * LastEditTime : 2021-06-22 11:27:03
  * FilePath     : /stop-mess-around/src/content/app.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
@@ -109,6 +109,8 @@ export default {
     // 关闭弹窗
     handleClose() {
       this.dialogVisible = false // 先关闭弹窗
+      // 使用全局的停留时间 或者单个的停留时间
+      const time = typeof this.item.time !== 'number' ? this.Setting.time : this.item.time
       setTimeout(() => {
         if (this.item.jump) {
           // 跳转
@@ -117,7 +119,7 @@ export default {
           // 关闭
           chrome.extension.sendRequest({ message: 'close-tab' })
         }
-      }, this.item.time)
+      }, time * 1000)
     },
   },
 }

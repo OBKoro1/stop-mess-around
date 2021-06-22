@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 15:18:00
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-22 01:11:40
+ * LastEditTime : 2021-06-22 11:02:37
  * FilePath     : /stop-mess-around/src/options/App/settingPage/CreateItem.vue
  * Description  : 新增摸鱼网站
  * koroFileheader插件
@@ -45,8 +45,7 @@
                     v-model="ruleForm.tip"
                     :placeholder="'为空则为随机内卷提示'"></el-input>
         </el-form-item>
-        <el-form-item prop="time"
-                      required>
+        <el-form-item prop="time">
           <span slot="label">
             <el-tooltip :content="'检测到摸鱼网址后，停留几秒关闭网页'"
                         placement="top">
@@ -54,10 +53,10 @@
             </el-tooltip>
           </span>
           <el-input v-model.number="ruleForm.time"
+                    :placeholder="'为空则为全局设置的停留时间'"
                     autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item prop="checkoutStudy"
-                      required>
+        <el-form-item prop="checkoutStudy">
           <span slot="label">
             <el-tooltip :content="'关闭检测后多少分钟后重新启用检测'"
                         placement="top">
@@ -65,6 +64,7 @@
             </el-tooltip>
           </span>
           <el-input v-model.number="ruleForm.checkoutStudy"
+                    :placeholder="'为空则为全局设置的自动开启时间'"
                     autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item prop="matchRule"
@@ -148,8 +148,8 @@ export default {
         labelName: '', // 摸鱼网站名字
         site: '', // 摸鱼网站地址
         matchRule: 'start', // 匹配规则 start/strict/includes
-        time: 0, // 是否立即关闭摸鱼网站
-        checkoutStudy: 0, // 定时自动开启
+        time: undefined, // 是否立即关闭摸鱼网站
+        checkoutStudy: undefined, // 定时自动开启
         jump: false, // 检测到摸鱼网址后 跳转到哪个页面
         jumpUrl: '', // 跳转页面
         open: true, // 是否检测该摸鱼网站
@@ -168,16 +168,6 @@ export default {
         ],
         tip: [
           { message: '请输入内卷提示', trigger: 'blur' },
-        ],
-        time: [
-          {
-            required: true, type: 'number', message: '必须为数字值', trigger: 'blur',
-          },
-        ],
-        checkoutStudy: [
-          {
-            required: true, type: 'number', message: '必须为数字值', trigger: 'blur',
-          },
         ],
         jumpUrl: [
           { required: true, message: '请输入跳转网址', trigger: 'blur' },
@@ -211,7 +201,11 @@ export default {
     // 将全局设置放入新增中
     initRuleForm() {
       Object.keys(this.Setting).forEach((key) => {
-        if (key === 'tip') return // tip不赋值
+        // 不赋值 使用全局 全局变更 跟着变更
+        if (key === 'tip') return
+        if (key === 'time') return
+        if (key === 'checkoutStudy') return
+        // 使用设置
         if (this.ruleForm[key] !== undefined) {
           this.ruleForm[key] = this.Setting[key]
         }

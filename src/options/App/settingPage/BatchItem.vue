@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-28 16:02:26
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-22 01:09:48
+ * LastEditTime : 2021-06-22 10:57:37
  * FilePath     : /stop-mess-around/src/options/App/settingPage/BatchItem.vue
  * Description  : 摸鱼列表 批量添加
  * koroFileheader插件
@@ -98,7 +98,6 @@ export default {
       const setting = this.getSetting()
       const newArr = arr.map((item) => {
         itemProto.forEach((ele) => {
-          // 有设置即用设置的 否则用全局设置
           item[ele] = item[ele] || setting[ele]
         })
         return item

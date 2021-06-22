@@ -2,14 +2,15 @@
  * Author       : OBKoro1
  * Date         : 2021-05-24 11:02:13
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-22 01:32:58
+ * LastEditTime : 2021-06-22 11:01:24
  * FilePath     : /stop-mess-around/src/options/App/table/Table.vue
  * Description  : 表格
  * koroFileheader插件
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
 -->
 <template>
-  <div class="main-table" style="width:100%">
+  <div class="main-table"
+       style="width:100%">
     <el-table :data="showList"
               empty-text="暂无数据,去摸鱼网站列表选择添加，或者手动新增常用的摸鱼网站吧~"
               stripe
@@ -68,11 +69,14 @@
             <span>{{'停留几秒'}}</span>
           </el-tooltip>
         </template>
+        <template slot-scope="scope">
+          <span>{{ typeof scope.row.time !== 'number' ? Setting.time : scope.row.time  }}</span>
+        </template>
       </el-table-column>
       <el-table-column prop="matchRule"
                        width="120">
         <template slot="header">
-            <el-tooltip :content="'网址匹配规则: 开头全等 => 前面的必须一模一样，包含=> 包含即可，严格相等=>一模一样'"
+          <el-tooltip :content="'网址匹配规则: 开头全等 => 前面的必须一模一样，包含=> 包含即可，严格相等=>一模一样'"
                       placement="top">
             <span>{{'匹配规则'}}</span>
           </el-tooltip>

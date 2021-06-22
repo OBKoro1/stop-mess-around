@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-04 10:39:57
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-21 17:50:47
+ * LastEditTime : 2021-06-22 11:22:23
  * FilePath     : /stop-mess-around/src/background/index.js
  * Description  : background常驻页面
  * koroFileheader插件
@@ -21,7 +21,7 @@ async function autoOpen() {
   const listArr = (await utils.getChromeStorage(NET.TABLELIST)) || []
   // 全局没有关闭 检测单个关闭
   if (Number(closeTime) === 0) {
-    autoOpenItem(listArr)
+    autoOpenItem(listArr, Setting)
     return
   }
   const now = Date.now()
@@ -36,12 +36,14 @@ async function autoOpen() {
 }
 
 // 检测单个关闭 将它开启
-async function autoOpenItem(listArr) {
+async function autoOpenItem(listArr, Setting) {
   let isChange = false
   const arr = listArr.map((item) => {
     // 关闭
     if (!item.open) {
-      const isMoreTime = item.closeTime + item.checkoutStudy * 60 * 1000
+      // 如果单个没有的话 就使用全局的自动开启时间
+      const checkoutStudy = item.checkoutStudy || Setting.checkoutStudy
+      const isMoreTime = item.closeTime + checkoutStudy * 60 * 1000
       // 超过时间
       if (isMoreTime < Date.now()) {
         isChange = true
