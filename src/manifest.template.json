@@ -19,14 +19,14 @@
     "128": "img/48.png"
   },
   "permissions": [
-    "contextMenus", // 右键菜单
-    "tabs", // 标签
-    "notifications", // 通知
-    "webRequest", // web请求
+    "contextMenus",
+    "tabs",
+    "notifications",
+    "webRequest",
     "webRequestBlocking",
-    "storage", // 插件本地存储
-    "http://*/*", // 可以通过executeScript或者insertCSS访问的网站
-    "https://*/*" // 可以通过executeScript或者insertCSS访问的网站
+    "storage",
+    "http://*/*",
+    "https://*/*"
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "content_scripts": [
@@ -38,6 +38,5 @@
     }
   ],
   "web_accessible_resources": ["fonts/*"],
-  // 默认语言
   "default_locale": "zh_CN"
 }
