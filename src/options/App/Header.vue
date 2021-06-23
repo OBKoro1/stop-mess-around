@@ -42,8 +42,8 @@
            alt="">
       <span slot="footer"
             class="dialog-footer">
-        <el-button @click="confirmSponsorship('no')">狠心拒绝</el-button>
-        <el-button @click="confirmSponsorship('yes')">请你喝了</el-button>
+        <el-button @click="confirmSponsorship('no')">下次一定</el-button>
+        <el-button type="primary" @click="confirmSponsorship('yes')">请你喝了</el-button>
       </span>
     </el-dialog>
   </div>
@@ -97,14 +97,16 @@ export default {
       if (type === 'yes') {
         this.$notify({
           title: '感谢',
-          message: '谢谢你请我喝水，特别爱你, 祝你天天开心，万事如意😘',
+          message: '谢谢你请我喝水，这下我更有动力做开源工作了，特别爱你, 祝你天天开心，万事顺心😘',
           type: 'success',
+          showClose: false,
           duration: 12000,
         })
       } else {
         this.$notify({
-          title: '可惜！',
-          message: '少喝一杯水，渴不死, 买卖不成仁义在 😊',
+          title: '下次一定',
+          message: '哈哈哈, 不要紧, 我等着下次呢 😝',
+          showClose: false,
           duration: 8000,
         })
       }
