@@ -96,8 +96,8 @@ export default {
     confirmSponsorship(type) {
       if (type === 'yes') {
         this.$notify({
-          title: '感谢',
-          message: '谢谢你请我喝水，这下我更有动力做开源工作了，特别爱你, 祝你天天开心，万事顺心😘',
+          title: '感谢你的肯定',
+          message: '谢谢你请我喝水，这下我更有动力分享和开源工作了，特别爱你, 祝你天天开心，万事顺心😘',
           type: 'success',
           showClose: false,
           duration: 12000,
