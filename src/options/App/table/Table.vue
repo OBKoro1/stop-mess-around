@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-24 11:02:13
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-22 11:01:24
+ * LastEditTime : 2021-06-23 16:05:26
  * FilePath     : /stop-mess-around/src/options/App/table/Table.vue
  * Description  : 表格
  * koroFileheader插件
@@ -199,7 +199,7 @@ export default {
       }
       const len = this.Setting.tipArr.length
       const count = Math.floor(Math.random() * len)
-      const res = `${this.Setting.tipArr[count]}-随机`
+      const res = `${this.Setting.tipArr[count]}`
       randomIndexFont[row.site] = res
       return res
     },
