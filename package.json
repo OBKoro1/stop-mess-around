@@ -1,10 +1,27 @@
 {
   "name": "stop-mess-around",
+  "description": "chrome插件**通过强制的手段禁止大家浪费时间摸鱼**，在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站, 滚去学习，滚去做对未来有益的事情！。",
   "version": "1.0.0",
-  "description": "Chrome停止摸鱼插件，停止下意识的摸鱼，自动关闭摸鱼网站，滚去学习，滚去做对未来有益的事情！",
+  "publisher": "OBKoro1",
+  "homepage": "https://github.com/OBKoro1/stop-mess-around",
+  "license": "MIT",
+  "author": {
+    "name": "OBKoro1",
+    "email": "obkoro1@foxmail.com",
+    "url": "http://obkoro1.com/web_accumulate/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OBKoro1/stop-mess-around"
+  },
+  "bugs": {
+    "url": "https://github.com/OBKoro1/stop-mess-around/issues",
+    "email": "obkoro1@foxmail.com"
+  },
   "scripts": {
     "serve": "npm run build-watch",
-    "build": "vue-cli-service build",
+    "build": "node deploy.js && npm run build-dist",
+    "build-dist": "vue-cli-service build",
     "lint": "eslint --ext .js,.vue src --fix",
     "build-watch": "vue-cli-service build-watch",
     "prepare": "husky install",
