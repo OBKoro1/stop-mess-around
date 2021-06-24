@@ -1,5 +1,5 @@
 # stop-mess-around
-> chrome插件**通过强制的手段禁止大家浪费时间摸鱼**，在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站, 滚去学习，滚去做对未来有益的事情！。
+> chrome插件**通过强制的手段禁止大家浪费时间摸鱼**，在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站。
 
 ### 插件解决的问题: 停止下意识的摸鱼
 
@@ -15,11 +15,15 @@
 
 作者本人曾经也深受其害，后来我想到可以用工具来限制这种下意识的行为。
 
-于是我写了一个脚本**用来检测摸鱼网站、检测到了就自动关闭摸鱼网站**。
+于是很喜欢写工具的我, 写了一个脚本**用来检测摸鱼网站、检测到了就自动关闭摸鱼网站**。
 
-**我在经过一段时间的使用之后，我是真的觉得很有用，很有效果。**
+**我在经过一段时间的使用之后，我就再也没有在电脑上打开摸鱼网站了，工作学习效率也提高了很多**。
 
-**在电脑上再也没有打开摸鱼网站了，工作学习效率也提高了很多**。
+**很奇怪，每次打开之后就被插件提示我不要摸鱼，然后被关闭摸鱼网站。**
+
+**久而久之我就戒掉了在休息的间隙没事做就打开摸鱼网站的习惯了**。
+
+**就我个人而言，真的很有用，很有效果，为我节省了很多时间**。
 
 所以我将它做成chrome插件，开发了可视化的界面，方便不懂技术的人也可以直接上手使用。
 
@@ -29,19 +33,19 @@
 
 1. 添加摸鱼网站以及匹配摸鱼网站弹窗提示、关闭网页
 
-![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/start.gif?raw=true)
+![](https://github.com/OBKoro1/stop-mess-around/blob/master/static/start.gif?raw=true)
 
 2. 一键开启/关闭以及批量添加摸鱼网站
 
-![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/addCheckout.gif?raw=true)
+![](https://github.com/OBKoro1/stop-mess-around/blob/master/static/addCheckout.gif?raw=true)
 
 3. 匹配摸鱼网站后出现的提示信息 - 随机语录
 
-![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/mottoSetting.gif?raw=true)
+![](https://github.com/OBKoro1/stop-mess-around/blob/master/static/mottoSetting.gif?raw=true)
 
 4. 一些设置提示。
 
-![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/setting.gif?raw=true)
+![](https://github.com/OBKoro1/stop-mess-around/blob/master/static/setting.gif?raw=true)
 
 
 ### 插件文档
