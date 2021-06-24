@@ -1,13 +1,14 @@
 <template>
   <div class="header align-center">
     <div class="header-left align-center">
+      <!-- TODO: 打开谷歌插件扩展市场 -->
       <img src="../../../public/img/origin.jpeg"
            class="header-img"
            alt="">
       <div class="header-plugin cursor-pointer">
         <h2 @click="utils.jumpUrl(NET.GITHUBREPO)"> stop-mess-around(停止下意识摸鱼)</h2>
         <span class="cursor-pointer"
-              @click="utils.jumpUrl(NET.CHANGELOG)">{{ getVersion() }}</span>
+              @click="utils.jumpUrl(NET.RELEASES)">{{ getVersion() }}</span>
       </div>
       <div class="author cursor-pointer"
            @click="utils.jumpUrl(NET.MYSITE)">by OBKoro1</div>
@@ -20,7 +21,7 @@
       {{'请我喝杯水吧😘'}}
     </el-button>
     <el-button type="text"
-               @click="utils.jumpUrl(NET.GITHUBREPO)"
+               @click="utils.jumpUrl(NET.DOCS)"
                size="medium"
                class="dropdown-color marginRL">
       使用文档
@@ -66,7 +67,7 @@ export default {
   methods: {
     getVersion() {
       const manifestData = chrome.runtime.getManifest()
-      return manifestData.version
+      return `v${manifestData.version}`
     },
     // 自动显示赞赏
     sponsorshipShow() {

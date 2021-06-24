@@ -28,7 +28,7 @@
       <span>欢迎赞助</span>
     </div>
 
-    <div @click="utils.jumpUrl(NET.GITHUBREPO)">
+    <div @click="utils.jumpUrl(NET.DOCS)">
       <div>
         <i class="el-icon-document"
            style="color: #fff"></i>
@@ -43,7 +43,7 @@
       </div>
       <span>点个Star吧</span>
     </div>
-    <div @click="utils.jumpUrl(NET.CHANGELOG)">
+    <div @click="utils.jumpUrl(NET.RELEASES)">
       <div>
         <i class="el-icon-tickets"
            style="color: #fff"></i>
