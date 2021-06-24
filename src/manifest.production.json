@@ -2,15 +2,21 @@
   "manifest_version": 2,
   "name": "stop-mess-around",
   "version": "1.0.0",
-  "description": "chrome插件**通过强制的手段禁止大家浪费时间摸鱼**，在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站, 滚去学习，滚去做对未来有益的事情！。",
+  "description": "通过强制的手段禁止大家浪费时间摸鱼：在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站, 滚去学习，滚去做对未来有益的事情！",
   "options_page": "options.html",
+  "short_name": "StopMessAround",
+  "author": {
+    "name": "OBKoro1",
+    "email": "obkoro1@foxmail.com",
+    "url": "http://obkoro1.com/web_accumulate/"
+  },
   "homepage_url": "https://github.com/OBKoro1/stop-mess-around",
   "background": {
     "scripts": ["js/background.js"]
   },
   "browser_action": {
     "default_icon": "img/48.png",
-    "default_title": "chrome插件**通过强制的手段禁止大家浪费时间摸鱼**，在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站, 滚去学习，滚去做对未来有益的事情！。",
+    "default_title": "通过强制的手段禁止大家浪费时间摸鱼：在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站, 滚去学习，滚去做对未来有益的事情！",
     "default_popup": "popup.html"
   },
   "icons": {
@@ -19,14 +25,11 @@
     "128": "img/48.png"
   },
   "permissions": [
-    "contextMenus",
     "tabs",
     "notifications",
-    "webRequest",
-    "webRequestBlocking",
     "storage",
-    "http://*/*",
-    "https://*/*"
+    "http://*/*", 
+		"https://*/*"
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "content_scripts": [
@@ -37,6 +40,7 @@
       "run_at": "document_end"
     }
   ],
+  "offline_enabled": true,
   "web_accessible_resources": ["fonts/*"],
   "default_locale": "zh_CN"
 }

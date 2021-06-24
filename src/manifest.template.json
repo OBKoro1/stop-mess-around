@@ -40,7 +40,6 @@
       "run_at": "document_end"
     }
   ],
-  "license": "MIT",
   "offline_enabled": true,
   "web_accessible_resources": ["fonts/*"],
   "default_locale": "zh_CN"
