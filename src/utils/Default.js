@@ -121,6 +121,7 @@ export const defaultSetting = {
   confirmArr, // 随机确认按钮数组
   matchRule: 'start',
   tipArr, // 随机内卷提示数组
+  addSite: '', // 通过popup添加摸鱼网址
   // 默认值数量更新判断
   defaultNum: {
     defaultList: defaultList.length,

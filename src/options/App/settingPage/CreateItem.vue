@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 15:18:00
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-22 11:02:37
- * FilePath     : /stop-mess-around/src/options/App/settingPage/CreateItem.vue
+ * LastEditTime : 2021-06-29 20:12:59
+ * FilePath     : CreateItem.vue
  * Description  : 新增摸鱼网站
  * koroFileheader插件
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -31,6 +31,8 @@
                       required>
           <span slot="label">{{'摸鱼网址'}}: </span>
           <el-input class="input-class"
+                    autosize
+                    type="textarea"
                     :placeholder="'添加摸鱼网址(唯一)'"
                     v-model="ruleForm.site"></el-input>
         </el-form-item>
@@ -140,7 +142,7 @@ export default {
       default: false,
     },
   },
-  inject: ['tableDataSpliceUpdate', 'getSetting', 'getTableData'],
+  inject: ['tableDataSpliceUpdate', 'getSetting', 'getTableData', 'settingUpdate'],
   data() {
     return {
       Setting: {},
@@ -182,7 +184,6 @@ export default {
     // 初始化数据
     dialogVisible(val) {
       if (val) {
-        this.Setting = this.getSetting()
         this.initRuleForm()
       }
     },
@@ -197,9 +198,15 @@ export default {
       },
     },
   },
+  mounted() {
+    setTimeout(() => {
+      this.openCreate()
+    }, 500)
+  },
   methods: {
     // 将全局设置放入新增中
     initRuleForm() {
+      this.Setting = this.getSetting()
       Object.keys(this.Setting).forEach((key) => {
         // 不赋值 使用全局 全局变更 跟着变更
         if (key === 'tip') return
@@ -210,6 +217,17 @@ export default {
           this.ruleForm[key] = this.Setting[key]
         }
       })
+    },
+    // popup添加摸鱼网址
+    openCreate() {
+      this.Setting = this.getSetting()
+      if (this.Setting.addSite !== '') {
+        this.$emit('close', 'showCreateItem', true)
+        this.ruleForm.site = this.Setting.addSite
+        // 重置摸鱼网站
+        this.Setting.addSite = ''
+        this.settingUpdate(this.Setting)
+      }
     },
     // 摸鱼网站是否添加过
     hasAdd(arr) {
@@ -243,6 +261,7 @@ export default {
       }
     },
     close() {
+      this.ruleForm.site = ''
       this.$refs.ruleForm.resetFields()
       this.$emit('close', 'showCreateItem', false)
     },

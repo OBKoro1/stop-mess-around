@@ -62,7 +62,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.sponsorshipShow()
-    }, 2000)
+    }, 500)
   },
   methods: {
     getVersion() {

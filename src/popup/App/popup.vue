@@ -1,6 +1,6 @@
 <template>
   <div class="box-card">
-    <div @click="checkoutOpen">
+    <div @click="checkoutOpen" >
       <div>
         <i  :class="macthIcon" ></i>
       </div>
@@ -13,7 +13,7 @@
       <span>{{ open ? '一键关闭摸鱼检测': '一键开启摸鱼检测'  }}</span>
     </div>
 
-    <div @click="jump">
+    <div @click="jumpOptions">
       <div>
         <i class="el-icon-setting"></i>
       </div>
@@ -80,7 +80,7 @@ export default {
         // 关闭状态
         return 'el-icon-turn-off color-gray'
       }
-      return 'el-icon-info'
+      return 'el-icon-folder-add '
     },
     // 是否开启
     allOpen() {
@@ -94,7 +94,7 @@ export default {
     },
     // 匹配网址
     matchFont() {
-      return this.item ? this.item.labelName : '没有匹配到摸鱼网址'
+      return this.item ? this.item.labelName : '添加网址到列表中'
     },
   },
   async created() {
@@ -103,7 +103,13 @@ export default {
   methods: {
     // 切换启用
     checkoutOpen() {
-      if (!this.item) return
+      if (!this.item) {
+        // 添加摸鱼网站
+        this.Setting.addSite = this.tab.url
+        this.settingUpdate(this.Setting)
+        this.jumpOptions()
+        return
+      }
       const value = !this.item.open
       if (value) {
         this.item.closeTime = 0
@@ -118,10 +124,10 @@ export default {
     sponsorshipShow() {
       this.Setting.sponsorshipTime = 'show'
       this.settingUpdate(this.Setting)
-      this.jump()
+      this.jumpOptions()
     },
     // 跳转管理面板
-    jump() {
+    jumpOptions() {
       const { id } = chrome.runtime
       const url = `chrome-extension://${id}/options.html`
       this.utils.jumpUrl(url)

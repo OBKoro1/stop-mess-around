@@ -147,7 +147,7 @@ export default {
     },
     // 更新设置
     settingUpdate(obj) {
-      this.Setting = obj
+      this.Setting = JSON.parse(JSON.stringify(obj))
       return this.utils.updateStorageData(this.Setting, this.NET.GLOBALSETTING)
     },
   },
