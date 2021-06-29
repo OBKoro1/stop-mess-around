@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-18 11:08:23
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-24 10:22:52
+ * LastEditTime : 2021-06-28 11:05:20
  * FilePath     : /stop-mess-around/deploy.js
  * Description  : 同步package.json的配置到manifest.json中
  * koroFileheader插件
@@ -14,7 +14,7 @@ const fs = require('fs')
 
 // 插件版本与描述
 const VERSION = process.env.npm_package_version
-const DESCRIPTION = '通过强制的手段禁止大家浪费时间摸鱼：在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站, 滚去学习，滚去做对未来有益的事情！'
+const DESCRIPTION = '防摸鱼插件: 通过强制的手段禁止大家浪费时间摸鱼：在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站, 滚去学习，滚去做对未来有益的事情！'
 
 const templateOption = {
   DESCRIPTION,
