@@ -1,18 +1,21 @@
 # stop-mess-around
 
-<a href="https://github.com/OBKoro1/stop-mess-around">
-    <img alt="koro1FileHeader Repo stars" src="https://img.shields.io/github/stars/OBKoro1/stop-mess-around">
-</a>
-<a href="https://github.com/OBKoro1/stop-mess-around/wiki/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E">
-    <img alt="wiki文档详细" src="https://img.shields.io/badge/wiki文档-齐全详细-blue">
-</a>
-<a href="hhttps://github.com/OBKoro1/stop-mess-around/releases">
-    <img alt="持续维护" src="https://img.shields.io/badge/2021年开源-持续维护-blue">
-    <img alt="cicd" src="https://img.shields.io/badge/版本打包-release-blue">
-</a>
-<a href="https://github.com/OBKoro1/koro1FileHeader/blob/master/LICENSE">
-    <img alt="开源协议-MIT" src="https://img.shields.io/badge/license-MIT-blue">
-</a>
+<div style="display: flex;">
+    <a style="margin-right: 15px" href="https://github.com/OBKoro1/stop-mess-around">
+        <img alt="koro1FileHeader Repo stars" src="https://img.shields.io/github/stars/OBKoro1/stop-mess-around">
+    </a>
+    <a style="margin-right: 15px" href="https://github.com/OBKoro1/stop-mess-around/wiki/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E">
+        <img alt="wiki文档详细" src="https://img.shields.io/badge/wiki文档-齐全详细-blue">
+    </a>
+    <a  href="hhttps://github.com/OBKoro1/stop-mess-around/releases">
+        <img style="margin-right: 15px" alt="持续维护" src="https://img.shields.io/badge/2021年开源-持续维护-blue">
+        <img style="margin-right: 15px" alt="cicd" src="https://img.shields.io/badge/版本打包-release-blue">
+    </a>
+    <a style="margin-right: 15px" href="https://github.com/OBKoro1/stop-mess-around/blob/master/LICENSE">
+        <img alt="开源协议-MIT" src="https://img.shields.io/badge/license-MIT-blue">
+    </a>
+</div>
+
 
 ### 项目介绍
 
