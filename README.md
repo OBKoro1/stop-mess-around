@@ -72,6 +72,22 @@
 
 ![](https://github.com/OBKoro1/stop-mess-around/blob/master/static/setting.gif?raw=true)
 
+## 快速上手
+> 下面有几张演示的gif, 可能需要翻墙才能加载出来。
+
+1. [安装插件](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6) 
+2. 左键点击插件图标，打开插件管理面板
+
+![](https://github.com/OBKoro1/stop-mess-around/blob/master/static/openoptions.png?raw=true)
+
+3. 点击新增按钮新增摸鱼网站、或者一键添加摸鱼网站。
+
+![一键开启/关闭以及批量添加摸鱼网站](https://github.com/OBKoro1/stop-mess-around/blob/master/static/addCheckout.gif?raw=true)
+4. 打开任意网站，插件会去匹配是否添加到摸鱼网站列表中
+5. 如果匹配到则会打开一个含有提示信息的弹窗,关闭弹窗后将会停留几秒后关闭网站或者跳转到指定网站。
+
+![添加摸鱼网站并检查](https://github.com/OBKoro1/stop-mess-around/blob/master/static/start.gif?raw=true)
+
 ### 点个Star吧~
 
 如果觉得这个插件还不错，对你有所帮助的话，就给我点个Star吧，谢谢兄弟姐妹们~
