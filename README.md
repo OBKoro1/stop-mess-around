@@ -49,6 +49,11 @@
 
 希望这个开源工具可以有效的帮助大家减少摸鱼时间，提高工作和学习的效率。
 
+### 插件文档
+
+[安装插件、快速上手以及使用说明](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
+
+[插件节省下来的时间如何合理利用](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%A6%82%E4%BD%95%E5%90%88%E7%90%86%E5%88%A9%E7%94%A8%E6%97%B6%E9%97%B4)
 ### 使用示例
 
 1. 添加摸鱼网站以及匹配摸鱼网站弹窗提示、关闭网页
@@ -66,13 +71,6 @@
 4. 一些设置提示。
 
 ![](https://github.com/OBKoro1/stop-mess-around/blob/master/static/setting.gif?raw=true)
-
-
-### 插件文档
-
-[快速上手以及使用说明](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
-
-[插件节省下来的时间如何合理利用](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%A6%82%E4%BD%95%E5%90%88%E7%90%86%E5%88%A9%E7%94%A8%E6%97%B6%E9%97%B4)
 
 ### 点个Star吧~
 
