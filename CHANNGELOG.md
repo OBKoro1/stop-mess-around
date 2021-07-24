@@ -5,7 +5,7 @@
 * chore: 提示本地安装用户去谷歌商店安装应用，提供升级服务。
 * chore: content页面日志插入控制。
 * fix: 如果开启弹窗，再关闭检测，则关闭弹窗。
-* chore: 更新励志语录。
+* chore: 更新[插件励志语录](https://github.com/OBKoro1/stop-mess-around/blob/master/src/utils/Default.js)。
     * 不怕苦，苦半辈子；怕苦，苦一辈子。 - 李敖
     * 失败只有一种，那就是放弃努力, 半途而废
 
