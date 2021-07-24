@@ -21,7 +21,7 @@
   "scripts": {
     "serve": "vue-cli-service build-watch",
     "build-plugin": "node deploy.js && vue-cli-service build",
-    "build-release": "vue-cli-service build --mode development",
+    "build-release": "node deploy.js && vue-cli-service build --mode development",
     "lint": "eslint --ext .js,.vue src --fix",
     "prepare": "husky install",
     "analyze": "npm run build --report"
