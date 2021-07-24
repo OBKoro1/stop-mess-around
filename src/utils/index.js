@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-05-17 16:17:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-22 01:17:32
- * FilePath     : /stop-mess-around/src/utils/index.js
+ * LastEditTime : 2021-07-24 14:17:29
+ * FilePath     : index.js
  * Description  : 全局方法
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
  */
@@ -19,8 +19,13 @@ class GlobalFunction {
 }
 
 export const utils = {
-  jumpUrl(url) {
+  // 本地直接跳转
+  replaceUrl(url) {
     window.open(url, 'target')
+  },
+  // 打开新页面
+  jumpUrl(url) {
+    window.open(url, '_blank')
   },
   // 获取不同语言的方法
   /**

@@ -1,12 +1,15 @@
 <template>
   <div class="header align-center">
     <div class="header-left align-center">
-      <!-- TODO: 打开谷歌插件扩展市场 -->
-      <img src="../../../public/img/origin.jpeg"
+      <img @click="utils.jumpUrl(NET.CHROMESTORE)"
+           src="../../../public/img/origin.jpeg"
            class="header-img"
            alt="">
       <div class="header-plugin cursor-pointer">
         <h2 @click="utils.jumpUrl(NET.GITHUBREPO)"> stop-mess-around(停止下意识摸鱼)</h2>
+        <span v-if="development"
+              class="cursor-pointer header-btns"
+              @click="utils.jumpUrl(NET.CHROMESTORE)">本地安装,无法自动更新，跳转Chrome商店安装</span>
         <span class="cursor-pointer"
               @click="utils.jumpUrl(NET.RELEASES)">{{ getVersion() }}</span>
       </div>
@@ -44,7 +47,8 @@
       <span slot="footer"
             class="dialog-footer">
         <el-button @click="confirmSponsorship('no')">下次一定</el-button>
-        <el-button type="primary" @click="confirmSponsorship('yes')">请你喝了</el-button>
+        <el-button type="primary"
+                   @click="confirmSponsorship('yes')">请你喝了</el-button>
       </span>
     </el-dialog>
   </div>
@@ -57,9 +61,15 @@ export default {
   data() {
     return {
       sponsorship: false,
+      development: false,
     }
   },
   mounted() {
+    // 本地提示
+    if (process.env.NODE_ENV === 'development') {
+      this.development = true
+      console.log('本地安装，无法自动更新，点击右上角跳转Chrome商店安装')
+    }
     setTimeout(() => {
       this.sponsorshipShow()
     }, 500)

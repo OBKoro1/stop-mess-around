@@ -36,14 +36,12 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // 生产环境打包dist为zip
-if (process.env.NODE_ENV === 'production') {
-  plugins.push(
-    new ZipPlugin({
-      path: path.resolve('dist'),
-      filename: 'dist.zip',
-    }),
-  )
-}
+plugins.push(
+  new ZipPlugin({
+    path: path.resolve('dist'),
+    filename: 'dist.zip',
+  }),
+)
 
 module.exports = {
   pages: pagesObj,

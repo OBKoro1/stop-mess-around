@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 22:45:36
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-22 01:19:16
- * FilePath     : /stop-mess-around/src/options/App/settingPage/Setting.vue
+ * LastEditTime : 2021-07-24 15:19:10
+ * FilePath     : Setting.vue
  * Description  : 全局设置
  * koroFileheader插件
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -93,6 +93,19 @@
           <el-input class="input-class"
                     v-model="ruleForm.jumpUrl"
                     :placeholder="'为空则使用全局跳转链接'"></el-input>
+        </el-form-item>
+        <el-form-item prop="log"
+                      required>
+          <span slot="label">
+            <el-tooltip :content="'插入网页的代码是否开启日志，方便定位问题'"
+                        placement="top">
+              <span>{{'网页日志'}}</span>
+            </el-tooltip>
+          </span>
+          <el-radio v-model="ruleForm.log"
+                    :label="true">{{'开启'}}</el-radio>
+          <el-radio v-model="ruleForm.log"
+                    :label="false">{{'关闭'}}</el-radio>
         </el-form-item>
       </el-form>
     </div>

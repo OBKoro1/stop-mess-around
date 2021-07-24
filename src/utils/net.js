@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-05-21 14:56:38
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-24 14:28:02
- * FilePath     : /stop-mess-around/src/utils/net.js
+ * LastEditTime : 2021-07-24 14:18:30
+ * FilePath     : net.js
  * Description  : 全局常量
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
  */
@@ -19,7 +19,8 @@ const NET = {
   // 我的github地址
   MYSITE: 'http://obkoro1.com/web_accumulate/about.html',
   //   MYSITE: 'https://github.com/OBKoro1',
-
+  // 谷歌应用市场
+  CHROMESTORE: 'https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN',
   // storage
   TABLELIST: 'tableList',
   GLOBALSETTING: 'globalSetting',

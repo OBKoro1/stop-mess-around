@@ -56,7 +56,7 @@ jobs:
          draft: false
          prerelease: false
      - run: yarn # 安装依赖
-     - run: npm run build # 打包
+     - run: npm run build-release # 打包
      - run: ls
      # 上传插件包
      - name: Upload Release Asset

@@ -57,6 +57,8 @@ export const tipArr = [
   '三延四拖，你就是时间的小偷。',
   '明日复明日，明日何其多。日日传明日，万事成蹉跎。世人皆被明日累，明日无穷老将至。晨昏滚滚水东流，今古悠悠日西坠。百年明日能几何，请君听我明日歌。- 文嘉',
   '多做重要而不紧急的事情, 合理规划时间成为一个从容的人。',
+  '不怕苦，苦半辈子；怕苦，苦一辈子。 - 李敖',
+  '失败只有一种，那就是放弃努力, 半途而废。',
 ]
 
 // 确认按钮
@@ -105,10 +107,15 @@ export const defaultList = [
     site: 'https://weibo.com/',
     labelName: '微博',
   },
+  {
+    site: 'https://www.v2ex.com/',
+    labelName: 'V2ex论坛',
+  },
 ]
 
 // 默认全局设置
 export const defaultSetting = {
+  log: false, // 是否打印日志
   open: true, // 默认新增开启检测
   time: 5, // 检测到页面 默认停留十秒再关闭页面
   jump: false, // 新增默认是否跳转

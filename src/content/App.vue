@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-22 11:27:03
- * FilePath     : /stop-mess-around/src/content/app.vue
+ * LastEditTime : 2021-07-24 15:24:22
+ * FilePath     : App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
  * Copyright (c) ${now_year} by OBKoro1, All Rights Reserved.
@@ -39,6 +39,7 @@ export default {
       dialogVisible: false,
       item: null,
       index: 0,
+      tableData: [],
       info: {
         title: '',
         tip: '',
@@ -46,9 +47,13 @@ export default {
       },
     }
   },
-  mounted() {
-    console.log('stop-mess-around 插入')
-    this.run()
+  async mounted() {
+    await this.run()
+    if (this.Setting.log) {
+      console.log('stop-mess-around: Setting', this.Setting)
+      console.log('stop-mess-around: list', this.tableData)
+      console.log('stop-mess-around 插入')
+    }
     // 检测url变更
     setInterval(this.run, 6000)
   },
@@ -56,7 +61,9 @@ export default {
     // 检测链接
     async run() {
       this.Setting = (await utils.getChromeStorage(NET.GLOBALSETTING)) || defaultSetting
+      console.log('stop-mess-around', this.Setting)
       const tableData = (await utils.getChromeStorage(NET.TABLELIST)) || []
+      this.tableData = tableData
       const isMatch = utils.checkUrl(tableData, window.location.href)
       if (!isMatch) return
       // 不重复展示关闭提示 已经关闭 或者已经开启的 不再重复出现
@@ -100,6 +107,8 @@ export default {
      */
     matchHandle() {
       if (!this.item.open) {
+        // 如果已经开启了弹窗，则关闭
+        if (this.dialogVisible) this.dialogVisible = false
         this.$message(`${this.item.labelName}-摸鱼网站已关闭`)
         return
       }
