@@ -1,5 +1,11 @@
 # 更新日志
 
+### 更新地址
+
+[如何安装插件](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6)
+
+<!-- wiki: 如何更新插件 -->
+
 ### [V1.0.3]
 
 * chore: 提示本地安装用户去谷歌商店安装应用，提供升级服务。
