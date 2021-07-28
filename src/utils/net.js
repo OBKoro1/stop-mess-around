@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-21 14:56:38
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-07-24 14:18:30
+ * LastEditTime : 2021-07-28 10:39:41
  * FilePath     : net.js
  * Description  : 全局常量
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -13,7 +13,7 @@ const NET = {
   // 使用文档
   DOCS: 'https://github.com/OBKoro1/stop-mess-around/wiki/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E',
   // 更新日志
-  RELEASES: 'https://github.com/OBKoro1/stop-mess-around/releases',
+  RELEASES: 'https://github.com/OBKoro1/stop-mess-around/blob/master/CHANNGELOG.md',
   // github 地址
   GITHUBSITE: 'https://github.com/OBKoro1',
   // 我的github地址
