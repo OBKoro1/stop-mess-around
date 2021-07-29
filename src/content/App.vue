@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-07-24 15:24:22
+ * LastEditTime : 2021-07-30 01:01:01
  * FilePath     : App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
@@ -61,7 +61,6 @@ export default {
     // 检测链接
     async run() {
       this.Setting = (await utils.getChromeStorage(NET.GLOBALSETTING)) || defaultSetting
-      console.log('stop-mess-around', this.Setting)
       const tableData = (await utils.getChromeStorage(NET.TABLELIST)) || []
       this.tableData = tableData
       const isMatch = utils.checkUrl(tableData, window.location.href)
