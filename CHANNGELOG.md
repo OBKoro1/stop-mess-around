@@ -10,6 +10,9 @@
 
 [chrome商店更新](https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN)
 
+### [V1.0.5]
+
+* fix: 修复插件打包的参数丢失问题
 
 ### [V1.0.4]
 
