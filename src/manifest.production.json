@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "stop-mess-around",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "防摸鱼插件: 通过强制的手段禁止大家浪费时间摸鱼：在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站, 滚去学习，滚去做对未来有益的事情！",
   "options_page": "options.html",
   "short_name": "StopMessAround",
