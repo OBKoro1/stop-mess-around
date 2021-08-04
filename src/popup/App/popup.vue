@@ -13,7 +13,7 @@
       <span>{{ open ? '一键关闭摸鱼检测': '一键开启摸鱼检测'  }}</span>
     </div>
 
-    <div @click="jumpOptions">
+    <div @click="utils.jumpUrl(NET.OPTIONSPAGE)">
       <div>
         <i class="el-icon-setting"></i>
       </div>
@@ -125,12 +125,6 @@ export default {
       this.Setting.sponsorshipTime = 'show'
       this.settingUpdate(this.Setting)
       this.jumpOptions()
-    },
-    // 跳转管理面板
-    jumpOptions() {
-      const { id } = chrome.runtime
-      const url = `chrome-extension://${id}/options.html`
-      this.utils.jumpUrl(url)
     },
     // 初始化
     async initData() {

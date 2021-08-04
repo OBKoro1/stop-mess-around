@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-21 14:56:38
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-07-28 10:39:41
+ * LastEditTime : 2021-08-04 10:28:20
  * FilePath     : net.js
  * Description  : 全局常量
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -18,6 +18,8 @@ const NET = {
   GITHUBSITE: 'https://github.com/OBKoro1',
   // 我的github地址
   MYSITE: 'http://obkoro1.com/web_accumulate/about.html',
+  // 插件配置面板页面
+  OPTIONSPAGE: `chrome-extension://${chrome.runtime.id}/options.html`,
   //   MYSITE: 'https://github.com/OBKoro1',
   // 谷歌应用市场
   CHROMESTORE: 'https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN',
