@@ -121,7 +121,28 @@ export const defaultList = [
     site: 'https://www.v2ex.com/',
     labelName: 'V2ex论坛',
   },
+  {
+    site: 'https://live.qq.com/',
+    labelName: '企鹅直播',
+  },
+  {
+    site: 'http://www.taobao.com/',
+    labelName: '淘宝网',
+  },
+  {
+    site: 'https://www.jd.com/',
+    labelName: '京东',
+  },
+  {
+    site: 'https://www.hupu.com/',
+    labelName: '虎扑',
+  },
+  {
+    site: 'https://top.baidu.com/',
+    labelName: '百度热搜',
+  },
 ]
+// 鱼塘热榜：https://mo.fish/?class_id=%E5%85%A8%E9%83%A8&hot_id=1053
 
 // 默认全局设置
 export const defaultSetting = {
