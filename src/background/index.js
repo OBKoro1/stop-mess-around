@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-06-04 10:39:57
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-22 11:22:23
- * FilePath     : /stop-mess-around/src/background/index.js
+ * LastEditTime : 2021-08-04 10:26:16
+ * FilePath     : index.js
  * Description  : background常驻页面
  * koroFileheader插件
  * Copyright (c) ${now_year} by OBKoro1, All Rights Reserved.
@@ -12,7 +12,11 @@ import { utils } from '../utils/index'
 import NET from '../utils/net'
 import { defaultSetting } from '../utils/Default'
 
-setInterval(autoOpen, 5000)
+main()
+function main() {
+  setInterval(autoOpen, 5000)
+  addListener()
+}
 
 // 检测关闭 定时自动一键打开
 async function autoOpen() {
@@ -68,12 +72,16 @@ async function checkoutOpen(listArr) {
   await utils.updateStorageData(arr, NET.TABLELIST)
 }
 
-chrome.extension.onRequest.addListener((request, sender) => {
-  // 关闭页面
-  if (request.message === 'close-tab') {
-    const { id } = sender.tab
-    chrome.tabs.remove(id)
-  }
-})
-
-console.log('chrome', chrome)
+function addListener() {
+  // 第一次安装
+  chrome.runtime.onInstalled.addListener(() => {
+    utils.jumpUrl(NET.OPTIONSPAGE)
+  })
+  // content通知 background 关闭页面
+  chrome.extension.onRequest.addListener((request, sender) => {
+    if (request.message === 'close-tab') {
+      const { id } = sender.tab
+      chrome.tabs.remove(id)
+    }
+  })
+}
