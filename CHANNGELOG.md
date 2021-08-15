@@ -10,6 +10,35 @@
 
 [chrome商店更新](https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN)
 
+### [V1.0.6]
+
+* chore: 更新[摸鱼网站列表](https://github.com/OBKoro1/stop-mess-around/blob/master/src/utils/Default.js), 新增如下网站。
+```js
+  {
+    site: 'https://live.qq.com/',
+    labelName: '企鹅直播',
+  },
+  {
+    site: 'http://www.taobao.com/',
+    labelName: '淘宝网',
+  },
+  {
+    site: 'https://www.jd.com/',
+    labelName: '京东',
+  },
+  {
+    site: 'https://www.hupu.com/',
+    labelName: '虎扑',
+  },
+  {
+    site: 'https://top.baidu.com/',
+    labelName: '百度热搜',
+  }
+```
+* feat: 安装后，自动打开管理面板，方便用户进行配置。
+* feat: 表格没有数据，默认打开批量添加摸鱼网站的弹窗
+* chore: 插件配置面板页面提取，方便打开页面
+
 ### [V1.0.5]
 
 * fix: 修复插件打包的参数丢失问题
