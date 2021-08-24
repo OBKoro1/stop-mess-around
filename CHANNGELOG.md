@@ -10,6 +10,10 @@
 
 [chrome商店更新](https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN)
 
+### [V1.0.7]
+
+* chore: 标记为本地文件
+
 ### [V1.0.6]
 
 * chore: 更新[摸鱼网站列表](https://github.com/OBKoro1/stop-mess-around/blob/master/src/utils/Default.js), 新增如下网站。
