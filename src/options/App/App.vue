@@ -135,7 +135,7 @@ export default {
     },
     // 更新数组
     updateArr(arr) {
-      if (!arr) return
+      if (!arr && !Array.isArray(arr)) return
       this.tableData = arr
       this.updateArrLater()
       this.utils.updateStorageData(this.tableData, this.NET.TABLELIST)
