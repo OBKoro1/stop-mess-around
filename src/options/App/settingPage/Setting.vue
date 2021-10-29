@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 22:45:36
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-07-24 15:19:10
- * FilePath     : Setting.vue
+ * LastEditTime : 2021-10-29 17:46:58
+ * FilePath     : /stop-mess-around/src/options/App/settingPage/Setting.vue
  * Description  : 全局设置
  * koroFileheader插件
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -107,6 +107,21 @@
           <el-radio v-model="ruleForm.log"
                     :label="false">{{'关闭'}}</el-radio>
         </el-form-item>
+        <el-form-item prop="clear"
+                      required>
+          <span slot="label">
+            <el-tooltip :content="'一键清空摸鱼网站列表，也就是下面的表格'"
+                        placement="top">
+              <span>{{'清空摸鱼网站列表'}}</span>
+            </el-tooltip>
+          </span>
+          <el-popconfirm title="确认清空？"
+                         @confirm="clearListFn()">
+            <el-button slot="reference"
+                       type="danger">一键清空摸鱼列表</el-button>
+          </el-popconfirm>
+
+        </el-form-item>
       </el-form>
     </div>
 
@@ -123,7 +138,7 @@
 
 export default {
   name: 'Setting',
-  inject: ['getSetting', 'settingUpdate'],
+  inject: ['getSetting', 'settingUpdate', 'updateArr'],
   props: {
     showDialog: {
       require: true,
@@ -180,6 +195,9 @@ export default {
     resetFields(done) {
       this.$refs.ruleForm.resetFields()
       done()
+    },
+    clearListFn() {
+      this.updateArr([])
     },
     confirmFn() {
       this.$refs.ruleForm.validate((valid) => {
