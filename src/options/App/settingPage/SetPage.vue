@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 14:24:51
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-08-03 19:28:14
- * FilePath     : SetPage.vue
+ * LastEditTime : 2021-10-29 17:16:43
+ * FilePath     : /stop-mess-around/src/options/App/settingPage/SetPage.vue
  * Description  : 设置
  * koroFileheader插件
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -87,11 +87,13 @@ export default {
     },
   },
   mounted() {
-    const list = this.getTableData()
-    if (list.length === 0) {
-      // 没有数据 默认打开摸鱼网站列表
-      this.showBatchItem = true
-    }
+    // 没有数据 默认打开摸鱼网站列表
+    setTimeout(() => {
+      const list = this.getTableData()
+      if (list.length === 0) {
+        this.showBatchItem = true
+      }
+    }, 1000)
   },
   methods: {
     search(val) {
