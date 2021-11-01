@@ -29,6 +29,7 @@ export default {
       tableDataSpliceUpdate: this.tableDataSpliceUpdate, // 通过splice形式 更新数组
       settingUpdate: this.settingUpdate, // 更新设置
       updateArr: this.updateArr, // 传递数组 更新数组
+      initData: this.clear,
     }
   },
   data() {
@@ -49,7 +50,6 @@ export default {
   },
   async created() {
     window.$Vue = this
-    // chrome.storage.sync.clear()
     await this.initData()
     // 监控配置更改
     this.interval = setInterval(this.getData, 5000)
@@ -58,6 +58,11 @@ export default {
     clearInterval(this.interval)
   },
   methods: {
+    clear() {
+      console.log('设置')
+      chrome.storage.sync.clear()
+      this.initData()
+    },
     // 初始化
     async initData() {
       const arr = await this.utils.getChromeStorage(this.NET.TABLELIST) || []

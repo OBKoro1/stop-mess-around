@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 22:45:36
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-10-29 17:46:58
+ * LastEditTime : 2021-10-29 18:58:54
  * FilePath     : /stop-mess-around/src/options/App/settingPage/Setting.vue
  * Description  : 全局设置
  * koroFileheader插件
@@ -110,17 +110,16 @@
         <el-form-item prop="clear"
                       required>
           <span slot="label">
-            <el-tooltip :content="'一键清空摸鱼网站列表，也就是下面的表格'"
+            <el-tooltip :content="'一键恢复默认设置。'"
                         placement="top">
-              <span>{{'清空摸鱼网站列表'}}</span>
+              <span>{{'重置'}}</span>
             </el-tooltip>
           </span>
           <el-popconfirm title="确认清空？"
-                         @confirm="clearListFn()">
+                         @confirm="clearSetting()">
             <el-button slot="reference"
-                       type="danger">一键清空摸鱼列表</el-button>
+                       type="danger">一键清空所有设置和摸鱼列表</el-button>
           </el-popconfirm>
-
         </el-form-item>
       </el-form>
     </div>
@@ -138,7 +137,7 @@
 
 export default {
   name: 'Setting',
-  inject: ['getSetting', 'settingUpdate', 'updateArr'],
+  inject: ['getSetting', 'settingUpdate', 'updateArr', 'initData'],
   props: {
     showDialog: {
       require: true,
@@ -196,8 +195,9 @@ export default {
       this.$refs.ruleForm.resetFields()
       done()
     },
-    clearListFn() {
-      this.updateArr([])
+    clearSetting() {
+      this.initData()
+      this.close()
     },
     confirmFn() {
       this.$refs.ruleForm.validate((valid) => {
