@@ -32,7 +32,7 @@ function elementFont() {
 // 更改插件版本与描述
 function changeVersion() {
   const VERSION = process.env.npm_package_version
-  let DESCRIPTION = '防摸鱼插件: 通过强制的手段禁止大家浪费时间摸鱼：在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站, 滚去学习，滚去做对未来有益的事情！'
+  let DESCRIPTION = '自律插件: 帮助你戒掉上班/学习期间下意识的在浏览器打开知乎等网站的习惯，往往一看就是几个小时过去了，插件会自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站。'
   let PLUGINNAME = 'stop-mess-around'
 
   const { argv } = process
