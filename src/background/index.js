@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-04 10:39:57
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-11-01 15:23:52
+ * LastEditTime : 2021-11-01 15:40:42
  * FilePath     : /stop-mess-around/src/background/index.js
  * Description  : background常驻页面
  * koroFileheader插件
@@ -74,6 +74,11 @@ async function checkoutOpen(listArr) {
 function addListener() {
   // 第一次安装
   chrome.runtime.onInstalled.addListener(() => {
+    utils.jumpUrl(NET.OPTIONSPAGE)
+  })
+  // 关键词回调
+  chrome.omnibox.onInputEntered.addListener((text) => {
+    console.log('text', text)
     utils.jumpUrl(NET.OPTIONSPAGE)
   })
   // content通知 background 关闭页面
