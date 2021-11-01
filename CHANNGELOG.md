@@ -10,9 +10,23 @@
 
 [chrome商店更新](https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN)
 
-### [V1.0.7]
+### [V1.1.0]
 
+<!-- TODO: 增加励志功能 在检测到的弹窗中 展示一个弹窗 展示所有励志话语 -->
+<!-- github issue -->
+
+* feat: 新增休息一下功能，可自行选择休息时间
+* feat:  一键清空数组和一键清空设置。
+* feat: 支持励志语录的换行。
+* feat: 匹配的网站弹窗提供更新励志提示的功能
+* feat: 设置中新增重置功能
+* chore: 新增地址栏关键词回调，快速打开选项页面
+* docs: 更新励志语录
 * chore: 标记为本地文件
+* fix: 批量添加时，新增去重
+* fix: 默认摸鱼列表一直显示的问题
+* fix: 摸鱼列表限制高度
+* fix: 摸鱼列表过滤选中的值
 
 ### [V1.0.6]
 

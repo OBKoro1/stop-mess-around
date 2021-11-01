@@ -148,7 +148,7 @@ export const defaultList = [
 export const defaultSetting = {
   log: false, // 是否打印日志
   open: true, // 默认新增开启检测
-  time: 5, // 检测到页面 默认停留十秒再关闭页面
+  time: 2, // 检测到页面 默认停留2秒再关闭页面
   jump: false, // 新增默认是否跳转
   jumpUrl: 'https://leetcode-cn.com/problemset/all/', // 跳转链接
   checkoutStudy: 30, // 定时自动开启检测分钟 该模式不能关闭

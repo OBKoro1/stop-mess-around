@@ -58,7 +58,7 @@
 [插件节省下来的时间如何合理利用](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%A6%82%E4%BD%95%E5%90%88%E7%90%86%E5%88%A9%E7%94%A8%E6%97%B6%E9%97%B4)
 ### 使用示例
 
-1. 添加摸鱼网站以及匹配摸鱼网站弹窗提示、关闭网页
+1. 添加摸鱼网站以及匹配摸鱼网站、弹窗提示励志语录、更新励志语录、关闭网页
 
 ![](https://github.com/OBKoro1/stop-mess-around/blob/master/static/start.gif?raw=true)
 
