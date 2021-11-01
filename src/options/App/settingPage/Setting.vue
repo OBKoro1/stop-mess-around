@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 22:45:36
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-10-29 18:58:54
+ * LastEditTime : 2021-11-01 14:06:51
  * FilePath     : /stop-mess-around/src/options/App/settingPage/Setting.vue
  * Description  : 全局设置
  * koroFileheader插件
@@ -107,8 +107,7 @@
           <el-radio v-model="ruleForm.log"
                     :label="false">{{'关闭'}}</el-radio>
         </el-form-item>
-        <el-form-item prop="clear"
-                      required>
+        <el-form-item prop="clear">
           <span slot="label">
             <el-tooltip :content="'一键恢复默认设置。'"
                         placement="top">
@@ -116,9 +115,17 @@
             </el-tooltip>
           </span>
           <el-popconfirm title="确认清空？"
+                         @confirm="clearSetting('clearList')">
+            <el-button slot="reference"
+                       class="button-margin-right"
+                       size="small"
+                       type="danger">清空摸鱼列表</el-button>
+          </el-popconfirm>
+          <el-popconfirm title="确认重置？"
                          @confirm="clearSetting()">
             <el-button slot="reference"
-                       type="danger">一键清空所有设置和摸鱼列表</el-button>
+                       size="small"
+                       type="danger">重置设置</el-button>
           </el-popconfirm>
         </el-form-item>
       </el-form>
@@ -195,9 +202,14 @@ export default {
       this.$refs.ruleForm.resetFields()
       done()
     },
-    clearSetting() {
-      this.initData()
+    // 清空设置
+    clearSetting(type = 'setting') {
       this.close()
+      if (type !== 'setting') {
+        this.initData('clearList')
+        return
+      }
+      this.initData()
     },
     confirmFn() {
       this.$refs.ruleForm.validate((valid) => {
@@ -216,5 +228,8 @@ export default {
 <style scoped>
 .form-class {
   width: 90%;
+}
+.button-margin-right {
+  margin-right: 10px;
 }
 </style>

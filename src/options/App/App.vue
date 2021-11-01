@@ -29,7 +29,7 @@ export default {
       tableDataSpliceUpdate: this.tableDataSpliceUpdate, // 通过splice形式 更新数组
       settingUpdate: this.settingUpdate, // 更新设置
       updateArr: this.updateArr, // 传递数组 更新数组
-      initData: this.clear,
+      initData: this.clearSetting,
     }
   },
   data() {
@@ -58,9 +58,16 @@ export default {
     clearInterval(this.interval)
   },
   methods: {
-    clear() {
-      console.log('设置')
-      chrome.storage.sync.clear()
+    clearList() {
+      this.utils.updateStorageData([], this.NET.TABLELIST)
+      this.initData()
+    },
+    clearSetting(type = 'clearSetting') {
+      if (type !== 'clearSetting') {
+        this.clearList()
+        return
+      }
+      this.utils.updateStorageData({}, this.NET.GLOBALSETTING)
       this.initData()
     },
     // 初始化
@@ -71,11 +78,10 @@ export default {
       this.Setting = this.syncData(setting)
       this.updateArrLater()
     },
-    // 更新默认数组
+    // 更新默认语录数组
     syncDefault(obj) {
       Object.keys(obj.defaultNum).forEach((key) => {
         for (let i = obj.defaultNum[key]; defaultSetting.defaultNum[key] > i; i += 1) {
-          console.log('更新默认值', i, key, defaultSetting[key][i])
           obj[key].push(defaultSetting[key][i]) // 添加新的默认值
         }
         obj.defaultNum[key] = defaultSetting.defaultNum[key] // 更新默认值数量
@@ -85,7 +91,9 @@ export default {
     // 获取配置
     syncData(Setting) {
       let obj
-      if (Setting) {
+      const isHavaValue = Object.prototype.toString.call(Setting) === '[object Object]' && Object.keys(Setting).length !== 0
+      // 是对象 并且有值
+      if (isHavaValue) {
         obj = window.JSON.parse(JSON.stringify(Setting))
         // 更新默认数组
         obj = this.syncDefault(obj)
