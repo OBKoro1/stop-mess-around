@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-18 11:08:23
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-11-01 13:01:26
+ * LastEditTime : 2021-11-01 17:28:55
  * FilePath     : /stop-mess-around/deploy.js
  * Description  : 同步package.json的配置到manifest.json中
  * koroFileheader插件
@@ -24,13 +24,9 @@ function elementFont() {
   const elementPath = path.resolve(__dirname, './node_modules/element-ui/lib/theme-chalk/', 'index.css')
   let content = fs.readFileSync(elementPath).toString()
   // 替换匹配到的每个变量
-  // const reg = new RegExp('(fonts/element-icons.', 'g')
   const reg = /\(fonts\/element-icons\./g
-
   content = content.replace(reg, '(chrome-extension://__MSG_@@extension_id__/fonts/element-icons.')
-  // console.log('content', content)
   fs.writeFileSync(elementPath, content)
-  console.log('run', elementPath, reg)
 }
 
 // 更改插件版本与描述
