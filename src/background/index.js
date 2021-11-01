@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-06-04 10:39:57
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-08-04 10:26:16
- * FilePath     : index.js
+ * LastEditTime : 2021-11-01 15:23:52
+ * FilePath     : /stop-mess-around/src/background/index.js
  * Description  : background常驻页面
  * koroFileheader插件
  * Copyright (c) ${now_year} by OBKoro1, All Rights Reserved.
@@ -29,10 +29,9 @@ async function autoOpen() {
     return
   }
   const now = Date.now()
-  // 关闭时间+自动开启时间
+  // 全局自动开启
   const isMoreTime = closeTime + checkoutStudy * 60 * 1000
   if (isMoreTime < now) {
-    console.log('一键开启', isMoreTime, now)
     Setting.closeTime = 0
     await utils.updateStorageData(Setting, NET.GLOBALSETTING)
     await checkoutOpen(listArr)
@@ -78,10 +77,23 @@ function addListener() {
     utils.jumpUrl(NET.OPTIONSPAGE)
   })
   // content通知 background 关闭页面
-  chrome.extension.onRequest.addListener((request, sender) => {
+  chrome.extension.onRequest.addListener(async (request, sender, sendResponse) => {
+    console.log('content 消息: ', request, sender)
     if (request.message === 'close-tab') {
       const { id } = sender.tab
       chrome.tabs.remove(id)
+    }
+    // 单个tab休息一下
+    if (request.message === 'reset-tab') {
+      const list = await utils.getChromeStorage(NET.TABLELIST)
+      const index = list.findIndex((ele) => ele.site === request.item.site)
+      if (index === -1) return
+      request.item.open = false // 关闭检测
+      request.item.checkoutStudy = request.value // 设置下次自动开启的时间
+      request.item.closeTime = Date.now() // 记录关闭时间
+      list.splice(index, 1, request.item)
+      await utils.updateStorageData(list, NET.TABLELIST)
+      sendResponse(JSON.stringify(request.item))
     }
   })
 }

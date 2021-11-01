@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-07-30 01:01:01
- * FilePath     : App.vue
+ * LastEditTime : 2021-11-01 15:25:08
+ * FilePath     : /stop-mess-around/src/content/App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
  * Copyright (c) ${now_year} by OBKoro1, All Rights Reserved.
@@ -16,30 +16,53 @@
                width="30%"
                :show-close="false"
                :close-on-click-modal="false">
-      <span class="tip-info"
-            v-html="info.tip"></span>
-      <span slot="footer"
-            class="dialog-footer">
-        <el-button type="primary"
-                   @click="handleClose">{{ info.confirmBtn }}</el-button>
-      </span>
+      <div class="tip-info"
+           v-html="info.tip"></div>
+      <div slot="footer"
+           class="dialog-footer">
+        <div>
+          <el-button type="warning"
+                     @click="showRestFn">休息一下</el-button>
+          <el-button type="success"
+                     @click="changeTip">更新提示</el-button>
+          <el-button type="primary"
+                     @click="handleClose">{{ info.confirmBtn }}</el-button>
+        </div>
+        <div v-if="showRest">
+          <el-select v-model="restTime"
+                     class="select-margin"
+                     placeholder="请选择休息时间">
+            <el-option v-for="item in restTimeArr"
+                       :key="item.time"
+                       :label="item.label"
+                       :value="item.time">
+            </el-option>
+          </el-select>
+          <el-button @click="showRestFn">取消</el-button>
+          <el-button @click="restConfirm">确定</el-button>
+        </div>
+      </div>
     </el-dialog>
   </div>
 </template>
 
 <script>
 import { utils } from '../utils/index'
-import { defaultSetting } from '../utils/Default'
+import { defaultSetting, restTimeArr } from '../utils/Default'
 import NET from '../utils/net'
 
 export default {
   data() {
     return {
       Setting: null,
-      dialogVisible: false,
+      dialogVisible: false, // 展示提醒
+      showRest: false, // 展示休息时间选项
+      restTime: 15, // 休息时间默认值
+      restTimeArr, // 休息时间默认数组
       item: null,
       index: 0,
       tableData: [],
+      // 提醒的字段
       info: {
         title: '',
         tip: '',
@@ -66,7 +89,7 @@ export default {
       const isMatch = utils.checkUrl(tableData, window.location.href)
       if (!isMatch) return
       // 不重复展示关闭提示 已经关闭 或者已经开启的 不再重复出现
-      // 如果切换了 则可以展示弹窗
+      // 如果切换开关了 则可以展示弹窗
       if (this.item !== null && this.item.open === isMatch.item.open) return
       this.item = isMatch.item // 匹配到的选项
       this.index = isMatch.index // 匹配到的index
@@ -88,9 +111,9 @@ export default {
      * @description 获取提示信息
      * @param * item
      */
-    getTip(item) {
-      if (item.tip) {
-        // 使用item的tip
+    getTip(item, change = false) {
+      if (item.tip && !change) {
+        // 使用item的tip 如果点击更新提示 则使用默认提示
         this.info.tip = item.tip
       } else {
         this.info.tip = this.getRandomTip('tipArr')
@@ -114,6 +137,22 @@ export default {
       this.getTip(this.item)
       this.dialogVisible = true
     },
+    // 休息一下
+    showRestFn() {
+      this.showRest = !this.showRest
+    },
+    // 确定休息
+    restConfirm() {
+      chrome.extension.sendRequest({ message: 'reset-tab', item: this.item, value: this.restTime }, (response) => {
+        this.dialogVisible = false
+        this.item = JSON.parse(response)
+        this.showRest = false
+      })
+    },
+    // 更新提示
+    changeTip() {
+      this.getTip(this.item, true)
+    },
     // 关闭弹窗
     handleClose() {
       this.dialogVisible = false // 先关闭弹窗
@@ -134,8 +173,17 @@ export default {
 </script>
 
 <style scoped>
+.select-margin {
+  margin-top: 20px;
+  width: 150px;
+  margin-right: 20px;
+}
 .tip-info {
-  font-size: 16px;
-  line-height: 18px;
+  white-space: pre-line;
+  font-size: 20px;
+  line-height: 35px;
+  max-height: 500px;
+  overflow: auto;
+  overflow-x: hidden;
 }
 </style>
