@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 14:24:51
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-10-29 17:16:43
+ * LastEditTime : 2021-11-01 13:40:24
  * FilePath     : /stop-mess-around/src/options/App/settingPage/SetPage.vue
  * Description  : 设置
  * koroFileheader插件
@@ -27,7 +27,7 @@
                  round>{{'随机内卷语录'}}</el-button>
       <el-button type="primary"
                  @click="checkoutFn('showBatchItem', true)"
-                 round>{{'摸鱼网站列表'}}</el-button>
+                 round>{{'默认摸鱼网站列表'}}</el-button>
       <el-button type="primary"
                  @click="checkoutFn('showSetting', true)"
                  round>{{'设置'}}</el-button>

@@ -135,7 +135,6 @@ export default {
       chrome.tabs.getSelected(null, (tab) => {
         this.tab = tab
         const isMatch = this.utils.checkUrl(this.tableData, tab.url)
-        console.log('tab', tab, isMatch)
         if (isMatch) {
           this.item = isMatch.item
           this.index = isMatch.index

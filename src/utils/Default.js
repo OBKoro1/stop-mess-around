@@ -157,7 +157,7 @@ export const defaultSetting = {
   defaultList, // 默认的摸鱼网站
   titleArr, // 标题随机提示数组
   confirmArr, // 随机确认按钮数组
-  matchRule: 'start',
+  matchRule: 'start', // 摸鱼网址匹配规则
   tipArr, // 随机内卷提示数组
   addSite: '', // 通过popup添加摸鱼网址
   // 默认值数量更新判断
