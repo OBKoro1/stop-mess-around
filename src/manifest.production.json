@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "stop-mess-around",
+  "name": "stop-mess-around-file",
   "version": "1.0.6",
-  "description": "防摸鱼插件: 通过强制的手段禁止大家浪费时间摸鱼：在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站, 滚去学习，滚去做对未来有益的事情！",
+  "description": "file: 防摸鱼插件: 通过强制的手段禁止大家浪费时间摸鱼：在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站, 滚去学习，滚去做对未来有益的事情！",
   "options_page": "options.html",
   "short_name": "StopMessAround",
   "author": {
@@ -16,7 +16,7 @@
   },
   "browser_action": {
     "default_icon": "img/48.png",
-    "default_title": "防摸鱼插件: 通过强制的手段禁止大家浪费时间摸鱼：在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站, 滚去学习，滚去做对未来有益的事情！",
+    "default_title": "file: 防摸鱼插件: 通过强制的手段禁止大家浪费时间摸鱼：在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站, 滚去学习，滚去做对未来有益的事情！",
     "default_popup": "popup.html"
   },
   "icons": {
@@ -39,7 +39,8 @@
       "run_at": "document_end"
     }
   ],
+  "omnibox": { "keyword" : "stop mess around" },
   "offline_enabled": true,
-  "web_accessible_resources": ["fonts/*"],
+  "web_accessible_resources": ["fonts/*.*"],
   "default_locale": "zh_CN"
 }

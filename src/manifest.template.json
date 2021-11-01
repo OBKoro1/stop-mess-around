@@ -39,7 +39,8 @@
       "run_at": "document_end"
     }
   ],
+  "omnibox": { "keyword" : "stop mess around" },
   "offline_enabled": true,
-  "web_accessible_resources": ["fonts/*"],
+  "web_accessible_resources": ["fonts/*.*"],
   "default_locale": "zh_CN"
 }
