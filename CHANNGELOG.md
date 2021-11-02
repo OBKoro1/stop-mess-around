@@ -10,8 +10,6 @@
 
 [chrome商店更新](https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN)
 
-<!-- TODO: 增加励志功能 在检测到的弹窗中 展示一个弹窗 展示所有励志话语 -->
-
 ### [V1.1.1]
 
 * fix: 修复旧摸鱼网站新增默认值没有的问题
