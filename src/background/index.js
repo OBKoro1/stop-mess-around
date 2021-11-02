@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-04 10:39:57
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-11-01 15:40:42
+ * LastEditTime : 2021-11-02 20:02:35
  * FilePath     : /stop-mess-around/src/background/index.js
  * Description  : background常驻页面
  * koroFileheader插件
@@ -10,7 +10,7 @@
  */
 import { utils } from '../utils/index'
 import NET from '../utils/net'
-import { defaultSetting } from '../utils/Default'
+import { defaultSetting, itemProto } from '../utils/Default'
 
 main()
 function main() {
@@ -22,7 +22,11 @@ function main() {
 async function autoOpen() {
   const Setting = (await utils.getChromeStorage(NET.GLOBALSETTING)) || defaultSetting
   const { closeTime, checkoutStudy } = Setting
-  const listArr = (await utils.getChromeStorage(NET.TABLELIST)) || []
+  let listArr = (await utils.getChromeStorage(NET.TABLELIST)) || []
+  const item = await updateItemPrototype(listArr)
+  if (item.change) {
+    listArr = item.newList
+  }
   // 全局没有关闭 检测单个关闭
   if (Number(closeTime) === 0) {
     autoOpenItem(listArr, Setting)
@@ -36,6 +40,24 @@ async function autoOpen() {
     await utils.updateStorageData(Setting, NET.GLOBALSETTING)
     await checkoutOpen(listArr)
   }
+}
+
+// 更新摸鱼数组的默认值属性
+async function updateItemPrototype(list) {
+  let change = false
+  const newList = list.map((item) => {
+    itemProto.forEach((ele) => {
+      if (item[ele] === undefined) {
+        change = true
+        item[ele] = defaultSetting[ele]
+      }
+    })
+    return item
+  })
+  if (change) {
+    await utils.updateStorageData(newList, NET.TABLELIST)
+  }
+  return { change, newList }
 }
 
 // 检测单个关闭 将它开启
