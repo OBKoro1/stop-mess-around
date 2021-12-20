@@ -10,6 +10,22 @@
 
 [chrome商店更新](https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN)
 
+### [V1.2.0]
+
+* feat: 添加github1s直接浏览代码的按钮
+
+    * 在别的插件看到这个小功能，因为确实蛮实用的，也不想再装插件了，想着把它也集成进来
+    * `Octotree`也可以卸载了，直接用GitHub官方提供的`github1s`是最香的 哈哈
+
+<!-- TODO: gif图 -->
+* 休息一下时，旁边可看到统计摸鱼时间的流动。
+<!-- TODO: 每天休息一下点击次数统计 -->
+<!-- TODO: 查看摸鱼时长详情 具体点击哪些摸鱼时长 -->
+<!-- TODO: 记录当天时间 每天运行到零点后 第二天清零 -->
+<!-- TODO: 旁边有摸鱼时间再流动  -->
+* 
+
+
 ### [V1.1.1]
 
 * fix: 修复旧摸鱼网站新增默认值没有的问题
