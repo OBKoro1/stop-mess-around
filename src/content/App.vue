@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-11-01 15:25:08
+ * LastEditTime : 2021-12-20 23:37:18
  * FilePath     : /stop-mess-around/src/content/App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
@@ -10,32 +10,35 @@
 -->
 <template>
   <div class="content-div">
-    <el-dialog :title="info.title"
-               :lock-scroll="true"
-               :visible.sync="dialogVisible"
-               width="30%"
-               :show-close="false"
-               :close-on-click-modal="false">
-      <div class="tip-info"
-           v-html="info.tip"></div>
-      <div slot="footer"
-           class="dialog-footer">
+    <el-dialog
+      :title="info.title"
+      :lock-scroll="true"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :show-close="false"
+      :close-on-click-modal="false"
+    >
+      <div class="tip-info" v-html="info.tip"></div>
+      <div slot="footer" class="dialog-footer">
         <div>
-          <el-button type="warning"
-                     @click="showRestFn">休息一下</el-button>
-          <el-button type="success"
-                     @click="changeTip">更新提示</el-button>
-          <el-button type="primary"
-                     @click="handleClose">{{ info.confirmBtn }}</el-button>
+          <el-button type="warning" @click="showRestFn">休息一下</el-button>
+          <el-button type="success" @click="changeTip">更新提示</el-button>
+          <el-button type="primary" @click="handleClose">{{
+            info.confirmBtn
+          }}</el-button>
         </div>
         <div v-if="showRest">
-          <el-select v-model="restTime"
-                     class="select-margin"
-                     placeholder="请选择休息时间">
-            <el-option v-for="item in restTimeArr"
-                       :key="item.time"
-                       :label="item.label"
-                       :value="item.time">
+          <el-select
+            v-model="restTime"
+            class="select-margin"
+            placeholder="请选择休息时间"
+          >
+            <el-option
+              v-for="item in restTimeArr"
+              :key="item.time"
+              :label="item.label"
+              :value="item.time"
+            >
             </el-option>
           </el-select>
           <el-button @click="showRestFn">取消</el-button>
@@ -43,12 +46,14 @@
         </div>
       </div>
     </el-dialog>
+    <LookCode1sVue />
   </div>
 </template>
 
 <script>
 import { utils } from '../utils/index'
 import { defaultSetting, restTimeArr } from '../utils/Default'
+import LookCode1sVue from './look-code-1s.vue'
 import NET from '../utils/net'
 
 export default {
@@ -57,7 +62,7 @@ export default {
       Setting: null,
       dialogVisible: false, // 展示提醒
       showRest: false, // 展示休息时间选项
-      restTime: 15, // 休息时间默认值
+      restTime: 10, // 休息时间默认值
       restTimeArr, // 休息时间默认数组
       item: null,
       index: 0,
@@ -69,6 +74,9 @@ export default {
         confirmBtn: '',
       },
     }
+  },
+  components: {
+    LookCode1sVue,
   },
   async mounted() {
     await this.run()
