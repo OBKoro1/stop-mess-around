@@ -47,7 +47,6 @@ module.exports = {
   pages: pagesObj,
   // // 生产环境是否生成 sourceMap 文件
   productionSourceMap: false,
-
   configureWebpack: {
     entry: {
       content: './src/content/index.js',
@@ -68,7 +67,7 @@ module.exports = {
   chainWebpack: (config) => {
     // 处理字体文件名，去除hash值
     const fontsRule = config.module.rule('fonts')
-    config.resolve.alias.set('@', path.resolve('src/'))
+    config.resolve.alias.set('@', path.resolve(__dirname, 'src'))
     // 清除已有的所有 loader。
     // 如果你不这样做，接下来的 loader 会附加在该规则现有的 loader 之后。
     fontsRule.uses.clear()
