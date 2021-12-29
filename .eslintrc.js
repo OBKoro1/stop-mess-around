@@ -3,7 +3,7 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: ['plugin:vue/essential', 'airbnb-base'],
+  extends: ['plugin:vue/essential', 'airbnb-base', "plugin:vue/recommended"],
   parserOptions: {
     parser: 'babel-eslint',
     ecmaVersion: 7,
@@ -13,6 +13,15 @@ module.exports = {
     document: true,
     localStorage: true,
     chrome: true,
+  },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './src/'], //别名路径
+        ],
+      },
+    },
   },
   rules: {
     semi: ['error', 'never', { beforeStatementContinuationChars: 'never' }],
@@ -26,6 +35,8 @@ module.exports = {
     'no-param-reassign': 'off',
     'no-use-before-define': 'off',
     'import/prefer-default-export': 'off',
-    'no-useless-return': 'off'
+    'no-useless-return': 'off',
+    'vue/no-v-html': 'off',
+    'vue/no-template-shadow': 'off',
   },
 }
