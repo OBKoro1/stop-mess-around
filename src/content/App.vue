@@ -2,30 +2,49 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-12-20 23:37:18
+ * LastEditTime : 2021-12-30 14:43:48
  * FilePath     : /stop-mess-around/src/content/App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
- * Copyright (c) ${now_year} by OBKoro1, All Rights Reserved.
 -->
 <template>
   <div class="content-div">
     <el-dialog
       :title="info.title"
+      class="dialog-class"
       :lock-scroll="true"
       :visible.sync="dialogVisible"
       width="30%"
       :show-close="false"
       :close-on-click-modal="false"
     >
-      <div class="tip-info" v-html="info.tip"></div>
-      <div slot="footer" class="dialog-footer">
+      <div
+        class="tip-info"
+        v-html="info.tip"
+      />
+      <div
+        slot="footer"
+        class="dialog-footer"
+      >
         <div>
-          <el-button type="warning" @click="showRestFn">休息一下</el-button>
-          <el-button type="success" @click="changeTip">更新提示</el-button>
-          <el-button type="primary" @click="handleClose">{{
-            info.confirmBtn
-          }}</el-button>
+          <el-button
+            type="warning"
+            @click="showRestFn"
+          >
+            休息一下
+          </el-button>
+          <el-button
+            type="success"
+            @click="changeTip"
+          >
+            更新提示
+          </el-button>
+          <el-button
+            type="primary"
+            @click="handleClose"
+          >
+            {{ info.confirmBtn }}
+          </el-button>
         </div>
         <div v-if="showRest">
           <el-select
@@ -38,11 +57,14 @@
               :key="item.time"
               :label="item.label"
               :value="item.time"
-            >
-            </el-option>
+            />
           </el-select>
-          <el-button @click="showRestFn">取消</el-button>
-          <el-button @click="restConfirm">确定</el-button>
+          <el-button @click="showRestFn">
+            取消
+          </el-button>
+          <el-button @click="restConfirm">
+            确定
+          </el-button>
         </div>
       </div>
     </el-dialog>
@@ -57,6 +79,9 @@ import LookCode1sVue from './look-code-1s.vue'
 import NET from '../utils/net'
 
 export default {
+  components: {
+    LookCode1sVue,
+  },
   data() {
     return {
       Setting: null,
@@ -74,9 +99,6 @@ export default {
         confirmBtn: '',
       },
     }
-  },
-  components: {
-    LookCode1sVue,
   },
   async mounted() {
     await this.run()
@@ -181,6 +203,10 @@ export default {
 </script>
 
 <style scoped>
+/* 设为最大值 */
+.dialog-class{
+  z-index: 2147483647 !important;
+}
 .select-margin {
   margin-top: 20px;
   width: 150px;
