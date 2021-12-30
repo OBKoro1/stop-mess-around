@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-12-30 14:43:48
+ * LastEditTime : 2021-12-30 17:08:17
  * FilePath     : /stop-mess-around/src/content/App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
@@ -51,10 +51,12 @@
             v-model="restTime"
             class="select-margin"
             placeholder="请选择休息时间"
+            @visible-change="visibleChangeSelect"
           >
             <el-option
               v-for="item in restTimeArr"
               :key="item.time"
+              class="stop-mess-around-option"
               :label="item.label"
               :value="item.time"
             />
@@ -69,6 +71,7 @@
       </div>
     </el-dialog>
     <LookCode1sVue />
+    <MessAroundRightTipVue />
   </div>
 </template>
 
@@ -77,10 +80,12 @@ import { utils } from '../utils/index'
 import { defaultSetting, restTimeArr } from '../utils/Default'
 import LookCode1sVue from './look-code-1s.vue'
 import NET from '../utils/net'
+import MessAroundRightTipVue from './mess-around-right-tip.vue'
 
 export default {
   components: {
     LookCode1sVue,
+    MessAroundRightTipVue,
   },
   data() {
     return {
@@ -111,6 +116,15 @@ export default {
     setInterval(this.run, 6000)
   },
   methods: {
+    // select 出现 为其加特殊class名 防止影响用户页面
+    visibleChangeSelect(val) {
+      if (!val) return
+      this.$nextTick(() => {
+        const elSelectDropdown = document.querySelector('.stop-mess-around-option').parentElement.parentElement.parentElement.parentElement
+        elSelectDropdown.className = `${elSelectDropdown.className} stop-mess-around-dropdown`
+        console.log('className2', elSelectDropdown, elSelectDropdown.className)
+      })
+    },
     // 检测链接
     async run() {
       this.Setting = (await utils.getChromeStorage(NET.GLOBALSETTING)) || defaultSetting
@@ -202,11 +216,20 @@ export default {
 }
 </script>
 
+<style>
+
+.stop-mess-around-dropdown {
+  z-index: 2147483647 !important;
+}
+
+</style>
+
 <style scoped>
 /* 设为最大值 */
 .dialog-class{
   z-index: 2147483647 !important;
 }
+
 .select-margin {
   margin-top: 20px;
   width: 150px;
