@@ -169,6 +169,28 @@ export const defaultSetting = {
   },
 }
 
+// 统计摸鱼时长
+export const statisticsTime = [
+  {
+    time: 0, // 总共休息的时间
+    // 网页休息时间
+    restSite: [
+      {
+        time: 0, // 休息时长
+        restBtnClick: [
+          {
+            time: 0, // 按钮休息时长
+            count: 0,
+          },
+        ], // 点击了哪些按钮 点击了多少次
+        labelName: '',
+        site: '', // 网址 id
+      },
+    ], // 点击了哪些按钮
+    date: '', // 日期
+  },
+]
+
 // content 休息时间默认值
 export const restTimeArr = [
   {

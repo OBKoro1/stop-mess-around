@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-21 14:56:38
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-08-04 10:28:20
+ * LastEditTime : 2021-12-29 14:08:48
  * FilePath     : net.js
  * Description  : 全局常量
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -25,6 +25,7 @@ const NET = {
   CHROMESTORE: 'https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN',
   // storage
   TABLELIST: 'tableList',
+  statisticsTime: 'statisticsTime', // 统计摸鱼时长
   GLOBALSETTING: 'globalSetting',
 }
 
