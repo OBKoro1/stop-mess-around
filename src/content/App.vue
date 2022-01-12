@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-12-30 17:08:17
+ * LastEditTime : 2022-01-12 14:44:53
  * FilePath     : /stop-mess-around/src/content/App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
@@ -70,29 +70,38 @@
         </div>
       </div>
     </el-dialog>
+    <!-- Github 仓库1s快速按钮 -->
     <LookCode1sVue />
-    <MessAroundRightTipVue />
+    <!-- 右侧的摸鱼时长与摸鱼倒计时统计提醒 -->
+    <MessAroundRightTipVue
+      v-show="Setting.showRightTip"
+      :dialog-tip-visible="dialogVisible"
+      :statistics-info="statisticsInfo"
+      @openAgain="openAgain"
+      @getStatisticsMatch="getStatisticsMatch"
+    />
   </div>
 </template>
 
 <script>
-import { utils } from '../utils/index'
-import { defaultSetting, restTimeArr } from '../utils/Default'
+import { utils } from '@/utils/index'
+import { defaultSetting, restTimeArr } from '@/utils/Default'
+import NET from '@/utils/net'
 import LookCode1sVue from './look-code-1s.vue'
-import NET from '../utils/net'
 import MessAroundRightTipVue from './mess-around-right-tip.vue'
 
 export default {
+  name: 'ContentApp',
   components: {
     LookCode1sVue,
     MessAroundRightTipVue,
   },
   data() {
     return {
-      Setting: null,
+      Setting: {},
       dialogVisible: false, // 展示提醒
       showRest: false, // 展示休息时间选项
-      restTime: 10, // 休息时间默认值
+      restTime: 5, // 休息时间默认值
       restTimeArr, // 休息时间默认数组
       item: null,
       index: 0,
@@ -103,41 +112,55 @@ export default {
         tip: '',
         confirmBtn: '',
       },
+      // 统计字段
+      statisticsInfo: {
+        statisticsTimeToday: {},
+        totalMessAround: 0,
+        totalSiteMessAround: 0,
+      },
     }
   },
   async mounted() {
     await this.run()
     if (this.Setting.log) {
-      console.log('stop-mess-around: Setting', this.Setting)
-      console.log('stop-mess-around: list', this.tableData)
-      console.log('stop-mess-around 插入')
+      console.log('stop-mess-around: 设置', this.Setting)
+      console.log('stop-mess-around: 摸鱼网站列表', this.tableData)
+      console.log('stop-mess-around(防摸鱼)插件 插入')
     }
     // 检测url变更
     setInterval(this.run, 6000)
   },
   methods: {
-    // select 出现 为其加特殊class名 防止影响用户页面
-    visibleChangeSelect(val) {
-      if (!val) return
-      this.$nextTick(() => {
-        const elSelectDropdown = document.querySelector('.stop-mess-around-option').parentElement.parentElement.parentElement.parentElement
-        elSelectDropdown.className = `${elSelectDropdown.className} stop-mess-around-dropdown`
-        console.log('className2', elSelectDropdown, elSelectDropdown.className)
-      })
+    // 倒计时结束或者停止摸鱼再运行一遍
+    openAgain() {
+      this.run()
+    },
+    // 定时获取右侧摸鱼提醒数据
+    async getStatisticsMatch(matchItem) {
+      [this.statisticsInfo.statisticsTimeToday] = await utils.getChromeStorage(NET.statisticsTime)
+      this.statisticsInfo.totalMessAround = this.statisticsInfo.statisticsTimeToday.time
+      const find = this.statisticsInfo.statisticsTimeToday.restSite.find((ele) => ele.site === matchItem.site)
+      if (!find) return // 没摸鱼
+      this.statisticsInfo.totalSiteMessAround = find.time
     },
     // 检测链接
     async run() {
-      this.Setting = (await utils.getChromeStorage(NET.GLOBALSETTING)) || defaultSetting
-      const tableData = (await utils.getChromeStorage(NET.TABLELIST)) || []
-      this.tableData = tableData
-      const isMatch = utils.checkUrl(tableData, window.location.href)
-      if (!isMatch) return
-      // 不重复展示关闭提示 已经关闭 或者已经开启的 不再重复出现
-      // 如果切换开关了 则可以展示弹窗
-      if (this.item !== null && this.item.open === isMatch.item.open) return
-      this.item = isMatch.item // 匹配到的选项
-      this.index = isMatch.index // 匹配到的index
-      this.matchHandle()
+      try {
+        this.Setting = (await utils.getChromeStorage(NET.GLOBALSETTING)) || defaultSetting
+        const tableData = (await utils.getChromeStorage(NET.TABLELIST)) || []
+        this.tableData = tableData
+        const isMatch = utils.checkUrl(tableData, window.location.href)
+        if (!isMatch) return
+        await this.getStatisticsMatch(isMatch.item)
+        // 不重复展示关闭提示 已经关闭 或者已经开启的 不再重复出现
+        // 如果切换开关了 则可以展示弹窗
+        if (this.item !== null && this.item.open === isMatch.item.open) return
+        this.item = isMatch.item // 匹配到的选项
+        this.index = isMatch.index // 匹配到的index
+        this.matchHandle()
+      } catch (err) {
+        console.log('stop-mess-around(防摸鱼)扩展更新了,请刷新页面')
+      }
     },
 
     /**
@@ -187,10 +210,11 @@ export default {
     },
     // 确定休息
     restConfirm() {
+      const self = this // 传到class中 影响this指向
       chrome.extension.sendRequest({ message: 'reset-tab', item: this.item, value: this.restTime }, (response) => {
-        this.dialogVisible = false
-        this.item = JSON.parse(response)
-        this.showRest = false
+        self.dialogVisible = false
+        self.item = JSON.parse(response)
+        self.showRest = false
       })
     },
     // 更新提示
@@ -212,12 +236,21 @@ export default {
         }
       }, time * 1000)
     },
+    // 解决z-index的问题
+    // element select 出现 为其加特殊class名 防止影响用户页面
+    visibleChangeSelect(val) {
+      if (!val) return
+      this.$nextTick(() => {
+        const elSelectDropdown = document.querySelector('.stop-mess-around-option').parentElement.parentElement.parentElement.parentElement
+        elSelectDropdown.className = `${elSelectDropdown.className} stop-mess-around-dropdown`
+      })
+    },
   },
 }
 </script>
 
 <style>
-
+/* select options 隐藏的问题 */
 .stop-mess-around-dropdown {
   z-index: 2147483647 !important;
 }
