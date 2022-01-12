@@ -2,15 +2,18 @@
   <div class="main_app">
     <OptionsHeader />
     <div class="main-content">
-      <SetPage :open="open"
-               @searchChange="searchChange" />
-      <Table :tableData="tableData"
-             :search="search"
-             :Setting="Setting"
-             :updateArr="updateArr"
-             :tableDataSpliceUpdate="tableDataSpliceUpdate" />
+      <SetPage
+        :open="open"
+        @searchChange="searchChange"
+      />
+      <Table
+        :table-data="tableData"
+        :search="search"
+        :setting="Setting"
+        :update-arr="updateArr"
+        :table-data-splice-update="tableDataSpliceUpdate"
+      />
     </div>
-
   </div>
 </template>
 
@@ -21,7 +24,7 @@ import Table from './table/Table.vue'
 import { defaultSetting } from '../../utils/Default'
 
 export default {
-  name: 'app',
+  name: 'OptionsApp',
   provide() {
     return {
       getTableData: () => this.tableData, // 获取列表
@@ -31,6 +34,11 @@ export default {
       updateArr: this.updateArr, // 传递数组 更新数组
       initData: this.clearSetting,
     }
+  },
+  components: {
+    OptionsHeader,
+    SetPage,
+    Table,
   },
   data() {
     return {
@@ -43,11 +51,6 @@ export default {
       open: true, // 当前是否打开
     }
   },
-  components: {
-    OptionsHeader,
-    SetPage,
-    Table,
-  },
   async created() {
     window.$Vue = this
     await this.initData()
@@ -58,16 +61,15 @@ export default {
     clearInterval(this.interval)
   },
   methods: {
-    clearList() {
-      this.utils.updateStorageData([], this.NET.TABLELIST)
-      this.initData()
-    },
-    clearSetting(type = 'clearSetting') {
-      if (type !== 'clearSetting') {
-        this.clearList()
-        return
+    // 清楚数据
+    clearSetting(type) {
+      if (type === 'clearList') {
+        this.utils.updateStorageData([], this.NET.TABLELIST)
+      } else if (type === 'setting') {
+        this.utils.updateStorageData({}, this.NET.GLOBALSETTING)
+      } else if (type === 'statisticsTime') {
+        this.utils.updateStorageData([], this.NET.statisticsTime)
       }
-      this.utils.updateStorageData({}, this.NET.GLOBALSETTING)
       this.initData()
     },
     // 初始化
@@ -111,8 +113,7 @@ export default {
     },
     // 获取数据 防止其他地方操作变更
     async getData() {
-      this.tableData = await this.utils.getChromeStorage(this.NET.TABLELIST)
-      this.Setting = await this.utils.getChromeStorage(this.NET.GLOBALSETTING)
+      ({ setting: this.Setting, statisticsTime: this.statisticsTime, listArr: this.tableData } = await this.utils.getData())
       this.updateArrLater()
     },
     // 搜索
@@ -121,7 +122,6 @@ export default {
     },
     // 判断当前是否开启
     isOpen() {
-      const val = this.open
       for (let i = 0; i < this.tableData.length; i += 1) {
         if (this.tableData[i].open) {
           this.open = true
@@ -129,17 +129,6 @@ export default {
         } else {
           this.open = false
         }
-      }
-      // 切换了开关状态
-      if (val !== this.open) {
-        if (this.open) {
-          // 打开 取消计时
-          this.Setting.closeTime = 0
-        } else {
-          // 关闭 开始计时
-          this.Setting.closeTime = Date.now()
-        }
-        this.settingUpdate(this.Setting)
       }
     },
     // 更新数据后的操作
