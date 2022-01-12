@@ -1,8 +1,9 @@
 <template>
-  <div></div>
+  <div />
 </template>
 <script>
 export default {
+  name: 'Github1sButton',
   data() {
     return {
       repoUrl: '',
@@ -49,8 +50,8 @@ export default {
             repoNameDom.appendChild(createDom)
           }
         }
-      } catch (err) {
-        console.log('不是github 仓库')
+      } catch {
+        // 不是github 仓库
       }
     },
   },
