@@ -1,12 +1,25 @@
+/* eslint-disable import/no-cycle */
 /*
  * Author       : OBKoro1
  * Date         : 2021-05-17 16:17:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-07-24 14:17:29
- * FilePath     : index.js
+ * LastEditTime : 2022-01-12 12:57:23
+ * FilePath     : /stop-mess-around/src/utils/index.js
  * Description  : 全局方法
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
  */
+import dayjs from 'dayjs'
+import NET from '@/utils/net'
+import { defaultSetting } from '@/utils/Default'
+import { OpenCheckInstance } from './openCheck'
+import { CloseCheckInstance } from './closeCheck'
+import { AllActionInstance } from './allAction'
+
+dayjs.extend(require('dayjs/plugin/duration'))
+
+const CloseCheckInstanceRun = (options) => CloseCheckInstance.run(options)
+const OpenCheckInstanceRun = (options) => OpenCheckInstance.run(options)
+const AllActionInstanceRun = (options) => AllActionInstance.run(options)
 class GlobalFunction {
   constructor(utils) {
     this.utils = utils
@@ -26,6 +39,41 @@ export const utils = {
   // 打开新页面
   jumpUrl(url) {
     window.open(url, '_blank')
+  },
+  closeCheck: CloseCheckInstanceRun,
+  openCheck: OpenCheckInstanceRun,
+  openCheckAll: AllActionInstanceRun,
+  closeCheckAll: AllActionInstanceRun,
+  // 获取数据
+  async getData() {
+    const setting = await utils.getChromeStorage(NET.GLOBALSETTING) || defaultSetting
+    const statisticsTime = (await utils.getChromeStorage(NET.statisticsTime)) || []
+    const listArr = (await utils.getChromeStorage(NET.TABLELIST)) || []
+    return { setting, statisticsTime, listArr }
+  },
+  // 获取两个时间戳的差值
+  getMoreDiff(lastTime, startTime, getSeconds = false) {
+    const duration = dayjs.duration(lastTime - startTime)
+    const hours = duration.hours()
+    let minutes = duration.minutes()
+    // 秒 算一分钟 因为要减去 不加 就是减
+    if (getSeconds) {
+      const seconds = duration.seconds()
+      if (seconds > 0) minutes += 1
+    }
+    if (hours > 0) minutes += hours * 60
+    return minutes
+  },
+  // 获取一个item打开检测的时间戳和休息的分钟数
+  getItemCloseCheckTime(item, Setting) {
+    let value // 休息的分钟数
+    if (item.restTime) {
+      value = item.restTime
+    } else {
+      value = item.checkoutStudy || Setting.checkoutStudy
+    }
+    const openTime = (item.closeTime || Date.now()) + value * 60 * 1000
+    return { openTime, restTimeValue: value }
   },
   // 获取不同语言的方法
   /**
@@ -82,7 +130,6 @@ export const utils = {
       }
       // 第一个匹配到摸鱼网址 不管是否打开 都返回
       if (isMatch) {
-        console.log('stop-mess-around match', item)
         return { item, index: i }
       }
     }
