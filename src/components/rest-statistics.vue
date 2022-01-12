@@ -2,12 +2,13 @@
  * Author       : OBKoro1
  * Date         : 2021-12-29 15:09:18
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-12-30 15:01:09
- * description  : 网站摸鱼时间统计
+ * LastEditTime : 2022-01-12 13:24:03
+ * description  : 网站摸鱼近百日摸鱼时长统计
 -->
 <template>
   <el-dialog
-    title="提示"
+    class="dialog-class"
+    title="近百日摸鱼时长统计"
     :visible.sync="dialogVisible"
     width="70%"
   >
@@ -75,7 +76,7 @@
         />
         <el-table-column
           prop="time"
-          label="摸鱼时长"
+          label="当日摸鱼总时长"
           width="140"
         />
         <el-table-column
@@ -170,6 +171,10 @@ export default {
 </script>
 
 <style scoped>
+.dialog-class {
+  z-index: 2147483647 !important;
+}
+
 .random-content {
   max-height: 500px;
   overflow: auto;
