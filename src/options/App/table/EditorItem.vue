@@ -2,128 +2,187 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 15:18:00
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-06-22 11:31:09
+ * LastEditTime : 2022-01-12 15:05:58
  * FilePath     : /stop-mess-around/src/options/App/table/EditorItem.vue
  * Description  : 编辑摸鱼网站
  * koroFileheader插件
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
 -->
 <template>
-  <el-dialog :visible.sync="dialogVisible"
-             :before-close="resetFields"
-             width="550px">
-    <div class="title"
-         slot="title">{{'编辑摸鱼网站'}}</div>
+  <el-dialog
+    :visible.sync="dialogVisible"
+    :before-close="resetFields"
+    width="550px"
+  >
+    <div
+      slot="title"
+      class="title"
+    >
+      {{ '编辑摸鱼网站' }}
+    </div>
     <div class="form-class">
-      <el-form :model="ruleForm"
-               :rules="rules"
-               ref="ruleForm"
-               label-width="150px">
-        <el-form-item prop="labelName"
-                      required>
-          <span slot="label">{{'摸鱼网站名'}}: </span>
-          <el-input class="input-class"
-                    :placeholder="'添加摸鱼网站名'"
-                    v-model="ruleForm.labelName"></el-input>
+      <el-form
+        ref="ruleForm"
+        :model="ruleForm"
+        :rules="rules"
+        label-width="150px"
+      >
+        <el-form-item
+          prop="labelName"
+          required
+        >
+          <span slot="label">{{ '摸鱼网站名' }}: </span>
+          <el-input
+            v-model="ruleForm.labelName"
+            class="input-class"
+            :placeholder="'添加摸鱼网站名'"
+          />
         </el-form-item>
-        <el-form-item prop="site"
-                      required>
-          <span slot="label">{{'摸鱼网址'}}: </span>
-          <el-input class="input-class"
-                    :placeholder="'添加摸鱼网址'"
-                    v-model="ruleForm.site"></el-input>
+        <el-form-item
+          prop="site"
+          required
+        >
+          <span slot="label">{{ '摸鱼网址' }}: </span>
+          <el-input
+            v-model="ruleForm.site"
+            class="input-class"
+            :placeholder="'添加摸鱼网址'"
+          />
         </el-form-item>
         <el-form-item prop="tip">
           <span slot="label">
-            <el-tooltip :content="'检测到摸鱼网址显示的提示'"
-                        placement="top">
-              <span>{{'内卷提示'}}</span>
+            <el-tooltip
+              :content="'检测到摸鱼网址显示的提示'"
+              placement="top"
+            >
+              <span>{{ '内卷提示' }}</span>
             </el-tooltip>
           </span>
-          <el-input class="input-class"
-                    v-model="ruleForm.tip"
-                    :placeholder="'为空则为随机内卷提示'"></el-input>
+          <el-input
+            v-model="ruleForm.tip"
+            class="input-class"
+            :placeholder="'为空则为随机内卷提示'"
+          />
         </el-form-item>
         <el-form-item prop="time">
           <span slot="label">
-            <el-tooltip :content="'检测到摸鱼网址后，停留几秒关闭网页'"
-                        placement="top">
-              <span>{{'停留几秒'}}</span>
+            <el-tooltip
+              :content="'检测到摸鱼网址后，停留几秒关闭网页'"
+              placement="top"
+            >
+              <span>{{ '停留几秒' }}</span>
             </el-tooltip>
           </span>
-          <el-input v-model.number="ruleForm.time"
-                    :placeholder="'为空则为全局设置的停留时间'"
-                    autocomplete="off"></el-input>
+          <el-input
+            v-model.number="ruleForm.time"
+            :placeholder="'为空则为全局设置的停留时间'"
+            autocomplete="off"
+          />
         </el-form-item>
         <el-form-item prop="checkoutStudy">
           <span slot="label">
-            <el-tooltip :content="'关闭检测后多少分钟后重新启用检测'"
-                        placement="top">
-              <span>{{'自动开启'}}</span>
+            <el-tooltip
+              :content="'关闭检测后多少分钟后重新启用检测'"
+              placement="top"
+            >
+              <span>{{ '自动开启' }}</span>
             </el-tooltip>
           </span>
-          <el-input v-model.number="ruleForm.checkoutStudy"
-                    :placeholder="'为空则为全局设置的自动开启时间'"
-                    autocomplete="off"></el-input>
+          <el-input
+            v-model.number="ruleForm.checkoutStudy"
+            :placeholder="'为空则为全局设置的自动开启时间'"
+            autocomplete="off"
+          />
         </el-form-item>
-        <el-form-item prop="matchRule"
-                      required>
+        <el-form-item
+          prop="matchRule"
+          required
+        >
           <span slot="label">
-            <el-tooltip :content="'网址匹配规则: 开头全等 => 前面的必须一模一样，包含=> 包含即可，严格相等=>一模一样'"
-                        placement="top">
-              <span>{{'匹配规则'}}</span>
+            <el-tooltip
+              :content="'网址匹配规则: 开头全等 => 前面的必须一模一样，包含=> 包含即可，严格相等=>一模一样'"
+              placement="top"
+            >
+              <span>{{ '匹配规则' }}</span>
             </el-tooltip>
           </span>
-          <el-radio v-model="ruleForm.matchRule"
-                    label="start">{{'开头全等'}}</el-radio>
-          <el-radio v-model="ruleForm.matchRule"
-                    label="includes">{{'包含'}}</el-radio>
-          <el-radio v-model="ruleForm.matchRule"
-                    label="strict">{{'严格相等'}}</el-radio>
+          <el-radio
+            v-model="ruleForm.matchRule"
+            label="start"
+          >
+            {{ '开头全等' }}
+          </el-radio>
+          <el-radio
+            v-model="ruleForm.matchRule"
+            label="includes"
+          >
+            {{ '包含' }}
+          </el-radio>
+          <el-radio
+            v-model="ruleForm.matchRule"
+            label="strict"
+          >
+            {{ '严格相等' }}
+          </el-radio>
         </el-form-item>
-        <el-form-item prop="jump"
-                      required>
+        <el-form-item
+          prop="jump"
+          required
+        >
           <span slot="label">
-            <el-tooltip :content="'网址匹配后，不关闭页面，跳转到其他页面'"
-                        placement="top">
-              <span>{{'跳转'}}</span>
+            <el-tooltip
+              :content="'网址匹配后，不关闭页面，跳转到其他页面'"
+              placement="top"
+            >
+              <span>{{ '跳转' }}</span>
             </el-tooltip>
           </span>
-          <el-radio v-model="ruleForm.jump"
-                    :label="true">{{'开启'}}</el-radio>
-          <el-radio v-model="ruleForm.jump"
-                    :label="false">{{'关闭'}}</el-radio>
+          <el-radio
+            v-model="ruleForm.jump"
+            :label="true"
+          >
+            {{ '开启' }}
+          </el-radio>
+          <el-radio
+            v-model="ruleForm.jump"
+            :label="false"
+          >
+            {{ '关闭' }}
+          </el-radio>
         </el-form-item>
-        <el-form-item prop="jumpUrl"
-                      v-if="ruleForm.jump">
+        <el-form-item
+          v-if="ruleForm.jump"
+          prop="jumpUrl"
+        >
           <span slot="label">
-            <el-tooltip :content="'为空则使用全局跳转链接'"
-                        placement="top">
-              <span>{{'关闭页面跳转链接'}}</span>
+            <el-tooltip
+              :content="'为空则使用全局跳转链接'"
+              placement="top"
+            >
+              <span>{{ '关闭页面跳转链接' }}</span>
             </el-tooltip>
           </span>
-          <el-input class="input-class"
-                    v-model="ruleForm.jumpUrl"
-                    :placeholder="'为空则使用全局跳转链接'"></el-input>
-        </el-form-item>
-        <el-form-item prop="open"
-                      required>
-          <span slot="label">
-            <span>{{'是否启用'}}</span>
-          </span>
-          <el-radio-group v-model="ruleForm.open"
-                          @change="checkoutFn">
-            <el-radio :label="true">{{'开启'}}</el-radio>
-            <el-radio :label="false">{{'关闭'}}</el-radio>
-          </el-radio-group>
+          <el-input
+            v-model="ruleForm.jumpUrl"
+            class="input-class"
+            :placeholder="'为空则使用全局跳转链接'"
+          />
         </el-form-item>
       </el-form>
     </div>
-    <div slot="footer"
-         class="dialog-footer">
-      <el-button @click="close">取 消</el-button>
-      <el-button type="primary"
-                 @click="confirmFn">修 改</el-button>
+    <div
+      slot="footer"
+      class="dialog-footer"
+    >
+      <el-button @click="close">
+        取 消
+      </el-button>
+      <el-button
+        type="primary"
+        @click="confirmFn"
+      >
+        修 改
+      </el-button>
     </div>
   </el-dialog>
 </template>
@@ -131,7 +190,7 @@
 <script>
 
 export default {
-  name: 'editor-item',
+  name: 'EditorItem',
   props: {
     showCreateItem: {
       require: true,
@@ -181,14 +240,6 @@ export default {
       },
     }
   },
-  watch: {
-    // 初始化数据
-    dialogVisible(val) {
-      if (val) {
-        this.syncData()
-      }
-    },
-  },
   computed: {
     dialogVisible: {
       get() {
@@ -197,6 +248,14 @@ export default {
       set() {
         this.close()
       },
+    },
+  },
+  watch: {
+    // 初始化数据
+    dialogVisible(val) {
+      if (val) {
+        this.syncData()
+      }
     },
   },
   methods: {
@@ -241,14 +300,6 @@ export default {
     close() {
       this.$refs.ruleForm.resetFields()
       this.$emit('closeEditor')
-    },
-    // 切换启用状态 设置关闭
-    checkoutFn(val) {
-      if (val) {
-        this.ruleForm.closeTime = 0
-      } else {
-        this.ruleForm.closeTime = Date.now()
-      }
     },
     resetFields(done) {
       this.$refs.ruleForm.resetFields()
