@@ -1,54 +1,84 @@
 <template>
   <div class="header align-center">
     <div class="header-left align-center">
-      <img @click="utils.jumpUrl(NET.CHROMESTORE)"
-           src="../../../public/img/origin.jpeg"
-           class="header-img"
-           alt="">
+      <img
+        src="../../../public/img/origin.jpeg"
+        class="header-img"
+        alt=""
+        @click="utils.jumpUrl(NET.CHROMESTORE)"
+      >
       <div class="header-plugin cursor-pointer">
-        <h2 @click="utils.jumpUrl(NET.GITHUBREPO)"> stop-mess-around(停止下意识摸鱼)</h2>
-        <span v-if="development"
-              class="cursor-pointer header-btns"
-              @click="utils.jumpUrl(NET.CHROMESTORE)">本地安装,无法自动更新，跳转Chrome商店安装</span>
-        <span class="cursor-pointer"
-              @click="utils.jumpUrl(NET.RELEASES)">{{ getVersion() }}</span>
+        <h2 @click="utils.jumpUrl(NET.GITHUBREPO)">
+          stop-mess-around(停止下意识摸鱼)
+        </h2>
+        <span
+          v-if="development"
+          class="cursor-pointer header-btns"
+          @click="utils.jumpUrl(NET.CHROMESTORE)"
+        >本地安装,无法自动更新，跳转Chrome商店安装</span>
+        <span
+          class="cursor-pointer"
+          @click="utils.jumpUrl(NET.RELEASES)"
+        >{{ getVersion() }}</span>
       </div>
-      <div class="author cursor-pointer"
-           @click="utils.jumpUrl(NET.MYSITE)">by OBKoro1</div>
+      <div
+        class="author cursor-pointer"
+        @click="utils.jumpUrl(NET.MYSITE)"
+      >
+        by OBKoro1
+      </div>
     </div>
 
-    <el-button type="text"
-               @click="openSponsorship"
-               size="medium"
-               class="dropdown-color marginRL">
-      {{'请我喝杯水吧😘'}}
+    <el-button
+      type="text"
+      size="medium"
+      class="dropdown-color marginRL"
+      @click="openSponsorship"
+    >
+      {{ '请我喝杯水吧😘' }}
     </el-button>
-    <el-button type="text"
-               @click="utils.jumpUrl(NET.DOCS)"
-               size="medium"
-               class="dropdown-color marginRL">
+    <el-button
+      type="text"
+      size="medium"
+      class="dropdown-color marginRL"
+      @click="utils.jumpUrl(NET.DOCS)"
+    >
       使用文档
     </el-button>
 
-    <img alt="GitHub Repo stars"
-         @click="utils.jumpUrl(NET.GITHUBREPO)"
-         class="header-btns-star cursor-pointer"
-         src="https://img.shields.io/github/stars/OBKoro1/stop-mess-around?style=social">
-    <el-dialog :visible.sync="sponsorship"
-               :close-on-click-modal="false"
-               :show-close="false"
-               width="30%">
-      <div class="dialog_title"
-           slot="title">{{'如果对你有帮助, 那就请我喝杯水吧😘'}}</div>
+    <img
+      alt="GitHub Repo stars"
+      class="header-btns-star cursor-pointer"
+      src="https://img.shields.io/github/stars/OBKoro1/stop-mess-around?style=social"
+      @click="utils.jumpUrl(NET.GITHUBREPO)"
+    >
+    <el-dialog
+      :visible.sync="sponsorship"
+      :close-on-click-modal="false"
+      :show-close="false"
+      width="30%"
+    >
+      <div
+        slot="title"
+        class="dialog_title"
+      >
+        {{ '如果对你有帮助, 那就请我喝杯水吧😘' }}
+      </div>
       <span class="obkoro1-sponsorship-span">十块八块不嫌多，三块五块也是爱 😘</span>
-      <img src="../../../public/img/obkoro1-sponsorship.jpg"
-           class="obkoro1-sponsorship"
-           alt="">
-      <span slot="footer"
-            class="dialog-footer">
+      <img
+        src="../../../public/img/obkoro1-sponsorship.jpg"
+        class="obkoro1-sponsorship"
+        alt=""
+      >
+      <span
+        slot="footer"
+        class="dialog-footer"
+      >
         <el-button @click="confirmSponsorship('no')">下次一定</el-button>
-        <el-button type="primary"
-                   @click="confirmSponsorship('yes')">请你喝了</el-button>
+        <el-button
+          type="primary"
+          @click="confirmSponsorship('yes')"
+        >请你喝了</el-button>
       </span>
     </el-dialog>
   </div>

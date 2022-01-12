@@ -9,43 +9,59 @@
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
 -->
 <template>
-  <el-dialog :visible.sync="dialogVisible"
-             width="550px">
-    <div class="dialog_title"
-         slot="title">{{'摸鱼网站列表添加'}}</div>
+  <el-dialog
+    :visible.sync="dialogVisible"
+    width="550px"
+  >
+    <div
+      slot="title"
+      class="dialog_title"
+    >
+      {{ '摸鱼网站列表添加' }}
+    </div>
     <div class="random-content">
-      <el-table :data="showList"
-                tooltip-effect="dark"
-                stripe
-                row-key="site"
-                max-height="1000"
-                style="width: 100%"
-                @selection-change="handleSelectionChange">
-        <el-table-column type="selection"
-                         width="55">
-        </el-table-column>
-        <el-table-column prop="labelName"
-                         width="150"
-                         show-overflow-tooltip>
+      <el-table
+        :data="showList"
+        tooltip-effect="dark"
+        stripe
+        row-key="site"
+        max-height="1000"
+        style="width: 100%"
+        @selection-change="handleSelectionChange"
+      >
+        <el-table-column
+          type="selection"
+          width="55"
+        />
+        <el-table-column
+          prop="labelName"
+          width="150"
+          show-overflow-tooltip
+        >
           <template slot="header">
-            <span>{{'摸鱼网站名'}}</span>
+            <span>{{ '摸鱼网站名' }}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="site"
-                         width="270"
-                         show-overflow-tooltip>
+        <el-table-column
+          prop="site"
+          width="270"
+          show-overflow-tooltip
+        >
           <template slot="header">
-            <span>{{'摸鱼网址'}}</span>
+            <span>{{ '摸鱼网址' }}</span>
           </template>
         </el-table-column>
-
       </el-table>
     </div>
-    <span slot="footer"
-          class="dialog-footer">
+    <span
+      slot="footer"
+      class="dialog-footer"
+    >
       <el-button @click="close">取 消</el-button>
-      <el-button type="primary"
-                 @click="confirmFn">添 加</el-button>
+      <el-button
+        type="primary"
+        @click="confirmFn"
+      >添 加</el-button>
     </span>
   </el-dialog>
 </template>
@@ -54,7 +70,7 @@
 import { defaultList, itemProto } from '../../../utils/Default'
 
 export default {
-  name: 'batch-item',
+  name: 'BatchItem',
   props: {
     showBatchItem: {
       require: true,
@@ -70,6 +86,16 @@ export default {
     }
   },
   inject: ['tableDataSpliceUpdate', 'getTableData', 'getSetting'],
+  computed: {
+    dialogVisible: {
+      get() {
+        return this.showBatchItem
+      },
+      set() {
+        this.close()
+      },
+    },
+  },
   watch: {
     // 初始化数据
     dialogVisible(val) {
@@ -79,16 +105,6 @@ export default {
         const arr = this.filterArrFn(this.tableArr)
         this.showList = this.mapSetting(arr)
       }
-    },
-  },
-  computed: {
-    dialogVisible: {
-      get() {
-        return this.showBatchItem
-      },
-      set() {
-        this.close()
-      },
     },
   },
   methods: {
