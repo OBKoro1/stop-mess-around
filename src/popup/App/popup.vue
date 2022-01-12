@@ -1,52 +1,60 @@
 <template>
   <div class="box-card">
-    <div @click="checkoutOpen" >
+    <div @click="checkoutOpen">
       <div>
-        <i  :class="macthIcon" ></i>
+        <i :class="macthIcon" />
       </div>
       <span>{{ matchFont }}</span>
     </div>
     <div @click="checkoutAll">
       <div>
-        <i :class="allOpen"></i>
+        <i :class="allOpen" />
       </div>
-      <span>{{ open ? '一键关闭摸鱼检测': '一键开启摸鱼检测'  }}</span>
+      <span>{{ open ? '一键关闭摸鱼检测': '一键开启摸鱼检测' }}</span>
     </div>
 
     <div @click="utils.jumpUrl(NET.OPTIONSPAGE)">
       <div>
-        <i class="el-icon-setting"></i>
+        <i class="el-icon-setting" />
       </div>
       <span>管理面板</span>
     </div>
 
     <div @click="sponsorshipShow">
       <div>
-        <i class="el-icon-present"
-           style="color: #e13d14"></i>
+        <i
+          class="el-icon-present"
+          style="color: #e13d14"
+        />
       </div>
       <span>欢迎赞助</span>
     </div>
 
     <div @click="utils.jumpUrl(NET.DOCS)">
       <div>
-        <i class="el-icon-document"
-           style="color: #fff"></i>
+        <i
+          class="el-icon-document"
+          style="color: #fff"
+        />
       </div>
       <span>使用文档</span>
     </div>
 
     <div @click="utils.jumpUrl(NET.GITHUBREPO)">
       <div>
-        <i class="el-icon-star-off"
-           style="color: #fff"></i>
+        <i
+          class="el-icon-star-off"
+          style="color: #fff"
+        />
       </div>
       <span>点个Star吧</span>
     </div>
     <div @click="utils.jumpUrl(NET.RELEASES)">
       <div>
-        <i class="el-icon-tickets"
-           style="color: #fff"></i>
+        <i
+          class="el-icon-tickets"
+          style="color: #fff"
+        />
       </div>
       <span>更新日志</span>
     </div>
@@ -54,10 +62,11 @@
 </template>
 
 <script>
+import { utils } from '@/utils'
 import { defaultSetting } from '../../utils/Default'
 
 export default {
-  name: 'popup',
+  name: 'Popup',
   data() {
     return {
       Setting: {},
@@ -69,7 +78,14 @@ export default {
   },
   computed: {
     open() {
-      return this.Setting.closeTime === 0
+      let open = false
+      for (let i = 0; i < this.tableData.length; i += 1) {
+        if (this.tableData[i].open) {
+          open = true
+          break
+        }
+      }
+      return open
     },
     macthIcon() {
       if (this.item) {
@@ -84,13 +100,7 @@ export default {
     },
     // 是否开启
     allOpen() {
-      const close = this.Setting.closeTime
-      if (close === 0) {
-        // 开启状态
-        return 'el-icon-open color-green'
-      }
-      // 关闭状态
-      return 'el-icon-turn-off color-gray'
+      return this.open ? 'el-icon-open color-green' : 'el-icon-turn-off color-gray'
     },
     // 匹配网址
     matchFont() {
@@ -101,36 +111,43 @@ export default {
     await this.initData()
   },
   methods: {
+
     // 切换启用
-    checkoutOpen() {
+    async checkoutOpen() {
       if (!this.item) {
         // 添加摸鱼网站
         this.Setting.addSite = this.tab.url
         this.settingUpdate(this.Setting)
-        this.jumpOptions()
+        this.utils.jumpUrl(this.NET.OPTIONSPAGE)
         return
       }
       const value = !this.item.open
-      if (value) {
-        this.item.closeTime = 0
-      } else {
-        this.item.closeTime = Date.now()
+      this.Setting = await this.utils.getChromeStorage(this.NET.GLOBALSETTING)
+      this.tableData = await this.utils.getChromeStorage(this.NET.TABLELIST)
+      const options = {
+        item: this.item,
+        tableArr: this.tableData,
+        setting: this.Setting,
       }
-      this.item.open = value
-      this.tableData.splice(this.index, 1, this.item)
+      let newItem = null
+      if (value) {
+        ({ item: newItem } = await utils.openCheck(options))
+      } else {
+        ({ item: newItem } = await utils.closeCheck(options))
+      }
+      this.tableData.splice(this.index, 1, newItem)
       this.updateArr(this.tableData)
     },
     // 展示赞助
     sponsorshipShow() {
       this.Setting.sponsorshipTime = 'show'
       this.settingUpdate(this.Setting)
-      this.jumpOptions()
+      this.utils.jumpUrl(this.NET.OPTIONSPAGE)
     },
     // 初始化
     async initData() {
       this.Setting = await this.utils.getChromeStorage(this.NET.GLOBALSETTING) || defaultSetting
       this.tableData = await this.utils.getChromeStorage(this.NET.TABLELIST) || []
-      console.log('Setting', this.Setting, this.tableData)
       // 先获取当前页面的tabID
       chrome.tabs.getSelected(null, (tab) => {
         this.tab = tab
@@ -142,43 +159,22 @@ export default {
       })
     },
     // 一键开启/关闭
-    checkoutAll() {
-      const val = !this.open
-      const arr = this.tableData.map((item) => {
-        item.open = val
-        if (val) {
-          item.closeTime = 0
-        } else {
-          item.closeTime = Date.now()
-        }
-        return item
-      })
-      this.updateArr(arr)
-    },
-
-    // 判断当前是否开启
-    isOpen() {
-      const val = this.open
-      let newVal
-      for (let i = 0; i < this.tableData.length; i += 1) {
-        if (this.tableData[i].open) {
-          newVal = true
-          break
-        } else {
-          newVal = false
-        }
+    async checkoutAll() {
+      this.Setting = await this.utils.getChromeStorage(this.NET.GLOBALSETTING)
+      this.tableData = await this.utils.getChromeStorage(this.NET.TABLELIST)
+      const options = {
+        type: this.open ? 'closeAll' : 'openAll',
+        tableArr: this.tableData,
+        setting: this.Setting,
       }
-      // 切换了开关状态
-      if (val !== newVal) {
-        if (newVal) {
-          // 打开 取消计时
-          this.Setting.closeTime = 0
-        } else {
-          // 关闭 开始计时
-          this.Setting.closeTime = Date.now()
-        }
-        this.settingUpdate(this.Setting)
+      let tableArr
+      if (this.open) {
+        // 开启状态 关闭
+        ({ tableArr } = await this.utils.closeCheckAll(options))
+      } else {
+        ({ tableArr } = await this.utils.openCheckAll(options))
       }
+      this.updateArr(tableArr)
     },
     // 更新设置
     settingUpdate(obj) {
@@ -188,7 +184,6 @@ export default {
     // 更新数组
     updateArr(arr) {
       this.tableData = arr
-      this.isOpen()
       this.utils.updateStorageData(this.tableData, this.NET.TABLELIST)
     },
   },

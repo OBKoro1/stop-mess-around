@@ -2,49 +2,92 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 14:24:51
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-11-01 13:40:24
+ * LastEditTime : 2022-01-12 14:11:06
  * FilePath     : /stop-mess-around/src/options/App/settingPage/SetPage.vue
- * Description  : 设置
+ * Description  : 设置按钮列表
  * koroFileheader插件
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
 -->
 <template>
   <div class="set-page">
     <div class="set-page-padding">
-      <div class="set-page-title">{{'设置'}}</div>
-      <el-input v-model="searchCotent"
-                class="search-input"
-                placeholder="搜索网站名和网址"
-                @change="search"></el-input>
-      <el-button type="primary"
-                 @click="checkoutFn('showCreateItem', true)"
-                 round>{{'新增'}}</el-button>
-      <el-button type="primary"
-                 @click="checkoutAll"
-                 round>{{ closeOrOpen }}</el-button>
-      <el-button type="primary"
-                 @click="checkoutFn('showTip', true)"
-                 round>{{'随机内卷语录'}}</el-button>
-      <el-button type="primary"
-                 @click="checkoutFn('showBatchItem', true)"
-                 round>{{'默认摸鱼网站列表'}}</el-button>
-      <el-button type="primary"
-                 @click="checkoutFn('showSetting', true)"
-                 round>{{'设置'}}</el-button>
+      <div class="set-page-title">
+        {{ '设置' }}
+      </div>
+      <el-input
+        v-model="searchCotent"
+        class="search-input"
+        placeholder="搜索网站名和网址"
+        @change="search"
+      />
+      <el-button
+        type="primary"
+        round
+        @click="checkoutFn('showCreateItem', true)"
+      >
+        {{ '新增' }}
+      </el-button>
+      <el-button
+        type="primary"
+        round
+        @click="checkoutAll"
+      >
+        {{ closeOrOpen }}
+      </el-button>
+      <el-button
+        type="primary"
+        round
+        @click="checkoutFn('showTip', true)"
+      >
+        {{ '随机内卷语录' }}
+      </el-button>
+      <el-button
+        type="primary"
+        round
+        @click="checkoutFn('showBatchItem', true)"
+      >
+        {{ '默认摸鱼网站列表' }}
+      </el-button>
+      <el-button
+        type="primary"
+        round
+        @click="checkoutFn('showSetting', true)"
+      >
+        {{ '设置' }}
+      </el-button>
+      <el-button
+        type="primary"
+        round
+        @click="checkoutFn('showStatistics', true)"
+      >
+        摸鱼时长统计
+      </el-button>
       <!-- 新增摸鱼网站 -->
-      <CreateItem :showCreateItem="showCreateItem"
-                  @close="checkoutFn" />
+      <CreateItem
+        :show-create-item="showCreateItem"
+        @close="checkoutFn"
+      />
       <!-- 批量添加摸鱼网站 -->
-      <BatchItem :showBatchItem="showBatchItem"
-                 @close="checkoutFn" />
+      <BatchItem
+        :show-batch-item="showBatchItem"
+        @close="checkoutFn"
+      />
       <!-- 随机语录设置 -->
-      <RandomTip :showTip="showTip"
-                 @close="checkoutFn" />
+      <RandomTip
+        :show-tip="showTip"
+        @close="checkoutFn"
+      />
       <!-- 全局设置 -->
-      <Setting :showDialog="showSetting"
-               @close="checkoutFn" />
+      <Setting
+        :show-dialog="showSetting"
+        @close="checkoutFn"
+      />
+      <!-- 统计摸鱼时长 -->
+      <RestStatistics
+        :show-statistics="showStatistics"
+        @close="checkoutFn"
+      />
     </div>
-
   </div>
 </template>
 
@@ -53,10 +96,18 @@ import CreateItem from './CreateItem.vue'
 import Setting from './Setting.vue'
 import BatchItem from './BatchItem.vue'
 import RandomTip from './RandomTip.vue'
+import RestStatistics from '../../../components/rest-statistics.vue'
 
 export default {
-  name: 'set-page',
-  inject: ['getTableData', 'updateArr'],
+  name: 'SetPage',
+  inject: ['getTableData', 'getSetting', 'updateArr'],
+  components: {
+    CreateItem,
+    Setting,
+    BatchItem,
+    RandomTip,
+    RestStatistics,
+  },
   props: {
     open: {
       type: Boolean,
@@ -70,30 +121,20 @@ export default {
       showSetting: false,
       showBatchItem: false,
       showTip: false,
+      showStatistics: false,
     }
-  },
-  components: {
-    CreateItem,
-    Setting,
-    BatchItem,
-    RandomTip,
   },
   computed: {
     closeOrOpen() {
-      if (!this.open) {
-        return '一键开启'
-      }
-      return '一键关闭'
+      return this.open ? '一键关闭' : '一键开启'
     },
   },
-  mounted() {
+  async mounted() {
     // 没有数据 默认打开摸鱼网站列表
-    setTimeout(() => {
-      const list = this.getTableData()
-      if (list.length === 0) {
-        this.showBatchItem = true
-      }
-    }, 1000)
+    const { listArr } = await this.utils.getData()
+    if (listArr.length === 0) {
+      this.showBatchItem = true
+    }
   },
   methods: {
     search(val) {
@@ -105,18 +146,20 @@ export default {
       this[key] = val
     },
     // 一键开启/关闭
-    checkoutAll() {
-      const val = !this.open
-      const arr = this.getTableData().map((item) => {
-        item.open = val
-        if (val) {
-          item.closeTime = 0
-        } else {
-          item.closeTime = Date.now()
-        }
-        return item
-      })
-      this.updateArr(arr)
+    async checkoutAll() {
+      const options = {
+        type: this.open ? 'closeAll' : 'openAll',
+        tableArr: this.getTableData(),
+        setting: this.getSetting(),
+      }
+      let tableArr
+      if (this.open) {
+        // 开启状态 关闭
+        ({ tableArr } = await this.utils.closeCheckAll(options))
+      } else {
+        ({ tableArr } = await this.utils.openCheckAll(options))
+      }
+      this.updateArr(tableArr)
     },
   },
 }
