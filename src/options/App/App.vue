@@ -65,7 +65,7 @@ export default {
     clearSetting(type) {
       if (type === 'clearList') {
         this.utils.updateStorageData([], this.NET.TABLELIST)
-      } else if (type === 'setting') {
+      } else if (type === 'clearSetting') {
         this.utils.updateStorageData({}, this.NET.GLOBALSETTING)
       } else if (type === 'statisticsTime') {
         this.utils.updateStorageData([], this.NET.statisticsTime)
