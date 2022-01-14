@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "stop-mess-around-file",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "file: 自律插件: 帮助你戒掉上班/学习期间下意识的在浏览器打开知乎等网站的习惯，往往一看就是几个小时过去了，插件会自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站。",
   "options_page": "options.html",
   "short_name": "StopMessAround",

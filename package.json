@@ -1,7 +1,7 @@
 {
   "name": "stop-mess-around",
   "description": "防摸鱼的chrome插件: 通过强制的手段禁止大家浪费时间摸鱼，在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站, 滚去学习，滚去做对未来有益的事情！",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "publisher": "OBKoro1",
   "homepage": "https://github.com/OBKoro1/stop-mess-around",
   "license": "MIT",
@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "dayjs": "^1.10.7",
     "element-ui": "^2.8.2",
     "vue": "^2.6.10"
   },
@@ -43,11 +44,12 @@
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
     "@vue/cli-service": "^3.7.0",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^10.1.0",
     "babel-plugin-component": "^1.1.1",
     "copy-webpack-plugin": "^4.6.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.23.2",
     "eslint-plugin-vue": "^5.0.0",
     "husky": "^6.0.0",
