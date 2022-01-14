@@ -2,39 +2,88 @@
   <div />
 </template>
 <script>
+
 export default {
   name: 'Github1sButton',
   data() {
     return {
       repoUrl: '',
       repoAuthor: '', // 用户名、仓库所属的组织
-      repoName: '',
+      repoName: '', // 仓库名字
     }
   },
   mounted() {
     this.matchGithub()
     // 链接更新 有时候无法检测
-    setInterval(this.matchGithub, 6000)
+    setInterval(this.matchGithub, 3000)
   },
   methods: {
     isCreated() {
       return document.querySelector('#stop-mess-around')
     },
     matchGithub() {
-      if (this.isCreated()) return
       // 匹配github仓库
-      const reg = /^(https:\/\/github\.com\/([^/]+)\/([^/]+))?\/*/
+      const reg = /^(https:\/\/github\.com\/([^/]+)\/([^/]+))\/?.*/
       const url = window.location.href
       const res = reg.exec(url)
       if (res) {
-        [, this.repoUrl, this.repoAuthor, this.repoName] = res
+        const [, repoUrl, repoAuthor, repoName] = res
+        this.repoAuthor = repoAuthor
+        this.repoName = repoName
+        if (!this.repoUrl.startsWith(repoUrl)) {
+          this.repoUrl = repoUrl
+        }
+        this.matchBranch(this.repoUrl)
         this.matchDom()
       }
     },
+
+    // 匹配分支和具体的文件
+    matchBranch(repoUrl) {
+      // github仓库的匹配地址
+      const id = 'code-tab'
+      const constClassName = 'selected'
+      const githubCodeButton = document.querySelector(`#${id}`)
+      if (!githubCodeButton) return repoUrl
+      const hasClassName = this.hasClass(githubCodeButton, constClassName)
+      // 如果激活的是code-tab模块 仓库的链接就是当前浏览的分支和文件的链接
+      // 即时跳到其他路由上 也是使用之前匹配到的分支和文件的链接，比如：wiki、actions、issues等
+      const url = window.location.href
+      if (hasClassName && this.repoUrl !== url) {
+        // 获取/用户名/仓库名/路由名
+        const reg2 = /^(https:\/\/github\.com\/([^/]+)\/([^/]+))\/([^/]+)\/([^/]+)\/?.*/
+        const res2 = reg2.exec(url)
+        if (!res2) return
+        const treeOrBlob = res2[4]
+        // 当为查看文件树或者查看具体文件时才可以修改
+        if (treeOrBlob && (treeOrBlob === 'blob' || treeOrBlob === 'tree')) {
+          this.repoUrl = window.location.href
+        }
+      }
+    },
+    // 是否有class name
+    hasClass(dom, className) {
+      if ('classList' in dom && typeof dom.classList.contains === 'function') {
+        return dom.classList.contains(className)
+      }
+      const classes = dom.className.split(/\s+/)
+      for (const ele of classes.values()) {
+        if (ele === className) {
+          return true
+        }
+      }
+      return false
+    },
     // 匹配dom
     matchDom() {
-      // 仓库头部
+      const isCreatedDom = this.isCreated()
+      if (isCreatedDom) {
+        // 修改跳转地址
+        isCreatedDom.href = this.repoUrl.replace('github.com', 'github1s.com')
+        return
+      }
       try {
+      // 仓库头部
         const headDom = document.querySelector('#repository-container-header')
         if (headDom) {
           const repoNameDom = headDom.children[0].children[0].children[0]
