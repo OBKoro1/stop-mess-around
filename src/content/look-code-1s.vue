@@ -2,6 +2,7 @@
   <div />
 </template>
 <script>
+import { utils } from '@/utils/index'
 
 export default {
   name: 'Github1sButton',
@@ -10,12 +11,15 @@ export default {
       repoUrl: '',
       repoAuthor: '', // 用户名、仓库所属的组织
       repoName: '', // 仓库名字
+      setting: {},
     }
   },
-  mounted() {
-    this.matchGithub()
-    // 链接更新 有时候无法检测
-    setInterval(this.matchGithub, 3000)
+  async mounted() {
+    this.matchGithub();
+    ({ setting: this.setting } = await utils.getData())
+    if (this.setting.lookCode === 'off') {
+      setInterval(this.matchGithub, 3000)
+    }
   },
   methods: {
     isCreated() {
@@ -75,11 +79,26 @@ export default {
       return false
     },
     // 匹配dom
-    matchDom() {
+    async matchDom() {
       const isCreatedDom = this.isCreated()
+      // github.dev 官方出品: 可读可写可commit集成度高 加载慢一些
+      let options = {
+        url: 'github.dev',
+        btnFont: 'github.dev',
+      }
+      if (this.setting.lookCode === 'github1s.com') {
+        // github1s 代码只可读 加载速度快 号称只要1s
+        options = {
+          url: 'github1s.com',
+          btnFont: 'github1s',
+        }
+      } else if (this.setting.lookCode === 'off') {
+        return isCreatedDom && isCreatedDom.remove()
+      }
+      const jumpUrl = this.repoUrl.replace('github.com', options.url)
       if (isCreatedDom) {
         // 修改跳转地址
-        isCreatedDom.href = this.repoUrl.replace('github.com', 'github1s.com')
+        isCreatedDom.href = jumpUrl
         return
       }
       try {
@@ -92,10 +111,10 @@ export default {
           if (repoName === `${this.repoAuthor}/${this.repoName}`) {
             // 创建dom
             const createDom = document.createElement('a')
-            createDom.textContent = '1sLookCode'
+            createDom.textContent = options.btnFont
             createDom.className = 'github-look-code-class'
             createDom.id = 'stop-mess-around'
-            createDom.href = this.repoUrl.replace('github.com', 'github1s.com')
+            createDom.href = jumpUrl
             repoNameDom.appendChild(createDom)
           }
         }

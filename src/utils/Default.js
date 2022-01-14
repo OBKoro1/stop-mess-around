@@ -38,6 +38,7 @@ export const defaultSetting = {
     tipArr: tipArr.length,
   },
   showRightTip: true,
+  lookCode: 'github.dev',
   // 单个item选项的默认值
   restTime: 0, // 网站休息时间
   globalSiteTouchFish: false, // 是否为全局摸鱼状态

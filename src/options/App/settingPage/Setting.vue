@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 22:45:36
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-11 15:48:05
+ * LastEditTime : 2022-01-14 16:37:51
  * FilePath     : /stop-mess-around/src/options/App/settingPage/Setting.vue
  * Description  : 全局设置
  * koroFileheader插件
@@ -41,6 +41,7 @@
           </span>
           <el-input
             v-model.number="ruleForm.time"
+            class="input-width"
             autocomplete="off"
           />
         </el-form-item>
@@ -58,6 +59,7 @@
           </span>
           <el-input
             v-model.number="ruleForm.checkoutStudy"
+            class="input-width"
             autocomplete="off"
           />
         </el-form-item>
@@ -185,6 +187,30 @@
             {{ '关闭' }}
           </el-radio>
         </el-form-item>
+        <el-form-item
+          prop="matchRule"
+          required
+        >
+          <span slot="label">
+            <el-tooltip
+              :content="'在Github仓库中内嵌按钮, 通过在线版本的 VS Code 来打开 GitHub 上的代码'"
+              placement="top"
+            >
+              <span>{{ '查看代码功能' }}</span>
+            </el-tooltip>
+          </span>
+          <el-select
+            v-model="ruleForm.lookCode"
+            class="input-width"
+          >
+            <el-option
+              v-for="item in lookCodeOptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
+        </el-form-item>
         <el-form-item prop="clear">
           <span slot="label">
             <el-tooltip
@@ -283,6 +309,20 @@ export default {
           },
         ],
       },
+      lookCodeOptions: [
+        {
+          label: 'github.dev 官方出品: 可读可写可commit集成度高 加载慢一些',
+          value: 'github.dev',
+        },
+        {
+          label: 'github1s 代码只可读 加载速度快 号称只要1s',
+          value: 'github1s.com',
+        },
+        {
+          label: '关闭',
+          value: 'off',
+        },
+      ],
     }
   },
   computed: {
@@ -312,7 +352,7 @@ export default {
       done()
     },
     // 清空设置
-    clearSetting(type = 'setting') {
+    clearSetting(type) {
       this.close()
       this.initData(type)
     },
@@ -332,7 +372,12 @@ export default {
 
 <style scoped>
 .form-class {
-  width: 90%;
+  max-height: 470px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+.input-width{
+  width: 260px;
 }
 .button-margin-right {
   margin-right: 10px;
