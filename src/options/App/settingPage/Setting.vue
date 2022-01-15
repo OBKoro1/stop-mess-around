@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 22:45:36
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-14 16:37:51
+ * LastEditTime : 2022-01-15 13:32:45
  * FilePath     : /stop-mess-around/src/options/App/settingPage/Setting.vue
  * Description  : 全局设置
  * koroFileheader插件
@@ -311,11 +311,11 @@ export default {
       },
       lookCodeOptions: [
         {
-          label: 'github.dev 官方出品: 可读可写可commit集成度高 加载慢一些',
+          label: 'github.dev',
           value: 'github.dev',
         },
         {
-          label: 'github1s 代码只可读 加载速度快 号称只要1s',
+          label: 'github1s',
           value: 'github1s.com',
         },
         {
