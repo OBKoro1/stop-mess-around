@@ -11,34 +11,12 @@
 
 ### [V1.2.0]
 
-<!-- TODO: 修改readme文档以及github快手上手文档。 -->
-<!-- TODO:  添加浪费时间的弹窗提示 -->
-<!-- TODO: 三个月内摸鱼时间统计 -->
-<!-- TODO: gif图 -->
-<!-- TODO: 关闭设置 -->
-<!-- TODO: 每天休息一下点击次数统计 -->
-<!-- TODO: 查看点击摸鱼时长详情 具体点击哪些摸鱼时长 -->
-<!-- TODO: 记录当天时间 每天运行到零点后 第二天清零 -->
-<!-- TODO: 旁边有摸鱼时间再流动  -->
+* feat: [增加网站摸鱼时间统计](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%8A%9F%E8%83%BD%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#%E6%91%B8%E9%B1%BC%E7%BB%9F%E8%AE%A1)
+![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/feat/touchFishTable.jpg?raw=true)
+* feat: [增加网站右侧摸鱼倒计时](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%8A%9F%E8%83%BD%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#%E6%91%B8%E9%B1%BC%E7%BB%9F%E8%AE%A1)
+![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/feat/restTipTime.jpg?raw=true)
 
-* feat: 增加网站摸鱼时间统计
-  * 统计每天各个网站的休息时间。
-    * 提前关闭摸鱼网站可以返回剩余的摸鱼时间，做到精准统计摸鱼时间。
-    * 对消耗最多时间的网站进行排序
-    * 记录每次点击休息一下的点击次数、与点击事件。
-  * 统计近百日的摸鱼时间，超过百日的数据将会自动删除。
-  * 在设置中新增清楚摸鱼统计的功能。
-
-* 摸鱼网站右侧摸鱼时长统计与摸鱼倒计时提醒
-  * 本设置可以在插件的设置页面关闭。 
-  * 可以直接停止摸鱼时间。
-  * 直接打开每日摸鱼时间统计
-  
-
-* feat: 添加github1s直接浏览代码的按钮
-    * 优势在于显示在Github仓库名旁边
-    * 在别的插件看到这个小功能，因为确实蛮实用的，也不想再装插件了，想着把它也集成进来
-    * 以前用的`Octotree`也可以卸载了，直接用GitHub官方提供的`github1s`是最香的 哈哈
+* feat: [Github仓库使用在线VSCode快速查看仓库代码](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%8A%9F%E8%83%BD%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#github%E4%BB%93%E5%BA%93%E9%A1%B5%E9%9D%A2%E5%BF%AB%E9%80%9F%E6%9F%A5%E7%9C%8B%E4%BB%93%E5%BA%93%E4%BB%A3%E7%A0%81)
 * fix: 修复在某些网站(B站)下,摸鱼提示弹窗`z-index`不够的问题。
 * fix: 修复popup的跳转问题。
 * chore: 更新[摸鱼网站列表](https://github.com/OBKoro1/stop-mess-around/blob/master/src/utils/Default.js), 新增如下网站。
@@ -107,7 +85,7 @@
 ### [V1.0.4]
 
 * fix: 修复不断打印console的问题。
-* chore: 更新[插件励志语录](https://github.com/OBKoro1/stop-mess-around/blob/master/src/utils/Default.js)。
+* chore: 更新[插件励志语录](https://github.dev/OBKoro1/stop-mess-around/blob/8f40ff0f9138398b1199d977461e6305033d8f81/src/utils/default-setting/tip-arr.js#L8)。
     * 目标定在月亮之上，即使失败，也可以落在众星之间。
     * 学历代表过去、能力代表现在、学习力代表未来。
     * 坚持做自己懒得做但正确的事情，就能得到别人想得到却得不到的东西。
@@ -126,7 +104,7 @@
 * chore: 提示本地安装用户去谷歌商店安装应用，提供升级服务。
 * chore: content页面日志插入控制。
 * fix: 如果开启弹窗，再关闭检测，则关闭弹窗。
-* chore: 更新[插件励志语录](https://github.com/OBKoro1/stop-mess-around/blob/master/src/utils/Default.js)。
+* chore: 更新[插件励志语录](https://github.dev/OBKoro1/stop-mess-around/blob/8f40ff0f9138398b1199d977461e6305033d8f81/src/utils/default-setting/tip-arr.js#L8)。
     * 不怕苦，苦半辈子；怕苦，苦一辈子。 - 李敖
     * 失败只有一种，那就是放弃努力, 半途而废
 

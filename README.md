@@ -19,13 +19,21 @@
 
 ### 项目介绍
 
-**自律chrome浏览器插件**：帮助你戒掉上班/学习期间下意识的在浏览器打开知乎等网站的习惯，往往一看就是几个小时过去了。插件会自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站。。
+这是一个防摸鱼的chrome插件： **通过强制的手段禁止大家浪费时间在网页上摸鱼**，避免在上班/学习期间下意识的打开摸鱼网站, 自动检测摸鱼网站, 提示激励信息后, 关闭摸鱼网站。
 
-### 插件解决的问题: 停止下意识的摸鱼
+### 插件文档
+
+[安装插件以及快速上手](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6)
+
+[功能示例以及使用说明](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%8A%9F%E8%83%BD%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
+
+[更新日志](https://github.com/OBKoro1/stop-mess-around/blob/master/CHANNGELOG.md)
+
+### 插件解决的问题: 停止在网页中下意识的摸鱼
 
 在工作、学习期间，如果事情不是太忙，或者说在学习/忙碌一小段时间之后。
 
-**就会下意识的打开或者输入知乎、掘金沸点、微博等网站，开始了摸鱼时光**。
+**就会下意识的打开或者输入知乎、B站、微博、直播等网站，开始了摸鱼时光**。
 
 **可能是摸鱼奶头乐太快乐了，时间很快就过去两三个小时，而忘记自己的工作、学习初衷了**。
 
@@ -49,46 +57,31 @@
 
 希望这个开源工具可以有效的帮助大家减少摸鱼时间，提高工作和学习的效率。
 
-### 插件文档
+如果觉得插件做的还不错，就点个Star鼓励一下我吧~
 
-[Chrome商店安装插件](https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN)
+## 插件功能示例
 
-[本地安装插件、快速上手以及使用说明](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
+### 匹配摸鱼网址
 
-[插件节省下来的时间如何合理利用](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%A6%82%E4%BD%95%E5%90%88%E7%90%86%E5%88%A9%E7%94%A8%E6%97%B6%E9%97%B4)
-### 使用示例
+![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/feat/matchWebSite.jpg?raw=true)
 
-1. 添加摸鱼网站以及匹配摸鱼网站、弹窗提示励志语录、关闭网页、更新励志语录、暂时休息一下。
+### 网站摸鱼检测关闭，摸鱼休息时间提醒
 
-![](https://github.com/OBKoro1/stop-mess-around/blob/master/static/example/start-20211101.gif?raw=true)
+![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/feat/restTipTime.jpg?raw=true)
 
-2. 一键开启/关闭以及批量添加摸鱼网站
+### 近百日摸鱼时间统计表
 
-![](https://github.com/OBKoro1/stop-mess-around/blob/master/static/addCheckout.gif?raw=true)
+![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/feat/touchFishTable.jpg?raw=true)
 
-3. 匹配摸鱼网站后出现的提示信息 - 随机语录
+### 插件管理面板
 
-![](https://github.com/OBKoro1/stop-mess-around/blob/master/static/mottoSetting.gif?raw=true)
+![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/feat/setting-feat.jpg?raw=true)
 
-4. 一些设置提示。
+### 在线VSCode快速查看仓库代码
+> 使用在线VSCode查看github仓库代码，支持`github.dev`以及`github1s`
 
-![](https://github.com/OBKoro1/stop-mess-around/blob/master/static/setting.gif?raw=true)
+![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/feat/lookCode.jpg?raw=true)
 
-## 快速上手
-> 下面有几张演示的gif, 可能需要翻墙才能加载出来。
-
-1. [安装插件](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6) 
-2. 左键点击插件图标，打开插件管理面板
-
-![](https://github.com/OBKoro1/stop-mess-around/blob/master/static/openoptions.png?raw=true)
-
-3. 点击新增按钮新增摸鱼网站、或者一键添加摸鱼网站。
-
-![一键开启/关闭以及批量添加摸鱼网站](https://github.com/OBKoro1/stop-mess-around/blob/master/static/addCheckout.gif?raw=true)
-4. 打开任意网站，插件会去匹配是否添加到摸鱼网站列表中
-5. 如果匹配到则会打开一个含有提示信息的弹窗,关闭弹窗后将会停留几秒后关闭网站或者跳转到指定网站。
-
-![添加摸鱼网站并检查](https://github.com/OBKoro1/stop-mess-around/blob/master/static/start.gif?raw=true)
 
 ### 点个Star吧~
 
@@ -101,7 +94,6 @@
 十块八块不嫌多，三块五块也是爱 😘
 
 ![](https://github.com/OBKoro1/koro1FileHeader/raw/master/images/money1.jpg?raw=true)
-
 
 ### 我的其他开源推荐
 
@@ -120,15 +112,6 @@
 
 ![](https://github.com/OBKoro1/autoCommit/raw/master/images/autoCommit.gif?raw=true)
 
-### [web-basics](https://github.com/OBKoro1/web-basics)
-
-收集和整理了一个大厂前端需要掌握能力的仓库。
-
-其中分为JS基础能力，大厂场景题、大厂面试真题。
-
-希望能够帮助大家提升自己的能力，在面试的时候能够游刃有余，轻松拿到高薪offer。
-
-![大厂前端需要掌握的能力](https://github.com/OBKoro1/web-basics/blob/main/static/web-basic-example.gif?raw=true)
 
 ### License
 
