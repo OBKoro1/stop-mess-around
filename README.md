@@ -29,6 +29,11 @@
 
 [更新日志](https://github.com/OBKoro1/stop-mess-around/blob/master/CHANNGELOG.md)
 
+
+### 演示Gif
+
+![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/example/run-introduction.gif?raw=true)
+
 ### 插件解决的问题: 停止在网页中下意识的摸鱼
 
 在工作、学习期间，如果事情不是太忙，或者说在学习/忙碌一小段时间之后。
