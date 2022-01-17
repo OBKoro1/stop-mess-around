@@ -9,6 +9,8 @@
 [release](https://github.com/OBKoro1/stop-mess-around/releases)卸载重新安装。
 [chrome商店更新](https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN)
 
+<!-- TODO: 提供一个选项直接关闭，或者跳转到其他页面（取决于配置），这种形式更能避免摸鱼 浪费时间、 -->
+
 ### [V1.2.0]
 
 * feat: [增加网站摸鱼时间统计](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%8A%9F%E8%83%BD%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#%E6%91%B8%E9%B1%BC%E7%BB%9F%E8%AE%A1)
