@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2022-01-12 14:16:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-12 14:23:04
+ * LastEditTime : 2022-01-24 01:18:11
  * FilePath     : /stop-mess-around/src/utils/default-setting/default-list.js
  * description  : 默认摸鱼网站列表
  * koroFileheader VSCode插件
@@ -66,6 +66,10 @@ export const defaultList = [
   {
     site: 'https://v.douyu.com/',
     labelName: '斗鱼录播',
+  },
+  {
+    site: 'https://v.huya.com/',
+    labelName: '虎牙录播',
   },
 ]
 // 鱼塘热榜：https://mo.fish/?class_id=%E5%85%A8%E9%83%A8&hot_id=1053
