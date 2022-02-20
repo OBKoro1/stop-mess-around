@@ -17,6 +17,8 @@
 
 
 * docs: 更新文档。
+* chore: 更新[插件励志语录](https://github.dev/OBKoro1/stop-mess-around/blob/8f40ff0f9138398b1199d977461e6305033d8f81/src/utils/default-setting/tip-arr.js#L8)。
+    * 你总觉得还有时间，这就是问题所在
 * chore: 更新[摸鱼网站列表](https://github.com/OBKoro1/stop-mess-around/blob/master/src/utils/default-setting/default-list.js), 新增如下网站。
 ```js
   {
