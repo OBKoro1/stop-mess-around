@@ -3,7 +3,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-17 16:17:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-12 12:57:23
+ * LastEditTime : 2022-03-12 15:58:26
  * FilePath     : /stop-mess-around/src/utils/index.js
  * Description  : 全局方法
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -31,6 +31,15 @@ class GlobalFunction {
   }
 }
 
+// 设置 更新旧的字段
+function updateOldSetting(setting, utils) {
+  console.log('update updateOldSetting')
+  if (typeof setting.showRightTip === 'boolean') {
+    setting.showRightTip = setting.showRightTip ? 'open' : 'closeRestTimeStatistics'
+    utils.updateStorageData(setting, NET.GLOBALSETTING)
+  }
+}
+
 export const utils = {
   // 本地直接跳转
   replaceUrl(url) {
@@ -49,6 +58,7 @@ export const utils = {
     const setting = await utils.getChromeStorage(NET.GLOBALSETTING) || defaultSetting
     const statisticsTime = (await utils.getChromeStorage(NET.statisticsTime)) || []
     const listArr = (await utils.getChromeStorage(NET.TABLELIST)) || []
+    updateOldSetting(setting, utils)
     return { setting, statisticsTime, listArr }
   },
   // 获取两个时间戳的差值
