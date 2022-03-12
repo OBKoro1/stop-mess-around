@@ -74,7 +74,7 @@
 
 ### 演示Gif
 
-![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/example/run-introduction.gif?raw=true)
+![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/example/run-introduction8M.gif?raw=true)
 
 ### 匹配摸鱼网址
 
@@ -124,15 +124,15 @@ PS：我以前都是用`Octotree`文件树来查看代码的，现在感觉可�
 
 ![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/feat/lookCode.jpg?raw=true)
 
+### 用爱发电，求赞助 😭
 
+开源不易，本插件的开发与维护全都是利用业余时间。
 
-### 欢迎赞助
+开源工作对我来说就是用爱发电，从18年开始在社区开源到现在，可以说基本没有收益。
 
-如果觉得插件还不错，对你有所帮助的话，就请我喝杯水吧~
+如果觉得这个效率工具还不错, 对你有所帮助，就赞助支持一下我的工作吧。
 
-十块八块不嫌多，三块五块也是爱 😘
-
-![](https://github.com/OBKoro1/koro1FileHeader/raw/master/images/money1.jpg?raw=true)
+<img src="https://raw.githubusercontent.com/OBKoro1/koro1FileHeader/dev/images/pay.jpg" alt="赞助" width="500px" style="display: block;"/>
 
 ### 我的其他开源推荐
 
@@ -145,7 +145,7 @@ PS：我以前都是用`Octotree`文件树来查看代码的，现在感觉可�
 
 自动生成头部注释以及自动更新头部注释
 
-![头部注释](https://raw.githubusercontent.com/OBKoro1/koro1FileHeader/master/images/example.gif)
+![头部注释](https://raw.githubusercontent.com/OBKoro1/koro1FileHeader/master/images/example.gif?raw=true)
 
 函数注释参数生成以及参数自动提取
 

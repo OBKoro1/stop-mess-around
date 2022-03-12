@@ -35,7 +35,7 @@
       class="dropdown-color marginRL"
       @click="openSponsorship"
     >
-      {{ '请我喝杯水吧😘' }}
+      {{ '用爱发电，求赞助😭' }}
     </el-button>
     <el-button
       type="text"
@@ -62,11 +62,19 @@
         slot="title"
         class="dialog_title"
       >
-        {{ '如果对你有帮助, 那就请我喝杯水吧😘' }}
+        {{ '求赞助' }}
       </div>
-      <span class="obkoro1-sponsorship-span">十块八块不嫌多，三块五块也是爱 😘</span>
+      <div class="dialog-font">
+        开源不易，本插件的开发与维护全都是利用业余时间。
+      </div>
+      <div class="dialog-font">
+        开源工作对我来说就是用爱发电，从18年开始在社区开源到现在，可以说基本没有收益。
+      </div>
+      <div class="dialog-font">
+        如果觉得这个效率工具还不错,对你有所帮助，就赞助支持一下吧。
+      </div>
       <img
-        src="../../../public/img/obkoro1-sponsorship.jpg"
+        src="../../../public/img/pay.jpg"
         class="obkoro1-sponsorship"
         alt=""
       >
@@ -74,9 +82,13 @@
         slot="footer"
         class="dialog-footer"
       >
-        <el-button @click="confirmSponsorship('no')">下次一定</el-button>
+        <el-button
+          :disabled="disabledSponsorship"
+          @click="confirmSponsorship('no')"
+        >下次一定</el-button>
         <el-button
           type="primary"
+          :disabled="disabledSponsorship"
           @click="confirmSponsorship('yes')"
         >请你喝了</el-button>
       </span>
@@ -91,8 +103,21 @@ export default {
   data() {
     return {
       sponsorship: false,
+      disabledSponsorship: true,
       development: false,
     }
+  },
+  watch: {
+    sponsorship(val) {
+      if (val) {
+        // 像 Tampermonkey 一样出现赞赏间隔几秒再消失
+        setTimeout(() => {
+          this.disabledSponsorship = false
+        }, 10000)
+      } else {
+        this.disabledSponsorship = true
+      }
+    },
   },
   mounted() {
     // 本地提示
@@ -138,7 +163,7 @@ export default {
       if (type === 'yes') {
         this.$notify({
           title: '感谢你的肯定',
-          message: '谢谢你请我喝水，这下我更有动力分享和开源工作了，特别爱你, 祝你天天开心，万事顺心😘',
+          message: '谢谢你的赞助，这下我更有动力坚持开源工作了，可以给你提供更好的工具了😘',
           type: 'success',
           showClose: false,
           duration: 12000,
@@ -146,7 +171,7 @@ export default {
       } else {
         this.$notify({
           title: '下次一定',
-          message: '哈哈哈, 不要紧, 我等着下次呢 😝',
+          message: '呜呜呜, 对于开源工作我只能继续爱发电了😭',
           showClose: false,
           duration: 8000,
         })
@@ -161,6 +186,11 @@ export default {
 <style scoped>
 .dropdown-color {
   color: #fff;
+}
+.dialog-font {
+  font-size: 15px;
+  line-height: 20px;
+  margin-bottom: 10px;
 }
 .header {
   padding: 10px 0 10px 15px;
