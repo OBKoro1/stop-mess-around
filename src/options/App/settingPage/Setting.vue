@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 22:45:36
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-15 13:32:45
+ * LastEditTime : 2022-03-12 15:53:48
  * FilePath     : /stop-mess-around/src/options/App/settingPage/Setting.vue
  * Description  : 全局设置
  * koroFileheader插件
@@ -168,24 +168,23 @@
         >
           <span slot="label">
             <el-tooltip
-              :content="'关闭摸鱼检测后，网站的右侧是否展示摸鱼时间以及倒计时提示'"
+              :content="'关闭摸鱼检测后，网站的右侧是否展示摸鱼提示，以及关闭右侧今日休息时间展示但仍显示倒计时和摸鱼表格'"
               placement="top"
             >
               <span>{{ '右侧摸鱼提示' }}</span>
             </el-tooltip>
           </span>
-          <el-radio
+          <el-select
             v-model="ruleForm.showRightTip"
-            :label="true"
+            class="input-width"
           >
-            {{ '开启' }}
-          </el-radio>
-          <el-radio
-            v-model="ruleForm.showRightTip"
-            :label="false"
-          >
-            {{ '关闭' }}
-          </el-radio>
+            <el-option
+              v-for="item in rightTipOptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
         </el-form-item>
         <el-form-item
           prop="matchRule"
@@ -309,6 +308,20 @@ export default {
           },
         ],
       },
+      rightTipOptions: [
+        {
+          label: '开启',
+          value: 'open',
+        },
+        {
+          label: '关闭右侧休息时间展示',
+          value: 'closeRestTimeStatistics',
+        },
+        {
+          label: '关闭',
+          value: 'close',
+        },
+      ],
       lookCodeOptions: [
         {
           label: 'github.dev',

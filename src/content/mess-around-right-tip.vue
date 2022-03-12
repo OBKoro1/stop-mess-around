@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-12-30 15:28:46
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-12 13:35:42
+ * LastEditTime : 2022-03-12 16:05:35
  * FilePath     : /stop-mess-around/src/content/mess-around-right-tip.vue
  * description  : 摸鱼网站右侧摸鱼时长统计与摸鱼倒计时提醒
  * koroFileheader VSCode插件
@@ -15,8 +15,11 @@
       class="mess-around-right-tip"
     >
       <div>休息倒计时: {{ durationFont }}</div>
-      <div>本站摸鱼时间: {{ statisticsInfo.totalSiteMessAround }}分钟 </div>
-      <div>今日总摸鱼时间: {{ statisticsInfo.totalMessAround }}分钟</div>
+      <!-- 关闭右侧展示 -->
+      <template v-if="setting.showRightTip !== 'closeRestTimeStatistics'">
+        <div>本站休息时间: {{ statisticsInfo.totalSiteMessAround }}分钟 </div>
+        <div>今日总休息时间: {{ statisticsInfo.totalMessAround }}分钟</div>
+      </template>
       <div>
         <el-link
           class="link-right"
@@ -29,7 +32,7 @@
           type="primary"
           @click="stopRest"
         >
-          停止摸鱼
+          停止休息
         </el-link>
       </div>
     </div>
@@ -121,11 +124,12 @@ export default {
         this.clearInterval()
       }
       const { openTime } = utils.getItemCloseCheckTime(this.matchItem, this.setting)
-      this.durationFontInterval = setInterval(() => {
+      this.durationFontInterval = setInterval(async () => {
         const duration = dayjs.duration(dayjs(openTime) - dayjs())
         const hours = duration.hours()
         const minutes = duration.minutes()
         const seconds = duration.seconds()
+        this.setting = await utils.getChromeStorage(NET.GLOBALSETTING)
         this.durationFont = getCountDown(hours, minutes, seconds)
         if (hours <= 0 && minutes <= 0 && seconds <= 0) {
           this.clearInterval()
@@ -182,7 +186,7 @@ export default {
 .mess-around-right-tip{
     background: #ffd966;
     border-radius: 5px 0 0 5px;
-    padding: 8px 4px;
+    padding: 12px 16px;
     position: fixed;
     right: 0;
     top: 65%;

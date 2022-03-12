@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-12-29 15:09:18
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-12 13:24:03
+ * LastEditTime : 2022-03-12 16:43:14
  * description  : 网站摸鱼近百日摸鱼时长统计
 -->
 <template>
@@ -12,6 +12,18 @@
     :visible.sync="dialogVisible"
     width="70%"
   >
+    <div
+      slot="title"
+      class="title-class"
+    >
+      <span class="el-dialog__title">近百日摸鱼时长统计</span>
+      <img
+        alt="GitHub Repo stars"
+        class="header-btns-star cursor-pointer title-img"
+        src="https://img.shields.io/github/stars/OBKoro1/stop-mess-around?style=social"
+        @click="jump"
+      >
+    </div>
     <div class="random-content">
       <el-table
         :data="statisticsTimeArr"
@@ -159,6 +171,9 @@ export default {
     },
   },
   methods: {
+    jump() {
+      utils.jumpUrl(NET.GITHUBREPO)
+    },
     async initStatics() {
       this.statisticsTimeArr = await utils.getChromeStorage(NET.statisticsTime)
       // 按照消耗时间进行排序
@@ -171,6 +186,13 @@ export default {
 </script>
 
 <style scoped>
+.title-class {
+  display: flex;
+  align-items: center;
+}
+.title-img {
+  margin-left: 10px;
+}
 .dialog-class {
   z-index: 2147483647 !important;
 }

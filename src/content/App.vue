@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-12 14:44:53
+ * LastEditTime : 2022-03-12 15:58:59
  * FilePath     : /stop-mess-around/src/content/App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
@@ -74,7 +74,7 @@
     <LookCode1sVue />
     <!-- 右侧的摸鱼时长与摸鱼倒计时统计提醒 -->
     <MessAroundRightTipVue
-      v-show="Setting.showRightTip"
+      v-show="Setting.showRightTip !== 'close'"
       :dialog-tip-visible="dialogVisible"
       :statistics-info="statisticsInfo"
       @openAgain="openAgain"
