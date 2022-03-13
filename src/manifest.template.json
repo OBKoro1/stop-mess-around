@@ -5,11 +5,7 @@
   "description": "{{DESCRIPTION}}",
   "options_page": "options.html",
   "short_name": "StopMessAround",
-  "author": {
-    "name": "OBKoro1",
-    "email": "obkoro1@foxmail.com",
-    "url": "http://obkoro1.com/web_accumulate/"
-  },
+  "author": "obkoro1@foxmail.com",
   "homepage_url": "https://github.com/OBKoro1/stop-mess-around",
   "background": {
     "scripts": ["js/background.js"]
@@ -24,12 +20,7 @@
     "48": "img/48.png",
     "128": "img/48.png"
   },
-  "permissions": [
-    "tabs",
-    "storage",
-    "http://*/*", 
-		"https://*/*"
-  ],
+  "permissions": ["tabs", "storage", "http://*/*", "https://*/*"],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "content_scripts": [
     {
@@ -39,7 +30,7 @@
       "run_at": "document_end"
     }
   ],
-  "omnibox": { "keyword" : "stop mess around" },
+  "omnibox": { "keyword": "stopmessaround" },
   "offline_enabled": true,
   "web_accessible_resources": ["fonts/*.*"],
   "default_locale": "zh_CN"

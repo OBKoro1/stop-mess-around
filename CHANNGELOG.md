@@ -9,14 +9,21 @@
 [release](https://github.com/OBKoro1/stop-mess-around/releases)卸载重新安装。
 [chrome商店更新](https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN)
 
-<!-- TODO: 提供一个选项直接关闭，或者跳转到其他页面（取决于配置），这种形式更能避免摸鱼 浪费时间、 -->
-<!-- TODO: 右侧摸鱼文字选择 是否出现，是否出现今日摸鱼时间、今日总摸鱼时间 -->
-<!-- TODO: 在content页面 提供一个跳转管理面板的按钮，提供一个仓库按钮 求Star -->
+<!-- TODO: 更新语录，更新读书笔记中的语录 -->
 
-### [V1.2.1]
+### [V1.3.0]
 
+* feat: 提供一键复制插件配置数据，方便用户反馈插件问题
+* feat: 清空励志语录信息和还原默认励志语录
+* feat: 摸鱼提醒倒计时的三种状态: `开启`、`关闭右侧休息时间展示`、`关闭`。
 
-* docs: 更新文档。
+开启和关闭就是,是否显示下图内容：
+![](https://github.com/OBKoro1/stop-mess-around/raw/dev/static/feat/restTipTime.jpg?raw=true)
+
+`关闭右侧休息时间展示`如下图，取消了今日本站休息时间与总休息时间展示：
+
+![](https://github.com/OBKoro1/stop-mess-around/raw/dev/static/feat/closeRestTimeStatistics.jpeg?raw=true)
+
 * chore: 更新[插件励志语录](https://github.dev/OBKoro1/stop-mess-around/blob/8f40ff0f9138398b1199d977461e6305033d8f81/src/utils/default-setting/tip-arr.js#L8)。
     * 你总觉得还有时间，这就是问题所在
 * chore: 更新[摸鱼网站列表](https://github.com/OBKoro1/stop-mess-around/blob/master/src/utils/default-setting/default-list.js), 新增如下网站。
@@ -26,6 +33,9 @@
     labelName: '虎牙录播',
   },
 ```
+* feat: 更新Github仓库在线VSCode快速查看使用`github1s.com`, 因为`github1s`能够更快的访问
+* docs: 提示信息改为励志信息。
+* docs: 更新issue规范
 
 ### [V1.2.0]
 
@@ -35,6 +45,9 @@
 ![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/feat/restTipTime.jpg?raw=true)
 
 * feat: [Github仓库使用在线VSCode快速查看仓库代码](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%8A%9F%E8%83%BD%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#github%E4%BB%93%E5%BA%93%E9%A1%B5%E9%9D%A2%E5%BF%AB%E9%80%9F%E6%9F%A5%E7%9C%8B%E4%BB%93%E5%BA%93%E4%BB%A3%E7%A0%81)
+
+![](https://github.com/OBKoro1/stop-mess-around/raw/dev/static/feat/lookCode.jpg?raw=true)
+
 * fix: 修复在某些网站(B站)下,摸鱼提示弹窗`z-index`不够的问题。
 * fix: 修复popup的跳转问题。
 * chore: 更新[摸鱼网站列表](https://github.com/OBKoro1/stop-mess-around/blob/master/src/utils/Default.js), 新增如下网站。
