@@ -15,7 +15,7 @@
 
 * feat: 清空励志语录信息和还原默认励志语录
 
-![](https://github.com/OBKoro1/stop-mess-around/raw/dev/static/feat/clearList.jpg?raw=true)
+![](https://github.com/OBKoro1/stop-mess-around/raw/dev/static/feat/clearList.jpeg?raw=true)
 
 * feat: 摸鱼提醒倒计时的三种状态: `开启`、`关闭右侧休息时间展示`、`关闭`。
 
