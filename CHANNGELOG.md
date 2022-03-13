@@ -13,11 +13,14 @@
 
 ### [V1.3.0]
 
-* feat: 提供一键复制插件配置数据，方便用户反馈插件问题
 * feat: 清空励志语录信息和还原默认励志语录
+
+![](https://github.com/OBKoro1/stop-mess-around/raw/dev/static/feat/clearList.jpg?raw=true)
+
 * feat: 摸鱼提醒倒计时的三种状态: `开启`、`关闭右侧休息时间展示`、`关闭`。
 
 开启和关闭就是,是否显示下图内容：
+
 ![](https://github.com/OBKoro1/stop-mess-around/raw/dev/static/feat/restTipTime.jpg?raw=true)
 
 `关闭右侧休息时间展示`如下图，取消了今日本站休息时间与总休息时间展示：
@@ -25,7 +28,6 @@
 ![](https://github.com/OBKoro1/stop-mess-around/raw/dev/static/feat/closeRestTimeStatistics.jpeg?raw=true)
 
 * chore: 更新[插件励志语录](https://github.dev/OBKoro1/stop-mess-around/blob/8f40ff0f9138398b1199d977461e6305033d8f81/src/utils/default-setting/tip-arr.js#L8)。
-    * 你总觉得还有时间，这就是问题所在
 * chore: 更新[摸鱼网站列表](https://github.com/OBKoro1/stop-mess-around/blob/master/src/utils/default-setting/default-list.js), 新增如下网站。
 ```js
   {
@@ -33,6 +35,10 @@
     labelName: '虎牙录播',
   },
 ```
+* feat: 提供一键复制插件配置数据，方便用户反馈插件问题
+
+<img src="https://github.com/OBKoro1/stop-mess-around/raw/dev/static/feat/getData.jpeg" alt="赞助" width="300px"/>
+
 * feat: 更新Github仓库在线VSCode快速查看使用`github1s.com`, 因为`github1s`能够更快的访问
 * docs: 提示信息改为励志信息。
 * docs: 更新issue规范

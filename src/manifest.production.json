@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "stop-mess-around-file",
-  "version": "1.2.1",
-  "description": "file: 减少摸鱼的时间和频率的Chrome插件：提醒你正在摸鱼，摸鱼的时候知道自己在摸鱼，提高我们上班和学习的效率，节省时间用于学习提升自己或者享受生活",
+  "name": "stop-mess-around",
+  "version": "1.3.0",
+  "description": "减少摸鱼的时间和频率的Chrome插件：提醒你正在摸鱼，摸鱼的时候知道自己在摸鱼，提高我们上班和学习的效率，节省时间用于学习提升自己或者享受生活",
   "options_page": "options.html",
   "short_name": "StopMessAround",
   "author": "obkoro1@foxmail.com",
@@ -12,7 +12,7 @@
   },
   "browser_action": {
     "default_icon": "img/48.png",
-    "default_title": "file: 减少摸鱼的时间和频率的Chrome插件：提醒你正在摸鱼，摸鱼的时候知道自己在摸鱼，提高我们上班和学习的效率，节省时间用于学习提升自己或者享受生活",
+    "default_title": "减少摸鱼的时间和频率的Chrome插件：提醒你正在摸鱼，摸鱼的时候知道自己在摸鱼，提高我们上班和学习的效率，节省时间用于学习提升自己或者享受生活",
     "default_popup": "popup.html"
   },
   "icons": {
