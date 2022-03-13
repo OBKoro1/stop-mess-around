@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 22:45:36
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-03-12 15:53:48
+ * LastEditTime : 2022-03-13 18:01:04
  * FilePath     : /stop-mess-around/src/options/App/settingPage/Setting.vue
  * Description  : 全局设置
  * koroFileheader插件
@@ -216,7 +216,7 @@
               :content="'一键恢复默认设置。'"
               placement="top"
             >
-              <span>{{ '重置' }}</span>
+              <span>{{ '重置插件数据' }}</span>
             </el-tooltip>
           </span>
           <el-popconfirm
@@ -257,6 +257,31 @@
               重置摸鱼统计
             </el-button>
           </el-popconfirm>
+        </el-form-item>
+        <el-form-item prop="feedback">
+          <span slot="label">
+            <el-tooltip
+              :content="'复制参数，用于去Github提issue'"
+              placement="top"
+            >
+              <span>{{ '反馈问题' }}</span>
+            </el-tooltip>
+          </span>
+          <el-button
+            class="button-margin-right"
+            size="small"
+            type="primary"
+            @click="copyPluginData"
+          >
+            复制插件数据
+          </el-button>
+          <el-button
+            class="button-margin-right"
+            size="small"
+            @click="utils.jumpUrl(NET.GITHUB_REPO_ISSUES)"
+          >
+            跳转反馈问题
+          </el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -357,6 +382,30 @@ export default {
     },
   },
   methods: {
+    // 复制插件配置 去反馈问题
+    async copyPluginData() {
+      const obj = await this.utils.getData()
+      const text = JSON.stringify(obj, null, 2)
+      if (navigator.clipboard) {
+        // clipboard api 复制
+        navigator.clipboard.writeText(text)
+      } else {
+        const textarea = document.createElement('textarea')
+        document.body.appendChild(textarea)
+        // 隐藏此输入框
+        textarea.style.position = 'fixed'
+        textarea.style.clip = 'rect(0 0 0 0)'
+        textarea.style.top = '10px'
+        // 赋值
+        textarea.value = text
+        // 选中
+        textarea.select()
+        // 复制
+        document.execCommand('copy', true)
+        // 移除输入框
+        document.body.removeChild(textarea)
+      }
+    },
     close() {
       this.$emit('close', 'showSetting', false)
     },
