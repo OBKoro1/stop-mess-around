@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-03-12 15:58:59
+ * LastEditTime : 2022-03-13 15:52:12
  * FilePath     : /stop-mess-around/src/content/App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
@@ -171,7 +171,7 @@ export default {
     getRandomTip(typeName) {
       const len = this.Setting[typeName].length
       const count = Math.floor(Math.random() * len)
-      return `${this.Setting[typeName][count]}`
+      return this.Setting[typeName][count]
     },
 
     /**
@@ -183,10 +183,10 @@ export default {
         // 使用item的tip 如果点击更新提示 则使用默认提示
         this.info.tip = item.tip
       } else {
-        this.info.tip = this.getRandomTip('tipArr')
+        this.info.tip = this.getRandomTip('tipArr') || '刻意练习的四要素: 定义明确的目标，极度的专注，有效的反馈，在拉伸区练习。'
       }
-      this.info.title = this.getRandomTip('titleArr')
-      this.info.confirmBtn = this.getRandomTip('confirmArr')
+      this.info.title = this.getRandomTip('titleArr') || '没有所谓的天才'
+      this.info.confirmBtn = this.getRandomTip('confirmArr') || '科学的投入'
     },
 
     /**

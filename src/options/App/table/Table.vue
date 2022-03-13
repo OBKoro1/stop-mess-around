@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-24 11:02:13
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-12 12:48:50
+ * LastEditTime : 2022-03-13 15:58:00
  * FilePath     : /stop-mess-around/src/options/App/table/Table.vue
  * Description  : 表格
  * koroFileheader插件
@@ -255,7 +255,7 @@ export default {
       }
       const len = this.setting.tipArr.length
       const count = Math.floor(Math.random() * len)
-      const res = `${this.setting.tipArr[count]}`
+      const res = this.setting.tipArr[count] || '刻意练习的四要素: 定义明确的目标，极度的专注，有效的反馈，在拉伸区练习。'
       randomIndexFont[row.site] = res
       return res
     },
