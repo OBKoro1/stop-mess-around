@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 14:24:51
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-12 14:11:06
+ * LastEditTime : 2022-03-13 17:49:43
  * FilePath     : /stop-mess-around/src/options/App/settingPage/SetPage.vue
  * Description  : 设置按钮列表
  * koroFileheader插件
@@ -39,7 +39,7 @@
         round
         @click="checkoutFn('showTip', true)"
       >
-        {{ '随机内卷语录' }}
+        {{ '励志语录' }}
       </el-button>
       <el-button
         type="primary"

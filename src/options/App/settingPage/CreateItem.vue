@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 15:18:00
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-12 15:06:40
+ * LastEditTime : 2022-03-13 17:49:40
  * FilePath     : /stop-mess-around/src/options/App/settingPage/CreateItem.vue
  * Description  : 新增摸鱼网站
  * koroFileheader插件
@@ -55,16 +55,16 @@
         <el-form-item prop="tip">
           <span slot="label">
             <el-tooltip
-              :content="'匹配到摸鱼网站时显示的提示信息'"
+              :content="'匹配到摸鱼网站时显示的励志语录'"
               placement="top"
             >
-              <span>{{ '内卷提示' }}</span>
+              <span>{{ '励志语录' }}</span>
             </el-tooltip>
           </span>
           <el-input
             v-model="ruleForm.tip"
             class="input-class"
-            :placeholder="'为空则为随机内卷提示'"
+            :placeholder="'为空则为随机励志语录'"
           />
         </el-form-item>
         <el-form-item prop="time">
@@ -228,7 +228,7 @@ export default {
           },
         ],
         tip: [
-          { message: '请输入内卷提示', trigger: 'blur' },
+          { message: '请输入励志语录', trigger: 'blur' },
         ],
         jumpUrl: [
           { required: true, message: '请输入跳转网址', trigger: 'blur' },

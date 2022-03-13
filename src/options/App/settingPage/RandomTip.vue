@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 15:14:20
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-03-13 15:11:20
+ * LastEditTime : 2022-03-13 17:53:34
  * FilePath     : /stop-mess-around/src/options/App/settingPage/RandomTip.vue
  * Description  : 内卷随机提示增删改查
  * koroFileheader插件
@@ -13,12 +13,12 @@
   <el-dialog
     :visible.sync="dialogVisible"
     :before-close="closeBefore"
-    title="关闭页面时出现的随机语录"
+    title="匹配摸鱼网站时出现的激励信息"
     width="550px"
   >
     <el-tabs v-model="activeName">
       <el-tab-pane
-        label="随机内容"
+        label="随机励志语录"
         name="tipArr"
       >
         <div class="random-content">
@@ -67,7 +67,7 @@
         </div>
       </el-tab-pane>
       <el-tab-pane
-        label="随机标题"
+        label="随机励志标题"
         name="titleArr"
       >
         <div class="random-content">
@@ -116,7 +116,7 @@
         </div>
       </el-tab-pane>
       <el-tab-pane
-        label="随机按钮"
+        label="随机励志按钮"
         name="confirmArr"
       >
         <div class="random-content">
@@ -170,13 +170,13 @@
       >
         <el-radio-group v-model="radio">
           <el-radio label="tipArr">
-            添加内容
+            添加励志语录
           </el-radio>
           <el-radio label="titleArr">
-            添加标题
+            添加励志标题
           </el-radio>
           <el-radio label="confirmArr">
-            添加按钮
+            添加励志按钮
           </el-radio>
         </el-radio-group>
         <el-input
@@ -275,11 +275,11 @@ export default {
     },
     showTabFont() {
       if (this.activeName === 'tipArr') {
-        return '随机内容'
+        return '随机励志语录'
       } if (this.activeName === 'titleArr') {
-        return '随机标题'
+        return '随机励志标题'
       } if (this.activeName === 'confirmArr') {
-        return '随机按钮'
+        return '随机励志按钮'
       }
       return ''
     },
