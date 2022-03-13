@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2022-01-12 14:16:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-12 14:18:53
+ * LastEditTime : 2022-03-13 14:59:01
  * FilePath     : /stop-mess-around/src/utils/default-setting/title-arr.js
  * description  : 默认标题随机提示数组
  * koroFileheader VSCode插件
@@ -22,4 +22,5 @@ export const titleArr = [
   '不经一番寒彻骨，怎得梅花扑鼻香？',
   '玉不琢，不成器',
   '日积月累',
+  '没有所谓的天才',
 ]

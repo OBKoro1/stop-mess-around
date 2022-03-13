@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2022-01-12 14:16:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-24 01:18:11
+ * LastEditTime : 2022-03-12 20:57:02
  * FilePath     : /stop-mess-around/src/utils/default-setting/default-list.js
  * description  : 默认摸鱼网站列表
  * koroFileheader VSCode插件
@@ -24,7 +24,6 @@ export const defaultList = [
   {
     site: 'https://www.zhihu.com/',
     labelName: '知乎首页',
-    // 下意识打开首页进行摸鱼 但是搜索和通过百度查找相关资料不应该被屏蔽
     matchRule: 'strict',
   },
   {
