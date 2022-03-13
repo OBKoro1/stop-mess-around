@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 15:14:20
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-12-29 15:32:26
+ * LastEditTime : 2022-03-13 15:11:20
  * FilePath     : /stop-mess-around/src/options/App/settingPage/RandomTip.vue
  * Description  : 内卷随机提示增删改查
  * koroFileheader插件
@@ -194,12 +194,25 @@
         </el-button>
       </el-tab-pane>
     </el-tabs>
-    <span
+    <div
       slot="footer"
       class="dialog-footer"
     >
-      <el-button @click="close">关 闭</el-button>
-    </span>
+      <el-button
+        v-if="showTabFont"
+        type="danger"
+        @click="clearListFn"
+      >
+        清空所有{{ showTabFont }}
+      </el-button>
+      <el-button
+        v-if="showTabFont"
+        type="danger"
+        @click="setDefaultSetting"
+      >
+        还原默认{{ showTabFont }}设置
+      </el-button>
+    </div>
     <el-dialog
       width="30%"
       title="编辑"
@@ -224,6 +237,7 @@
 </template>
 
 <script>
+import { defaultSetting } from '@/utils/Default'
 
 export default {
   props: {
@@ -259,6 +273,16 @@ export default {
         this.close()
       },
     },
+    showTabFont() {
+      if (this.activeName === 'tipArr') {
+        return '随机内容'
+      } if (this.activeName === 'titleArr') {
+        return '随机标题'
+      } if (this.activeName === 'confirmArr') {
+        return '随机按钮'
+      }
+      return ''
+    },
   },
   watch: {
     // 初始化数据
@@ -269,6 +293,18 @@ export default {
     },
   },
   methods: {
+    setDefaultSetting() {
+      const arr = defaultSetting[this.activeName]
+      this.updateSettingArr(arr, this.activeName)
+      this.$message.success(`还原默认${this.showTabFont}设置成功`)
+      this.syncData()
+    },
+    // 清空设置
+    clearListFn() {
+      this.updateSettingArr([], this.activeName)
+      this.$message.success(`清空${this.showTabFont}设置成功`)
+      this.syncData()
+    },
     syncData() {
       this.setting = this.getSetting()
       this.setSort('titleArr')
