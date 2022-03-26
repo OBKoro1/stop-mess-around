@@ -9,7 +9,7 @@
 [release](https://github.com/OBKoro1/stop-mess-around/releases)卸载重新安装。
 [chrome商店更新](https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN)
 
-<!-- TODO: 更新语录，更新读书笔记中的语录 -->
+<!-- TODO: 更新语录，更新读书笔记中的语录  -->
 
 ### [V1.3.0]
 
