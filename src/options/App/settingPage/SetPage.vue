@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 14:24:51
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-03-13 17:49:43
+ * LastEditTime : 2022-04-09 15:05:48
  * FilePath     : /stop-mess-around/src/options/App/settingPage/SetPage.vue
  * Description  : 设置按钮列表
  * koroFileheader插件
@@ -62,6 +62,15 @@
       >
         摸鱼时长统计
       </el-button>
+
+      <el-button
+        v-if="serve"
+        type="primary"
+        round
+        @click="checkoutFn('showServeDialog', true)"
+      >
+        serve调试
+      </el-button>
       <!-- 新增摸鱼网站 -->
       <CreateItem
         :show-create-item="showCreateItem"
@@ -87,6 +96,10 @@
         :show-statistics="showStatistics"
         @close="checkoutFn"
       />
+      <ServeDebugger
+        :show-serve-dialog="showServeDialog"
+        @close="checkoutFn"
+      />
     </div>
   </div>
 </template>
@@ -96,6 +109,7 @@ import CreateItem from './CreateItem.vue'
 import Setting from './Setting.vue'
 import BatchItem from './BatchItem.vue'
 import RandomTip from './RandomTip.vue'
+import ServeDebugger from './serve.vue'
 import RestStatistics from '../../../components/rest-statistics.vue'
 
 export default {
@@ -107,6 +121,7 @@ export default {
     BatchItem,
     RandomTip,
     RestStatistics,
+    ServeDebugger,
   },
   props: {
     open: {
@@ -122,6 +137,8 @@ export default {
       showBatchItem: false,
       showTip: false,
       showStatistics: false,
+      showServeDialog: false,
+      serve: false, // 本地开发
     }
   },
   computed: {
@@ -130,6 +147,9 @@ export default {
     },
   },
   async mounted() {
+    if (process.env.VUE_APP_MODE === 'serve') {
+      this.serve = true
+    }
     // 没有数据 默认打开摸鱼网站列表
     const { listArr } = await this.utils.getData()
     if (listArr.length === 0) {

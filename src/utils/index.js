@@ -3,7 +3,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-17 16:17:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-03-12 15:58:26
+ * LastEditTime : 2022-04-09 14:52:29
  * FilePath     : /stop-mess-around/src/utils/index.js
  * Description  : 全局方法
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -99,23 +99,6 @@ export const utils = {
     return chrome.i18n.getMessage(name)
   },
   /**
-   * @description 获取storage数据
-   * @param * key
-   * @return {value}
-   */
-  getChromeStorage(key) {
-    return new Promise((resolve) => {
-      chrome.storage.sync.get(key, (res) => {
-        let result = res[key]
-        // 取到值 则还原给数组/对象 抛出去 否则就抛出去undefined
-        if (result !== undefined) {
-          result = JSON.parse(result)
-        }
-        resolve(result)
-      })
-    })
-  },
-  /**
      * @description 检测当前网站地址是否匹配到列表
      * @param * tableArr  摸鱼网站列表
      * @param * url  检测的地址
@@ -145,6 +128,23 @@ export const utils = {
     }
     // 没匹配到
     return false
+  },
+  /**
+   * @description 获取storage数据
+   * @param * key
+   * @return {value}
+   */
+  getChromeStorage(key) {
+    return new Promise((resolve) => {
+      chrome.storage.sync.get(key, (res) => {
+        let result = res[key]
+        // 取到值 则还原给数组/对象 抛出去 否则就抛出去undefined
+        if (result !== undefined) {
+          result = JSON.parse(result)
+        }
+        resolve(result)
+      })
+    })
   },
   // 更新数据
   updateStorageData(val, key) {

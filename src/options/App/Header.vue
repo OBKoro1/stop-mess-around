@@ -113,7 +113,7 @@ export default {
         // 像 Tampermonkey 一样出现赞赏间隔几秒再消失
         setTimeout(() => {
           this.disabledSponsorship = false
-        }, 10000)
+        }, 5000)
       } else {
         this.disabledSponsorship = true
       }

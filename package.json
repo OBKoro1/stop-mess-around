@@ -19,7 +19,7 @@
     "email": "obkoro1@foxmail.com"
   },
   "scripts": {
-    "serve": "node deploy.js development && vue-cli-service build-watch",
+    "serve": "node deploy.js development && vue-cli-service build-watch --mode serve",
     "build-plugin": "node deploy.js production  && vue-cli-service build",
     "build-release": "node deploy.js development && vue-cli-service build --mode development",
     "lint": "eslint --ext .js,.vue src --fix",
