@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-28 16:02:26
  * LastEditors  : OBKoro1
- * LastEditTime : 2021-10-29 18:13:19
+ * LastEditTime : 2022-04-17 17:22:20
  * FilePath     : /stop-mess-around/src/options/App/settingPage/BatchItem.vue
  * Description  : 摸鱼列表 批量添加
  * koroFileheader插件
@@ -19,39 +19,53 @@
     >
       {{ '摸鱼网站列表添加' }}
     </div>
-    <div class="random-content">
-      <el-table
-        :data="showList"
-        tooltip-effect="dark"
-        stripe
-        row-key="site"
-        max-height="1000"
-        style="width: 100%"
-        @selection-change="handleSelectionChange"
+    <div>
+      <div
+        v-if="showCopyData"
+        class="jump-setTing"
       >
-        <el-table-column
-          type="selection"
-          width="55"
-        />
-        <el-table-column
-          prop="labelName"
-          width="150"
-          show-overflow-tooltip
+        <el-button
+          plain
+          type="danger"
+          @click="copyDataFn"
         >
-          <template slot="header">
-            <span>{{ '摸鱼网站名' }}</span>
-          </template>
-        </el-table-column>
-        <el-table-column
-          prop="site"
-          width="270"
-          show-overflow-tooltip
+          跳转复制插件数据到本地
+        </el-button>
+      </div>
+      <div class="random-content">
+        <el-table
+          :data="showList"
+          tooltip-effect="dark"
+          stripe
+          row-key="site"
+          max-height="1000"
+          style="width: 100%"
+          @selection-change="handleSelectionChange"
         >
-          <template slot="header">
-            <span>{{ '摸鱼网址' }}</span>
-          </template>
-        </el-table-column>
-      </el-table>
+          <el-table-column
+            type="selection"
+            width="55"
+          />
+          <el-table-column
+            prop="labelName"
+            width="150"
+            show-overflow-tooltip
+          >
+            <template slot="header">
+              <span>{{ '摸鱼网站名' }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column
+            prop="site"
+            width="270"
+            show-overflow-tooltip
+          >
+            <template slot="header">
+              <span>{{ '摸鱼网址' }}</span>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
     </div>
     <span
       slot="footer"
@@ -83,6 +97,7 @@ export default {
       showList: [],
       chooseList: [],
       tableArr: [],
+      showCopyData: false,
     }
   },
   inject: ['tableDataSpliceUpdate', 'getTableData', 'getSetting'],
@@ -102,12 +117,24 @@ export default {
       if (val) {
         this.chooseList = []
         this.tableArr = this.getTableData()
+        console.log('this', this.tableArr)
+        if (this.tableArr.length === 0) {
+          this.showCopyData = true
+        } else {
+          this.showCopyData = false
+        }
         const arr = this.filterArrFn(this.tableArr)
         this.showList = this.mapSetting(arr)
       }
     },
   },
   methods: {
+    copyDataFn() {
+      this.$emit('close', 'showBatchItem', false)
+      this.$nextTick(() => {
+        this.$emit('showCopyDataFn')
+      })
+    },
     close() {
       this.$emit('close', 'showBatchItem', false)
     },
@@ -139,7 +166,6 @@ export default {
       this.tableArr = this.getTableData()
       return arr.filter((item) => {
         const find = this.tableArr.find((ele) => item.site === ele.site)
-        console.log('find', find)
         return find === undefined
       })
     },

@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2022-01-07 16:43:58
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-12 14:14:19
+ * LastEditTime : 2022-04-09 20:50:46
  * FilePath     : /stop-mess-around/src/utils/allAction.js
  * description  : 一键开启、一键关闭
  * koroFileheader VSCode插件
@@ -29,6 +29,7 @@ class AllAction {
     return { tableArr: this.tableArr, statisticsTime: this.statisticsTime, setting: this.setting }
   }
 
+  // 关闭网站检测 摸鱼休息
   async AllCloseCheck() {
     const options = {
       item: null,
@@ -49,20 +50,48 @@ class AllAction {
   }
 
   // 打开全局摸鱼检测 设置今日摸鱼时间
-  setGlobalSiteTouchFish() {
-    let bigEndTime = 0
-    for (const item of this.tableArr.values()) {
-      item.restTime = 0 // 全局关闭 使用默认开启设置 不是休息
+  async setGlobalSiteTouchFish() {
+    let bigEndTime = 0 // 获取全局摸鱼状态checkoutStudy 的最远时间
+    let restTime = 0 // 当前网站已经在摸鱼状态了 收集休息时间
+    for (const [index, item] of this.tableArr.entries()) {
+      const copyItem = JSON.parse(JSON.stringify(item))
+      item.restTime = 0
+      if (restTime < (item.restTime || 0)) restTime = item.restTime
       const { openTime } = utils.getItemCloseCheckTime(item, this.setting)
-      if (bigEndTime < openTime) bigEndTime = openTime
+      if (bigEndTime < openTime) bigEndTime = openTime // 最远摸鱼时间
+      if (!item.open) continue
+      // 已经关闭摸鱼检测的 将其开启，返回网站摸鱼统计
+      const options = {
+        setting: this.setting,
+        tableArr: this.tableArr,
+        statisticsTime: this.statisticsTime,
+        item: copyItem,
+      }
+      // eslint-disable-next-line no-await-in-loop
+      const { item: newItem } = await utils.openCheck(options)
+      this.tableArr[index] = newItem
     }
-    this.setting.todayGlobalTouchFish = bigEndTime
-    const minutes = utils.getMoreDiff(bigEndTime, Date.now(), true)
+    let minutes = 0
     const nowDay = this.statisticsTime[0]
-    nowDay.time += minutes
+    if (bigEndTime < restTime) {
+      // 判断当前摸鱼状态是否比全局时间长 如果长的话 需要返回
+      minutes = utils.getMoreDiff(restTime, bigEndTime, true)
+      nowDay.time -= minutes
+    } else if (restTime !== 0) {
+      // 之前摸鱼网站有值 但是不到全局的时间 补一些时间
+      const restDate = Date.now() + restTime * 60 * 1000
+      minutes = utils.getMoreDiff(bigEndTime, restDate, true)
+      nowDay.time += minutes
+    } else {
+      // 之前没有网站开始摸鱼 没值 直接增加全局时间
+      minutes = utils.getMoreDiff(bigEndTime, Date.now(), true)
+      nowDay.time += minutes
+    }
+    this.setting.todayGlobalTouchFish = bigEndTime // 全局最远摸鱼时间是全局的时间
     this.statisticsTime[0] = nowDay
   }
 
+  // 打开检测 弹窗提醒
   async AllOpenCheck() {
     const options = {
       item: null,

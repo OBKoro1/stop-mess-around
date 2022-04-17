@@ -1,16 +1,16 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "stop-mess-around",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "减少摸鱼的时间和频率的Chrome插件：提醒你正在摸鱼，摸鱼的时候知道自己在摸鱼，提高我们上班和学习的效率，节省时间用于学习提升自己或者享受生活",
   "options_page": "options.html",
   "short_name": "StopMessAround",
   "author": "obkoro1@foxmail.com",
   "homepage_url": "https://github.com/OBKoro1/stop-mess-around",
   "background": {
-    "scripts": ["js/background.js"]
+    "service_worker": "background.js"
   },
-  "browser_action": {
+  "action": {
     "default_icon": "img/48.png",
     "default_title": "减少摸鱼的时间和频率的Chrome插件：提醒你正在摸鱼，摸鱼的时候知道自己在摸鱼，提高我们上班和学习的效率，节省时间用于学习提升自己或者享受生活",
     "default_popup": "popup.html"
@@ -20,18 +20,26 @@
     "48": "img/48.png",
     "128": "img/48.png"
   },
-  "permissions": ["tabs", "storage", "http://*/*", "https://*/*"],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "host_permissions": ["<all_urls>"],
+  "permissions": ["tabs", "storage"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "css": ["css/content.css"],
-      "js": ["js/content.js"],
+      "js": ["content.js"],
       "run_at": "document_end"
     }
   ],
   "omnibox": { "keyword": "stopmessaround" },
   "offline_enabled": true,
-  "web_accessible_resources": ["fonts/*.*"],
+  "web_accessible_resources": [
+    {
+      "resources": ["fonts/element-icons.tff", "fonts/element-icons.woff"],
+      "matches": ["<all_urls>", "https://juejin.cn/*"]
+    }
+  ],
   "default_locale": "zh_CN"
 }

@@ -3,7 +3,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-17 16:17:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-04-09 14:52:29
+ * LastEditTime : 2022-04-16 20:12:46
  * FilePath     : /stop-mess-around/src/utils/index.js
  * Description  : 全局方法
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -31,9 +31,13 @@ class GlobalFunction {
   }
 }
 
-// 设置 更新旧的字段
+/**
+ * @description: 设置 更新旧的字段
+ * @param {type} setting
+ * @param {type} utils
+ * @return {type}
+ */
 function updateOldSetting(setting, utils) {
-  console.log('update updateOldSetting')
   if (typeof setting.showRightTip === 'boolean') {
     setting.showRightTip = setting.showRightTip ? 'open' : 'closeRestTimeStatistics'
     utils.updateStorageData(setting, NET.GLOBALSETTING)
@@ -41,19 +45,33 @@ function updateOldSetting(setting, utils) {
 }
 
 export const utils = {
-  // 本地直接跳转
-  replaceUrl(url) {
-    window.open(url, 'target')
-  },
-  // 打开新页面
+  /**
+   * @description: 打开新页面
+   * @param {type} url
+   */
   jumpUrl(url) {
-    window.open(url, '_blank')
+    chrome.tabs.create({
+      url,
+    })
   },
+  /**
+   * @description: 关闭网站检测，摸鱼休息
+   * @param {type}
+   * @return {type}
+   */
   closeCheck: CloseCheckInstanceRun,
+  /**
+   * @description: 开启网站检测，弹窗提示
+   * @param {type}
+   * @return {type}
+   */
   openCheck: OpenCheckInstanceRun,
   openCheckAll: AllActionInstanceRun,
   closeCheckAll: AllActionInstanceRun,
-  // 获取数据
+  /**
+   * @description: 获取插件数据
+   * @return {object} { setting, statisticsTime,  listArr }
+   */
   async getData() {
     const setting = await utils.getChromeStorage(NET.GLOBALSETTING) || defaultSetting
     const statisticsTime = (await utils.getChromeStorage(NET.statisticsTime)) || []
@@ -61,7 +79,13 @@ export const utils = {
     updateOldSetting(setting, utils)
     return { setting, statisticsTime, listArr }
   },
-  // 获取两个时间戳的差值
+  /**
+   * @description: 获取两个时间戳的差值
+   * @param {type} lastTime
+   * @param {type} startTime
+   * @param {type} getSeconds 一秒算不算一分钟
+   * @return {type} minutes
+   */
   getMoreDiff(lastTime, startTime, getSeconds = false) {
     const duration = dayjs.duration(lastTime - startTime)
     const hours = duration.hours()
@@ -72,9 +96,16 @@ export const utils = {
       if (seconds > 0) minutes += 1
     }
     if (hours > 0) minutes += hours * 60
+    // 兜底 当突然关闭等情况 导致lastTime和startTime数值不对 diff为0
+    if (minutes < 0) minutes = 0
     return minutes
   },
-  // 获取一个item打开检测的时间戳和休息的分钟数
+  /**
+   * @description: 获取一个item打开检测 弹窗提醒的时间戳和休息的分钟数
+   * @param {type} item
+   * @param {type} Setting
+   * @return {type} { openTime, restTimeValue }
+   */
   getItemCloseCheckTime(item, Setting) {
     let value // 休息的分钟数
     if (item.restTime) {
@@ -85,12 +116,10 @@ export const utils = {
     const openTime = (item.closeTime || Date.now()) + value * 60 * 1000
     return { openTime, restTimeValue: value }
   },
-  // 获取不同语言的方法
   /**
-   * @description
+   * @description 获取不同语言的方法
    * @param * name 获取chrome的language数据
    * @param * zh 还没同步到language 临时使用汉字
-   * @return {*}
    */
   getLanguageMessage(name, zh) {
     if (zh) {
@@ -99,11 +128,11 @@ export const utils = {
     return chrome.i18n.getMessage(name)
   },
   /**
-     * @description 检测当前网站地址是否匹配到列表
-     * @param * tableArr  摸鱼网站列表
-     * @param * url  检测的地址
-     * @return {*}
-     */
+   * @description 检测当前网站地址是否匹配到列表
+   * @param * tableArr  摸鱼网站列表
+   * @param * url  检测的地址
+   * @return {*} { item, index: i } | false
+   */
   checkUrl(tableArr, url) {
     let isMatch = false
     const len = tableArr.length
@@ -132,11 +161,11 @@ export const utils = {
   /**
    * @description 获取storage数据
    * @param * key
-   * @return {value}
    */
   getChromeStorage(key) {
+    // let navigator = NavigatorOptions()
     return new Promise((resolve) => {
-      chrome.storage.sync.get(key, (res) => {
+      chrome.storage.local.get([key], (res) => {
         let result = res[key]
         // 取到值 则还原给数组/对象 抛出去 否则就抛出去undefined
         if (result !== undefined) {
@@ -146,12 +175,15 @@ export const utils = {
       })
     })
   },
-  // 更新数据
+  /**
+   * @description: 更新数据
+   * @param {type} val
+   * @param {type} key
+   */
   updateStorageData(val, key) {
     return new Promise((resolve) => {
-      const str = window.JSON.stringify(val)
-      chrome.storage.sync.set({ [key]: str }, () => {
-        console.log(`${key} update`)
+      const str = JSON.stringify(val)
+      chrome.storage.local.set({ [key]: str }, () => {
         resolve()
       })
     })

@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 22:45:36
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-03-13 18:01:04
+ * LastEditTime : 2022-04-17 17:19:37
  * FilePath     : /stop-mess-around/src/options/App/settingPage/Setting.vue
  * Description  : 全局设置
  * koroFileheader插件
@@ -210,77 +210,22 @@
             />
           </el-select>
         </el-form-item>
-        <el-form-item prop="clear">
-          <span slot="label">
-            <el-tooltip
-              :content="'一键恢复默认设置。'"
-              placement="top"
-            >
-              <span>{{ '重置插件数据' }}</span>
-            </el-tooltip>
-          </span>
-          <el-popconfirm
-            title="确认清空？"
-            @confirm="clearSetting('clearList')"
-          >
-            <el-button
-              slot="reference"
-              class="button-margin-right"
-              size="small"
-              type="danger"
-            >
-              清空摸鱼列表
-            </el-button>
-          </el-popconfirm>
-          <el-popconfirm
-            title="确认重置？"
-            @confirm="clearSetting('clearSetting')"
-          >
-            <el-button
-              slot="reference"
-              class="button-margin-right"
-              size="small"
-              type="danger"
-            >
-              重置设置
-            </el-button>
-          </el-popconfirm>
-          <el-popconfirm
-            title="确认重置？"
-            @confirm="clearSetting('statisticsTime')"
-          >
-            <el-button
-              slot="reference"
-              size="small"
-              type="danger"
-            >
-              重置摸鱼统计
-            </el-button>
-          </el-popconfirm>
-        </el-form-item>
         <el-form-item prop="feedback">
           <span slot="label">
             <el-tooltip
-              :content="'复制参数，用于去Github提issue'"
+              :content="'跳转插件数据与反馈，反馈问题必须复制插件数据'"
               placement="top"
             >
-              <span>{{ '反馈问题' }}</span>
+              <span>{{ '插件数据与反馈' }}</span>
             </el-tooltip>
           </span>
           <el-button
             class="button-margin-right"
             size="small"
             type="primary"
-            @click="copyPluginData"
+            @click="jumpCopyPluginData"
           >
-            复制插件数据
-          </el-button>
-          <el-button
-            class="button-margin-right"
-            size="small"
-            @click="utils.jumpUrl(NET.GITHUB_REPO_ISSUES)"
-          >
-            跳转反馈问题
+            跳转插件数据与反馈问题相关
           </el-button>
         </el-form-item>
       </el-form>
@@ -382,41 +327,17 @@ export default {
     },
   },
   methods: {
-    // 复制插件配置 去反馈问题
-    async copyPluginData() {
-      const obj = await this.utils.getData()
-      const text = JSON.stringify(obj, null, 2)
-      if (navigator.clipboard) {
-        // clipboard api 复制
-        navigator.clipboard.writeText(text)
-      } else {
-        const textarea = document.createElement('textarea')
-        document.body.appendChild(textarea)
-        // 隐藏此输入框
-        textarea.style.position = 'fixed'
-        textarea.style.clip = 'rect(0 0 0 0)'
-        textarea.style.top = '10px'
-        // 赋值
-        textarea.value = text
-        // 选中
-        textarea.select()
-        // 复制
-        document.execCommand('copy', true)
-        // 移除输入框
-        document.body.removeChild(textarea)
-      }
+    jumpCopyPluginData() {
+      this.close()
+      this.$nextTick(() => {
+        this.$emit('showCopyDataFn')
+      })
     },
     close() {
       this.$emit('close', 'showSetting', false)
     },
     resetFields(done) {
-      this.$refs.ruleForm.resetFields()
       done()
-    },
-    // 清空设置
-    clearSetting(type) {
-      this.close()
-      this.initData(type)
     },
     confirmFn() {
       this.$refs.ruleForm.validate((valid) => {

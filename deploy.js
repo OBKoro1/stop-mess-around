@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-18 11:08:23
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-02-04 14:26:36
+ * LastEditTime : 2022-04-17 14:52:09
  * FilePath     : /stop-mess-around/deploy.js
  * Description  : 同步package.json的配置到manifest.json中
  * koroFileheader插件
@@ -11,6 +11,10 @@
 
 const path = require('path')
 const fs = require('fs')
+
+const { argv } = process
+const env = argv[2]
+const navigator = argv[3]
 
 run()
 
@@ -24,8 +28,14 @@ function elementFont() {
   const elementPath = path.resolve(__dirname, './node_modules/element-ui/lib/theme-chalk/', 'index.css')
   let content = fs.readFileSync(elementPath).toString()
   // 替换匹配到的每个变量
-  const reg = /\(fonts\/element-icons\./g
-  content = content.replace(reg, '(chrome-extension://__MSG_@@extension_id__/fonts/element-icons.')
+  const reg = /url\(.*?fonts\/element-icons\./g
+  // !!! 删除fonts/element-icons.ttf好像没有作用 还会在content网站中报错
+  // 源字符: el-upload-list__item.is-success:not(.focusing):focus{outline-width:0}@font-face{font-family:element-icons;src:url(fonts/element-icons.woff) format("woff"),url(fonts/element-icons.ttf) format("truetype");font-weight:400;font-display:"auto";font-style:normal}[class*=" el-icon-"],
+  // 源字符: src:url(fonts/element-icons.woff)
+  // 更改为: src:url(chrome-extension://__MSG_@@extension_id__/fonts/element-icons.woff)
+  let navigatorName = 'chrome-extension'
+  if (navigator === 'fireFox') navigatorName = 'moz-extension'
+  content = content.replace(reg, `url(${navigatorName}://__MSG_@@extension_id__/fonts/element-icons.`)
   fs.writeFileSync(elementPath, content)
 }
 
@@ -34,9 +44,6 @@ function changeVersion() {
   const VERSION = process.env.npm_package_version
   let DESCRIPTION = '减少摸鱼的时间和频率的Chrome插件：提醒你正在摸鱼，摸鱼的时候知道自己在摸鱼，提高我们上班和学习的效率，节省时间用于学习提升自己或者享受生活'
   let PLUGINNAME = 'stop-mess-around'
-
-  const { argv } = process
-  const env = argv[2]
 
   if (env !== 'production') {
     PLUGINNAME = 'stop-mess-around-file'

@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-03-13 15:52:12
+ * LastEditTime : 2022-04-17 20:29:33
  * FilePath     : /stop-mess-around/src/content/App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
@@ -118,6 +118,7 @@ export default {
         totalMessAround: 0,
         totalSiteMessAround: 0,
       },
+      interVal: null,
     }
   },
   async mounted() {
@@ -128,9 +129,14 @@ export default {
       console.log('stop-mess-around(防摸鱼)插件 插入')
     }
     // 检测url变更
-    setInterval(this.run, 6000)
+    this.interVal = setInterval(this.run, 6000)
   },
   methods: {
+    async  getCurrentTab() {
+      const queryOptions = { active: true, currentWindow: true }
+      const res = await chrome.tabs.query(queryOptions)
+      return res[0]
+    },
     // 倒计时结束或者停止摸鱼再运行一遍
     openAgain() {
       this.run()
@@ -160,6 +166,7 @@ export default {
         this.matchHandle()
       } catch (err) {
         console.log('stop-mess-around(防摸鱼)扩展更新了,请刷新页面')
+        clearInterval(this.interVal)
       }
     },
 
@@ -211,10 +218,11 @@ export default {
     // 确定休息
     restConfirm() {
       const self = this // 传到class中 影响this指向
-      chrome.extension.sendRequest({ message: 'reset-tab', item: this.item, value: this.restTime }, (response) => {
+      chrome.runtime.sendMessage({ message: 'reset-tab', item: this.item, value: this.restTime }, (response) => {
         self.dialogVisible = false
         self.item = JSON.parse(response)
         self.showRest = false
+        return true
       })
     },
     // 更新提示
@@ -232,7 +240,7 @@ export default {
           window.location.href = this.item.jumpUrl
         } else {
           // 关闭
-          chrome.extension.sendRequest({ message: 'close-tab' })
+          chrome.runtime.sendMessage({ message: 'close-tab' })
         }
       }, time * 1000)
     },

@@ -2,9 +2,9 @@
  * Author       : OBKoro1
  * Date         : 2022-01-07 16:43:58
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-12 14:14:26
+ * LastEditTime : 2022-04-09 20:50:50
  * FilePath     : /stop-mess-around/src/utils/closeCheck.js
- * description  : 关闭网站检测
+ * description  : 关闭网站检测，摸鱼休息
  * koroFileheader VSCode插件
  * Copyright (c) 2022 by OBKoro1, All Rights Reserved.
  */
@@ -15,7 +15,7 @@ import NET from './net'
 
 class CloseCheck {
   /**
-   * @description: 关闭网站检测
+   * @description: 关闭网站检测，摸鱼休息
    * @param options
    * @options.item 需要修改的数据
    * @options.statisticsTime  统计摸鱼时长
@@ -30,14 +30,15 @@ class CloseCheck {
     const {
       item, statisticsTime, setting, restTime, globalSiteTouchFish = false,
     } = options
+    this.statisticsTime = statisticsTime
     this.setting = setting
     this.item = item
-    item.open = false
-    item.closeTime = Date.now()
-    item.restTime = restTime
-    if (globalSiteTouchFish) item.globalSiteTouchFish = true // 是否开启全局摸鱼
+    this.item.open = false
+    this.item.closeTime = Date.now()
+    this.item.restTime = restTime
+    if (globalSiteTouchFish) this.item.globalSiteTouchFish = true // 是否开启全局摸鱼
     await this.statisticsSite(statisticsTime)
-    return { item, statisticsTime }
+    return { item: this.item, statisticsTime: this.statisticsTime }
   }
 
   /**
@@ -48,25 +49,25 @@ class CloseCheck {
    * @param diffGlobal [number] 本次网站时长与今日全局摸鱼时间差
    * @return [type]
    */
-  async statisticsSite(statisticsTime) {
+  async statisticsSite() {
     // 全局摸鱼不统计数据 在全局的地方统计
     if (this.item.globalSiteTouchFish) return
-    if (!statisticsTime) statisticsTime = (await utils.getChromeStorage(NET.statisticsTime))
+    if (!this.statisticsTime) this.statisticsTime = (await utils.getChromeStorage(NET.statisticsTime))
     // 获取一个item打开检测的时间戳和休息的分钟数
     const { openTime, restTimeValue } = utils.getItemCloseCheckTime(this.item, this.setting)
 
-    const nowDay = statisticsTime[0]
-    this.statisticsSiteData(nowDay, restTimeValue)
+    let nowDay = this.statisticsTime[0]
+    nowDay = this.statisticsSiteData(nowDay, restTimeValue)
     // 获取网站的摸鱼时间与今日全局摸鱼时间差
     const diffGlobal = await this.getTodayTouchTimeDiff(this.setting, openTime, restTimeValue)
     // 统计总时间
     nowDay.time += diffGlobal
     // 网站摸鱼时长排序
-    statisticsTime = statisticsTime.map((ele) => {
+    this.statisticsTime = this.statisticsTime.map((ele) => {
       ele.restSite.sort((a, b) => b.time - a.time)
       return ele
     })
-    await utils.updateStorageData(statisticsTime, NET.statisticsTime)
+    await utils.updateStorageData(this.statisticsTime, NET.statisticsTime)
   }
 
   statisticsSiteData(nowDay, restTime) {
@@ -97,6 +98,7 @@ class CloseCheck {
         site: this.item.site, // 网址 id
       })
     }
+    return nowDay
   }
 
   // 获取今日全局摸鱼与网站的摸鱼时间差

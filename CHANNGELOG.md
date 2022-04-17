@@ -9,7 +9,14 @@
 [release](https://github.com/OBKoro1/stop-mess-around/releases)卸载重新安装。
 [chrome商店更新](https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN)
 
-<!-- TODO: 更新语录，更新读书笔记中的语录  -->
+<!-- TODO: 文档示例图片和issue.md图片替换 -->
+<!-- TODO: 摸鱼时间逻辑修改 -->
+
+### [V2.0.0]
+* BREAKING CHANGE: 破坏性更新, 插件兼容谷歌`Manifest V3`版本（否则明年将无法更新插件版本）导致数据重置，因为不能同步储存数据，只能储存在本地。
+* feat: 增加插件数据与反馈问题相关功能
+* fix: 修复统计摸鱼时间相关逻辑
+* fix: 修复element-ui无法获取`.tff`字体文件的报错。
 
 ### [V1.3.0]
 

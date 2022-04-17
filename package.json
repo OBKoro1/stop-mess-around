@@ -1,7 +1,7 @@
 {
   "name": "stop-mess-around",
   "description": "减少摸鱼的时间和频率的Chrome插件：提醒你正在摸鱼，摸鱼的时候知道自己在摸鱼，提高我们上班和学习的效率，节省时间用于学习提升自己或者享受生活",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "publisher": "OBKoro1",
   "homepage": "https://github.com/OBKoro1/stop-mess-around",
   "license": "MIT",
@@ -19,9 +19,14 @@
     "email": "obkoro1@foxmail.com"
   },
   "scripts": {
-    "serve": "node deploy.js development && vue-cli-service build-watch --mode serve",
-    "build-plugin": "node deploy.js production  && vue-cli-service build",
-    "build-release": "node deploy.js development && vue-cli-service build --mode development",
+    "serve": "node deploy.js development && vue-cli-service build-watch --mode serveReleaseChrome",
+    "build-plugin": "node deploy.js production  && vue-cli-service build --mode productionChrome",
+    "build-release": "node deploy.js development && vue-cli-service build --mode productionReleaseChrome",
+    "serve:fireFox": "node deploy.js development fireFox && vue-cli-service build-watch --mode serveReleaseFireFOX",
+    "build-plugin:Edg": "node deploy.js development && vue-cli-service build --mode productionEdge",
+    "build-release:Edg": "node deploy.js production && vue-cli-service build --mode productionReleaseEdge",
+    "build-plugin:fireFox": "node deploy.js production fireFox && vue-cli-service build --mode productionFireFox",
+    "build-release:fireFox": "node deploy.js development fireFox && vue-cli-service build --mode productionReleaseFireFox",
     "lint": "eslint --ext .js,.vue src --fix",
     "prepare": "husky install",
     "analyze": "npm run build --report"

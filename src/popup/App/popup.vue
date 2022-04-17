@@ -144,19 +144,24 @@ export default {
       this.settingUpdate(this.Setting)
       this.utils.jumpUrl(this.NET.OPTIONSPAGE)
     },
+    async  getCurrentTab() {
+      const queryOptions = { active: true, currentWindow: true }
+      const res = await chrome.tabs.query(queryOptions)
+      return res[0]
+    },
     // 初始化
     async initData() {
       this.Setting = await this.utils.getChromeStorage(this.NET.GLOBALSETTING) || defaultSetting
       this.tableData = await this.utils.getChromeStorage(this.NET.TABLELIST) || []
       // 先获取当前页面的tabID
-      chrome.tabs.getSelected(null, (tab) => {
-        this.tab = tab
-        const isMatch = this.utils.checkUrl(this.tableData, tab.url)
-        if (isMatch) {
-          this.item = isMatch.item
-          this.index = isMatch.index
-        }
-      })
+
+      this.tab = await this.getCurrentTab()
+      console.log('tab', this.tab)
+      const isMatch = this.utils.checkUrl(this.tableData, this.tab.url)
+      if (isMatch) {
+        this.item = isMatch.item
+        this.index = isMatch.index
+      }
     },
     // 一键开启/关闭
     async checkoutAll() {

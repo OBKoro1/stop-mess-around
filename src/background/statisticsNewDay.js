@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2022-01-10 15:45:28
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-12 14:53:21
+ * LastEditTime : 2022-04-17 20:23:04
  * FilePath     : /stop-mess-around/src/background/statisticsNewDay.js
  * description  : 超过十二点的统计数据初始化与摸鱼统计数据返还修正
  * koroFileheader VSCode插件
@@ -22,7 +22,7 @@ export class StatisticsNewDay {
 
   // 模拟数据时 删掉一个
   async mock() {
-    // TODO: 比当前日期大的数据都删掉
+    // !!!!!!! 比当前日期大的数据都删掉
     this.statisticsTime.shift()
     await utils.updateStorageData(this.statisticsTime, NET.statisticsTime)
   }
@@ -81,7 +81,8 @@ export class StatisticsNewDay {
       isChange = true
       const { openTime } = utils.getItemCloseCheckTime(item, this.setting)
       const minutes = utils.getMoreDiff(openTime, Date.now(), true)
-      //   修复昨天的数据 修正开启时间与关闭时间
+      if (minutes === 0) continue // 0代表当前时间 超过打开时间不记录
+      // 修复昨天的数据 修正开启时间与关闭时间
       this.listArr[index].closeTime = Date.now()
       this.listArr[index].restTime = minutes
       // 修正昨天的网站摸鱼时间

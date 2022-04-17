@@ -26,7 +26,8 @@ const plugins = [
 ]
 
 // 开发环境将热加载文件复制到dist文件夹
-if (process.env.NODE_ENV !== 'production') {
+const mode = process.env.NODE_ENV.toLowerCase()
+if (mode.indexOf('serve') >= 0) {
   plugins.push(
     CopyWebpackPlugin([{
       from: path.resolve('src/utils/hot-reload.js'),
@@ -48,17 +49,20 @@ module.exports = {
   // // 生产环境是否生成 sourceMap 文件
   productionSourceMap: false,
   configureWebpack: {
+    devtool: 'inline-source-map',
     entry: {
       content: './src/content/index.js',
       background: './src/background/index.js',
     },
     output: {
-      filename: 'js/[name].js',
+      filename: '[name].js',
     },
     plugins,
   },
   css: {
     extract: {
+      // https://www.cnblogs.com/mmzuo-798/p/14333897.html
+      // MiniCssExtractPlugin.loader 更改css引用地址
       filename: 'css/[name].css',
       // chunkFilename: 'css/[name].css'
     },

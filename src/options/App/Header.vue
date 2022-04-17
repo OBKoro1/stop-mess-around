@@ -15,7 +15,7 @@
           v-if="development"
           class="cursor-pointer header-btns"
           @click="utils.jumpUrl(NET.CHROMESTORE)"
-        >本地安装,无法自动更新，跳转Chrome商店安装</span>
+        >本地安装,无法自动更新，跳转应用商店安装</span>
         <span
           class="cursor-pointer"
           @click="utils.jumpUrl(NET.RELEASES)"
@@ -73,6 +73,9 @@
       <div class="dialog-font">
         如果觉得这个效率工具还不错,对你有所帮助，就赞助支持一下吧。
       </div>
+      <div class="dialog-font">
+        十块八块不嫌多，三块五块不嫌少 ❤️
+      </div>
       <img
         src="../../../public/img/pay.jpg"
         class="obkoro1-sponsorship"
@@ -121,9 +124,10 @@ export default {
   },
   mounted() {
     // 本地提示
-    if (process.env.NODE_ENV === 'development') {
+    const mode = process.env.NODE_ENV.toLowerCase()
+    if (mode.indexOf('release') < 0) {
       this.development = true
-      console.log('本地安装，无法自动更新，点击右上角跳转Chrome商店安装')
+      console.log('本地安装，无法自动更新，点击右上角跳转应用商店安装', process.env)
     }
     setTimeout(() => {
       this.sponsorshipShow()

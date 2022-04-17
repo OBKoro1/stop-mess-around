@@ -61,14 +61,14 @@ export default {
     clearInterval(this.interval)
   },
   methods: {
-    // 清楚数据
-    clearSetting(type) {
+    // 清除数据
+    async clearSetting(type) {
       if (type === 'clearList') {
-        this.utils.updateStorageData([], this.NET.TABLELIST)
+        await this.utils.updateStorageData([], this.NET.TABLELIST)
       } else if (type === 'clearSetting') {
-        this.utils.updateStorageData({}, this.NET.GLOBALSETTING)
+        await this.utils.updateStorageData({}, this.NET.GLOBALSETTING)
       } else if (type === 'statisticsTime') {
-        this.utils.updateStorageData([], this.NET.statisticsTime)
+        await this.utils.updateStorageData([], this.NET.statisticsTime)
       }
       this.initData()
     },

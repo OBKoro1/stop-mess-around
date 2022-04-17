@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2022-01-10 14:06:01
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-12 12:57:07
+ * LastEditTime : 2022-04-16 17:00:34
  * FilePath     : /stop-mess-around/src/background/intervalTask.js
  * description  : 后台定时任务
  * koroFileheader VSCode插件
@@ -24,7 +24,9 @@ class IntervalTask {
     }, 3000)
   }
 
-  // 查看数组默认元素是否有更新
+  /**
+   * @description: 查看数组默认元素是否有更新
+   */
   async updateItemPrototype() {
     let change = false
     const newList = this.listArr.map((item) => {
@@ -42,7 +44,9 @@ class IntervalTask {
     }
   }
 
-  // 自动打开
+  /**
+   * @description: 自动打开
+   */
   async autoOpen() {
     const options = {
       setting: this.setting,
@@ -55,6 +59,9 @@ class IntervalTask {
     this.statisticsTime = statisticsTime
   }
 
+  /**
+   * @description: 创建新一天的摸鱼统计数据
+   */
   async statisticsNewDayCheck() {
     const options = {
       setting: this.setting,

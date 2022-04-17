@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 14:24:51
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-04-09 15:05:48
+ * LastEditTime : 2022-04-17 20:36:53
  * FilePath     : /stop-mess-around/src/options/App/settingPage/SetPage.vue
  * Description  : 设置按钮列表
  * koroFileheader插件
@@ -64,12 +64,11 @@
       </el-button>
 
       <el-button
-        v-if="serve"
         type="primary"
         round
-        @click="checkoutFn('showServeDialog', true)"
+        @click="checkoutFn('showPluginDataDialog', true)"
       >
-        serve调试
+        插件数据和反馈问题相关
       </el-button>
       <!-- 新增摸鱼网站 -->
       <CreateItem
@@ -80,6 +79,7 @@
       <BatchItem
         :show-batch-item="showBatchItem"
         @close="checkoutFn"
+        @showCopyDataFn="checkoutFn('showPluginDataDialog', true)"
       />
       <!-- 随机语录设置 -->
       <RandomTip
@@ -89,6 +89,7 @@
       <!-- 全局设置 -->
       <Setting
         :show-dialog="showSetting"
+        @showCopyDataFn="checkoutFn('showPluginDataDialog', true)"
         @close="checkoutFn"
       />
       <!-- 统计摸鱼时长 -->
@@ -96,8 +97,9 @@
         :show-statistics="showStatistics"
         @close="checkoutFn"
       />
-      <ServeDebugger
-        :show-serve-dialog="showServeDialog"
+      <!-- 覆盖设置 -->
+      <ReplacePluginData
+        :show-serve-dialog="showPluginDataDialog"
         @close="checkoutFn"
       />
     </div>
@@ -109,7 +111,7 @@ import CreateItem from './CreateItem.vue'
 import Setting from './Setting.vue'
 import BatchItem from './BatchItem.vue'
 import RandomTip from './RandomTip.vue'
-import ServeDebugger from './serve.vue'
+import ReplacePluginData from './ReplacePluginData.vue'
 import RestStatistics from '../../../components/rest-statistics.vue'
 
 export default {
@@ -121,7 +123,7 @@ export default {
     BatchItem,
     RandomTip,
     RestStatistics,
-    ServeDebugger,
+    ReplacePluginData,
   },
   props: {
     open: {
@@ -137,8 +139,7 @@ export default {
       showBatchItem: false,
       showTip: false,
       showStatistics: false,
-      showServeDialog: false,
-      serve: false, // 本地开发
+      showPluginDataDialog: false,
     }
   },
   computed: {
@@ -147,9 +148,6 @@ export default {
     },
   },
   async mounted() {
-    if (process.env.VUE_APP_MODE === 'serve') {
-      this.serve = true
-    }
     // 没有数据 默认打开摸鱼网站列表
     const { listArr } = await this.utils.getData()
     if (listArr.length === 0) {
@@ -158,7 +156,6 @@ export default {
   },
   methods: {
     search(val) {
-      console.log('search')
       this.$emit('searchChange', val)
     },
     // 开关弹窗
@@ -202,5 +199,6 @@ export default {
 .search-input {
   width: 200px;
   margin-right: 15px;
+  margin-bottom: 15px;
 }
 </style>

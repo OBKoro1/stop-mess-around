@@ -2,9 +2,9 @@
  * Author       : OBKoro1
  * Date         : 2022-01-07 16:43:58
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-12 14:15:26
+ * LastEditTime : 2022-04-09 20:36:33
  * FilePath     : /stop-mess-around/src/utils/openCheck.js
- * description  : 开启网站检测
+ * description  : 开启网站检测，弹窗提示
  * koroFileheader VSCode插件
  * Copyright (c) 2022 by OBKoro1, All Rights Reserved.
  */
@@ -14,11 +14,6 @@ import { utils } from './index'
 import NET from './net'
 
 class OpenCheck {
-  /**
-   * @description: 打开检测
-   * @param options [type]
-   * @return [type]
-   */
   async run(options) {
     const {
       item, tableArr, statisticsTime, setting, globalSiteTouchFish, getMoreDiffVal = false,
@@ -73,7 +68,7 @@ class OpenCheck {
   async isLastOpenItem(openTime) {
     if (this.openTime < this.setting.todayGlobalTouchFish) return // 小于最远的摸鱼时间
     let lastTime = 0
-    let allOpen = true
+    let allOpen = true // 是否所有网站都开启检测 弹窗提醒
     for (const item of this.tableArr.values()) {
       if (this.item.site === item.site) continue
       if (!item.open) { // 还有其他开启的摸鱼检测吗
@@ -87,8 +82,12 @@ class OpenCheck {
     }
     // 最远一个 需要返回今日摸鱼剩余 并且不是全部关闭 （全部关闭再外面返回今日摸鱼时间）
     if (lastTime < openTime && !this.globalSiteTouchFish) {
-      if (allOpen) lastTime = Date.now() // 所有的都关闭 初始化为当前时间
-      this.setting.todayGlobalTouchFish = lastTime // 更新最远时间
+      if (allOpen) {
+        lastTime = Date.now() // 所有网站都开启检测 初始化为当前时间
+        this.setting.todayGlobalTouchFish = 0 // 修改最远摸鱼时间
+      } else {
+        this.setting.todayGlobalTouchFish = lastTime // 更新最远时间
+      }
       const minutes = utils.getMoreDiff(openTime, lastTime, this.getMoreDiff)
       await this.returnTodayTouchFishTime(minutes)
       await utils.updateStorageData(this.setting, NET.GLOBALSETTING)
