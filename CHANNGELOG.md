@@ -15,6 +15,10 @@
 ### [V2.0.0]
 * BREAKING CHANGE: 破坏性更新, 插件兼容谷歌`Manifest V3`版本（否则明年将无法更新插件版本）导致数据重置，因为不能同步储存数据，只能储存在本地。
 * feat: 增加插件数据与反馈问题相关功能
+* feat: Firefox 暂不支持
+  * Chrome插件现在是Manifest v3版本，并在明年无法更新应用，所以本插件已经升级了v3版本。
+  * Firefox不支持 v3 版本并且支持时间模糊。
+  * 过段时间插件将有可能, 提供支持fireFox Manifestv2版本，并上架应用市场
 * fix: 修复统计摸鱼时间相关逻辑
 * fix: 修复element-ui无法获取`.tff`字体文件的报错。
 
