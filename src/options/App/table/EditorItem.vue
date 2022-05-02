@@ -10,6 +10,8 @@
 -->
 <template>
   <el-dialog
+    :close-on-click-modal="false"
+    :close-on-press-escape="false"
     :visible.sync="dialogVisible"
     :before-close="resetFields"
     width="550px"

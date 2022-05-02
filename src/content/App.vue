@@ -10,13 +10,14 @@
 <template>
   <div class="content-div">
     <el-dialog
+      :close-on-click-modal="false"
+      :close-on-press-escape="false"
       :title="info.title"
       class="dialog-class"
       :lock-scroll="true"
       :visible.sync="dialogVisible"
       width="30%"
       :show-close="false"
-      :close-on-click-modal="false"
     >
       <div
         class="tip-info"

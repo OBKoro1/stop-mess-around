@@ -10,6 +10,8 @@
 -->
 <template>
   <el-dialog
+    :close-on-click-modal="false"
+    :close-on-press-escape="false"
     :visible.sync="dialogVisible"
     title="插件数据与反馈问题相关"
     width="550px"

@@ -11,6 +11,8 @@
 
 <template>
   <el-dialog
+    :close-on-click-modal="false"
+    :close-on-press-escape="false"
     :visible.sync="dialogVisible"
     :before-close="closeBefore"
     title="匹配摸鱼网站时出现的激励信息"
@@ -214,6 +216,8 @@
       </el-button>
     </div>
     <el-dialog
+      :close-on-click-modal="false"
+      :close-on-press-escape="false"
       width="30%"
       title="编辑"
       :visible.sync="inner.innerVisible"

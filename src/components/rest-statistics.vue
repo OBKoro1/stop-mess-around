@@ -1,12 +1,14 @@
 <!--
  * Author       : OBKoro1
  * Date         : 2021-12-29 15:09:18
- * LastEditors  : OBKoro1
- * LastEditTime : 2022-03-12 16:43:14
+ * LastEditors  : git config user.name && git config user.email
+ * LastEditTime : 2022-05-02 19:06:53
  * description  : 网站摸鱼近百日摸鱼时长统计
 -->
 <template>
   <el-dialog
+    :close-on-click-modal="false"
+    :close-on-press-escape="false"
     class="dialog-class"
     title="近百日摸鱼时长统计"
     :visible.sync="dialogVisible"

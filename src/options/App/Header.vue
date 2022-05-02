@@ -53,8 +53,9 @@
       @click="utils.jumpUrl(NET.GITHUBREPO)"
     >
     <el-dialog
-      :visible.sync="sponsorship"
       :close-on-click-modal="false"
+      :close-on-press-escape="false"
+      :visible.sync="sponsorship"
       :show-close="false"
       width="30%"
     >
