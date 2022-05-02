@@ -126,9 +126,10 @@ export default {
   mounted() {
     // 本地提示
     const mode = process.env.NODE_ENV.toLowerCase()
-    if (mode.indexOf('release') < 0) {
+    console.log('process.env', process.env)
+    // 不是production 即为本地安装
+    if (mode.indexOf('production') === -1) {
       this.development = true
-      console.log('本地安装，无法自动更新，点击右上角跳转应用商店安装', process.env)
     }
     setTimeout(() => {
       this.sponsorshipShow()
