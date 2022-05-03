@@ -125,7 +125,7 @@ export default {
   },
   mounted() {
     // 本地提示
-    const mode = process.env.NODE_ENV.toLowerCase()
+    const mode = process.env.VUE_APP_MODE.toLowerCase()
     console.log('process.env', process.env)
     // 不是production 即为本地安装
     if (mode.indexOf('production') === -1) {

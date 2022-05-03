@@ -16,33 +16,38 @@ chromeName.forEach((name) => {
 })
 
 // 生成manifest文件
+const mode = process.env.VUE_APP_MODE.toLowerCase()
 const manifest = {
-  from: path.resolve('src/manifest.production.json'),
+  from: path.resolve('./manifest/manifest.production.json'),
   to: `${path.resolve('dist')}/manifest.json`,
 }
+if (mode.indexOf('firefox') >= 0) {
+  manifest.from = path.resolve('./manifest/fireFox.manifest.production.json')
+}
 
-const plugins = [
-  CopyWebpackPlugin([manifest]),
-]
+const plugins = [CopyWebpackPlugin([manifest])]
 
 // 开发环境将热加载文件复制到dist文件夹
-const mode = process.env.NODE_ENV.toLowerCase()
 if (mode.indexOf('serve') >= 0) {
   plugins.push(
-    CopyWebpackPlugin([{
-      from: path.resolve('src/utils/hot-reload.js'),
-      to: path.resolve('dist'),
-    }]),
+    CopyWebpackPlugin([
+      {
+        from: path.resolve('src/utils/hot-reload.js'),
+        to: path.resolve('dist'),
+      },
+    ]),
   )
 }
 
-// 生产环境打包dist为zip
-plugins.push(
-  new ZipPlugin({
-    path: path.resolve('dist'),
-    filename: 'dist.zip',
-  }),
-)
+// 当不为serve时 压缩文件
+if (process.env.NODE_ENV !== 'serve') {
+  plugins.push(
+    new ZipPlugin({
+      path: path.resolve('dist'),
+      filename: `${process.env.ZIP_NAME}.zip`,
+    }),
+  )
+}
 
 module.exports = {
   pages: pagesObj,
@@ -75,7 +80,8 @@ module.exports = {
     // 清除已有的所有 loader。
     // 如果你不这样做，接下来的 loader 会附加在该规则现有的 loader 之后。
     fontsRule.uses.clear()
-    fontsRule.test(/\.(woff2?|eot|ttf|otf)(\?.*)?$/i)
+    fontsRule
+      .test(/\.(woff2?|eot|ttf|otf)(\?.*)?$/i)
       .use('url')
       .loader('url-loader')
       .options({

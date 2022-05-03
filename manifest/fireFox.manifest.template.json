@@ -1,0 +1,37 @@
+{
+  "manifest_version": 2,
+  "name": "{{PLUGINNAME}}",
+  "version": "{{VERSION}}",
+  "description": "{{DESCRIPTION}}",
+  "options_page": "options.html",
+  "short_name": "StopMessAround",
+  "author": "obkoro1@foxmail.com",
+  "homepage_url": "https://github.com/OBKoro1/stop-mess-around",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_icon": "img/48.png",
+    "default_title": "{{DESCRIPTION}}",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "img/48.png",
+    "48": "img/48.png",
+    "128": "img/48.png"
+  },
+  "permissions": ["tabs", "storage", "http://*/*", "https://*/*"],
+  "content_security_policy": "script-src 'self'; object-src 'self';",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["css/content.css"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "omnibox": { "keyword": "stopmessaround" },
+  "offline_enabled": true,
+  "web_accessible_resources": ["fonts/*.*"],
+  "default_locale": "zh_CN"
+}

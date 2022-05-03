@@ -1,8 +1,8 @@
 /*
  * Author       : OBKoro1
  * Date         : 2021-05-21 14:56:38
- * LastEditors  : OBKoro1
- * LastEditTime : 2022-04-17 17:53:46
+ * LastEditors  : OBKoro1 obkoro1@foxmail.com
+ * LastEditTime : 2022-05-03 20:43:32
  * FilePath     : /stop-mess-around/src/utils/net.js
  * Description  : 全局常量
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -12,12 +12,11 @@ function getNavigatorOptions() {
   // 转小写
   const mode = process.env.VUE_APP_MODE.toLowerCase()
   if (mode.indexOf('firefox') >= 0) {
-    // TODO: id获取 getUrl
     // 打开火狐options的id
     const FIREFOX_UUID = '17ce4bd7-60f8-432c-9848-a61dd819bc06'
     // 本地调试火狐的id
     const FIREFOX_SERVER_UUID = '0ffdf229-783f-4b8b-b583-8cf7788f7180'
-    const id = process.env.VUE_APP_MODE === 'serve' ? FIREFOX_SERVER_UUID : FIREFOX_UUID
+    const id = mode.indexOf('serve') === -1 ? FIREFOX_SERVER_UUID : FIREFOX_UUID
     return {
       name: 'Firefox',
       id, // serve

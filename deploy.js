@@ -1,8 +1,8 @@
 /*
  * Author       : OBKoro1
  * Date         : 2021-06-18 11:08:23
- * LastEditors  : OBKoro1
- * LastEditTime : 2022-04-17 14:52:09
+ * LastEditors  : OBKoro1 obkoro1@foxmail.com
+ * LastEditTime : 2022-05-03 17:45:12
  * FilePath     : /stop-mess-around/deploy.js
  * Description  : 同步package.json的配置到manifest.json中
  * koroFileheader插件
@@ -54,26 +54,28 @@ function changeVersion() {
     VERSION,
     PLUGINNAME,
   }
+  const manifestPath = {
+    template: path.resolve(__dirname, './manifest/manifest.template.json'),
+    production: path.resolve(__dirname, './manifest/manifest.production.json'),
+  }
+  if (navigator === 'fireFox') {
+    manifestPath.template = path.resolve(__dirname, './manifest/fireFox.manifest.template.json')
+    manifestPath.production = path.resolve(__dirname, './manifest/fireFox.manifest.production.json')
+  }
 
-  updateFillBuilderYAML(templateOption)
+  updateFillBuilderYAML(templateOption, manifestPath)
 }
 
 // 修改manifest.template.json配置，替换manifest.production.json
-function updateFillBuilderYAML(option) {
-  const ELECTRON_BUILDER_TEMPLATE = path.resolve(
-    __dirname,
-    'src',
-    'manifest.template.json',
-  )
-  const ELECTRON_BUILDER_OUTPUT = path.resolve(__dirname, 'src', 'manifest.production.json')
-  let content = fs.readFileSync(ELECTRON_BUILDER_TEMPLATE).toString()
+function updateFillBuilderYAML(option, manifestPath) {
+  let content = fs.readFileSync(manifestPath.template).toString()
   // 替换匹配到的每个变量
   Object.entries(option).forEach(
     ([key, val]) => {
       content = content.replace(createReg(key), val)
     },
   )
-  fs.writeFileSync(ELECTRON_BUILDER_OUTPUT, content)
+  fs.writeFileSync(manifestPath.production, content)
 }
 
 // 根据变量名构建一个正则，匹配对应模板中的变量表示

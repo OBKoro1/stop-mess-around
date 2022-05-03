@@ -1,16 +1,14 @@
 # 开发相关
 
-<!-- TODO: 文档示例图片和issue.md图片替换 -->
-<!-- TODO: 摸鱼时间逻辑修改 -->
 <!-- TODO: readme： 列出支持的浏览器插件，并且去掉chrome相关字眼。 -->
-
 <!-- 
 开发TODO: 
-流程图的，超过一天的修正。当前时间大于关闭时间怎么办
+流程图的，超过一天的修正。当前时间大于关闭时间怎么办,、
 当天后台关闭的时候，当前时间大于关闭时间，怎么统计。
+目前设为0 保证不减错。 是否应该一开始就if掉。避免这种情况？
 
 
-TODO: firfox兼容
+TODO: firfox兼容 v2
 # TODO: 本地id获取 获取本地火狐id链接 getUrl
 let fullURL = browser.extension.getURL("beasts/frog.html");
 // -> something like:

@@ -9,8 +9,12 @@
 [release](https://github.com/OBKoro1/stop-mess-around/releases)卸载重新安装。
 [chrome商店更新](https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN)
 
-<!-- TODO: 文档示例图片和issue.md图片替换 -->
-<!-- TODO: 摸鱼时间逻辑修改 -->
+<!-- TODO: development.md -->
+
+### [V2.0.1]
+
+* fix: 不是本地安装的提示
+* chore: 兼容fireFox manifest v2版本
 
 ### [V2.0.0]
 * BREAKING CHANGE: 破坏性更新, 插件兼容谷歌`Manifest V3`版本（否则明年将无法更新插件版本）导致数据重置，因为不能同步储存数据，只能储存在本地。
