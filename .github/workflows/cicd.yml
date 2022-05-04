@@ -56,7 +56,7 @@ jobs:
          draft: false
          prerelease: false
      - run: yarn # 安装依赖
-     - run: npm run build-release # 打包
+     - run: npm run build-release # Chrome打包上传
      - run: ls
      # 上传插件包
      - name: Upload Release Asset
@@ -65,7 +65,30 @@ jobs:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # github token
        with:
          upload_url: ${{ steps.create_release.outputs.upload_url }} # 默认上传地址
-         asset_path: ./dist/dist.zip # 需要上传的资源
-         asset_name: stop-mess-around-file-${{ steps.vars.outputs.tag }}.zip # 更改资源名
+         asset_path: ./dist/Chrome-file.zip # 需要上传的资源
+         asset_name: stop-mess-around-chrome-file-${{ steps.vars.outputs.tag }}.zip # 更改资源名
          asset_content_type: application # 一个包
-
+     - run: npm run build-release:Edg # 打包
+     - run: ls
+     # 上传插件包
+     - name: Upload Release Asset
+       uses: actions/upload-release-asset@v1.0.2 # 使用上传资源的插件
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # github token
+       with:
+         upload_url: ${{ steps.create_release.outputs.upload_url }} # 默认上传地址
+         asset_path: ./dist/Edge-file.zip # 需要上传的资源
+         asset_name: stop-mess-around--edge-file-${{ steps.vars.outputs.tag }}.zip # 更改资源名
+         asset_content_type: application # 一个包
+     - run: npm run build-release:fireFox # 打包
+     - run: ls
+     # 上传插件包
+     - name: Upload Release Asset
+       uses: actions/upload-release-asset@v1.0.2 # 使用上传资源的插件
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # github token
+       with:
+         upload_url: ${{ steps.create_release.outputs.upload_url }} # 默认上传地址
+         asset_path: ./dist/fireFox-file.zip # 需要上传的资源
+         asset_name: stop-mess-around-fireFox-file-${{ steps.vars.outputs.tag }}.zip # 更改资源名
+         asset_content_type: application # 一个包
