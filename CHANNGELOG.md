@@ -11,7 +11,7 @@
 
 <!-- TODO: development.md -->
 
-### [V2.0.1]
+### [V2.0.2]
 
 * fix: 不是本地安装的提示
 * chore: 兼容fireFox manifest v2版本
