@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-18 11:08:23
  * LastEditors  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-05-03 17:45:12
+ * LastEditTime : 2022-05-04 15:35:58
  * FilePath     : /stop-mess-around/deploy.js
  * Description  : 同步package.json的配置到manifest.json中
  * koroFileheader插件
@@ -42,7 +42,7 @@ function elementFont() {
 // 更改插件版本与描述
 function changeVersion() {
   const VERSION = process.env.npm_package_version
-  let DESCRIPTION = '减少摸鱼的时间和频率的Chrome插件：提醒你正在摸鱼，摸鱼的时候知道自己在摸鱼，提高我们上班和学习的效率，节省时间用于学习提升自己或者享受生活'
+  let DESCRIPTION = '减少摸鱼的时间和频率的浏览器插件：提醒你正在摸鱼，摸鱼的时候知道自己在摸鱼，提高我们上班和学习的效率，节省时间用于学习提升自己或者享受生活'
   let PLUGINNAME = 'stop-mess-around'
 
   if (env !== 'production') {

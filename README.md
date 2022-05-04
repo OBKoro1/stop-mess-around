@@ -17,22 +17,11 @@
 </div>
 
 
-### 项目介绍
+### 插件用于提高工作学习效率
 
-减少摸鱼的时间和频率的Chrome插件：**在上班/学习期间很容易下意识的打开摸鱼网站，插件帮助我们减少摸鱼的时间和频率，提高我们上班和学习的效率，节省时间用于学习提升自己或者享受生活**。
+减少摸鱼的时间和频率的浏览器插件：**在上班/学习期间很容易下意识的打开摸鱼网站，插件帮助我们减少摸鱼的时间和频率，提高我们上班和学习的效率，节省时间用于学习提升自己或者享受生活**。
 
 如果觉得这个插件还不错，对你有所帮助的话，就点个[Star⭐️](https://github.com/OBKoro1/stop-mess-around)吧~
-
-### 插件文档
-
-[安装插件以及快速上手](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6)
-
-[功能示例以及使用说明](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%8A%9F%E8%83%BD%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
-
-[更新日志](https://github.com/OBKoro1/stop-mess-around/blob/master/CHANNGELOG.md)
-
-
-
 
 ### 插件的价值与使用场景
 
@@ -69,6 +58,20 @@
 #### 奋斗逼、卷王
 
 这类同学不多说了，懂得都懂。😂
+
+### 浏览器支持
+
+* [Chrome应用商店](https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN)，需要VPN翻墙。
+
+* [Edge应用商店](https://microsoftedge.microsoft.com/addons/detail/stopmessaround/mdiafefnlaaefmfgjbeejpppkdhghmaj)
+
+### 插件文档
+
+[安装插件以及快速上手](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6)
+
+[功能示例以及使用说明](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%8A%9F%E8%83%BD%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
+
+[更新日志](https://github.com/OBKoro1/stop-mess-around/blob/master/CHANNGELOG.md)
 
 ## 插件功能示例
 
@@ -132,8 +135,6 @@ PS：我以前都是用`Octotree`文件树来查看代码的，现在感觉可�
 
 如果觉得这个效率工具还不错, 对你有所帮助，就赞助支持一下我的工作吧。
 
-十块八块不嫌多，三块五块不嫌少 ❤️
-
 <img src="https://raw.githubusercontent.com/OBKoro1/koro1FileHeader/dev/images/pay.jpg" alt="赞助" width="500px" style="display: block;"/>
 
 ### 我的其他开源推荐
@@ -147,7 +148,7 @@ PS：我以前都是用`Octotree`文件树来查看代码的，现在感觉可�
 
 自动生成头部注释以及自动更新头部注释
 
-![头部注释](https://raw.githubusercontent.com/OBKoro1/koro1FileHeader/master/images/example.gif?raw=true)
+![头部注释](https://raw.githubusercontent.com/OBKoro1/koro1FileHeader/master/images/example.gif)
 
 函数注释参数生成以及参数自动提取
 
