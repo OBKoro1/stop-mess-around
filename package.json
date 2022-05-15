@@ -19,15 +19,15 @@
     "email": "obkoro1@foxmail.com"
   },
   "scripts": {
-    "serve": "node deploy.js development && vue-cli-service build-watch --mode serveReleaseChrome",
+    "serve": "node deploy.js development && vue-cli-service build-watch --mode serveChrome",
+    "serve:fireFox": "node deploy.js development fireFox && vue-cli-service build-watch --mode serveFireFox",
     "build-plugin": "node deploy.js production  && vue-cli-service build --mode productionChrome",
-    "build-release": "node deploy.js development && vue-cli-service build --mode productionReleaseChrome",
-    "serve:fireFox": "node deploy.js development fireFox && vue-cli-service build-watch --mode serveReleaseFireFOX",
     "build-plugin:Edg": "node deploy.js development && vue-cli-service build --mode productionEdge",
-    "build-release:Edg": "node deploy.js production && vue-cli-service build --mode productionReleaseEdge",
     "build-plugin:fireFox": "node deploy.js production fireFox && vue-cli-service build --mode productionFireFox && npm run pack",
-    "pack": "npm-pack-zip",
+    "build-release": "node deploy.js development && vue-cli-service build --mode productionReleaseChrome",
+    "build-release:Edg": "node deploy.js production && vue-cli-service build --mode productionReleaseEdge",
     "build-release:fireFox": "node deploy.js development fireFox && vue-cli-service build --mode productionReleaseFireFox",
+    "pack": "npm-pack-zip",
     "lint": "eslint --ext .js,.vue src --fix",
     "prepare": "husky install",
     "analyze": "npm run build --report"
