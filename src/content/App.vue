@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-04-17 20:29:33
+ * LastEditTime : 2022-05-29 16:12:01
  * FilePath     : /stop-mess-around/src/content/App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
@@ -16,7 +16,7 @@
       class="dialog-class"
       :lock-scroll="true"
       :visible.sync="dialogVisible"
-      width="30%"
+      width="60%"
       :show-close="false"
     >
       <div

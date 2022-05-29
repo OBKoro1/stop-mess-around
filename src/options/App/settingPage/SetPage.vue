@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 14:24:51
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-04-17 20:36:53
+ * LastEditTime : 2022-05-29 17:23:05
  * FilePath     : /stop-mess-around/src/options/App/settingPage/SetPage.vue
  * Description  : 设置按钮列表
  * koroFileheader插件
@@ -46,7 +46,7 @@
         round
         @click="checkoutFn('showBatchItem', true)"
       >
-        {{ '默认摸鱼网站列表' }}
+        {{ '摸鱼网站列表' }}
       </el-button>
       <el-button
         type="primary"

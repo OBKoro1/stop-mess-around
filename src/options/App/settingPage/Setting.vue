@@ -1,8 +1,8 @@
 <!--
  * Author       : OBKoro1
  * Date         : 2021-05-25 22:45:36
- * LastEditors  : git config user.name && git config user.email
- * LastEditTime : 2022-05-02 19:07:57
+ * LastEditors  : OBKoro1 obkoro1@foxmail.com
+ * LastEditTime : 2022-05-15 17:27:17
  * FilePath     : /stop-mess-around/src/options/App/settingPage/Setting.vue
  * Description  : 全局设置
  * koroFileheader插件
@@ -10,7 +10,6 @@
 -->
 <template>
   <el-dialog
-    :close-on-click-modal="false"
     :close-on-press-escape="false"
     :visible.sync="dialogVisible"
     width="550px"

@@ -3,7 +3,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-17 16:17:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-04-16 20:12:46
+ * LastEditTime : 2022-05-29 21:42:58
  * FilePath     : /stop-mess-around/src/utils/index.js
  * Description  : 全局方法
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -99,6 +99,15 @@ export const utils = {
     // 兜底 当突然关闭等情况 导致lastTime和startTime数值不对 diff为0
     if (minutes < 0) minutes = 0
     return minutes
+  },
+  addCount(count, sub) {
+    const result = count + sub
+    if (result < 0) return 0
+    return result
+  },
+  subCount(count, sub) {
+    const res = count - sub
+    return res > 0 ? res : 0
   },
   /**
    * @description: 获取一个item打开检测 弹窗提醒的时间戳和休息的分钟数

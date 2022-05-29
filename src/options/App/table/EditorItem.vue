@@ -1,8 +1,8 @@
 <!--
  * Author       : OBKoro1
  * Date         : 2021-05-25 15:18:00
- * LastEditors  : OBKoro1
- * LastEditTime : 2022-03-13 17:50:25
+ * LastEditors  : OBKoro1 obkoro1@foxmail.com
+ * LastEditTime : 2022-05-15 17:27:24
  * FilePath     : /stop-mess-around/src/options/App/table/EditorItem.vue
  * Description  : 编辑摸鱼网站
  * koroFileheader插件
@@ -11,7 +11,6 @@
 <template>
   <el-dialog
     :close-on-click-modal="false"
-    :close-on-press-escape="false"
     :visible.sync="dialogVisible"
     :before-close="resetFields"
     width="550px"

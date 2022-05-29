@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-21 14:56:38
  * LastEditors  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-05-03 20:43:32
+ * LastEditTime : 2022-05-29 16:19:31
  * FilePath     : /stop-mess-around/src/utils/net.js
  * Description  : 全局常量
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -15,11 +15,11 @@ function getNavigatorOptions() {
     // 打开火狐options的id
     const FIREFOX_UUID = '17ce4bd7-60f8-432c-9848-a61dd819bc06'
     // 本地调试火狐的id
-    const FIREFOX_SERVER_UUID = '0ffdf229-783f-4b8b-b583-8cf7788f7180'
-    const id = mode.indexOf('serve') === -1 ? FIREFOX_SERVER_UUID : FIREFOX_UUID
+    const optionsUrl = window.browser.extension.getURL('options.html')
     return {
       name: 'Firefox',
-      id, // serve
+      optionsUrl,
+      id: FIREFOX_UUID, // serve
       extensionName: 'moz-extension',
       downloadUrl: 'https://addons.mozilla.org/zh-CN/firefox/addon/stop-mess-around1/',
     }
@@ -35,6 +35,8 @@ function getNavigatorOptions() {
     chromeOptions.name = 'Edge'
     chromeOptions.downloadUrl = 'https://microsoftedge.microsoft.com/addons/detail/stopmessaround/mdiafefnlaaefmfgjbeejpppkdhghmaj'
   }
+  chromeOptions.optionsUrl = `${chromeOptions.extensionName}://${chromeOptions.id}/options.html`
+
   // 包含edge
   return chromeOptions
 }
@@ -54,7 +56,7 @@ const NET = {
   // 我的github地址
   MYSITE: 'http://obkoro1.com/web_accumulate/about.html',
   // 插件配置面板页面
-  OPTIONSPAGE: `${NavigatorOptions.extensionName}://${NavigatorOptions.id}/options.html`,
+  OPTIONSPAGE: NavigatorOptions.optionsUrl,
   //   MYSITE: 'https://github.com/OBKoro1',
   // 谷歌应用市场
   CHROMESTORE: NavigatorOptions.downloadUrl,

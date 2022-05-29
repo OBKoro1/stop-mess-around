@@ -1,8 +1,8 @@
 <!--
  * Author       : OBKoro1
  * Date         : 2022-04-09 14:41:25
- * LastEditors  : OBKoro1
- * LastEditTime : 2022-04-17 20:31:26
+ * LastEditors  : OBKoro1 obkoro1@foxmail.com
+ * LastEditTime : 2022-05-29 16:35:38
  * FilePath     : /stop-mess-around/src/options/App/settingPage/ReplacePluginData.vue
  * description  : 插件数据与反馈问题相关
  * koroFileheader VSCode插件
@@ -10,7 +10,6 @@
 -->
 <template>
   <el-dialog
-    :close-on-click-modal="false"
     :close-on-press-escape="false"
     :visible.sync="dialogVisible"
     title="插件数据与反馈问题相关"
@@ -190,7 +189,6 @@ export default {
       let res
       try {
         res = JSON.parse(this.inputData, null, 2)
-        console.log('JSON', res)
       } catch {
         res = {}
       }

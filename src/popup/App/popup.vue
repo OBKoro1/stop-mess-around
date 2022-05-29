@@ -10,7 +10,7 @@
       <div>
         <i :class="allOpen" />
       </div>
-      <span>{{ open ? '一键关闭摸鱼检测': '一键开启摸鱼检测' }}</span>
+      <span>{{ open ? '一键关闭摸鱼检测' : '一键开启摸鱼检测' }}</span>
     </div>
 
     <div @click="utils.jumpUrl(NET.OPTIONSPAGE)">
@@ -47,7 +47,12 @@
           style="color: #fff"
         />
       </div>
-      <span>点个Star吧</span>
+      <img
+        alt="GitHub Repo stars"
+        class="header-btns-star cursor-pointer"
+        src="https://img.shields.io/github/stars/OBKoro1/stop-mess-around?style=social"
+        @click="utils.jumpUrl(NET.GITHUBREPO)"
+      >
     </div>
     <div @click="utils.jumpUrl(NET.RELEASES)">
       <div>
@@ -100,7 +105,9 @@ export default {
     },
     // 是否开启
     allOpen() {
-      return this.open ? 'el-icon-open color-green' : 'el-icon-turn-off color-gray'
+      return this.open
+        ? 'el-icon-open color-green'
+        : 'el-icon-turn-off color-gray'
     },
     // 匹配网址
     matchFont() {
@@ -111,7 +118,6 @@ export default {
     await this.initData()
   },
   methods: {
-
     // 切换启用
     async checkoutOpen() {
       if (!this.item) {
@@ -144,15 +150,16 @@ export default {
       this.settingUpdate(this.Setting)
       this.utils.jumpUrl(this.NET.OPTIONSPAGE)
     },
-    async  getCurrentTab() {
+    async getCurrentTab() {
       const queryOptions = { active: true, currentWindow: true }
       const res = await chrome.tabs.query(queryOptions)
       return res[0]
     },
     // 初始化
     async initData() {
-      this.Setting = await this.utils.getChromeStorage(this.NET.GLOBALSETTING) || defaultSetting
-      this.tableData = await this.utils.getChromeStorage(this.NET.TABLELIST) || []
+      this.Setting = (await this.utils.getChromeStorage(this.NET.GLOBALSETTING))
+        || defaultSetting
+      this.tableData = (await this.utils.getChromeStorage(this.NET.TABLELIST)) || []
       // 先获取当前页面的tabID
 
       this.tab = await this.getCurrentTab()

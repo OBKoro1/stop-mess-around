@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2022-01-07 16:43:58
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-04-09 20:36:33
+ * LastEditTime : 2022-05-29 21:32:15
  * FilePath     : /stop-mess-around/src/utils/openCheck.js
  * description  : 开启网站检测，弹窗提示
  * koroFileheader VSCode插件
@@ -51,6 +51,7 @@ class OpenCheck {
     const nowDay = this.statisticsTime[0]
     // 获取摸鱼网站返回值
     const item = nowDay.restSite.find((ele) => ele.site === this.item.site)
+    if (!item) return
     // 摸鱼几分钟： 现在时间 - 关闭时的时间
     const minutes = utils.getMoreDiff(this.openTime, Date.now(), this.getMoreDiff)
     // 减去摸鱼时间

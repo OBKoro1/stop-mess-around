@@ -2,9 +2,11 @@
  * Author       : OBKoro1
  * Date         : 2021-06-18 11:08:23
  * LastEditors  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-05-04 15:35:58
+ * LastEditTime : 2022-05-29 15:12:45
  * FilePath     : /stop-mess-around/deploy.js
  * Description  : 同步package.json的配置到manifest.json中
+ * 根据浏览器: 修改element-ui引用配置、
+ * 根据参数production: 修改package.json插件名和描述
  * koroFileheader插件
  * Copyright (c) ${now_year} by OBKoro1, All Rights Reserved.
  */

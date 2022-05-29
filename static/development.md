@@ -1,37 +1,27 @@
 # 开发相关
 
-<!-- 
+<!--
 
-TODO: firfox兼容 v2
-# TODO: 本地id获取 获取本地火狐id链接 getUrl
-let fullURL = browser.extension.getURL("beasts/frog.html");
-// -> something like:
-// moz-extension://2c127fa4-62c7-7e4f-90e5-472b45eecfdc/beasts/frog.html
+# TODO: 拉长励志语录列表
+# TODO: 提供一个添加励志语录、摸鱼网站的按钮
 
-fireFox直接上传到商店，如果有问题，则解决问题。
-否则本地貌似无法调试。 因为上次可以调试，这次只是被禁用以后就无法调试。
-测试本地element-ui的链接与ui
-测试本地的管理面板跳转是否成功
+# TODO: 英文打赏相关信息了解
+# TODO: 兼容英文版本
 
-# 兼容英文版本
-索要英文打赏
-设置英文版本
-设置英文励志言语
+兼容英文版本
+寻找英文励志语言
+寻找英文摸鱼网站
 英文wiki文档
-
+英文博客推广网站定期推广
 
 整理读书名言（可选）：
 更新语录，更新读书笔记中的语录
 删除语录
 
-架构（可选）:
-梳理环境变量: 删除env文件、或者根据env设置环境变量。
-commit相关、eslint相关
-更新scripts的脚本使用、env设置。
-webpack设置，打包压缩。
+架构折腾（可选）:
+commit相关、eslint相关、
 文件架构梳理
 代码质量相关：重复代码检测等
-
  -->
 
 ## 统计相关逻辑
@@ -40,9 +30,9 @@ webpack设置，打包压缩。
 
 ## 环境变量
 
-* NODE_ENV --mode 环境 传递
 * VUE_APP_MODE .env.版本 传递
 * argv: node deploy.js 参数1 参数2
+* 参数1用于区分环境，参数2用于区域浏览器。
 
 ### 开发
 * 写代码
@@ -61,12 +51,12 @@ webpack设置，打包压缩。
     * 是否修改图片演示
 * 打包各浏览器的release版本，通过actions上传到release中。
 
-## tag
-
-* 打tag
-
 ### 上传到应用商店。
 
 * 谷歌
 * edge
 * 火狐
+## 商店更新完成
+
+* 打tag, release版本自动上传
+* 清空issue

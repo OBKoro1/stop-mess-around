@@ -11,6 +11,15 @@
 
 <!-- TODO: development.md -->
 
+### [V2.0.5]
+
+* feat: 支持fireFox浏览器, [fireFox应用商店](https://addons.mozilla.org/zh-CN/firefox/addon/stop-mess-around1/)
+* fix: 修复使用esc可以关闭弹窗的问题。
+* fix: 修复关闭摸鱼统计时, 找不到摸鱼网站，导致的bug。
+* fix: 修复摸鱼统计中默认请求icon资源的问题
+* fix: 修复window下滚动条过大导致的样式问题
+* chore: 使用dotenv管理env文件。
+
 ### [V2.0.2]
 
 * fix: 不是本地安装的提示

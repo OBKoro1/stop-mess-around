@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2022-01-07 16:43:58
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-04-09 20:50:46
+ * LastEditTime : 2022-05-29 21:44:09
  * FilePath     : /stop-mess-around/src/utils/allAction.js
  * description  : 一键开启、一键关闭
  * koroFileheader VSCode插件
@@ -38,7 +38,7 @@ class AllAction {
       setting: this.setting,
       globalSiteTouchFish: true,
     }
-    this.setGlobalSiteTouchFish()
+    await this.setGlobalSiteTouchFish()
     for (const [index, item] of this.tableArr.entries()) {
       options.item = item
       // eslint-disable-next-line no-await-in-loop
@@ -114,7 +114,7 @@ class AllAction {
   getGlobalTimeDiff() {
     const nowDay = this.statisticsTime[0]
     const minutes = utils.getMoreDiff(this.setting.todayGlobalTouchFish, Date.now())
-    nowDay.time -= minutes
+    nowDay.time = utils.subCount(nowDay.time, minutes)
     this.statisticsTime[0] = nowDay
   }
 }

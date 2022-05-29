@@ -135,6 +135,8 @@ PS：我以前都是用`Octotree`文件树来查看代码的，现在感觉可�
 
 如果觉得这个效率工具还不错, 对你有所帮助，就赞助支持一下我的工作吧。
 
+请我喝杯水吧，十块八块不嫌多，三块五块不嫌少 ❤️
+
 <img src="https://raw.githubusercontent.com/OBKoro1/koro1FileHeader/dev/images/pay.jpg" alt="赞助" width="500px" style="display: block;"/>
 
 ### 我的其他开源推荐

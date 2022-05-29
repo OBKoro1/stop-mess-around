@@ -1,8 +1,8 @@
 <!--
  * Author       : OBKoro1
  * Date         : 2021-05-28 16:02:26
- * LastEditors  : OBKoro1
- * LastEditTime : 2022-04-17 17:22:20
+ * LastEditors  : OBKoro1 obkoro1@foxmail.com
+ * LastEditTime : 2022-05-29 21:31:09
  * FilePath     : /stop-mess-around/src/options/App/settingPage/BatchItem.vue
  * Description  : 摸鱼列表 批量添加
  * koroFileheader插件
@@ -10,7 +10,6 @@
 -->
 <template>
   <el-dialog
-    :close-on-click-modal="false"
     :close-on-press-escape="false"
     :visible.sync="dialogVisible"
     width="550px"
@@ -119,7 +118,6 @@ export default {
       if (val) {
         this.chooseList = []
         this.tableArr = this.getTableData()
-        console.log('this', this.tableArr)
         if (this.tableArr.length === 0) {
           this.showCopyData = true
         } else {
