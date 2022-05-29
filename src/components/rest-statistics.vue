@@ -1,13 +1,12 @@
 <!--
  * Author       : OBKoro1
  * Date         : 2021-12-29 15:09:18
- * LastEditors  : git config user.name && git config user.email
- * LastEditTime : 2022-05-02 19:06:53
+ * LastEditors  : OBKoro1 obkoro1@foxmail.com
+ * LastEditTime : 2022-05-29 16:23:21
  * description  : 网站摸鱼近百日摸鱼时长统计
 -->
 <template>
   <el-dialog
-    :close-on-click-modal="false"
     :close-on-press-escape="false"
     class="dialog-class"
     title="近百日摸鱼时长统计"
@@ -166,10 +165,13 @@ export default {
     },
   },
   watch: {
-    dialogVisible(val) {
-      if (val) {
-        this.initStatics()
-      }
+    showStatistics: {
+      handler(val) {
+        if (val) {
+          this.initStatics()
+        }
+      },
+      immediate: true,
     },
   },
   methods: {

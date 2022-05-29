@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-12-30 15:28:46
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-03-12 16:05:35
+ * LastEditTime : 2022-05-29 16:10:24
  * FilePath     : /stop-mess-around/src/content/mess-around-right-tip.vue
  * description  : 摸鱼网站右侧摸鱼时长统计与摸鱼倒计时提醒
  * koroFileheader VSCode插件
@@ -38,6 +38,7 @@
     </div>
     <!-- 近百日摸鱼统计完整数据 -->
     <RestStatistics
+      v-if="showCompleteStatistics"
       :show-statistics="showCompleteStatistics"
       @close="closeRestStatistics"
     />
