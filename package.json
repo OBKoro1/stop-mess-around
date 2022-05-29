@@ -23,7 +23,7 @@
     "serve:fireFox": "node deploy.js development fireFox && cross-env NODE_ENV=serve ENV_PATH=serveFireFox vue-cli-service build-watch",
     "plugin:chrome": "node deploy.js production && cross-env NODE_ENV=production ENV_PATH=productionChrome vue-cli-service build",
     "plugin:Edg": "node deploy.js production && cross-env NODE_ENV=production ENV_PATH=productionEdge vue-cli-service build",
-    "plugin:fireFox": "node deploy.js production fireFox && cross-env NODE_ENV=production ENV_PATH=productionFireFox vue-cli-service build",
+    "plugin:fireFox": "node deploy.js production fireFox && cross-env NODE_ENV=production ENV_PATH=productionFireFox vue-cli-service build && npm run pack",
     "release:chrome": "node deploy.js development && cross-env NODE_ENV=production ENV_PATH=productionReleaseChrome vue-cli-service build",
     "release:Edg": "node deploy.js development && cross-env NODE_ENV=production ENV_PATH=productionReleaseEdge vue-cli-service build",
     "release:fireFox": "node deploy.js development fireFox && cross-env NODE_ENV=production ENV_PATH=productionReleaseFireFox vue-cli-service build",
