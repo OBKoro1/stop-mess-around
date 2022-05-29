@@ -2,6 +2,23 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ZipPlugin = require('zip-webpack-plugin')
 const webpackBundleAnalyzer = require('webpack-bundle-analyzer')
 const path = require('path')
+const dotenv = require('dotenv')
+const dotenvExpand = require('dotenv-expand')
+
+const envPath = {
+  productionChrome: './config/env/.env.productionChrome',
+  productionEdge: './config/env/.env.productionEdge',
+  productionFireFox: './config/env/.env.productionFireFox',
+  productionReleaseChrome: './config/env/.env.productionReleaseChrome',
+  productionReleaseEdge: './config/env/.env.productionReleaseEdge',
+  productionReleaseFireFox: './config/env/.env.productionReleaseFireFox',
+  serveChrome: './config/env/.env.serveChrome',
+  serveFireFox: './config/env/.env.serveFireFox',
+}
+
+const envPathName = process.env.ENV_PATH
+const myEnv = dotenv.config({ path: envPath[envPathName] })
+dotenvExpand.expand(myEnv)
 
 // 多页面
 const pagesObj = {}
