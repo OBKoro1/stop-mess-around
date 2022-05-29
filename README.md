@@ -64,6 +64,7 @@
 * [Chrome应用商店](https://chrome.google.com/webstore/detail/stop-mess-around/gbjbkekbbjbieijpebieifkmahlagncm/related?hl=zh-CN)，需要VPN翻墙。
 
 * [Edge应用商店](https://microsoftedge.microsoft.com/addons/detail/stopmessaround/mdiafefnlaaefmfgjbeejpppkdhghmaj)
+* [Firefox应用商店](https://addons.mozilla.org/zh-CN/firefox/addon/stop-mess-around1/)
 
 ### 插件文档
 
