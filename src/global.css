@@ -21,7 +21,10 @@
 .marginRL {
   margin: 0 10px;
 }
-.dialog_title{
+.marginLeft {
+  margin: 0 0 0 10px;
+}
+.dialog_title {
   line-height: 24px;
   font-size: 18px;
   color: #303133;

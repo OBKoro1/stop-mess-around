@@ -1,0 +1,26 @@
+.stop-mess-around-content .cursor-pointer {
+  cursor: pointer;
+}
+
+.stop-mess-around-content .align-center {
+  display: flex;
+  align-items: center;
+}
+
+.stop-mess-around-content .center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stop-mess-around-content .marginRL {
+  margin: 0 10px;
+}
+.stop-mess-around-content .marginLeft {
+  margin: 0 0 0 10px;
+}
+.stop-mess-around-content .dialog_title {
+  line-height: 24px;
+  font-size: 18px;
+  color: #303133;
+}

@@ -156,7 +156,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .main_app {
   background: #2a2a2a;
   min-height: 100vh;
@@ -165,5 +165,18 @@ export default {
 }
 .main-content {
   margin: 20px;
+}
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 10%);
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: hsla(0, 0%, 100%, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
 }
 </style>>

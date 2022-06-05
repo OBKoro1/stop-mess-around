@@ -2,13 +2,13 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-05-29 16:12:01
- * FilePath     : /stop-mess-around/src/content/App.vue
+ * LastEditTime : 2022-06-05 14:40:43
+ * FilePath     : /src/content/App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
 -->
 <template>
-  <div class="content-div">
+  <div class="stop-mess-around-content">
     <el-dialog
       :close-on-click-modal="false"
       :close-on-press-escape="false"
