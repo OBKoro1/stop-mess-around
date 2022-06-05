@@ -1,7 +1,6 @@
 ---
-name: Bug report
+name: Bug反馈
 about: 请按照规范创建issue
-
 ---
 
 ### 注意： 

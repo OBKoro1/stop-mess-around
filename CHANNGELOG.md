@@ -11,6 +11,11 @@
 
 <!-- TODO: development.md -->
 
+### [V2.0.6]
+
+* feat: lookCode更新为选择github1s与github.dev
+* feat: 优化摸鱼时长统计准确性。
+
 ### [V2.0.5]
 
 * feat: 支持fireFox浏览器, [fireFox应用商店](https://addons.mozilla.org/zh-CN/firefox/addon/stop-mess-around1/)

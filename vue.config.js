@@ -61,7 +61,7 @@ if (process.env.NODE_ENV !== 'serve') {
   plugins.push(
     new ZipPlugin({
       path: path.resolve('dist'),
-      filename: `${process.env.ZIP_NAME}.zip`,
+      filename: `${process.env.ZIP_NAME}-${process.env.npm_package_version}.zip`,
     }),
   )
 }
