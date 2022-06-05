@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 22:45:36
  * LastEditors  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-05-15 17:27:17
- * FilePath     : /stop-mess-around/src/options/App/settingPage/Setting.vue
+ * LastEditTime : 2022-06-05 14:22:59
+ * FilePath     : /src/options/App/settingPage/Setting.vue
  * Description  : 全局设置
  * koroFileheader插件
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -295,12 +295,8 @@ export default {
       ],
       lookCodeOptions: [
         {
-          label: 'github.dev',
-          value: 'github.dev',
-        },
-        {
-          label: 'github1s',
-          value: 'github1s.com',
+          label: '开启',
+          value: 'open',
         },
         {
           label: '关闭',

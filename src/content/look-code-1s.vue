@@ -1,8 +1,54 @@
 <template>
-  <div />
+  <el-popover
+    ref="popoverDom"
+    v-model="clickBtn"
+    placement="bottom"
+    width="200"
+    trigger="manual"
+  >
+    <div
+      v-for="item in optionsArr"
+      :key="item.url"
+    >
+      <template v-if="!item.type">
+        <el-tooltip
+          class="item"
+          effect="dark"
+          :content="item.tip"
+          placement="top"
+        >
+          <a
+            target="_blank"
+            style="background:#2ea44f; color: #fff; margin-bottom: 10px;"
+            class="btn btn-sm"
+            @click="jumpUrl(item)"
+          > {{ item.btnFont }} </a>
+        </el-tooltip>
+      </template>
+      <template v-else>
+        <div>
+          <span>stop-mess-around </span>
+          <div>
+            <span>自律防摸鱼插件提供</span>
+          </div>
+          <div class="align-center">
+            <span>插件地址:</span>
+            <img
+              v-if="clickBtn"
+              alt="GitHub Repo stars"
+              class="header-btns-star cursor-pointer title-img marginLeft"
+              src="https://img.shields.io/github/stars/OBKoro1/stop-mess-around?"
+              @click="jumpGithub(NET.GITHUBREPO)"
+            >
+          </div>
+        </div>
+      </template>
+    </div>
+  </el-popover>
 </template>
 <script>
 import { utils } from '@/utils/index'
+import NET from '@/utils/net'
 
 export default {
   name: 'Github1sButton',
@@ -10,8 +56,23 @@ export default {
     return {
       setting: {},
       intervalId: null,
-      idName: 'stop-mess-around',
-
+      clickBtn: false,
+      idName: 'stop-mess-around-btn',
+      optionsArr: [
+        {
+          url: 'https://github1s.com',
+          btnFont: 'github1s: 第三方速度快',
+          tip: 'github1s 代码只可读 加载速度快 号称只要1s',
+        },
+        {
+          url: 'https://github.dev',
+          btnFont: 'github.dev: 官方集成度高',
+          tip: 'github.dev 官方出品: 可读可写可commit集成度高 加载慢一些',
+        },
+        {
+          type: 'stop-mess-around',
+        },
+      ],
     }
   },
   async mounted() {
@@ -37,12 +98,6 @@ export default {
           }, 3000)
         }
 
-        // const [, repoUrl, repoAuthor, repoName] = res
-        // this.repoAuthor = repoAuthor
-        // this.repoName = repoName
-        // if (!this.repoUrl.startsWith(repoUrl)) {
-        //   this.repoUrl = repoUrl
-        // }
         this.matchDom()
       }
     },
@@ -51,48 +106,47 @@ export default {
     async matchDom() {
       const isCreatedDom = this.isCreated();
       ({ setting: this.setting } = await utils.getData())
-      // github.dev 官方出品: 可读可写可commit集成度高 加载慢一些
-      let options = {
-        url: 'https://github.dev',
-        btnFont: '在线VSCode: github.dev',
-      }
-      if (this.setting.lookCode === 'github1s.com') {
-        // github1s 代码只可读 加载速度快 号称只要1s
-        options = {
-          url: 'https://github1s.com',
-          btnFont: '在线VSCode: github1s',
-        }
-      } else if (this.setting.lookCode === 'off') {
+      // 关闭
+      if (this.setting.lookCode === 'off') {
         return isCreatedDom && isCreatedDom.remove()
       }
-      this.createDomRight(options)
+      this.createDomRight()
     },
-    createDomLeft(options) {
-      // 仓库头部
-      const headDom = document.querySelector('#repository-container-header')
-      if (headDom) {
-        const repoNameDom = headDom.children[0].children[0].children[0]
-        // 创建dom
-        const createDom = document.createElement('a')
-        createDom.textContent = options.btnFont
-        createDom.className = 'github-look-code-class'
-        createDom.id = this.idName
-        createDom.onclick = () => {
-          window.location.href = `${options.url}${window.location.pathname}`
-        }
-        repoNameDom.appendChild(createDom)
-      }
-    },
-    createDomRight(options) {
-      const element = `<li id="${this.idName}"> <a target="_blank" style="background:#2ea44f; color: #fff;" class="btn btn-sm"> ${options.btnFont} </a> </li>`
+    createDomRight() {
+      const element = `<li id="${this.idName}"> <a target="_blank" style="background:#2ea44f; color: #fff;" class="btn btn-sm"> 在线VSCode翻阅源码 </a> </li>`
       const node = document.querySelector('.pagehead-actions.flex-shrink-0.d-none.d-md-inline')
       if (node !== null) {
         node.insertAdjacentHTML('afterBegin', element)
         const dom = document.querySelector(`#${this.idName}`)
-        dom.onclick = () => {
-          window.location.href = `${options.url}${window.location.pathname}`
+        // 显示提示框 选择使用github1s或者github.dev
+        dom.onclick = (e) => {
+          // 标签的起点
+          const left = e.target.offsetLeft
+          // 标签下方
+          const top = e.target.offsetTop + (e.target.offsetHeight + 10)
+          this.clickBtn = !this.clickBtn
+          if (this.clickBtn) {
+            this.$nextTick(() => {
+              this.renderChooseDom(left, top)
+            })
+          }
         }
       }
+    },
+    // 设置提示框位置
+    renderChooseDom(left, top) {
+      // 增加偏移余量
+      const popoverDomFather = this.$refs.popoverDom.$el
+      const popoverDom = popoverDomFather.children[0]
+      popoverDom.style.left = `${left}px`
+      popoverDom.style.top = `${top}px`
+    },
+    // 跳转在线vscode
+    jumpUrl(item) {
+      window.location.href = `${item.url}${window.location.pathname}`
+    },
+    jumpGithub() {
+      utils.jumpUrl(NET.GITHUBREPO)
     },
   },
 }

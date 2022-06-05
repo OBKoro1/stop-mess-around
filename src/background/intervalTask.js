@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2022-01-10 14:06:01
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-04-16 17:00:34
- * FilePath     : /stop-mess-around/src/background/intervalTask.js
+ * LastEditTime : 2022-06-05 14:28:55
+ * FilePath     : /src/background/intervalTask.js
  * description  : 后台定时任务
  * koroFileheader VSCode插件
  * Copyright (c) 2022 by OBKoro1, All Rights Reserved.
@@ -19,9 +19,20 @@ class IntervalTask {
     setInterval(async () => {
       ({ setting: this.setting, statisticsTime: this.statisticsTime, listArr: this.listArr } = await utils.getData())
       await this.updateItemPrototype()
+      await this.updateSettingOldValue()
       await this.autoOpen()
       await this.statisticsNewDayCheck()
     }, 3000)
+  }
+
+  /**
+   * @description: 强制更新老的配置 避免配置错误
+   */
+  async updateSettingOldValue() {
+    if (this.setting.lookCode === 'github1s.com' || this.setting.lookCode === 'github.dev') {
+      this.setting.lookCode = 'open'
+      await utils.updateStorageData(this.setting, NET.GLOBALSETTING)
+    }
   }
 
   /**
