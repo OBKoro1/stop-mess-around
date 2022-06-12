@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2022-01-12 14:16:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-03-13 19:52:18
- * FilePath     : /stop-mess-around/src/utils/default-setting/tip-arr.js
+ * LastEditTime : 2022-06-12 15:57:52
+ * FilePath     : /src/utils/default-setting/tip-arr.js
  * description  : 默认内容随机提示数组
  * koroFileheader VSCode插件
  * Copyright (c) 2022 by OBKoro1, All Rights Reserved.
@@ -64,7 +64,7 @@ export const tipArr = [
   '百金买骏马，\n千金买美人，\n万金买高爵，\n何处买青春？\n',
   '花有重开日，人无再少年。',
   '泰山不让土壤，故能成其大；\n江海不择细流，故能就其深。',
-  '九层之台，起于累士。',
+  '九层之台，起于累土。',
   '不问收获，但问耕耘，天道酬勤！',
   '忙于采集的蜜蜂，无暇在人前高谈阔论。',
   '一寸光阴一寸金，寸金难买寸光阴。',
