@@ -23,40 +23,6 @@ labels: [ 'share']
 // 复制下一行
 
 ```
-
-## 手动填写摸鱼网站数据
-
-### 
-
-```js
-// 示例
-[
-  {
-    // 摸鱼网站链接，唯一
-    site: 'https://www.taobao.com/', 
-    // 网站名
-    labelName: '淘宝网',
-    // 网站匹配规则 start | includes | strict
-    matchRule: 'start' // 开头全等
-    // matchRule: 'includes' // 包含
-    // matchRule: 'strict' // 严格相等
-    // 网址匹配规则: 开头全等 => 前面的必须一模一样，包含=> 包含即可，严格相等=>一模一样
-  },
-  {
-    // 摸鱼网站链接，唯一
-    site: 'https://www.jd.com/', 
-    // 网站名
-    labelName: '京东',
-    // 网站匹配规则 start | includes | strict
-    matchRule: 'start' // 开头全等
-    // matchRule: 'includes' // 包含
-    // matchRule: 'strict' // 严格相等
-    // 网址匹配规则: 开头全等 => 前面的必须一模一样，包含=> 包含即可，严格相等=>一模一样
-  },
-  // 更多
-]
-```
-
 ## 点个Star吧~
 
 如果觉得插件还不错，就给插件点个赞吧, 给插件点个小星星鼓励一下吧❤️~
