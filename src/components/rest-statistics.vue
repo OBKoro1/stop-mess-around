@@ -7,6 +7,7 @@
 -->
 <template>
   <el-dialog
+    append-to-body
     :close-on-press-escape="false"
     class="dialog-class"
     title="近百日摸鱼时长统计"

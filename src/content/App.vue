@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-06-05 14:40:43
+ * LastEditTime : 2022-06-13 22:47:07
  * FilePath     : /src/content/App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
@@ -10,6 +10,7 @@
 <template>
   <div class="stop-mess-around-content">
     <el-dialog
+      append-to-body
       :close-on-click-modal="false"
       :close-on-press-escape="false"
       :title="info.title"

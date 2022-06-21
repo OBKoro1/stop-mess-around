@@ -11,6 +11,10 @@
 
 <!-- TODO: development.md -->
 
+### [V2.0.7]
+
+* feat: 更新了一些小细节
+
 ### [V2.0.6]
 
 * feat: lookCode更新为选择github1s与github.dev
