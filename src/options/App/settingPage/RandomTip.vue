@@ -1,9 +1,9 @@
 <!--
  * Author       : OBKoro1
  * Date         : 2021-06-15 15:14:20
- * LastEditors  : OBKoro1
- * LastEditTime : 2022-03-13 17:53:34
- * FilePath     : /stop-mess-around/src/options/App/settingPage/RandomTip.vue
+ * LastEditors  : OBKoro1 obkoro1@foxmail.com
+ * LastEditTime : 2022-07-02 17:54:24
+ * FilePath     : /src/options/App/settingPage/RandomTip.vue
  * Description  : 内卷随机提示增删改查
  * koroFileheader插件
  * Copyright (c) ${now_year} by OBKoro1, All Rights Reserved.
@@ -11,12 +11,12 @@
 
 <template>
   <el-dialog
-    :close-on-click-modal="false"
     :close-on-press-escape="false"
+    append-to-body
     :visible.sync="dialogVisible"
     :before-close="closeBefore"
     title="匹配摸鱼网站时出现的激励信息"
-    width="550px"
+    width="80%"
   >
     <el-tabs v-model="activeName">
       <el-tab-pane
@@ -36,13 +36,16 @@
             <el-table-column
               label="内容提示"
               show-overflow-tooltip
-              width="300"
             >
               <template slot-scope="scope">
                 <p>{{ scope.row }}</p>
               </template>
             </el-table-column>
-            <el-table-column label="操作">
+            <el-table-column
+              label="操作"
+              fixed="right"
+              width="170"
+            >
               <template slot-scope="scope">
                 <el-button
                   size="mini"
@@ -170,30 +173,43 @@
         label="添加"
         name="add"
       >
-        <el-radio-group v-model="radio">
-          <el-radio label="tipArr">
-            添加励志语录
-          </el-radio>
-          <el-radio label="titleArr">
-            添加励志标题
-          </el-radio>
-          <el-radio label="confirmArr">
-            添加励志按钮
-          </el-radio>
-        </el-radio-group>
-        <el-input
-          v-model="textarea"
-          class="add-margin"
-          type="textarea"
-          :autosize="{ minRows: 2, maxRows: 4}"
-          placeholder="请输入内容"
-        />
-        <el-button
-          type="primary"
-          @click="saveAddFn"
-        >
-          保存添加
-        </el-button>
+        <div class="random-content">
+          <el-radio-group v-model="radio">
+            <el-radio label="tipArr">
+              添加励志语录
+            </el-radio>
+            <el-radio label="titleArr">
+              添加励志标题
+            </el-radio>
+            <el-radio label="confirmArr">
+              添加励志按钮
+            </el-radio>
+          </el-radio-group>
+          <el-input
+            v-model="textarea"
+            class="add-margin"
+            type="textarea"
+            :autosize="{ minRows: 2, maxRows: 4}"
+            placeholder="请输入内容"
+          />
+          <el-button
+            type="primary"
+            @click="saveAddFn"
+          >
+            保存添加
+          </el-button>
+          <div>
+            <p class="page-title1">
+              分享常用的摸鱼网站, 利人利己, 让插件更好用, 零配置快速上手~
+            </p>
+            <el-button
+              type="primary"
+              @click="openShareDialog"
+            >
+              打开分享弹窗
+            </el-button>
+          </div>
+        </div>
       </el-tab-pane>
     </el-tabs>
     <div
@@ -216,7 +232,6 @@
       </el-button>
     </div>
     <el-dialog
-      :close-on-click-modal="false"
       :close-on-press-escape="false"
       width="30%"
       title="编辑"
@@ -251,7 +266,7 @@ export default {
       default: false,
     },
   },
-  inject: ['getSetting', 'settingUpdate'],
+  inject: ['getSetting', 'settingUpdate', 'checkOutAppDialog'],
   data() {
     return {
       setting: {},
@@ -380,13 +395,22 @@ export default {
     close() {
       this.$emit('close', 'showTip', false)
     },
+    /**
+     * @description: 打开分享摸鱼网站弹窗
+     */
+    openShareDialog() {
+      this.close()
+      this.$nextTick(() => {
+        this.checkOutAppDialog('shareSiteDialog', true)
+      })
+    },
   },
 }
 </script>
 
 <style scoped>
 .random-content {
-  max-height: 500px;
+  height: 500px;
   overflow: auto;
   overflow-x: hidden;
 }
@@ -396,5 +420,15 @@ export default {
 .random-content-font {
   font-size: 14px;
   padding: 12px 0;
+}
+.button-margin-right {
+  margin-right: 10px;
+}
+.padding-title {
+  padding: 15px 0;
+}
+.page-title1 {
+  font-size: 16px;
+  margin: 15px 0 ;
 }
 </style>

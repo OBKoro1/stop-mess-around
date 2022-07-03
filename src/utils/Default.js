@@ -43,4 +43,6 @@ export const defaultSetting = {
   restTime: 0, // 网站休息时间
   globalSiteTouchFish: false, // 是否为全局摸鱼状态
   closeTime: 0, // 自动检测开始时间
+  siteType: 'default', // 网站类型 'default' | 'create' | 'editor'
+  init: false, // 是否初始化 初始化设置摸鱼网站。
 }

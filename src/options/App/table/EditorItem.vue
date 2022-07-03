@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 15:18:00
  * LastEditors  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-05-15 17:27:24
- * FilePath     : /stop-mess-around/src/options/App/table/EditorItem.vue
+ * LastEditTime : 2022-06-26 16:43:40
+ * FilePath     : /src/options/App/table/EditorItem.vue
  * Description  : 编辑摸鱼网站
  * koroFileheader插件
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -11,6 +11,7 @@
 <template>
   <el-dialog
     :close-on-click-modal="false"
+    append-to-body
     :visible.sync="dialogVisible"
     :before-close="resetFields"
     width="550px"
@@ -180,15 +181,28 @@
       </el-button>
       <el-button
         type="primary"
-        @click="confirmFn"
+        @click="confirmFn(false)"
       >
-        修 改
+        保 存
       </el-button>
+      <el-tooltip
+        placement="top"
+        :content="'保存修改,并打开分享摸鱼网站弹窗, 集成到插件的默认配置中, 利人利己, 让插件更好用'"
+      >
+        <el-button
+          type="primary"
+          @click="confirmFn(true)"
+        >
+          保存并分享集成到插件
+        </el-button>
+      </el-tooltip>
     </div>
   </el-dialog>
 </template>
 
 <script>
+import { siteTypeTypes } from '@/utils/types'
+import { itemSiteType } from '@/utils/tableListUtils'
 
 export default {
   name: 'EditorItem',
@@ -204,7 +218,7 @@ export default {
       default: () => ({}),
     },
   },
-  inject: ['tableDataSpliceUpdate', 'getTableData'],
+  inject: ['updateArr', 'getTableData', 'checkOutAppDialog'],
   data() {
     return {
       ruleForm: {
@@ -239,6 +253,7 @@ export default {
           },
         ],
       },
+      tableList: [],
     }
   },
   computed: {
@@ -260,7 +275,7 @@ export default {
     },
   },
   methods: {
-    // 同步数组配置
+    // 初始化填入该摸鱼网站的配置
     syncData() {
       const obj = JSON.parse(JSON.stringify(this.item.row))
       for (const key in this.ruleForm) {
@@ -272,8 +287,8 @@ export default {
     },
     // 摸鱼网站是否添加过
     hasAdd() {
-      const arr = this.getTableData()
-      return arr.find((item) => {
+      this.tableList = this.getTableData()
+      return this.tableList.find((item) => {
         // 编辑的这条链接 跳过
         if (item.site === this.item.row.site) {
           return false
@@ -281,15 +296,30 @@ export default {
         return item.site === this.ruleForm.site
       })
     },
-    confirmFn() {
+    confirmFn(isOpenShare) {
       this.$refs.ruleForm.validate((valid) => {
         if (valid) {
           if (this.hasAdd() === undefined) {
             // 替换
             const obj = JSON.parse(JSON.stringify(this.ruleForm))
-            this.tableDataSpliceUpdate(this.item.index, 1, obj)
-            // 判断
-            this.close()
+            if (obj.site !== this.item.row) {
+              // site是否存在于默认摸鱼列表
+              obj.siteType = itemSiteType(obj).type
+            }
+            if (obj.siteType === siteTypeTypes.default) {
+              obj.siteType = siteTypeTypes.defaultEditor
+            } else if (obj.siteType === siteTypeTypes.create) {
+              obj.siteType = siteTypeTypes.createEditor
+            }
+            this.tableList.splice(this.item.index, 1) // 切割
+            this.tableList.unshift(obj) // 插入
+            this.updateArr(this.tableList)
+            this.$message.success('修改摸鱼网站成功, 网站已前置到表格顶部~')
+            if (isOpenShare) {
+              this.openShareDialog()
+            } else {
+              this.close()
+            }
           } else {
             this.$message.error('摸鱼网址重复, 请重新输入')
           }
@@ -305,6 +335,15 @@ export default {
     resetFields(done) {
       this.$refs.ruleForm.resetFields()
       done()
+    },
+    /**
+     * @description: 打开分享摸鱼网站弹窗
+     */
+    openShareDialog() {
+      this.close()
+      this.$nextTick(() => {
+        this.checkOutAppDialog('shareSiteDialog', true)
+      })
     },
   },
 }

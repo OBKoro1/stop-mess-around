@@ -68,7 +68,6 @@
 
 <script>
 import { utils } from '@/utils'
-import { defaultSetting } from '../../utils/Default'
 
 export default {
   name: 'Popup',
@@ -157,11 +156,8 @@ export default {
     },
     // 初始化
     async initData() {
-      this.Setting = (await this.utils.getChromeStorage(this.NET.GLOBALSETTING))
-        || defaultSetting
-      this.tableData = (await this.utils.getChromeStorage(this.NET.TABLELIST)) || []
+      ({ setting: this.Setting, listArr: this.tableData } = await this.utils.getData())
       // 先获取当前页面的tabID
-
       this.tab = await this.getCurrentTab()
       console.log('tab', this.tab)
       const isMatch = this.utils.checkUrl(this.tableData, this.tab.url)

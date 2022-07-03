@@ -2,9 +2,9 @@
  * Author       : OBKoro1
  * Date         : 2021-05-28 16:02:26
  * LastEditors  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-06-26 15:10:30
- * FilePath     : /src/options/App/settingPage/BatchItem.vue
- * Description  : 摸鱼列表 批量添加
+ * LastEditTime : 2022-06-19 13:19:37
+ * FilePath     : /src/options/App/share/chooseShare.vue
+ * Description  : 选择要分享的摸鱼网站
  * koroFileheader插件
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
 -->
@@ -13,27 +13,15 @@
     append-to-body
     :close-on-press-escape="false"
     :visible.sync="dialogVisible"
-    width="550px"
+    width="650px"
   >
     <div
       slot="title"
       class="dialog_title"
     >
-      {{ '摸鱼网站列表添加' }}
+      {{ '手动选择与默认配置不同的摸鱼网站' }}
     </div>
     <div>
-      <div
-        v-if="showCopyData"
-        class="jump-setTing"
-      >
-        <el-button
-          plain
-          type="danger"
-          @click="copyDataFn"
-        >
-          跳转复制插件数据到本地
-        </el-button>
-      </div>
       <div class="random-content">
         <el-table
           :data="showList"
@@ -46,7 +34,7 @@
         >
           <el-table-column
             type="selection"
-            width="55"
+            width="60"
           />
           <el-table-column
             prop="labelName"
@@ -59,7 +47,6 @@
           </el-table-column>
           <el-table-column
             prop="site"
-            width="270"
             show-overflow-tooltip
           >
             <template slot="header">
@@ -77,19 +64,18 @@
       <el-button
         type="primary"
         @click="confirmFn"
-      >添 加</el-button>
+      >复制选中数据</el-button>
     </span>
   </el-dialog>
 </template>
 
 <script>
-import { filterArrFn } from '@/options/utils'
-import { defaultTableAdd } from '@/utils/tableListUtils'
+import { copyData, getDifferentSite } from '@/options/utils'
 
 export default {
-  name: 'BatchItem',
+  name: 'ShareItem',
   props: {
-    showBatchItem: {
+    showChooseShareDialog: {
       require: true,
       type: Boolean,
       default: false,
@@ -100,14 +86,13 @@ export default {
       showList: [],
       chooseList: [],
       tableArr: [],
-      showCopyData: false,
     }
   },
   inject: ['tableDataSpliceUpdate', 'getTableData', 'getSetting'],
   computed: {
     dialogVisible: {
       get() {
-        return this.showBatchItem
+        return this.showChooseShareDialog
       },
       set() {
         this.close()
@@ -120,43 +105,28 @@ export default {
       if (val) {
         this.chooseList = []
         this.tableArr = this.getTableData()
-        if (this.tableArr.length === 0) {
-          this.showCopyData = true
-        } else {
-          this.showCopyData = false
-        }
-        const arr = filterArrFn(this.tableArr)
-        this.showList = defaultTableAdd(arr, this.getSetting())
+        const arr = getDifferentSite(this.tableArr)
+        this.showList = arr
       }
     },
   },
   methods: {
-    copyDataFn() {
-      this.$emit('close', 'showBatchItem', false)
-      this.$nextTick(() => {
-        this.$emit('showCopyDataFn')
-      })
-    },
     close() {
-      this.$emit('close', 'showBatchItem', false)
+      this.$emit('close', 'showChooseShareDialog', false)
     },
     // 选中
     handleSelectionChange(val) {
       this.chooseList = val
     },
-    // 过滤选中的值
-    filterChooseFn(arr) {
-      this.tableArr = this.getTableData()
-      return arr.filter((item) => {
-        const find = this.tableArr.find((ele) => item.site === ele.site)
-        return find === undefined
-      })
-    },
     confirmFn() {
-      if (this.chooseList.length === 0) this.$message.error('至少需要选中一个默认摸鱼网站')
-      const arr = this.filterChooseFn(this.chooseList)
-      this.tableDataSpliceUpdate(this.tableArr.length, 0, ...arr)
-      this.$message.success(`已添加${this.chooseList.length}个默认摸鱼网站`)
+      if (this.chooseList.length === 0) {
+        this.$message.error('至少选择一个数据')
+        return
+      }
+      const tip = '自定义摸鱼网站数据已复制, 用于分享摸鱼网站, 集成到插件中'
+      let text = JSON.stringify(this.chooseList, null, 2)
+      text = `选择摸鱼网站列表:\n\`\`\`js\n${text}\n\`\`\``
+      copyData(text, tip)
       this.close()
     },
   },

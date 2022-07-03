@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-05-24 11:02:13
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-03-13 15:58:00
- * FilePath     : /stop-mess-around/src/options/App/table/Table.vue
+ * LastEditTime : 2022-07-02 17:58:44
+ * FilePath     : /src/options/App/table/Table.vue
  * Description  : 表格
  * koroFileheader插件
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -27,7 +27,12 @@
         width="80"
       >
         <template slot="header">
-          <span>{{ '是否启用' }}</span>
+          <el-tooltip
+            :content="'是否检测该摸鱼网站, 匹配成功后展示摸鱼提示弹窗'"
+            placement="top"
+          >
+            <span>{{ '是否启用' }}</span>
+          </el-tooltip>
         </template>
         <template slot-scope="scope">
           <el-switch
@@ -45,7 +50,12 @@
         show-overflow-tooltip
       >
         <template slot="header">
-          <span>{{ '摸鱼网站名' }}</span>
+          <el-tooltip
+            :content="'网站名仅用于展示, 可重复'"
+            placement="top"
+          >
+            <span>{{ '摸鱼网站名' }}</span>
+          </el-tooltip>
         </template>
       </el-table-column>
       <el-table-column
@@ -54,7 +64,29 @@
         show-overflow-tooltip
       >
         <template slot="header">
-          <span>{{ '摸鱼网址' }}</span>
+          <el-tooltip
+            :content="'匹配摸鱼网址展示摸鱼弹窗'"
+            placement="top"
+          >
+            <span>{{ '摸鱼网址' }}</span>
+          </el-tooltip>
+        </template>
+      </el-table-column>
+      <el-table-column
+        prop="labelName"
+        width="120"
+        show-overflow-tooltip
+      >
+        <template slot="header">
+          <el-tooltip
+            :content="'摸鱼网址有三种状态: 新增/编辑/插件集成'"
+            placement="top"
+          >
+            <span>{{ '摸鱼网址状态' }}</span>
+          </el-tooltip>
+        </template>
+        <template slot-scope="scope">
+          <span>{{ getSiteStatus(scope.row) }}</span>
         </template>
       </el-table-column>
       <el-table-column
@@ -125,7 +157,7 @@
           <span>{{ scope.row.jump ? '开启' : '关闭' }}</span>
         </template>
       </el-table-column>
-      <el-table-column width="290">
+      <el-table-column width="180">
         <template slot="header">
           <span>{{ '操作' }}</span>
         </template>
@@ -136,21 +168,6 @@
           >
             {{ '编辑' }}
           </el-button>
-          <el-button
-            size="mini"
-            :disabled="scope.$index === 0"
-            @click="move('top', scope.$index, scope.row)"
-          >
-            {{ '上移' }}
-          </el-button>
-          <el-button
-            size="mini"
-            :disabled="scope.$index === tableData.length -1"
-            @click="move('bto', scope.$index, scope.row)"
-          >
-            {{ '下移' }}
-          </el-button>
-
           <el-popconfirm
             title="确认删除？"
             @confirm="handleDelete(scope.$index)"
@@ -178,6 +195,7 @@
 <script>
 
 import { utils } from '@/utils/index'
+import { siteTypeFind } from '@/utils/tableListUtils'
 import EditorItem from './EditorItem.vue'
 
 // 列表中tip的常量 防止列表随机tip不断变化
@@ -246,6 +264,12 @@ export default {
       }
       return ''
     },
+    // 摸鱼网址状态
+    getSiteStatus(item) {
+      if (siteTypeFind(item, 'create')) return '新增'
+      if (siteTypeFind(item, 'editor')) return '编辑'
+      return '插件默认集成'
+    },
     // 获取随机tip或者本地tip
     getTip(row) {
       if (row.tip) {
@@ -286,18 +310,6 @@ export default {
         newItem = res.item
       }
       this.tableDataSpliceUpdate(index, 1, newItem)
-    },
-    move(type, index, row) {
-      const arr = JSON.parse(JSON.stringify(this.tableData))
-      let newIndex
-      if (type === 'top') {
-        newIndex = index - 1
-      } else {
-        newIndex = index + 1
-      }
-      arr.splice(index, 1) // 删除
-      arr.splice(newIndex, 0, row) // 插入
-      this.updateArr(arr)
     },
     handleDelete(index) {
       this.tableDataSpliceUpdate(index, 1)

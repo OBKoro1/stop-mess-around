@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 15:18:00
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-03-13 17:49:40
- * FilePath     : /stop-mess-around/src/options/App/settingPage/CreateItem.vue
+ * LastEditTime : 2022-06-26 16:10:40
+ * FilePath     : /src/options/App/settingPage/CreateItem.vue
  * Description  : 新增摸鱼网站
  * koroFileheader插件
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -11,6 +11,7 @@
 <template>
   <el-dialog
     :close-on-click-modal="false"
+    append-to-body
     :close-on-press-escape="false"
     :visible.sync="dialogVisible"
     :show-close="false"
@@ -184,15 +185,28 @@
       </el-button>
       <el-button
         type="primary"
-        @click="confirmFn"
+        @click="confirmFn(false)"
       >
         添 加
       </el-button>
+      <el-tooltip
+        placement="top"
+        :content="'添加,并打开分享摸鱼网站弹窗, 集成到插件的默认配置中, 利人利己, 让插件更好用'"
+      >
+        <el-button
+          type="primary"
+          @click="confirmFn(true)"
+        >
+          添加并分享集成到插件
+        </el-button>
+      </el-tooltip>
     </div>
   </el-dialog>
 </template>
 
 <script>
+import { itemProto } from '@/utils/Default'
+import { siteTypeTypes } from '@/utils/types'
 
 export default {
   name: 'CreateItem',
@@ -203,7 +217,7 @@ export default {
       default: false,
     },
   },
-  inject: ['tableDataSpliceUpdate', 'getSetting', 'getTableData', 'settingUpdate'],
+  inject: ['tableDataSpliceUpdate', 'getSetting', 'getTableData', 'settingUpdate', 'checkOutAppDialog'],
   data() {
     return {
       Setting: {},
@@ -268,15 +282,8 @@ export default {
     // 将全局设置放入新增中
     initRuleForm() {
       this.Setting = this.getSetting()
-      Object.keys(this.Setting).forEach((key) => {
-        // 不赋值 使用全局 全局变更 跟着变更
-        if (key === 'tip') return
-        if (key === 'time') return
-        if (key === 'checkoutStudy') return
-        // 使用设置
-        if (this.ruleForm[key] !== undefined) {
-          this.ruleForm[key] = this.Setting[key]
-        }
+      itemProto.forEach((item) => {
+        this.ruleForm[item] = this.Setting[item]
       })
     },
     // popup添加摸鱼网址
@@ -294,17 +301,26 @@ export default {
     hasAdd(arr) {
       return arr.find((item) => item.site === this.ruleForm.site)
     },
-    confirmFn() {
+    /**
+     * @description: 点击添加按钮，添加摸鱼网站
+     * @param {type} isOpenShare 是否打开分享摸鱼网站弹窗
+     */
+    confirmFn(isOpenShare) {
       this.$refs.ruleForm.validate((valid) => {
         if (valid) {
           const arr = this.getTableData()
           if (this.hasAdd(arr) === undefined) {
             // 添加到第一个
             const obj = JSON.parse(JSON.stringify(this.ruleForm))
-            // 添加到末尾
-            this.tableDataSpliceUpdate(arr.length, 0, obj)
-            // 判断
-            this.close()
+            obj.siteType = siteTypeTypes.create
+            // 添加到开头
+            this.tableDataSpliceUpdate(0, 0, obj)
+            this.$message.success('添加摸鱼网站成功~')
+            if (isOpenShare) {
+              this.openShareDialog()
+            } else {
+              this.close()
+            }
           } else {
             this.$message.error('摸鱼网址重复, 请重新输入')
           }
@@ -321,6 +337,15 @@ export default {
     resetFields(done) {
       this.$refs.ruleForm.resetFields()
       done()
+    },
+    /**
+     * @description: 打开分享摸鱼网站弹窗
+     */
+    openShareDialog() {
+      this.close()
+      this.$nextTick(() => {
+        this.checkOutAppDialog('shareSiteDialog', true)
+      })
     },
   },
 }

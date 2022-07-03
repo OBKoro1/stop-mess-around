@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2022-01-12 14:16:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-05-29 18:17:31
- * FilePath     : /stop-mess-around/src/utils/default-setting/default-list.js
+ * LastEditTime : 2022-06-26 15:17:59
+ * FilePath     : /src/utils/default-setting/default-list.js
  * description  : 默认摸鱼网站列表
  * koroFileheader VSCode插件
  * Copyright (c) 2022 by OBKoro1, All Rights Reserved.
@@ -47,7 +47,7 @@ export const defaultList = [
     labelName: '企鹅直播',
   },
   {
-    site: 'http://www.taobao.com/',
+    site: 'https://www.taobao.com/',
     labelName: '淘宝网',
   },
   {
@@ -73,6 +73,10 @@ export const defaultList = [
   {
     site: 'https://live.bilibili.com/',
     labelName: 'B站直播',
+  },
+  {
+    site: 'https://www.qidian.com/',
+    labelName: '起点小说网',
   },
 ]
 // 鱼塘热榜：https://mo.fish/?class_id=%E5%85%A8%E9%83%A8&hot_id=1053

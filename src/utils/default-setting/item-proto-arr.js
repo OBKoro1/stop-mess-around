@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2022-01-12 14:32:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-01-12 14:37:00
- * FilePath     : /stop-mess-around/src/utils/default-setting/item-proto-arr.js
+ * LastEditTime : 2022-06-26 16:05:41
+ * FilePath     : /src/utils/default-setting/item-proto-arr.js
  * description  : 摸鱼网站对象属性
  * koroFileheader VSCode插件
  * Copyright (c) 2022 by OBKoro1, All Rights Reserved.
@@ -20,6 +20,7 @@ export const itemProto = [
   'tip', // 网址提示语
   'globalSiteTouchFish', // 是否全局摸鱼开启
   'restTime', // 点击休息一下的时间
+  'siteType', // 网站类型 'default' | 'create' | 'editor'
 ]
 
 // site: 'https://www.zhihu.com/hot', // site 唯一id

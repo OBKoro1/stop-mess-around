@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-06-13 22:47:07
+ * LastEditTime : 2022-06-26 14:21:58
  * FilePath     : /src/content/App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
@@ -87,7 +87,7 @@
 
 <script>
 import { utils } from '@/utils/index'
-import { defaultSetting, restTimeArr } from '@/utils/Default'
+import { restTimeArr } from '@/utils/Default'
 import NET from '@/utils/net'
 import LookCode1sVue from './look-code-1s.vue'
 import MessAroundRightTipVue from './mess-around-right-tip.vue'
@@ -108,6 +108,7 @@ export default {
       item: null,
       index: 0,
       tableData: [],
+      statisticsTime: [],
       // 提醒的字段
       info: {
         title: '',
@@ -145,7 +146,7 @@ export default {
     },
     // 定时获取右侧摸鱼提醒数据
     async getStatisticsMatch(matchItem) {
-      [this.statisticsInfo.statisticsTimeToday] = await utils.getChromeStorage(NET.statisticsTime)
+      [this.statisticsInfo.statisticsTimeToday] = this.statisticsTime
       this.statisticsInfo.totalMessAround = this.statisticsInfo.statisticsTimeToday.time
       const find = this.statisticsInfo.statisticsTimeToday.restSite.find((ele) => ele.site === matchItem.site)
       if (!find) return // 没摸鱼
@@ -154,10 +155,9 @@ export default {
     // 检测链接
     async run() {
       try {
-        this.Setting = (await utils.getChromeStorage(NET.GLOBALSETTING)) || defaultSetting
-        const tableData = (await utils.getChromeStorage(NET.TABLELIST)) || []
-        this.tableData = tableData
-        const isMatch = utils.checkUrl(tableData, window.location.href)
+        ({ setting: this.Setting, statisticsTime: this.statisticsTime, listArr: this.tableData } = await utils.getData())
+        this.Setting = (await utils.getChromeStorage(NET.GLOBALSETTING))
+        const isMatch = utils.checkUrl(this.tableData, window.location.href)
         if (!isMatch) return
         await this.getStatisticsMatch(isMatch.item)
         // 不重复展示关闭提示 已经关闭 或者已经开启的 不再重复出现

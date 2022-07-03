@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2022-04-09 14:41:25
  * LastEditors  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-05-29 16:35:38
- * FilePath     : /stop-mess-around/src/options/App/settingPage/ReplacePluginData.vue
+ * LastEditTime : 2022-06-19 13:18:40
+ * FilePath     : /src/options/App/settingPage/ReplacePluginData.vue
  * description  : 插件数据与反馈问题相关
  * koroFileheader VSCode插件
  * Copyright (c) 2022 by OBKoro1, All Rights Reserved.
@@ -11,6 +11,7 @@
 <template>
   <el-dialog
     :close-on-press-escape="false"
+    append-to-body
     :visible.sync="dialogVisible"
     title="插件数据与反馈问题相关"
     width="550px"
@@ -57,7 +58,7 @@
               :content="'去Github按照规范提issue'"
               placement="top"
             >
-              <span>{{ '复制数据与反馈' }}</span>
+              <span>{{ '跳转反馈问题' }}</span>
             </el-tooltip>
           </span>
           <el-button
@@ -65,7 +66,7 @@
             size="small"
             @click="utils.jumpUrl(NET.GITHUB_REPO_ISSUES)"
           >
-            跳转反馈问题
+            跳转反馈
           </el-button>
         </el-form-item>
         <el-form-item prop="clear">
@@ -160,6 +161,8 @@
 
 <script>
 
+import { copyData } from '@/options/utils'
+
 export default {
   inject: ['initData'],
   props: {
@@ -214,36 +217,14 @@ export default {
     // 复制插件配置 去反馈问题
     async copyPluginData(type) {
       const obj = await this.utils.getData()
-      let text = ''
+      let tip = '插件数据已复制, 用于初始化数据'
+      let text = JSON.stringify(obj)
       if (type === 'format') {
         text = JSON.stringify(obj, null, 2)
-      } else {
-        text = JSON.stringify(obj)
+        tip = '插件数据已复制, 用于反馈问题, 不可以用于初始化数据，否则失效'
+        text = `反馈问题数据:\n\`\`\`js\n${text}\n\`\`\``
       }
-      if (navigator.clipboard) {
-        // clipboard api 复制
-        navigator.clipboard.writeText(text)
-      } else {
-        const textarea = document.createElement('textarea')
-        document.body.appendChild(textarea)
-        // 隐藏此输入框
-        textarea.style.position = 'fixed'
-        textarea.style.clip = 'rect(0 0 0 0)'
-        textarea.style.top = '10px'
-        // 赋值
-        textarea.value = text
-        // 选中
-        textarea.select()
-        // 复制
-        document.execCommand('copy', true)
-        // 移除输入框
-        document.body.removeChild(textarea)
-      }
-      if (type === 'format') {
-        this.$message.success('插件数据已复制, 用于反馈问题, 不可以用于初始化数据，否则失效')
-      } else {
-        this.$message.success('插件数据已复制, 用于初始化数据')
-      }
+      copyData(text, tip)
     },
     close() {
       this.$emit('close', 'showPluginDataDialog', false)

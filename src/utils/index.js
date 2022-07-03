@@ -3,8 +3,8 @@
  * Author       : OBKoro1
  * Date         : 2021-05-17 16:17:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-05-29 21:42:58
- * FilePath     : /stop-mess-around/src/utils/index.js
+ * LastEditTime : 2022-06-25 18:07:02
+ * FilePath     : /src/utils/index.js
  * Description  : 全局方法
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
  */
@@ -73,7 +73,12 @@ export const utils = {
    * @return {object} { setting, statisticsTime,  listArr }
    */
   async getData() {
-    const setting = await utils.getChromeStorage(NET.GLOBALSETTING) || defaultSetting
+    let setting = await utils.getChromeStorage(NET.GLOBALSETTING)
+    // setting初始化
+    if (!setting) {
+      await utils.updateStorageData(defaultSetting, NET.GLOBALSETTING)
+      setting = defaultSetting
+    }
     const statisticsTime = (await utils.getChromeStorage(NET.statisticsTime)) || []
     const listArr = (await utils.getChromeStorage(NET.TABLELIST)) || []
     updateOldSetting(setting, utils)

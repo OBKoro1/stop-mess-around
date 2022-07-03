@@ -2,10 +2,14 @@
   <div class="main_app">
     <OptionsHeader />
     <div class="main-content">
-      <SetPage
-        :open="open"
-        @searchChange="searchChange"
-      />
+      <div class="set-page">
+        <SetPage />
+        <TableSetting
+          :open="open"
+          :sub-options="subOptions"
+          @searchChange="searchChange"
+        />
+      </div>
       <Table
         :table-data="tableData"
         :search="search"
@@ -14,14 +18,18 @@
         :table-data-splice-update="tableDataSpliceUpdate"
       />
     </div>
+    <ShareSiteToGithubVue :show-dialog="shareSiteDialog" />
   </div>
 </template>
 
 <script>
+import { filterArrFn } from '@/options/utils'
+import { initDefaultTableList, siteTypeFind } from '@/utils/tableListUtils'
 import OptionsHeader from './Header.vue'
 import SetPage from './settingPage/SetPage.vue'
+import TableSetting from './settingPage/TableSetting.vue'
+import ShareSiteToGithubVue from './share/ShareSiteToGithub.vue'
 import Table from './table/Table.vue'
-import { defaultSetting } from '../../utils/Default'
 
 export default {
   name: 'OptionsApp',
@@ -33,27 +41,39 @@ export default {
       settingUpdate: this.settingUpdate, // 更新设置
       updateArr: this.updateArr, // 传递数组 更新数组
       initData: this.clearSetting,
+      checkOutAppDialog: this.checkOutAppDialog, // 切换appdialog
     }
   },
   components: {
     OptionsHeader,
     SetPage,
     Table,
+    TableSetting,
+    ShareSiteToGithubVue,
   },
   data() {
     return {
       tableData: [], //  摸鱼列表
       showList: [], // 展示的列表
       Setting: {}, // 全局设置
-
+      // 分享摸鱼网站，集成到插件中
+      shareSiteDialog: false,
       search: '', // 搜索
       interval: null,
       open: true, // 当前是否打开
+
+      // 子组件数据
+      subOptions: {
+        // 展示摸鱼网站列表按钮
+        btnShowBatchItem: false,
+      },
     }
   },
   async created() {
     window.$Vue = this
-    await this.initData()
+    await this.getData()
+    await this.initTableList()
+    await this.sortList()
     // 监控配置更改
     this.interval = setInterval(this.getData, 5000)
   },
@@ -61,6 +81,20 @@ export default {
     clearInterval(this.interval)
   },
   methods: {
+    // 获取数据 防止其他地方操作变更
+    async getData() {
+      ({ setting: this.Setting, statisticsTime: this.statisticsTime, listArr: this.tableData } = await this.utils.getData())
+      this.updateArrLater()
+    },
+    /**
+     * @description: 插件安装 初始化添加所有默认摸鱼列表
+     */
+    async initTableList() {
+      const options = await initDefaultTableList(this.Setting)
+      if (options.init) {
+        ({ setting: this.Setting, listArr: this.tableData } = options)
+      }
+    },
     // 清除数据
     async clearSetting(type) {
       if (type === 'clearList') {
@@ -70,51 +104,25 @@ export default {
       } else if (type === 'statisticsTime') {
         await this.utils.updateStorageData([], this.NET.statisticsTime)
       }
-      this.initData()
+      this.getData()
     },
-    // 初始化
-    async initData() {
-      const arr = await this.utils.getChromeStorage(this.NET.TABLELIST) || []
-      const setting = await this.utils.getChromeStorage(this.NET.GLOBALSETTING)
-      this.updateArr(arr)
-      this.Setting = this.syncData(setting)
-      this.updateArrLater()
+    /**
+     * @description: 更新子组件数据
+     */
+    updateSubOptions(options) {
+      this.subOptions = Object.assign(this.subOptions, options)
     },
-    // 更新默认语录数组
-    syncDefault(obj) {
-      Object.keys(obj.defaultNum).forEach((key) => {
-        for (let i = obj.defaultNum[key]; defaultSetting.defaultNum[key] > i; i += 1) {
-          obj[key].push(defaultSetting[key][i]) // 添加新的默认值
-        }
-        obj.defaultNum[key] = defaultSetting.defaultNum[key] // 更新默认值数量
-      })
-      return obj
-    },
-    // 获取配置
-    syncData(Setting) {
-      let obj
-      const isHavaValue = Object.prototype.toString.call(Setting) === '[object Object]' && Object.keys(Setting).length !== 0
-      // 是对象 并且有值
-      if (isHavaValue) {
-        obj = window.JSON.parse(JSON.stringify(Setting))
-        // 更新默认数组
-        obj = this.syncDefault(obj)
-        // 新增配置同步
-        for (const key in defaultSetting) {
-          if (obj[key] === undefined) {
-            obj[key] = defaultSetting[key]
-          }
-        }
-      } else {
-        obj = defaultSetting
+    /**
+     * @description: 更新摸鱼按钮
+     */
+    updateBtnShowBatchItem() {
+      const arr = filterArrFn(this.tableData)
+      const isShow = arr.length > 0
+      if (this.subOptions.btnShowBatchItem !== isShow) {
+        this.updateSubOptions({
+          btnShowBatchItem: isShow,
+        })
       }
-      this.settingUpdate(obj) // 初始化保存
-      return obj
-    },
-    // 获取数据 防止其他地方操作变更
-    async getData() {
-      ({ setting: this.Setting, statisticsTime: this.statisticsTime, listArr: this.tableData } = await this.utils.getData())
-      this.updateArrLater()
     },
     // 搜索
     searchChange(val) {
@@ -134,6 +142,7 @@ export default {
     // 更新数据后的操作
     updateArrLater() {
       this.isOpen()
+      this.updateBtnShowBatchItem()
     },
     // 更新数组
     updateArr(arr) {
@@ -152,6 +161,25 @@ export default {
       this.Setting = JSON.parse(JSON.stringify(obj))
       return this.utils.updateStorageData(this.Setting, this.NET.GLOBALSETTING)
     },
+    checkOutAppDialog(key, value) {
+      this[key] = value
+    },
+    /**
+     * @description: 刷新页面排序
+     * @return {type}
+     */
+    async sortList() {
+      this.tableData.sort((a, b) => {
+        // create 排在前面 编辑排在后面
+        if (siteTypeFind(a, 'create')) return -1
+        if (siteTypeFind(b, 'create')) return 1
+        if (siteTypeFind(a, 'editor')) return -1
+        if (siteTypeFind(b, 'editor')) return 1
+        // 其他默认随机
+        return Math.random() - 0.5
+      })
+      await this.utils.updateStorageData(this.tableData, this.NET.TABLELIST)
+    },
   },
 }
 </script>
@@ -166,6 +194,12 @@ export default {
 .main-content {
   margin: 20px;
 }
+.set-page {
+  border-radius: 6px;
+  width: 100%;
+  background: #fff;
+  color: #000;
+}
 
 ::-webkit-scrollbar {
   height: 5px;
@@ -178,5 +212,11 @@ export default {
   border-radius: 10px;
   background: hsla(0, 0%, 100%, 0.3);
   -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
+}
+
+/* element-ui 弹窗遮罩的问题 */
+.v-modal {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.5);
 }
 </style>>

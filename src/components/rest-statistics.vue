@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-12-29 15:09:18
  * LastEditors  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-05-29 16:23:21
+ * LastEditTime : 2022-07-02 16:21:28
  * description  : 网站摸鱼近百日摸鱼时长统计
 -->
 <template>
@@ -135,6 +135,17 @@
         <el-table />
       </el-table>
     </div>
+    <div v-if="optionsPage">
+      <p class="page-title1">
+        分享常用的摸鱼网站集成到插件中,利人利己，让插件更好用, 零配置快速上手~
+      </p>
+      <el-button
+        type="primary"
+        @click="openShareDialog"
+      >
+        打开分享摸鱼网站弹窗
+      </el-button>
+    </div>
   </el-dialog>
 </template>
 
@@ -149,12 +160,17 @@ export default {
       type: Boolean,
       default: false,
     },
+    optionsPage: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
       statisticsTimeArr: [],
     }
   },
+  inject: ['checkOutAppDialog'],
   computed: {
     dialogVisible: {
       get() {
@@ -186,6 +202,15 @@ export default {
     close() {
       this.$emit('close', 'showStatistics', false)
     },
+    /**
+     * @description: 打开分享摸鱼网站弹窗
+     */
+    openShareDialog() {
+      this.close()
+      this.$nextTick(() => {
+        this.checkOutAppDialog('shareSiteDialog', true)
+      })
+    },
   },
 }
 </script>
@@ -206,5 +231,9 @@ export default {
   max-height: 500px;
   overflow: auto;
   overflow-x: hidden;
+}
+.page-title1 {
+  font-size: 16px;
+  margin: 15px 0 ;
 }
 </style>

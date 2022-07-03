@@ -1,6 +1,8 @@
-
 # tag
 # https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE
+
+# fireFox打包源码问题
+# 使用pack打包zip，再将zip解压，然后进行打包。 上传到firefox，说不定可以解决打包不一致的问题
 
 # git tag -a 'v0.0.12' -m 'tag信息'
 # git push origin --tags

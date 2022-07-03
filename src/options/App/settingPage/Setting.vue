@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 22:45:36
  * LastEditors  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-06-05 14:22:59
+ * LastEditTime : 2022-07-02 17:56:38
  * FilePath     : /src/options/App/settingPage/Setting.vue
  * Description  : 全局设置
  * koroFileheader插件
@@ -10,6 +10,7 @@
 -->
 <template>
   <el-dialog
+    append-to-body
     :close-on-press-escape="false"
     :visible.sync="dialogVisible"
     width="550px"
@@ -214,7 +215,7 @@
         <el-form-item prop="feedback">
           <span slot="label">
             <el-tooltip
-              :content="'跳转插件数据与反馈，反馈问题必须复制插件数据'"
+              :content="'反馈问题必须复制插件数据'"
               placement="top"
             >
               <span>{{ '插件数据与反馈' }}</span>
@@ -226,7 +227,7 @@
             type="primary"
             @click="jumpCopyPluginData"
           >
-            跳转插件数据与反馈问题相关
+            打开插件数据与反馈问题弹窗
           </el-button>
         </el-form-item>
       </el-form>
