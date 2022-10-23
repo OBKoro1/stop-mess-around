@@ -37,8 +37,9 @@
   "offline_enabled": true,
   "web_accessible_resources": [
     {
-      "resources": ["fonts/element-icons.tff", "fonts/element-icons.woff"],
-      "matches": ["<all_urls>", "https://juejin.cn/*"]
+      "resources": ["/fonts/*"],
+      "matches": ["<all_urls>"],
+      "use_dynamic_url": true
     }
   ],
   "default_locale": "zh_CN"

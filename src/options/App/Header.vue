@@ -110,6 +110,7 @@ export default {
       sponsorship: false,
       disabledSponsorship: true,
       development: false,
+      Setting: {},
     }
   },
   watch: {
@@ -143,15 +144,15 @@ export default {
     },
     // 自动显示赞赏
     sponsorshipShow() {
-      this.Settig = this.getSetting()
-      if (this.Settig.sponsorshipTime === 'show') {
+      this.Setting = this.getSetting()
+      if (this.Setting.sponsorshipTime === 'show') {
         this.sponsorship = true
         this.resetSponsorshipShow()
         return
       }
       const now = Date.now()
       // 两周显示一次赞赏
-      const isMoreTime = this.Settig.sponsorshipTime + 1000 * 60 * 60 * 24 * 14
+      const isMoreTime = this.Setting.sponsorshipTime + 1000 * 60 * 60 * 24 * 14
       if (isMoreTime < now) {
         this.sponsorship = true
         this.resetSponsorshipShow()
@@ -160,8 +161,8 @@ export default {
     // 重置赞赏时间
     resetSponsorshipShow() {
       const now = Date.now()
-      this.Settig.sponsorshipTime = now
-      this.settingUpdate(this.Settig)
+      this.Setting.sponsorshipTime = now
+      this.settingUpdate(this.Setting)
     },
     openSponsorship() {
       this.sponsorship = true

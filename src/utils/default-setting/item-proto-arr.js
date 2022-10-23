@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2022-01-12 14:32:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-06-26 16:05:41
+ * LastEditTime : 2022-10-23 17:23:06
  * FilePath     : /src/utils/default-setting/item-proto-arr.js
  * description  : 摸鱼网站对象属性
  * koroFileheader VSCode插件
@@ -12,7 +12,7 @@
 // 新增对象属性都放在这里 网站可能没有新增的对象属性
 // 旧网站对象属性依据这个数组进行更新数组默认值
 export const itemProto = [
-  'matchRule', // 网址匹配规则
+  'matchRule', // 网址摸鱼网址匹配规则
   'jump', // 关闭网站时 是否跳转到学习网址
   'jumpUrl', // 跳转学习网址的链接
   'open', // 打开
@@ -25,7 +25,7 @@ export const itemProto = [
 
 // site: 'https://www.zhihu.com/hot', // site 唯一id
 // labelName: '知乎热榜', // 网站名
-// matchRule: 'start', // 网址匹配规则
+// matchRule: 'includes', // 网址摸鱼网址匹配规则
 // jump: false, // 关闭网站时 是否跳转到学习网址
 // jumpUrl: 'https://leetcode-cn.com/problemset/all/', // 跳转学习网址的链接
 // open: true, // 打开

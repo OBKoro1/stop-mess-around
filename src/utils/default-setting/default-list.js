@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2022-01-12 14:16:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-06-26 15:17:59
+ * LastEditTime : 2022-10-19 23:56:29
  * FilePath     : /src/utils/default-setting/default-list.js
  * description  : 默认摸鱼网站列表
  * koroFileheader VSCode插件
@@ -10,11 +10,11 @@
  */
 export const defaultList = [
   {
-    site: 'https://www.douyu.com/',
+    site: 'douyu.com',
     labelName: '斗鱼直播',
   },
   {
-    site: 'https://www.huya.com/',
+    site: 'www.huya.com',
     labelName: '虎牙直播',
   },
   {
@@ -31,52 +31,44 @@ export const defaultList = [
     labelName: '知乎热榜',
   },
   {
-    site: 'https://www.bilibili.com/',
+    site: 'bilibili.com',
     labelName: 'B站',
   },
   {
-    site: 'https://weibo.com/',
+    site: 'weibo.com',
     labelName: '微博',
   },
   {
-    site: 'https://www.v2ex.com/',
+    site: 'v2ex.com',
     labelName: 'V2ex论坛',
   },
   {
-    site: 'https://live.qq.com/',
+    site: 'qq.com',
     labelName: '企鹅直播',
   },
   {
-    site: 'https://www.taobao.com/',
+    site: 'taobao.com',
     labelName: '淘宝网',
   },
   {
-    site: 'https://www.jd.com/',
+    site: 'jd.com',
     labelName: '京东',
   },
   {
-    site: 'https://www.hupu.com/',
+    site: 'hupu.com',
     labelName: '虎扑',
   },
   {
-    site: 'https://top.baidu.com/',
+    site: 'top.baidu.com',
     labelName: '百度热搜',
   },
   {
-    site: 'https://v.douyu.com/',
-    labelName: '斗鱼录播',
-  },
-  {
-    site: 'https://v.huya.com/',
-    labelName: '虎牙录播',
-  },
-  {
-    site: 'https://live.bilibili.com/',
-    labelName: 'B站直播',
-  },
-  {
-    site: 'https://www.qidian.com/',
+    site: 'qidian.com',
     labelName: '起点小说网',
+  },
+  {
+    site: 'mo.fish',
+    labelName: '鱼塘热榜',
   },
 ]
 // 鱼塘热榜：https://mo.fish/?class_id=%E5%85%A8%E9%83%A8&hot_id=1053

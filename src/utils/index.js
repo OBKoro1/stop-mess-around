@@ -3,7 +3,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-17 16:17:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-06-25 18:07:02
+ * LastEditTime : 2022-10-23 17:20:55
  * FilePath     : /src/utils/index.js
  * Description  : 全局方法
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -73,9 +73,9 @@ export const utils = {
    * @return {object} { setting, statisticsTime,  listArr }
    */
   async getData() {
-    let setting = await utils.getChromeStorage(NET.GLOBALSETTING)
-    // setting初始化
-    if (!setting) {
+    let setting = await utils.getChromeStorage(NET.GLOBALSETTING) || {}
+    // setting没值
+    if (!setting.matchRule) {
       await utils.updateStorageData(defaultSetting, NET.GLOBALSETTING)
       setting = defaultSetting
     }
@@ -147,22 +147,35 @@ export const utils = {
    * @param * url  检测的地址
    * @return {*} { item, index: i } | false
    */
-  checkUrl(tableArr, url) {
+  checkUrl(tableArr, locationObj, url = '') {
     let isMatch = false
     const len = tableArr.length
     for (let i = 0; i < len; i += 1) {
       const item = tableArr[i]
-      if (item.matchRule === 'strict') {
-        // 严格相等
-        if (url === item.site) isMatch = true
-      } else if (item.matchRule === 'includes') {
-        const index = url.indexOf(item.site)
+      if (item.matchRule === 'includes') {
+        // 包含，搜索origin和pathname
+        let searchUrl = url
+        // 如果有window.location
+        if (locationObj) {
+          searchUrl = `${locationObj.origin}${locationObj.pathname}`
+        }
+        const index = searchUrl.indexOf(item.site)
         if (index !== -1) {
           isMatch = true
         }
       } else if (item.matchRule === 'start') {
         // 网址以开头匹配
         isMatch = url.startsWith(item.site)
+      }
+      // 网址全等情况 并且没匹配到 即认为匹配
+      if (!isMatch) {
+        if (locationObj) {
+          if (locationObj.href === item.site) {
+            isMatch = true
+          }
+        } else if (url === item.site) {
+          isMatch = true
+        }
       }
       // 第一个匹配到摸鱼网址 不管是否打开 都返回
       if (isMatch) {
@@ -177,7 +190,6 @@ export const utils = {
    * @param * key
    */
   getChromeStorage(key) {
-    // let navigator = NavigatorOptions()
     return new Promise((resolve) => {
       chrome.storage.local.get([key], (res) => {
         let result = res[key]

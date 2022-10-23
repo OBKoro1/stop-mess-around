@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 14:24:51
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-06-05 17:24:19
+ * LastEditTime : 2022-07-03 16:58:06
  * FilePath     : /src/options/App/settingPage/SetPage.vue
  * Description  : 设置按钮列表
  * koroFileheader插件
@@ -54,8 +54,8 @@
 </template>
 
 <script>
+import RandomTip from '@/options/App/tip/index.vue'
 import Setting from './Setting.vue'
-import RandomTip from './RandomTip.vue'
 import ReplacePluginData from './ReplacePluginData.vue'
 
 export default {

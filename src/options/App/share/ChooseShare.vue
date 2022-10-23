@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-05-28 16:02:26
  * LastEditors  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-06-19 13:19:37
- * FilePath     : /src/options/App/share/chooseShare.vue
+ * LastEditTime : 2022-10-20 21:53:56
+ * FilePath     : /src/options/App/share/ChooseShare.vue
  * Description  : 选择要分享的摸鱼网站
  * koroFileheader插件
  * Copyright (c) 2021 by OBKoro1, All Rights Reserved.
@@ -70,7 +70,8 @@
 </template>
 
 <script>
-import { copyData, getDifferentSite } from '@/options/utils'
+import { copyData } from '@/options/utils'
+import { getDifferentSite } from '@/utils/tableListUtils'
 
 export default {
   name: 'ShareItem',

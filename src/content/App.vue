@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-06-26 14:21:58
+ * LastEditTime : 2022-10-21 00:06:14
  * FilePath     : /src/content/App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
@@ -14,7 +14,7 @@
       :close-on-click-modal="false"
       :close-on-press-escape="false"
       :title="info.title"
-      class="dialog-class"
+      class="stop-mess-around-content_dialog-class"
       :lock-scroll="true"
       :visible.sync="dialogVisible"
       width="60%"
@@ -28,32 +28,43 @@
         slot="footer"
         class="dialog-footer"
       >
+        <div class="footer_tip">
+          阅读励志语录，想想自己的梦想和想要的生活。
+        </div>
+        <div
+          v-if="closeInterVal"
+          class="footer_tip"
+        >
+          如果未点击休息一下，将在倒计时后关闭页面: {{ durationFont }}
+        </div>
         <div>
           <el-button
-            type="warning"
-            @click="showRestFn"
-          >
-            休息一下
-          </el-button>
-          <el-button
             type="success"
-            @click="changeTip"
-          >
-            更新提示
-          </el-button>
-          <el-button
-            type="primary"
             @click="handleClose"
           >
             {{ info.confirmBtn }}
+          </el-button>
+          <el-button
+            type="primary"
+            size="small"
+            @click="changeTip"
+          >
+            更新励志语录
+          </el-button>
+          <el-button
+            type="danger"
+            size="mini"
+            @click="showRestFn"
+          >
+            休息一下
           </el-button>
         </div>
         <div v-if="showRest">
           <el-select
             v-model="restTime"
             class="select-margin"
+            popper-class="stop-mess-around-dropdown"
             placeholder="请选择休息时间"
-            @visible-change="visibleChangeSelect"
           >
             <el-option
               v-for="item in restTimeArr"
@@ -89,8 +100,21 @@
 import { utils } from '@/utils/index'
 import { restTimeArr } from '@/utils/Default'
 import NET from '@/utils/net'
+import dayjs from 'dayjs'
 import LookCode1sVue from './look-code-1s.vue'
 import MessAroundRightTipVue from './mess-around-right-tip.vue'
+
+dayjs.extend(require('dayjs/plugin/duration'))
+
+const addZero = (num) => (num < 10 ? `0${num}` : num)
+
+// 输出倒计时
+function getCountDown(hours, minutes, seconds) {
+  if (hours) {
+    return `${hours}:${addZero(minutes)}:${addZero(seconds)}`
+  }
+  return `${addZero(minutes)}:${addZero(seconds)}`
+}
 
 export default {
   name: 'ContentApp',
@@ -122,11 +146,20 @@ export default {
         totalSiteMessAround: 0,
       },
       interVal: null,
+      closeSetTimeout: null, // 关闭页面的倒计时
+      closeInterVal: null,
+      durationFont: '',
     }
+  },
+  created() {
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('运行11111111111')
+      chrome.tabs.executeScript({ file: 'fonts/element-icons.tff' })
+    })
   },
   async mounted() {
     await this.run()
-    if (this.Setting.log) {
+    if (this.Setting.log || this.Setting.develop) {
       console.log('stop-mess-around: 设置', this.Setting)
       console.log('stop-mess-around: 摸鱼网站列表', this.tableData)
       console.log('stop-mess-around(防摸鱼)插件 插入')
@@ -134,8 +167,42 @@ export default {
     // 检测url变更
     this.interVal = setInterval(this.run, 6000)
   },
+  beforeDestroy() {
+    if (this.closeSetTimeout) {
+      clearTimeout(this.closeSetTimeout)
+      this.closeSetTimeout = null
+    }
+    clearInterval(this.interVal)
+    this.interVal = null
+    this.clearPageInterval()
+  },
   methods: {
-    async  getCurrentTab() {
+    clearPageInterval() {
+      clearInterval(this.closeInterVal)
+      this.closeInterVal = null
+    },
+    runCloseInterval() {
+      let closePageTime = 30
+      if (this.Setting.matchClosePage !== undefined) {
+        closePageTime = this.Setting.matchClosePage
+      }
+      if (this.closeInterVal || closePageTime === 0) {
+        return
+      }
+      const openTime = Date.now() + closePageTime * 1000 // 倒计时时间
+      this.closeInterVal = setInterval(() => {
+        const duration = dayjs.duration(dayjs(openTime) - dayjs())
+        const hours = duration.hours()
+        const minutes = duration.minutes()
+        const seconds = duration.seconds()
+        this.durationFont = getCountDown(hours, minutes, seconds)
+        if (hours <= 0 && minutes <= 0 && seconds <= 0) {
+          this.clearPageInterval()
+          this.closePage()
+        }
+      }, 1000)
+    },
+    async getCurrentTab() {
       const queryOptions = { active: true, currentWindow: true }
       const res = await chrome.tabs.query(queryOptions)
       return res[0]
@@ -146,7 +213,8 @@ export default {
     },
     // 定时获取右侧摸鱼提醒数据
     async getStatisticsMatch(matchItem) {
-      [this.statisticsInfo.statisticsTimeToday] = this.statisticsTime
+      ({ statisticsTime: this.statisticsTime } = await utils.getData());
+      [this.statisticsInfo.statisticsTimeToday = {}] = this.statisticsTime
       this.statisticsInfo.totalMessAround = this.statisticsInfo.statisticsTimeToday.time
       const find = this.statisticsInfo.statisticsTimeToday.restSite.find((ele) => ele.site === matchItem.site)
       if (!find) return // 没摸鱼
@@ -157,7 +225,10 @@ export default {
       try {
         ({ setting: this.Setting, statisticsTime: this.statisticsTime, listArr: this.tableData } = await utils.getData())
         this.Setting = (await utils.getChromeStorage(NET.GLOBALSETTING))
-        const isMatch = utils.checkUrl(this.tableData, window.location.href)
+        const isMatch = utils.checkUrl(this.tableData, window.location, window.location.href)
+        if (this.Setting.log || this.Setting.develop) {
+          console.log('isMatch', isMatch, window.location.href)
+        }
         if (!isMatch) return
         await this.getStatisticsMatch(isMatch.item)
         // 不重复展示关闭提示 已经关闭 或者已经开启的 不再重复出现
@@ -166,9 +237,11 @@ export default {
         this.item = isMatch.item // 匹配到的选项
         this.index = isMatch.index // 匹配到的index
         this.matchHandle()
+        this.runCloseInterval()
       } catch (err) {
         console.log('stop-mess-around(防摸鱼)扩展更新了,请刷新页面')
         clearInterval(this.interVal)
+        this.clearPageInterval()
       }
     },
 
@@ -195,7 +268,7 @@ export default {
         this.info.tip = this.getRandomTip('tipArr') || '刻意练习的四要素: 定义明确的目标，极度的专注，有效的反馈，在拉伸区练习。'
       }
       this.info.title = this.getRandomTip('titleArr') || '没有所谓的天才'
-      this.info.confirmBtn = this.getRandomTip('confirmArr') || '科学的投入'
+      this.info.confirmBtn = this.getRandomTip('confirmArr') || '关闭页面'
     },
 
     /**
@@ -224,6 +297,7 @@ export default {
         self.dialogVisible = false
         self.item = JSON.parse(response)
         self.showRest = false
+        self.clearPageInterval()
         return true
       })
     },
@@ -236,24 +310,19 @@ export default {
       this.dialogVisible = false // 先关闭弹窗
       // 使用全局的停留时间 或者单个的停留时间
       const time = typeof this.item.time !== 'number' ? this.Setting.time : this.item.time
-      setTimeout(() => {
+      this.closeSetTimeout = setTimeout(() => {
         if (this.item.jump) {
           // 跳转
           window.location.href = this.item.jumpUrl
         } else {
           // 关闭
-          chrome.runtime.sendMessage({ message: 'close-tab' })
+          this.closePage()
         }
       }, time * 1000)
     },
-    // 解决z-index的问题
-    // element select 出现 为其加特殊class名 防止影响用户页面
-    visibleChangeSelect(val) {
-      if (!val) return
-      this.$nextTick(() => {
-        const elSelectDropdown = document.querySelector('.stop-mess-around-option').parentElement.parentElement.parentElement.parentElement
-        elSelectDropdown.className = `${elSelectDropdown.className} stop-mess-around-dropdown`
-      })
+    // 关闭页面
+    closePage() {
+      chrome.runtime.sendMessage({ message: 'close-tab' })
     },
   },
 }
@@ -269,7 +338,10 @@ export default {
 
 <style scoped>
 /* 设为最大值 */
-.dialog-class{
+.stop-mess-around-content_dialog-class {
+  z-index: 2147483600 !important;
+}
+.stop-mess-around-dropdown {
   z-index: 2147483647 !important;
 }
 

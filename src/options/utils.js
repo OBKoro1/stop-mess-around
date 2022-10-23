@@ -1,28 +1,4 @@
-import { defaultList } from '@/utils/Default'
 import { Message } from 'element-ui'
-
-/**
- * @description: 查找有没有默认配置以外的摸鱼网站
- * @param {type} arr
- * @return {Array} list 用户新增 | 编辑的摸鱼网站
- */
-export function filterArrFn(arr) {
-  return defaultList.filter((item) => {
-    const find = arr.find((ele) => item.site === ele.site)
-    return find === undefined
-  })
-}
-
-/**
- * @description: 获取与默认配置不同的site
- * @return {Array}
- */
-export function getDifferentSite(arr) {
-  return arr.filter((item) => {
-    const find = defaultList.find((ele) => ele.site === item.site)
-    return find === undefined // 没有在默认配置中找到 即为不同的
-  })
-}
 
 /**
  * @description: 复制传入的数据
@@ -49,4 +25,17 @@ export function copyData(data, tip) {
     document.body.removeChild(textarea)
   }
   Message.success(tip)
+}
+
+export function checkContentInArr(arr, content) {
+  if (content === '') {
+    Message.error('内容不能为空')
+    return false
+  }
+  const ele = arr.find((item) => item === content)
+  if (ele !== undefined) {
+    Message.error('内容重复，请重新输入')
+    return false
+  }
+  return true
 }

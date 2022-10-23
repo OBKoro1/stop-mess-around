@@ -2,6 +2,7 @@ import { utils } from '@/utils/index'
 import { defaultTableAdd, initDefaultTableList, itemSiteType } from '@/utils/tableListUtils'
 import { defaultList, defaultSetting, itemProto } from '@/utils/Default'
 import NET from '@/utils/net'
+import { versionStringCompare } from '@/utils/utils-func'
 
 class AsyncPluginData {
   /**
@@ -19,19 +20,50 @@ class AsyncPluginData {
    * @description: 强制更新老的配置 避免配置错误
    */
   async updateSettingOldValue() {
-    // TODO: 2.0.6 删除
-    if (this.setting.lookCode === 'github1s.com' || this.setting.lookCode === 'github.dev') {
-      this.setting.lookCode = 'open'
+    const { version } = chrome.runtime.getManifest()
+    if (version !== this.setting.version) {
+      await this.updateVersionData(version)
+      this.setting.version = version
       await utils.updateStorageData(this.setting, NET.GLOBALSETTING)
     }
-    // TODO: 2.0.8 老数组数据更新siteType数据
-    let change = false
-    const newList = this.listArr.map((item) => {
-      itemProto.forEach((ele) => {
-        if (ele === 'siteType' && item[ele] === undefined) {
+
+    // 更新完配置
+    this.setting.versionUpdate = true
+    await utils.updateStorageData(this.setting, NET.GLOBALSETTING)
+  }
+
+  async updateVersionData(newVersion) {
+    // 版本小于2.0.7
+    if (versionStringCompare(newVersion, '2.0.7') > 0) {
+      // TODO: 2.0.7 老数组数据更新siteType数据
+      if (this.setting.lookCode === 'github1s.com' || this.setting.lookCode === 'github.dev') {
+        this.setting.lookCode = 'open'
+        await utils.updateStorageData(this.setting, NET.GLOBALSETTING)
+      }
+      await this.updateListItemVersion((item, itemProtoKey) => {
+        let change = false
+        if (itemProtoKey === 'siteType' && item[itemProtoKey] === undefined) {
           const res = itemSiteType(item)
           change = true
           item.siteType = res.type // 新增
+        }
+        return {
+          newItem: item,
+          isChange: change,
+        }
+      })
+    }
+  }
+
+  // 更新摸鱼网站的属性
+  async updateListItemVersion(callBack) {
+    let change = false
+    const newList = this.listArr.map((item) => {
+      itemProto.forEach((ele) => {
+        const { newItem, isChange } = callBack(item, ele)
+        if (isChange) {
+          change = true
+          return newItem
         }
       })
       return item
@@ -78,6 +110,7 @@ class AsyncPluginData {
   /**
    * @description: 更新默认语录、标题、按钮数组
    */
+  // eslint-disable-next-line class-methods-use-this
   async syncTipDefault(obj) {
     let isChange = false
     const newDefaultList = [] // 新增的摸鱼网站
@@ -99,14 +132,13 @@ class AsyncPluginData {
       }
     })
     if (isChange) {
-      await utils.updateStorageData(this.setting, NET.GLOBALSETTING)
+      await utils.updateStorageData(obj, NET.GLOBALSETTING)
     }
     return obj
   }
 
   /**
    * @description: 同步摸鱼列表网站
-   * @return {type}
    */
   async syncDefaultList() {
     let isChange = false
@@ -120,10 +152,11 @@ class AsyncPluginData {
       }
     }
     if (isChange) {
+      const { listArr } = await utils.getData()
       this.setting.defaultNum.defaultList = newDefaultListNum // 更新默认值数量
-      const newArr = defaultTableAdd(newDefaultList, this.setting)
+      const newArr = await defaultTableAdd(newDefaultList, this.setting)
       await utils.updateStorageData(this.setting, NET.GLOBALSETTING)
-      await utils.updateStorageData(newArr, NET.TABLELIST)
+      await utils.updateStorageData([...listArr, ...newArr], NET.TABLELIST)
     }
   }
 

@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2022-01-12 14:16:59
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-07-03 15:54:07
+ * LastEditTime : 2022-10-12 23:23:28
  * FilePath     : /src/utils/default-setting/tip-arr.js
  * description  : 默认内容随机提示数组
  * koroFileheader VSCode插件
@@ -90,5 +90,6 @@ export const tipArr = [
 
   // TODO: 激烈
   // '废物',
-  // '你这个废物, 还有脸玩？',
+  // '垃圾',
+  // '没用的东西',
 ]

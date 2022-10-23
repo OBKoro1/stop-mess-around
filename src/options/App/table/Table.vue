@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-24 11:02:13
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-07-02 17:58:44
+ * LastEditTime : 2022-10-12 23:48:05
  * FilePath     : /src/options/App/table/Table.vue
  * Description  : 表格
  * koroFileheader插件
@@ -117,7 +117,7 @@
             :content="'检测到摸鱼网址后，过几秒关闭网页'"
             placement="top"
           >
-            <span>{{ '停留几秒' }}</span>
+            <span>{{ '点击关闭停留几秒' }}</span>
           </el-tooltip>
         </template>
         <template slot-scope="scope">
@@ -130,10 +130,10 @@
       >
         <template slot="header">
           <el-tooltip
-            :content="'网址匹配规则: 开头全等 => 前面的必须一模一样，包含=> 包含即可，严格相等=>一模一样'"
+            :content="'网址摸鱼网址匹配规则: 包含=> 包含,通常输入一个域名即可, 开头全等 => 前面的必须一模一样，严格相等=>一模一样'"
             placement="top"
           >
-            <span>{{ '匹配规则' }}</span>
+            <span>{{ '摸鱼网址匹配规则' }}</span>
           </el-tooltip>
         </template>
         <template slot-scope="scope">

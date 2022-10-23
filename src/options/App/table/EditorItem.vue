@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 15:18:00
  * LastEditors  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-06-26 16:43:40
+ * LastEditTime : 2022-10-23 17:08:40
  * FilePath     : /src/options/App/table/EditorItem.vue
  * Description  : 编辑摸鱼网站
  * koroFileheader插件
@@ -69,10 +69,10 @@
         <el-form-item prop="time">
           <span slot="label">
             <el-tooltip
-              :content="'检测到摸鱼网址后，停留几秒关闭网页'"
+              :content="'点击关闭弹窗后, 点击关闭停留几秒关闭网页'"
               placement="top"
             >
-              <span>{{ '停留几秒' }}</span>
+              <span>{{ '点击关闭停留几秒' }}</span>
             </el-tooltip>
           </span>
           <el-input
@@ -102,23 +102,23 @@
         >
           <span slot="label">
             <el-tooltip
-              :content="'网址匹配规则: 开头全等 => 前面的必须一模一样，包含=> 包含即可，严格相等=>一模一样'"
+              :content="'网址摸鱼网址匹配规则: 包含=> 包含,通常输入一个域名即可, 开头全等 => 前面的必须一模一样，严格相等=>一模一样'"
               placement="top"
             >
-              <span>{{ '匹配规则' }}</span>
+              <span>{{ '摸鱼网址匹配规则' }}</span>
             </el-tooltip>
           </span>
-          <el-radio
-            v-model="ruleForm.matchRule"
-            label="start"
-          >
-            {{ '开头全等' }}
-          </el-radio>
           <el-radio
             v-model="ruleForm.matchRule"
             label="includes"
           >
             {{ '包含' }}
+          </el-radio>
+          <el-radio
+            v-model="ruleForm.matchRule"
+            label="start"
+          >
+            {{ '开头全等' }}
           </el-radio>
           <el-radio
             v-model="ruleForm.matchRule"
@@ -224,7 +224,7 @@ export default {
       ruleForm: {
         labelName: '', // 摸鱼网站名字
         site: '', // 摸鱼网站地址
-        matchRule: 'start', // 匹配规则 start/strict/includes
+        matchRule: 'includes', // 摸鱼网址匹配规则 start/strict/includes
         time: undefined, // 是否立即关闭摸鱼网站
         checkoutStudy: undefined, // 定时自动开启
         closeTime: 0, // 关闭的时间
@@ -302,7 +302,7 @@ export default {
           if (this.hasAdd() === undefined) {
             // 替换
             const obj = JSON.parse(JSON.stringify(this.ruleForm))
-            if (obj.site !== this.item.row) {
+            if (obj.site !== this.item.row.site) {
               // site是否存在于默认摸鱼列表
               obj.siteType = itemSiteType(obj).type
             }

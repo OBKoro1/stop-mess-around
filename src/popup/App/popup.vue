@@ -160,7 +160,7 @@ export default {
       // 先获取当前页面的tabID
       this.tab = await this.getCurrentTab()
       console.log('tab', this.tab)
-      const isMatch = this.utils.checkUrl(this.tableData, this.tab.url)
+      const isMatch = this.utils.checkUrl(this.tableData, false, this.tab.url)
       if (isMatch) {
         this.item = isMatch.item
         this.index = isMatch.index

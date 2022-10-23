@@ -2,8 +2,8 @@
  * Author       : OBKoro1
  * Date         : 2021-12-30 15:28:46
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-05-29 16:10:24
- * FilePath     : /stop-mess-around/src/content/mess-around-right-tip.vue
+ * LastEditTime : 2022-10-20 22:59:24
+ * FilePath     : /src/content/mess-around-right-tip.vue
  * description  : 摸鱼网站右侧摸鱼时长统计与摸鱼倒计时提醒
  * koroFileheader VSCode插件
  * Copyright (c) 2022 by OBKoro1, All Rights Reserved.
@@ -102,15 +102,16 @@ export default {
   },
 
   beforeDestroy() {
-    this.clearInterval()
+    this.clearRestInterval()
   },
   methods: {
     // 倒计时时间到了
-    clearInterval() {
+    clearRestInterval() {
       this.showStatistics = false
       this.showCompleteStatistics = false
       this.durationFont = ''
       clearInterval(this.durationFontInterval)
+      this.durationFontInterval = null
     },
     closeRestStatistics() {
       this.showCompleteStatistics = false
@@ -121,33 +122,37 @@ export default {
     },
     // 倒计时
     async duration() {
-      if (this.durationFontInterval) {
-        this.clearInterval()
-      }
-      const { openTime } = utils.getItemCloseCheckTime(this.matchItem, this.setting)
-      this.durationFontInterval = setInterval(async () => {
-        const duration = dayjs.duration(dayjs(openTime) - dayjs())
-        const hours = duration.hours()
-        const minutes = duration.minutes()
-        const seconds = duration.seconds()
-        this.setting = await utils.getChromeStorage(NET.GLOBALSETTING)
-        this.durationFont = getCountDown(hours, minutes, seconds)
-        if (hours <= 0 && minutes <= 0 && seconds <= 0) {
-          this.clearInterval()
-          this.noticeDialogTip()
+      try {
+        if (this.durationFontInterval) {
+          this.clearRestInterval()
         }
-      }, 1000)
-      this.showStatistics = true
+        const { openTime } = utils.getItemCloseCheckTime(this.matchItem, this.setting)
+        this.durationFontInterval = setInterval(async () => {
+          const duration = dayjs.duration(dayjs(openTime) - dayjs())
+          const hours = duration.hours()
+          const minutes = duration.minutes()
+          const seconds = duration.seconds()
+          this.setting = await utils.getChromeStorage(NET.GLOBALSETTING)
+          this.durationFont = getCountDown(hours, minutes, seconds)
+          if (hours <= 0 && minutes <= 0 && seconds <= 0) {
+            this.clearRestInterval()
+            this.noticeDialogTip()
+          }
+        }, 1000)
+        this.showStatistics = true
+      } catch {
+        clearInterval(this.durationFontInterval)
+      }
     },
     // 获取倒计时等数据
     async getStatisticsTime() {
       if (this.dialogTipVisible) {
         // 其他地方开启了 导致定时器未关闭
-        this.clearInterval()
+        this.clearRestInterval()
         return
       }
       const tableData = (await utils.getChromeStorage(NET.TABLELIST)) || []
-      const isMatch = utils.checkUrl(tableData, window.location.href)
+      const isMatch = utils.checkUrl(tableData, window.location, window.location.href)
       if (!isMatch) return
 
       // 匹配到了 必须要处于关闭状态
@@ -175,7 +180,7 @@ export default {
       const index = tableArr.findIndex((ele) => ele.site === item.site)
       tableArr.splice(index, 1, item)
       await utils.updateStorageData(tableArr, NET.TABLELIST)
-      this.clearInterval()
+      this.clearRestInterval()
       this.noticeDialogTip()
     },
   },

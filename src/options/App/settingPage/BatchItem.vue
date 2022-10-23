@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-28 16:02:26
  * LastEditors  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-06-26 15:10:30
+ * LastEditTime : 2022-10-20 22:30:04
  * FilePath     : /src/options/App/settingPage/BatchItem.vue
  * Description  : 摸鱼列表 批量添加
  * koroFileheader插件
@@ -83,8 +83,7 @@
 </template>
 
 <script>
-import { filterArrFn } from '@/options/utils'
-import { defaultTableAdd } from '@/utils/tableListUtils'
+import { defaultTableAdd, filterArrFn, filterHasPush } from '@/utils/tableListUtils'
 
 export default {
   name: 'BatchItem',
@@ -116,7 +115,7 @@ export default {
   },
   watch: {
     // 初始化数据
-    dialogVisible(val) {
+    async dialogVisible(val) {
       if (val) {
         this.chooseList = []
         this.tableArr = this.getTableData()
@@ -126,7 +125,7 @@ export default {
           this.showCopyData = false
         }
         const arr = filterArrFn(this.tableArr)
-        this.showList = defaultTableAdd(arr, this.getSetting())
+        this.showList = await defaultTableAdd(arr, this.getSetting())
       }
     },
   },
@@ -145,16 +144,14 @@ export default {
       this.chooseList = val
     },
     // 过滤选中的值
-    filterChooseFn(arr) {
+    async filterChooseFn(arr) {
       this.tableArr = this.getTableData()
-      return arr.filter((item) => {
-        const find = this.tableArr.find((ele) => item.site === ele.site)
-        return find === undefined
-      })
+      const filterArr = await filterHasPush(arr)
+      return filterArr
     },
-    confirmFn() {
+    async confirmFn() {
       if (this.chooseList.length === 0) this.$message.error('至少需要选中一个默认摸鱼网站')
-      const arr = this.filterChooseFn(this.chooseList)
+      const arr = await this.filterChooseFn(this.chooseList)
       this.tableDataSpliceUpdate(this.tableArr.length, 0, ...arr)
       this.$message.success(`已添加${this.chooseList.length}个默认摸鱼网站`)
       this.close()

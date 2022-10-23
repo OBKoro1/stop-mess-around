@@ -2,7 +2,7 @@
  * Author       : OBKoro1 obkoro1@foxmail.com
  * Date         : 2022-06-05 17:42:07
  * Last Author  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-06-21 21:26:50
+ * LastEditTime : 2022-10-20 21:54:54
  * FilePath     : /src/options/App/share/ShareSiteToGithub.vue
  * description  : 推荐摸鱼网站，集成到插件中
  * koroFileheader VSCode插件
@@ -146,7 +146,8 @@
 </template>
 
 <script>
-import { copyData, getDifferentSite } from '@/options/utils'
+import { copyData } from '@/options/utils'
+import { getDifferentSite } from '@/utils/tableListUtils'
 import ChooseShare from './ChooseShare.vue'
 import linkPopoverVue from './LinkPopover.vue'
 

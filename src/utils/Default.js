@@ -14,6 +14,9 @@ export {
   itemProto,
 }
 
+const manifestData = chrome.runtime.getManifest() || {}
+const { version = '' } = manifestData
+
 // 默认全局设置
 export const defaultSetting = {
   log: false, // 是否打印日志
@@ -26,7 +29,7 @@ export const defaultSetting = {
   defaultList, // 默认的摸鱼网站
   titleArr, // 标题随机提示数组
   confirmArr, // 随机确认按钮数组
-  matchRule: 'start', // 摸鱼网址匹配规则
+  matchRule: 'includes', // 摸鱼网址摸鱼网址匹配规则
   tipArr, // 随机内卷提示数组
   addSite: '', // 通过popup添加摸鱼网址
   todayGlobalTouchFish: 0, // 全局摸鱼最晚时间戳
@@ -45,4 +48,6 @@ export const defaultSetting = {
   closeTime: 0, // 自动检测开始时间
   siteType: 'default', // 网站类型 'default' | 'create' | 'editor'
   init: false, // 是否初始化 初始化设置摸鱼网站。
+  version, // 版本是否一致，如果不一致则更新，并更新需要更新的内容。
+  matchClosePage: 15, // 匹配到网址后，在15秒内关闭网页
 }

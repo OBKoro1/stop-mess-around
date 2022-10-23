@@ -23,8 +23,7 @@
 </template>
 
 <script>
-import { filterArrFn } from '@/options/utils'
-import { initDefaultTableList, siteTypeFind } from '@/utils/tableListUtils'
+import { initDefaultTableList, siteTypeFind, filterArrFn } from '@/utils/tableListUtils'
 import OptionsHeader from './Header.vue'
 import SetPage from './settingPage/SetPage.vue'
 import TableSetting from './settingPage/TableSetting.vue'
@@ -74,6 +73,7 @@ export default {
     await this.getData()
     await this.initTableList()
     await this.sortList()
+    await this.setProcessEnv()
     // 监控配置更改
     this.interval = setInterval(this.getData, 5000)
   },
@@ -93,6 +93,16 @@ export default {
       const options = await initDefaultTableList(this.Setting)
       if (options.init) {
         ({ setting: this.Setting, listArr: this.tableData } = options)
+      }
+    },
+    /**
+     * @description: process env 注入
+     */
+    async setProcessEnv() {
+      const mode = process.env.VUE_APP_MODE.toLowerCase()
+      if (mode.indexOf('serve') >= 0) {
+        this.Setting.develop = true
+        await this.utils.updateStorageData(this.Setting, this.NET.GLOBALSETTING)
       }
     },
     // 清除数据
@@ -192,7 +202,7 @@ export default {
   color: #fff;
 }
 .main-content {
-  margin: 20px;
+  padding: 20px;
 }
 .set-page {
   border-radius: 6px;

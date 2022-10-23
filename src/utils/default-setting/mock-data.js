@@ -85,7 +85,7 @@ export const listArr = [
   {
     site: 'https://www.zhihu.com/hot',
     labelName: '知乎热榜',
-    matchRule: 'start', // 匹配规则
+    matchRule: 'start', // 摸鱼网址匹配规则
     jump: false, // 是否跳转
     jumpUrl: 'https://leetcode-cn.com/problemset/all/', // 跳转链接
     open: true, // 打开
