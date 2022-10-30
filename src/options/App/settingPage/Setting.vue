@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-05-25 22:45:36
  * LastEditors  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-10-23 17:08:02
+ * LastEditTime : 2022-10-30 17:27:54
  * FilePath     : /src/options/App/settingPage/Setting.vue
  * Description  : 全局设置
  * koroFileheader插件
@@ -112,24 +112,6 @@
           <el-input
             v-model.number="ruleForm.time"
             min="0"
-            class="input-width"
-            autocomplete="off"
-          />
-        </el-form-item>
-        <el-form-item
-          prop="time"
-          required
-        >
-          <span slot="label">
-            <el-tooltip
-              :content="'点击关闭弹窗后, 点击关闭停留几秒关闭网页'"
-              placement="top"
-            >
-              <span>{{ '点击关闭停留几秒' }}</span>
-            </el-tooltip>
-          </span>
-          <el-input
-            v-model.number="ruleForm.time"
             class="input-width"
             autocomplete="off"
           />
