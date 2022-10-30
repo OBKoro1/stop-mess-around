@@ -116,17 +116,15 @@
 
 ### 在线VSCode快速查看仓库代码
 
-现在查看Github仓库代码，可以直接把`github.com/仓库地址`改成`github.dev/仓库地址`(官方)和`github1s.com/地址`，这两种形式来使用在线版的VSCode来查看。
+插件提供了在线快速查看仓库代码这个比较实用的小功能，支持`github1s`和`github.dev`两种形式。
 
 * 在[github1s](https://chrome.google.com/webstore/detail/open-in-vs-code-github1sc/neloiopjjeflfnecdlajhopdlojlkhll?hl=zh-CN)这个插件看到这个小功能，因为确实蛮实用的，也不想再装插件了，想着把它也集成到本插件中
 
 * 插件直接把按钮显示在仓库名旁边，这样在`wiki`、`actions`、`issues`、`Pull Request`等页面也可以使用
 
-* 支持`github.dev`(默认)以及`github1s`，可以去（插件管理面板 => 设置）更改
+* 以前都是用`Octotree`文件树来查看代码的，现在感觉可以把这个插件删掉了 哈哈，还是直接用在线VSCode比较香
 
-PS：我以前都是用`Octotree`文件树来查看代码的，现在感觉可以把这个插件删掉了 哈哈，还是直接用在线VSCode比较香
-
-![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/feat/lookCode.jpg?raw=true)
+![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/docs/20221012-look-code.jpg?raw=true)
 
 ### 用爱发电，求赞助 😭
 

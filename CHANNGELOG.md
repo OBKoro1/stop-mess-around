@@ -11,20 +11,99 @@
 
 <!-- TODO: development.md -->
 
-### [V2.0.8]
+### [V2.1.0]
+
+* feat: [匹配到网站时倒计时关闭页面](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%8A%9F%E8%83%BD%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#%E5%8C%B9%E9%85%8D%E5%88%B0%E6%91%B8%E9%B1%BC%E7%BD%91%E5%9D%80%E5%90%8E%E5%AE%9A%E6%97%B6%E5%85%B3%E9%97%AD)，更主动的去杜绝摸鱼的想法。
+
+![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/version/2.1.0/feat_match_page.jpg?raw=true)
+
+* feat: [在线VSCode快速查看代码更改](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%8A%9F%E8%83%BD%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#github%E4%BB%93%E5%BA%93%E9%A1%B5%E9%9D%A2%E5%BF%AB%E9%80%9F%E6%9F%A5%E7%9C%8B%E4%BB%93%E5%BA%93%E4%BB%A3%E7%A0%81)。
+
+![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/docs/20221012-look-code.jpg?raw=true)
+
 * feat: 分享摸鱼网站功能, 分享常用的摸鱼网站，集成到插件配置中。
-* feat: 插件初始化默认添加所有默认摸鱼列表
-* feat: 插件自动集成新的摸鱼数组
-* feat: 顶部按钮分析, 全局设置与摸鱼网站相关
-* feat: 新增摸鱼网站状态: 新增/编辑/插件默认集成
-* feat: 新增摸鱼网站
+
+![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/version/2.1.0/feat_share_site.jpg?raw=true)
+
+* feat: 随机励志提示多选，删除与恢复。
+
+![](https://github.com/OBKoro1/stop-mess-around/blob/dev/static/version/2.1.0/feat_excitation_tip.jpg?raw=true)
+
+* feat: 摸鱼网站includes为默认链接检测规则，检测链接为`window.location.origin+window.location.pathname`，之前的网站开头全等，设为第二个规则。
+  * 这样做可以让匹配范围更大更精准，不区分子域名、子路由、不区分http、https，
+* feat: 插件自动集成新的摸鱼数组。
+* feat: 插件初始化没有数据时，默认添加所有默认摸鱼列表。
+* feat: 摸鱼网站排序: 新增、编辑排在插件默认集成前面。
+* feat: 摸鱼网站状态: 新增/编辑/插件默认集成。
+* feat: 默认摸鱼网站域名检测, 默认检测域名的includes是否包含。
+* fix: 修复chrome插件`web_accessible_resources`资源加载报错的问题。
+
 ```js
-{
-  site: 'https://www.qidian.com/',
-  labelName: '起点小说网',
-}
+[
+  {
+    site: 'douyu.com',
+    labelName: '斗鱼直播',
+  },
+  {
+    site: 'www.huya.com',
+    labelName: '虎牙直播',
+  },
+  {
+    site: 'juejin.cn',
+    labelName: '掘金沸点',
+  },
+  {
+    site: 'https://www.zhihu.com/',
+    labelName: '知乎首页',
+    matchRule: 'strict',
+  },
+  {
+    site: 'https://www.zhihu.com/hot',
+    labelName: '知乎热榜',
+  },
+  {
+    site: 'bilibili.com',
+    labelName: 'B站',
+  },
+  {
+    site: 'weibo.com',
+    labelName: '微博',
+  },
+  {
+    site: 'v2ex.com',
+    labelName: 'V2ex论坛',
+  },
+  {
+    site: 'qq.com',
+    labelName: '企鹅直播',
+  },
+  {
+    site: 'taobao.com',
+    labelName: '淘宝网',
+  },
+  {
+    site: 'jd.com',
+    labelName: '京东',
+  },
+  {
+    site: 'hupu.com',
+    labelName: '虎扑',
+  },
+  {
+    site: 'top.baidu.com',
+    labelName: '百度热搜',
+  },
+  {
+    site: 'qidian.com',
+    labelName: '起点小说网',
+  },
+  {
+    site: 'mo.fish',
+    labelName: '鱼塘热榜',
+  },
+]
 ```
-* fix: element-ui 弹窗遮罩css问题
+* fix: element-ui 弹窗遮罩css问题。
 
 ### [V2.0.7]
 
