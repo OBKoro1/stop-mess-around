@@ -2,7 +2,7 @@
  * Author       : OBKoro1
  * Date         : 2021-06-15 13:51:30
  * LastEditors  : OBKoro1
- * LastEditTime : 2022-10-21 00:06:14
+ * LastEditTime : 2022-10-25 00:21:34
  * FilePath     : /src/content/App.vue
  * Description  : content 插入到页面的数据
  * koroFileheader插件
@@ -178,6 +178,7 @@ export default {
   },
   methods: {
     clearPageInterval() {
+      this.durationFont = ''
       clearInterval(this.closeInterVal)
       this.closeInterVal = null
     },
@@ -294,10 +295,10 @@ export default {
     restConfirm() {
       const self = this // 传到class中 影响this指向
       chrome.runtime.sendMessage({ message: 'reset-tab', item: this.item, value: this.restTime }, (response) => {
+        self.clearPageInterval()
         self.dialogVisible = false
         self.item = JSON.parse(response)
         self.showRest = false
-        self.clearPageInterval()
         return true
       })
     },

@@ -2,7 +2,7 @@
  * Author       : OBKoro1 obkoro1@foxmail.com
  * Date         : 2022-06-05 17:42:07
  * Last Author  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-10-20 21:54:54
+ * LastEditTime : 2022-10-30 16:55:08
  * FilePath     : /src/options/App/share/ShareSiteToGithub.vue
  * description  : 推荐摸鱼网站，集成到插件中
  * koroFileheader VSCode插件
@@ -47,8 +47,8 @@
           title="分享是一件快乐的事情"
           name="3"
         >
-          <div>分享常用的摸鱼网站, 集成到插件配置中; </div>
           <div>帮助像你一样自律优秀的人, 精准识别摸鱼网站, 减少摸鱼时间;</div>
+          <div>分享是件快乐的事情，好人一生平安🌹;</div>
         </el-collapse-item>
       </el-collapse>
       <div class="page-title1 margin-top">
