@@ -42,6 +42,7 @@
     "core-js": "^2.6.5",
     "dayjs": "^1.10.7",
     "element-ui": "2.15.7",
+    "file-loader": "^6.2.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
