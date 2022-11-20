@@ -200,7 +200,6 @@ export default {
   },
   methods: {
     checkoutFn(key, val) {
-      console.log('arr', key, val)
       this[key] = val
     },
     close() {

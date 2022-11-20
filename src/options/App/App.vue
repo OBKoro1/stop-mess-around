@@ -172,7 +172,6 @@ export default {
       return this.utils.updateStorageData(this.Setting, this.NET.GLOBALSETTING)
     },
     checkOutAppDialog(key, value) {
-      console.log(key, value, '---checkOutAppDialog---')
       this[key] = value
     },
     /**
