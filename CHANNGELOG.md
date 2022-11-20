@@ -11,6 +11,11 @@
 
 <!-- TODO: development.md -->
 
+### [V2.1.1]
+
+* fix: 修复倒计时关闭页面无法关闭的问题。
+
+
 ### [V2.1.0]
 
 * feat: [匹配到网站时倒计时关闭页面](https://github.com/OBKoro1/stop-mess-around/wiki/%E5%8A%9F%E8%83%BD%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#%E5%8C%B9%E9%85%8D%E5%88%B0%E6%91%B8%E9%B1%BC%E7%BD%91%E5%9D%80%E5%90%8E%E5%AE%9A%E6%97%B6%E5%85%B3%E9%97%AD)，更主动的去杜绝摸鱼的想法。
