@@ -90,7 +90,6 @@
       v-show="Setting.showRightTip !== 'close'"
       :dialog-tip-visible="dialogVisible"
       :statistics-info="statisticsInfo"
-      @openAgain="openAgain"
       @getStatisticsMatch="getStatisticsMatch"
     />
   </div>
@@ -165,7 +164,7 @@ export default {
       console.log('stop-mess-around(防摸鱼)插件 插入')
     }
     // 检测url变更
-    this.interVal = setInterval(this.run, 6000)
+    this.interVal = setInterval(this.run, 2000)
   },
   beforeDestroy() {
     if (this.closeSetTimeout) {
@@ -209,9 +208,9 @@ export default {
       return res[0]
     },
     // 倒计时结束或者停止摸鱼再运行一遍
-    openAgain() {
-      this.run()
-    },
+    // openAgain() {
+    //   this.run()
+    // },
     // 定时获取右侧摸鱼提醒数据
     async getStatisticsMatch(matchItem) {
       ({ statisticsTime: this.statisticsTime } = await utils.getData());
@@ -238,6 +237,8 @@ export default {
         this.item = isMatch.item // 匹配到的选项
         this.index = isMatch.index // 匹配到的index
         this.matchHandle()
+        // 允许摸鱼不需要退出
+        if (!this.item.open) return
         this.runCloseInterval()
       } catch (err) {
         console.log('stop-mess-around(防摸鱼)扩展更新了,请刷新页面')

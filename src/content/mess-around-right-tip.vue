@@ -87,7 +87,7 @@ export default {
       showCompleteStatistics: false, // 展示完整的统计
       durationFontInterval: null, // 倒计时的定时器
       durationFont: '', // 倒计时
-      matchItem: null, // 匹配到的网址
+      matchItem: {}, // 匹配到的网址
       setting: {},
     }
   },
@@ -105,21 +105,38 @@ export default {
     this.clearRestInterval()
   },
   methods: {
+    async openMatchItem() {
+      this.setting = await utils.getChromeStorage(NET.GLOBALSETTING)
+      this.statisticsTime = (await utils.getChromeStorage(NET.statisticsTime))
+      this.listArr = (await utils.getChromeStorage(NET.TABLELIST))
+      const options = {
+        setting: this.setting,
+        tableArr: this.listArr,
+        statisticsTime: this.statisticsTime,
+        item: this.matchItem,
+      }
+      const { tableArr, item } = await utils.openCheck(options)
+      const index = tableArr.findIndex((ele) => ele.site === item.site)
+      tableArr.splice(index, 1, item)
+      await utils.updateStorageData(tableArr, NET.TABLELIST)
+    },
     // 倒计时时间到了
-    clearRestInterval() {
+    async clearRestInterval() {
       this.showStatistics = false
       this.showCompleteStatistics = false
       this.durationFont = ''
       clearInterval(this.durationFontInterval)
       this.durationFontInterval = null
+      // 现在暂时关闭页面 TODO:二次确认
+      await this.openMatchItem()
     },
     closeRestStatistics() {
       this.showCompleteStatistics = false
     },
     // 通知倒计时已经到了 马上运行一次
-    noticeDialogTip() {
-      this.$emit('openAgain')
-    },
+    // noticeDialogTip() {
+    //   this.$emit('openAgain')
+    // },
     // 倒计时
     async duration() {
       try {
@@ -136,7 +153,6 @@ export default {
           this.durationFont = getCountDown(hours, minutes, seconds)
           if (hours <= 0 && minutes <= 0 && seconds <= 0) {
             this.clearRestInterval()
-            this.noticeDialogTip()
           }
         }, 1000)
         this.showStatistics = true
@@ -167,21 +183,7 @@ export default {
     },
     // 停止休息
     async stopRest() {
-      this.setting = await utils.getChromeStorage(NET.GLOBALSETTING)
-      this.statisticsTime = (await utils.getChromeStorage(NET.statisticsTime))
-      this.listArr = (await utils.getChromeStorage(NET.TABLELIST))
-      const options = {
-        setting: this.setting,
-        tableArr: this.listArr,
-        statisticsTime: this.statisticsTime,
-        item: this.matchItem,
-      }
-      const { tableArr, item } = await utils.openCheck(options)
-      const index = tableArr.findIndex((ele) => ele.site === item.site)
-      tableArr.splice(index, 1, item)
-      await utils.updateStorageData(tableArr, NET.TABLELIST)
-      this.clearRestInterval()
-      this.noticeDialogTip()
+      await this.clearRestInterval()
     },
   },
 }
