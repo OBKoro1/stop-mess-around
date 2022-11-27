@@ -54,7 +54,7 @@ export default {
      * @description: 保存添加的数据
      */
     saveAddFn() {
-      const arr = this[this.radio]
+      const arr = this.$attrs[this.radio]
       if (!checkContentInArr(arr, this.textarea)) return
       arr.unshift(this.textarea)
       this.$message.success('添加成功')
