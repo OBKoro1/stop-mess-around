@@ -1,7 +1,7 @@
 {
   "name": "stop-mess-around",
   "description": "减少摸鱼的时间和频率的浏览器插件：提醒你正在摸鱼，摸鱼的时候知道自己在摸鱼，提高我们上班和学习的效率，节省时间用于学习提升自己或者享受生活",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "publisher": "OBKoro1",
   "homepage": "https://github.com/OBKoro1/stop-mess-around",
   "license": "MIT",

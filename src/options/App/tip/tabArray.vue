@@ -114,7 +114,11 @@
         label="添加"
         name="add"
       >
-        <AddActive />
+        <AddActive
+          :tip-arr="tipArr"
+          :title-arr="titleArr"
+          :confirm-arr="confirmArr"
+        />
       </el-tab-pane>
     </el-tabs>
     <EditorContent
