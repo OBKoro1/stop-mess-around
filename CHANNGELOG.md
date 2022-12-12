@@ -11,10 +11,13 @@
 
 <!-- TODO: development.md -->
 
+### [V2.1.2]
+
+* fix: 无法自定义添加励志语录的问题 [#19](https://github.com/OBKoro1/stop-mess-around/issues/19)
+
 ### [V2.1.1]
 
 * fix: 修复倒计时关闭页面无法关闭的问题。
-
 
 ### [V2.1.0]
 
