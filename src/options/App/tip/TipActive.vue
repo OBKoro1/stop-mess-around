@@ -16,7 +16,7 @@
         width="50"
       />
       <el-table-column
-        label="摸鱼提醒弹窗励志语录列表"
+        :label="useLanguageMessage('tipArrTipColumn')"
         show-overflow-tooltip
       >
         <template slot-scope="scope">
@@ -24,7 +24,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="操作"
+        :label="useLanguageMessage('tipArrTipAction')"
         fixed="right"
         width="170"
       >
@@ -33,10 +33,10 @@
             size="mini"
             @click="showEdit(scope.$index, scope.row)"
           >
-            编辑
+            {{ useLanguageMessage('edit') }}
           </el-button>
           <el-popconfirm
-            title="确认删除？"
+            :title="useLanguageMessage('checkDel')"
             @confirm="handleDelete(scope.$index)"
           >
             <el-button
@@ -46,7 +46,7 @@
               class="marginRL"
               type="danger"
             >
-              {{ '删除' }}
+              {{ useLanguageMessage('del') }}
             </el-button>
           </el-popconfirm>
         </template>

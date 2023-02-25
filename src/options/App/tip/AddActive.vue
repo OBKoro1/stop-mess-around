@@ -2,13 +2,13 @@
   <div class="random-content">
     <el-radio-group v-model="radio">
       <el-radio label="tipArr">
-        添加励志语录
+        {{ useLanguageMessage('addMotivationalQuotes') }}
       </el-radio>
       <el-radio label="titleArr">
-        添加励志标题
+        {{ useLanguageMessage('addMotivationalTitle') }}
       </el-radio>
       <el-radio label="confirmArr">
-        添加励志按钮
+        {{ useLanguageMessage('addMotivationalBtn') }}
       </el-radio>
     </el-radio-group>
     <el-input
@@ -16,23 +16,23 @@
       class="add-margin"
       type="textarea"
       :autosize="{ minRows: 2, maxRows: 4}"
-      placeholder="请输入内容"
+      :placeholder="useLanguageMessage('placeholderText')"
     />
     <el-button
       type="primary"
       @click="saveAddFn"
     >
-      保存添加
+      {{ useLanguageMessage('saveAdd') }}
     </el-button>
     <div>
       <p class="page-title1">
-        分享常用的摸鱼网站, 利人利己, 让插件更好用, 零配置快速上手~
+        {{ useLanguageMessage('shareTip') }}
       </p>
       <el-button
         type="primary"
         @click="openShareDialog"
       >
-        打开分享弹窗
+        {{ useLanguageMessage('openShare') }}
       </el-button>
     </div>
   </div>
@@ -57,7 +57,8 @@ export default {
       const arr = this.$attrs[this.radio]
       if (!checkContentInArr(arr, this.textarea)) return
       arr.unshift(this.textarea)
-      this.$message.success('添加成功')
+      const successTxt = this.useLanguageMessage('addSuccess')
+      this.$message.success(successTxt)
       this.textarea = ''
       this.tipUpdateSettingArr(arr, this.radio)
     },

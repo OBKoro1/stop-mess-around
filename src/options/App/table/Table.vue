@@ -16,37 +16,12 @@
     <el-table
       :data="showList"
       empty-text="暂无数据,去摸鱼网站列表选择添加，或者手动新增常用的摸鱼网站吧~"
-      stripe
       row-key="site"
-      max-height="1000"
-      style="width: 100vw"
     >
       <el-table-column type="index" />
       <el-table-column
         prop="labelName"
-        width="80"
-      >
-        <template slot="header">
-          <el-tooltip
-            :content="'是否检测该摸鱼网站, 匹配成功后展示摸鱼提示弹窗'"
-            placement="top"
-          >
-            <span>{{ '是否启用' }}</span>
-          </el-tooltip>
-        </template>
-        <template slot-scope="scope">
-          <el-switch
-            v-model="scope.row.open"
-            active-color="#13ce66"
-            @change="(val)=>{
-              checkoutFn(val,scope.row, scope.$index)
-            }"
-          />
-        </template>
-      </el-table-column>
-      <el-table-column
-        prop="labelName"
-        width="200"
+        width="120"
         show-overflow-tooltip
       >
         <template slot="header">
@@ -60,7 +35,7 @@
       </el-table-column>
       <el-table-column
         prop="site"
-        width="350"
+        width="230"
         show-overflow-tooltip
       >
         <template slot="header">
@@ -109,7 +84,7 @@
       </el-table-column>
       <el-table-column
         prop="time"
-        width="100"
+        width="150"
         show-overflow-tooltip
       >
         <template slot="header">
@@ -121,12 +96,12 @@
           </el-tooltip>
         </template>
         <template slot-scope="scope">
-          <span>{{ typeof scope.row.time !== 'number' ? setting.time : scope.row.time }}</span>
+          <span>{{ typeof scope.row.time !== 'number' ? setting.time : scope.row.time }}秒</span>
         </template>
       </el-table-column>
       <el-table-column
         prop="matchRule"
-        width="120"
+        width="150"
       >
         <template slot="header">
           <el-tooltip
@@ -157,7 +132,7 @@
           <span>{{ scope.row.jump ? '开启' : '关闭' }}</span>
         </template>
       </el-table-column>
-      <el-table-column width="180">
+      <el-table-column fixed="right">
         <template slot="header">
           <span>{{ '操作' }}</span>
         </template>
@@ -181,6 +156,19 @@
               {{ '删除' }}
             </el-button>
           </el-popconfirm>
+          <el-tooltip
+            :content="'是否启用该摸鱼网站, 匹配成功后展示摸鱼提示弹窗'"
+            placement="top"
+          >
+            <el-switch
+              v-model="scope.row.open"
+              size="mini"
+              active-color="rgb(255, 97, 84)"
+              @change="(val)=>{
+                checkoutFn(val,scope.row, scope.$index)
+              }"
+            />
+          </el-tooltip>
         </template>
       </el-table-column>
     </el-table>
@@ -322,4 +310,4 @@ export default {
 .main-table {
   margin: 20px 0;
 }
-</style>>
+</style>

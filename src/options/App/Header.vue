@@ -2,20 +2,22 @@
   <div class="header align-center">
     <div class="header-left align-center">
       <img
-        src="../../../public/img/origin.jpeg"
+        src="/img/origin.jpeg"
         class="header-img"
         alt=""
         @click="utils.jumpUrl(NET.CHROMESTORE)"
       >
       <div class="header-plugin cursor-pointer">
         <h2 @click="utils.jumpUrl(NET.GITHUBREPO)">
-          stop-mess-around(停止下意识摸鱼)
+          {{ useLanguageMessage('pluginName') }}
         </h2>
         <span
           v-if="development"
           class="cursor-pointer header-btns"
           @click="utils.jumpUrl(NET.CHROMESTORE)"
-        >本地安装,无法自动更新，跳转应用商店安装</span>
+        >
+          {{ useLanguageMessage('tipInstall') }}
+        </span>
         <span
           class="cursor-pointer"
           @click="utils.jumpUrl(NET.RELEASES)"
@@ -35,7 +37,7 @@
       class="dropdown-color marginRL"
       @click="openSponsorship"
     >
-      {{ '用爱发电，求赞助😭' }}
+      {{ useLanguageMessage('sponsor') }}
     </el-button>
     <el-button
       type="text"
@@ -43,7 +45,7 @@
       class="dropdown-color marginRL"
       @click="utils.jumpUrl(NET.DOCS)"
     >
-      使用文档
+      {{ useLanguageMessage('useDoc') }}
     </el-button>
 
     <img
@@ -64,22 +66,22 @@
         slot="title"
         class="dialog_title"
       >
-        {{ '求赞助' }}
+        {{ useLanguageMessage('sponsorship') }}
       </div>
       <div class="dialog-font">
-        开源不易，本插件的开发与维护全都是利用业余时间。
+        {{ useLanguageMessage('sponsorOne') }}
       </div>
       <div class="dialog-font">
-        从18年开始在社区开源到现在, 开源工作对我来说就是用爱发电
+        {{ useLanguageMessage('sponsorTwo') }}
       </div>
       <div class="dialog-font">
-        如果觉得这个效率工具还不错,对你有所帮助，就赞助支持一下吧。
+        {{ useLanguageMessage('sponsorThree') }}
       </div>
       <div class="dialog-font">
-        十块八块不嫌多，三块五块不嫌少 ❤️
+        {{ useLanguageMessage('sponsorFour') }}
       </div>
       <img
-        src="../../../public/img/pay.jpg"
+        src="/img/pay.jpg"
         class="obkoro1-sponsorship"
         alt=""
       >
@@ -90,18 +92,23 @@
         <el-button
           :disabled="disabledSponsorship"
           @click="confirmSponsorship('no')"
-        >下次一定</el-button>
+        >
+          {{ useLanguageMessage('nextText') }}
+        </el-button>
         <el-button
           type="primary"
           :disabled="disabledSponsorship"
           @click="confirmSponsorship('yes')"
-        >请你喝了</el-button>
+        >
+          {{ useLanguageMessage('yesText') }}
+        </el-button>
       </span>
     </el-dialog>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'OptionsHeader',
   inject: ['getSetting', 'settingUpdate'],
@@ -138,6 +145,10 @@ export default {
     }, 500)
   },
   methods: {
+    // languageMessage(name){
+    //   console.log('utils', utils)
+    //   return utils.getLanguageMessage(name)
+    // },
     getVersion() {
       const manifestData = chrome.runtime.getManifest()
       return `v${manifestData.version}`
@@ -170,16 +181,16 @@ export default {
     confirmSponsorship(type) {
       if (type === 'yes') {
         this.$notify({
-          title: '感谢你的肯定',
-          message: '谢谢你的赞助，这下我更有动力坚持开源工作了，可以给你提供更好的工具了😘',
+          title: this.useLanguageMessage('yesTitle'),
+          message: this.useLanguageMessage('yesMsg'),
           type: 'success',
           showClose: false,
           duration: 12000,
         })
       } else {
         this.$notify({
-          title: '下次一定',
-          message: '呜呜呜, 对于开源工作我只能继续爱发电了😭',
+          title: this.useLanguageMessage('nextTitle'),
+          message: this.useLanguageMessage('nextMsg'),
           showClose: false,
           duration: 8000,
         })
@@ -207,15 +218,15 @@ export default {
 .header-left {
   justify-content: space-between;
 }
-.header-plugin {
+/* .header-plugin {
   text-align: right;
-}
+} */
 .header-btns {
   margin-right: 15px;
 }
-.header-btns-star {
+/* .header-btns-star {
   width: 95px;
-}
+} */
 .author {
   margin: 10px 8px 10px 10px;
 }

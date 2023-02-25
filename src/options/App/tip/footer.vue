@@ -7,7 +7,7 @@
       class="Margin6"
     >
       <el-popconfirm
-        title="确认删除？"
+        :title="useLanguageMessage('checkDel')"
         placement="top"
         @confirm="deleteChooseConfirm"
       >
@@ -18,7 +18,7 @@
           class="marginRL"
           type="danger"
         >
-          删除选中励志语录
+          {{ useLanguageMessage('delSelected') }}
         </el-button>
       </el-popconfirm>
       <el-button
@@ -26,14 +26,14 @@
         class="marginRL"
         @click="openResetTipDialogShow"
       >
-        选择恢复已删除插件的默认语录
+        {{ useLanguageMessage('restoreDeleted') }}
       </el-button>
     </div>
     <template
       v-if="showTabFont"
     >
       <el-popconfirm
-        title="确认清空？"
+        :title="useLanguageMessage('confirmClear')"
         placement="top"
         @confirm="clearListFn"
       >
@@ -43,11 +43,11 @@
           class="marginRL"
           type="danger"
         >
-          清空所有{{ showTabFont }}
+          {{ useLanguageMessage('clearAll') }}{{ showTabFont }}
         </el-button>
       </el-popconfirm>
       <el-popconfirm
-        title="确认还原？"
+        :title="useLanguageMessage('confirmRestore')"
         placement="top"
         @confirm="setDefaultSetting"
       >
@@ -56,7 +56,8 @@
           size="medium"
           type="danger"
         >
-          还原默认{{ showTabFont }}设置
+          <!-- {{ showTabFont }} -->
+          {{ useLanguageMessage('restoreSet') }}
         </el-button>
       </el-popconfirm>
     </template>
@@ -84,7 +85,7 @@ export default {
     },
     showTabFont: {
       type: String,
-      default: '随机励志语录',
+      default: '',
     },
     tipChooseList: {
       type: Array,

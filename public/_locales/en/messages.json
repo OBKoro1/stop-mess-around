@@ -1,4 +1,311 @@
 {
-  "pluginName": { "message": "stop-mess-around" },
-	"useDoc": {"message": "use document"}
+  "pluginName": {
+    "message": "stop-mess-around"
+  },
+  "useDoc": {
+    "message": "use document"
+  },
+  "tipInstall": {
+    "message": "Local installation, can not be automatically updated, jump app store installation"
+  },
+  "sponsorship": {
+    "message": "Ask for sponsorship"
+  },
+  "sponsor": {
+    "message": "Use love to generate electricity, ask for patronage😭"
+  },
+  "sponsorOne": {
+    "message": "Open source is not easy, and this plugin was developed and maintained in my spare time"
+  },
+  "sponsorTwo": {
+    "message": "Since I started to open source in the community in 18 years, open source work for me is generating electricity with love "
+  },
+  "sponsorThree": {
+    "message": "If you think this productivity tool is good enough to help you, sponsor it "
+  },
+  "sponsorFour": {
+    "message": "Ten and eight is not too much, three and five is not too little❤️"
+  },
+  "nextText": {
+    "message": "Next"
+  },
+  "nextTitle":{
+    "message": "Next"
+  },
+  "nextMsg":{
+    "message": "Whoops, I can only continue to love power generation for open source work😭"
+  },
+  "yesText": {
+    "message": "Ok"
+  },
+  "yesTitle":{
+    "message":"Thank you for your affirmation"
+  },
+  "yesMsg":{
+    "message":"Thanks for your sponsorship, I am more motivated to stick to open source work and can provide you with better tools😘"
+  },
+  "setPage":{
+    "message":"Global Setting"
+  },
+  "setShowTip":{
+    "message":"ToolTip"
+  },
+  "set":{
+    "message":"Set"
+  },
+  "feedBack":{
+    "message":"feedBack"
+  },
+  "setTableTitle":{
+    "message":"Touch fish website related"
+  },
+  "setTableSearch":{
+    "message":"Search for the site name and URL"
+  },
+  "keyByClose":{
+    "message":"Close"
+  },
+  "keyByOpen":{
+    "message":"Open"
+  },
+  "add":{
+    "message":"Add"
+  },
+  "shareByPlugin":{
+    "message":"Share the fish website integrated into the plugin"
+  },
+  "statistics":{
+    "message":"Touch time statistics"
+  },
+  "fishTitle":{
+    "message":"List of fish sites"
+  },
+  "fishTipMsgTitle":{
+    "message":"the fishing website"
+  },
+  "tipArrTip":{
+    "message":"Random motivational quote"
+  },
+  "titleArrTip":{
+    "message":"Random inspirational title"
+  },
+  "confirmArrTip":{
+    "message":"Random motivational button"
+  },
+  "tipArrTipColumn":{
+    "message":"Fish List"
+  },
+  "tipArrTipAction":{
+    "message":"operation"
+  },
+  "edit":{
+    "message":"edit"
+  },
+  "del":{
+    "message":"delete"
+  },
+  "checkDel":{
+    "message":"Do you want to delete?"
+  },
+  "delSelected":{
+    "message":"Delete selected"
+  },
+  "restoreDeleted":{
+    "message":"Restore deleted"
+  },
+  "confirmClear":{
+    "message":"Confirm to clear?"
+  },
+  "clearAll":{
+    "message":"Clear all"
+  },
+  "confirmRestore":{
+    "message":"Confirm restore?"
+  },
+  "restoreSet":{
+    "message":"Restore default Settings"
+  },
+  "tipTitle":{
+    "message":"Touch fish remind pop-up title"
+  },
+  "tipBtn":{
+    "message":"Close button text"
+  },
+  "addMotivationalQuotes":{
+    "message":"Add Motivational Quotes"
+  },
+  "addMotivationalTitle":{
+    "message":"Add Motivational Title"
+  },
+  "addMotivationalBtn":{
+    "message":"Add a motivational button"
+  },
+  "placeholderText":{
+    "message":"Please enter the content"
+  },
+  "saveAdd":{
+    "message":"Save add"
+  },
+  "shareTip":{
+    "message":"Share common touch fish website, benefit oneself, let the plug-in better use, zero configuration quickly get started ~"
+  },
+  "openShare":{
+    "message":"Open share Dialog"
+  },
+  "addSuccess":{
+    "message":"Add Success"
+  },
+  "matchRule":{
+    "message":"Match rule"
+  },
+  "mathRuleTip":{
+    "message":"Url matching rules: Contain => Contain, usually enter a domain name, the beginning of all => the front must be identical, strictly equal => identical"
+  },
+  "includesRule":{
+    "message":"includes"
+  },
+  "startRule":{
+    "message":"beginning congruence"
+  },
+  "strictRule":{
+    "message":"strict equality"
+  },
+  "checkoutStudy":{
+    "message":"When you need to relax, close all the fish website detection with one key, and open the detection again every few minutes"
+  },
+  "resetKey":{
+    "message":"Global rest is enabled with one key"
+  },
+  "matchClosePage":{
+    "message":"The countdown closes after matching"
+  },
+  "mathClosePageTip":{
+    "message":"After matching the website, if you do not click the rest, the page will be closed after the countdown. If it is set to 0, the function will be closed"
+  },
+  "timeClose":{
+    "message":"Click Close and stay for a few seconds"
+  },
+  "timeCloseTip":{
+    "message":"After clicking Close popover, click Close and stay for a few seconds to close the page"
+  },
+  "jump":{
+    "message":"jump"
+  },
+  "jumpTip":{
+    "message":"If the URL matches, do not close the page and go to another page"
+  },
+  "open":{
+    "message":"open"
+  },
+  "close":{
+    "message":"close"
+  },
+  "jumpUrl":{
+    "message":"jump url"
+  },
+  "jumpUrlip":{
+    "message":"Null uses global jump links"
+  },
+  "log":{
+    "message":"log"
+  },
+  "logTip":{
+    "message":"Whether to enable the log of the code inserted into the web page to facilitate the location of problems"
+  },
+  "rightFish":{
+    "message":"Touch the fish on the right"
+  },
+  "rightFishTip":{
+    "message":"After the fish detection is closed, the right side of the website will display whether to display the fish tip, and close the display of rest time today on the right side but still display the countdown and fish form"
+  },
+  "closeRestTimeStatistics":{
+    "message":"Only countdowns are shown, not rest statistics"
+  },
+  "viewCode":{
+    "message":"View code"
+  },
+  "viewGithubTip":{
+    "message":"Built-in buttons in the Github repository to open Code on GitHub via the online version of VS Code"
+  },
+  "feedback":{
+    "message":"Plugin feedback"
+  },
+  "feedbackTip":{
+    "message":"Plug-in data must be copied for feedback problems"
+  },
+  "openFeedback":{
+    "message":"Open the plug-in data and feedback problem popup window"
+  },
+  "cancel":{
+    "message":"cancel"
+  },
+  "save":{
+    "message":"save"
+  },
+  "feedbackIssues":{
+    "message":"Plug-in data is related to feedback issues"
+  },
+  "feedbackPlaceholder":{
+    "message":"Please copy the plug-in data from another computer (remember to click the Copy button for initializing data) and paste it here. The replacement plug-in data is usually used for initializing plug-in data. \n Only the plug-in data can be stored locally due to the limitation of the data synchronization capacity of the Google plug-in Manifest v3 version. Therefore, this method is used to initialize data."
+  },
+  "copeParams":{
+    "message":"Copy parameters used to raise the issue on Github and initialize the plugin data"
+  },
+  "copeData":{
+    "message":"Cope Data"
+  },
+  "copyInit":{
+    "message":"Copy plug-in data initialization"
+  },
+  "copyFormat":{
+    "message":"Copy plug-in data feedback problem"
+  },
+  "jumpIssue":{
+    "message":"Jump feedback problem"
+  },
+  "jumpIssueTip":{
+    "message":"Go to Github and ask an issue according to the spec"
+  },
+  "jumpURL":{
+    "message":"Jump feedback"
+  },
+  "keySet":{
+    "message":"One-click restore default Settings"
+  },
+  "resetAll":{
+    "message":"Reset all data"
+  },
+  "keyClear":{
+    "message":"Clear all Settings with one click"
+  },
+  "resetSome":{
+    "message":"Reset some plugin data"
+  },
+  "clearList":{
+    "message":"Clear the fish list"
+  },
+  "resetSet":{
+    "message":"Reset Settings"
+  },
+  "confirmReset":{
+    "message":"Confirm reset?"
+  },
+  "resetTotal":{
+    "message":"Reset fish statistics"
+  },
+  "replacePluginData":{
+    "message":"Replace plug-in data with input data"
+  },
+  "clearListSuccess":{
+    "message":"Succeeded in clearing the fish list"
+  },
+  "copyPluginInitTip":{
+    "message":"The plug-in data has been copied to initialize the data"
+  },
+  "copyPluginFeeabackTip":{
+    "message":"Plug-in data has been copied for problem feedback. It cannot be used to initialize data, otherwise it will be invalid"
+  },
+  "feedbackData":{
+    "message":"Feedback problem data"
+  }
 }

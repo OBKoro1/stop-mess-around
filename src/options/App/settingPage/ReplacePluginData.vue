@@ -13,7 +13,7 @@
     :close-on-press-escape="false"
     append-to-body
     :visible.sync="dialogVisible"
-    title="插件数据与反馈问题相关"
+    :title="useLanguageMessage('feedbackIssues')"
     width="550px"
   >
     <div>
@@ -21,7 +21,7 @@
         v-model="inputData"
         type="textarea"
         :autosize="{ minRows: 10, maxRows: 15}"
-        :placeholder="`请复制别的电脑的本插件数据（记住点击用于初始化数据的复制按钮），粘贴到这里来，替换插件数据一般用于初始化插件数据。\n由于谷歌插件 Manifest v3 版本数据同步的数据容量限制，只能将插件数据存在本地，故使用该方式初始化数据。`"
+        :placeholder="useLanguageMessage('feedbackPlaceholder')"
       />
       <div style="margin: 20px 0;" />
       <el-form
@@ -30,10 +30,10 @@
         <el-form-item prop="feedback">
           <span slot="label">
             <el-tooltip
-              :content="'复制参数，用于去Github提issue和初始化插件数据'"
+              :content="useLanguageMessage('copeParams')"
               placement="top"
             >
-              <span>{{ '复制数据' }}</span>
+              <span>{{ useLanguageMessage('copeData') }}</span>
             </el-tooltip>
           </span>
           <el-button
@@ -42,23 +42,23 @@
             type="primary"
             @click="copyPluginData"
           >
-            复制插件数据初始化
+            {{ useLanguageMessage('copyInit') }}
           </el-button>
           <el-button
             class="button-margin-right"
             size="small"
             @click="copyPluginData('format')"
           >
-            复制插件数据反馈问题
+            {{ useLanguageMessage('copyFormat') }}
           </el-button>
         </el-form-item>
         <el-form-item prop="feedback2">
           <span slot="label">
             <el-tooltip
-              :content="'去Github按照规范提issue'"
+              :content="useLanguageMessage('jumpIssueTip')"
               placement="top"
             >
-              <span>{{ '跳转反馈问题' }}</span>
+              <span>{{ useLanguageMessage('jumpIssue') }}</span>
             </el-tooltip>
           </span>
           <el-button
@@ -66,20 +66,20 @@
             size="small"
             @click="utils.jumpUrl(NET.GITHUB_REPO_ISSUES)"
           >
-            跳转反馈
+            {{ useLanguageMessage('jumpURL') }}
           </el-button>
         </el-form-item>
         <el-form-item prop="clear">
           <span slot="label">
             <el-tooltip
-              :content="'一键恢复默认设置。'"
+              :content="useLanguageMessage('keySet')"
               placement="top"
             >
-              <span>{{ '重置所有数据' }}</span>
+              <span>{{ useLanguageMessage('resetAll') }}</span>
             </el-tooltip>
           </span>
           <el-popconfirm
-            title="确认清空？"
+            :title="useLanguageMessage('confirmClear')"
             @confirm="clearAll()"
           >
             <el-button
@@ -88,21 +88,21 @@
               size="small"
               type="danger"
             >
-              一键清空所有设置
+              {{ useLanguageMessage('keyClear') }}
             </el-button>
           </el-popconfirm>
         </el-form-item>
         <el-form-item prop="clear">
           <span slot="label">
             <el-tooltip
-              :content="'一键恢复默认设置。'"
+              :content="useLanguageMessage('keySet')"
               placement="top"
             >
-              <span>{{ '重置部分插件数据' }}</span>
+              <span>{{ useLanguageMessage('resetSome') }}</span>
             </el-tooltip>
           </span>
           <el-popconfirm
-            title="确认清空？"
+            :title="useLanguageMessage('keyClear')"
             @confirm="clearSetting('clearList')"
           >
             <el-button
@@ -111,11 +111,11 @@
               size="small"
               type="danger"
             >
-              清空摸鱼列表
+              {{ useLanguageMessage('clearList') }}
             </el-button>
           </el-popconfirm>
           <el-popconfirm
-            title="确认重置？"
+            :title="useLanguageMessage('confirmReset')"
             @confirm="clearSetting('clearSetting')"
           >
             <el-button
@@ -124,11 +124,11 @@
               size="small"
               type="danger"
             >
-              重置设置
+              {{ useLanguageMessage('resetSet') }}
             </el-button>
           </el-popconfirm>
           <el-popconfirm
-            title="确认重置？"
+            :title="useLanguageMessage('confirmReset')"
             @confirm="clearSetting('statisticsTime')"
           >
             <el-button
@@ -136,7 +136,7 @@
               size="small"
               type="danger"
             >
-              重置摸鱼统计
+              {{ useLanguageMessage('resetTotal') }}
             </el-button>
           </el-popconfirm>
         </el-form-item>
@@ -147,13 +147,13 @@
       class="dialog-footer"
     >
       <el-button @click="close">
-        取消
+        {{ useLanguageMessage('cancel') }}
       </el-button>
       <el-button
         type="danger"
         @click="replacePluginData"
       >
-        使用输入数据替换插件数据
+        {{ useLanguageMessage('replacePluginData') }}
       </el-button>
     </div>
   </el-dialog>
@@ -195,9 +195,7 @@ export default {
       } catch {
         res = {}
       }
-      console.log('输入数据', this.inputData)
       const { setting = {}, statisticsTime = [], listArr = [] } = res
-      console.log('替换数据', setting, statisticsTime, listArr)
       await this.utils.updateStorageData(listArr, this.NET.TABLELIST)
       await this.utils.updateStorageData(setting, this.NET.GLOBALSETTING)
       await this.utils.updateStorageData(statisticsTime, this.NET.statisticsTime)
@@ -208,7 +206,7 @@ export default {
       this.close()
       this.initData(type)
       if (type === 'clearList') {
-        this.$message.success('清空摸鱼列表成功')
+        this.$message.success(this.useLanguageMessage('clearListSuccess'))
       }
     },
     async clearAll() {
@@ -220,12 +218,12 @@ export default {
     // 复制插件配置 去反馈问题
     async copyPluginData(type) {
       const obj = await this.utils.getData()
-      let tip = '插件数据已复制, 用于初始化数据'
+      let tip = this.useLanguageMessage('copyPluginInitTip')
       let text = JSON.stringify(obj)
       if (type === 'format') {
         text = JSON.stringify(obj, null, 2)
-        tip = '插件数据已复制, 用于反馈问题, 不可以用于初始化数据，否则失效'
-        text = `反馈问题数据:\n\`\`\`js\n${text}\n\`\`\``
+        tip = this.useLanguageMessage('copyPluginFeeabackTip')
+        text = `${this.useLanguageMessage('feedbackData')}:\n\`\`\`js\n${text}\n\`\`\``
       }
       copyData(text, tip)
     },

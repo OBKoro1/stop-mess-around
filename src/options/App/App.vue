@@ -29,6 +29,16 @@ import SetPage from './settingPage/SetPage.vue'
 import TableSetting from './settingPage/TableSetting.vue'
 import ShareSiteToGithubVue from './share/ShareSiteToGithub.vue'
 import Table from './table/Table.vue'
+// const lang = chrome.i18n.getUILanguage()
+// console.log('getUILanguage:', lang)
+
+// chrome.i18n.getAcceptLanguages(e => {
+//   console.log('getAcceptLanguages:', e)
+// })
+
+// chrome.i18n.detectLanguage('t', e => {
+//   console.log('detectLanguage title', e)
+// });
 
 export default {
   name: 'OptionsApp',

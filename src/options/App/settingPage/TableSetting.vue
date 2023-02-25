@@ -13,12 +13,12 @@
   <div class="set-page">
     <div class="set-page-padding">
       <div class="set-page-title">
-        {{ '摸鱼网站相关' }}
+        {{ useLanguageMessage('setTableTitle') }}
       </div>
       <el-input
         v-model="searchContent"
         class="search-input"
-        placeholder="搜索网站名和网址"
+        :placeholder="useLanguageMessage('setTableSearch')"
         @change="search"
       />
       <!-- 一键关闭 -->
@@ -34,21 +34,21 @@
         round
         @click="checkoutFn('showCreateItem', true)"
       >
-        {{ '新增' }}
+        {{ useLanguageMessage('add') }}
       </el-button>
       <el-button
         type="primary"
         round
         @click="appDialog"
       >
-        {{ '分享摸鱼网站集成到插件中' }}
+        {{ useLanguageMessage('shareByPlugin') }}
       </el-button>
       <el-button
         type="primary"
         round
         @click="checkoutFn('showStatistics', true)"
       >
-        摸鱼时长统计
+        {{ useLanguageMessage('statistics') }}
       </el-button>
       <el-button
         v-if="subOptions.btnShowBatchItem"
@@ -56,7 +56,7 @@
         round
         @click="checkoutFn('showBatchItem', true)"
       >
-        {{ '摸鱼网站列表' }}
+        {{ useLanguageMessage('fishTitle') }}
       </el-button>
 
       <!-- 新增摸鱼网站 -->
@@ -116,7 +116,7 @@ export default {
   },
   computed: {
     closeOrOpen() {
-      return this.open ? '一键关闭' : '一键开启'
+      return this.open ? this.useLanguageMessage('keyByClose') : this.useLanguageMessage('keyByOpen')
     },
   },
   mounted() {

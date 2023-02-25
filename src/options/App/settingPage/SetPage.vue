@@ -11,28 +11,28 @@
 <template>
   <div class="set-page-padding">
     <div class="set-page-title">
-      {{ '全局设置' }}
+      {{ useLanguageMessage('setPage') }}
     </div>
     <el-button
       type="primary"
       round
       @click="checkoutFn('showTip', true)"
     >
-      {{ '提示自律的励志语录' }}
+      {{ useLanguageMessage('setShowTip') }}
     </el-button>
     <el-button
       type="primary"
       round
       @click="checkoutFn('showSetting', true)"
     >
-      {{ '设置' }}
+      {{ useLanguageMessage('set') }}
     </el-button>
     <el-button
       type="primary"
       round
       @click="checkoutFn('showPluginDataDialog', true)"
     >
-      插件数据和反馈问题相关
+      {{ useLanguageMessage('feedBack') }}
     </el-button>
     <!-- 随机语录设置 -->
     <RandomTip

@@ -15,7 +15,7 @@
     append-to-body
     :visible.sync="dialogVisible"
     :before-close="closeBefore"
-    title="匹配摸鱼网站时出现的激励信息"
+    :title="useLanguageMessage('fishTipMsgTitle')"
     style="margin-top: -7vh;"
     width="80%"
   >
@@ -89,11 +89,11 @@ export default {
     },
     showTabFont() {
       if (this.activeName === 'tipArr') {
-        return '随机励志语录'
+        return this.useLanguageMessage('tipArrTip')
       } if (this.activeName === 'titleArr') {
-        return '随机励志标题'
+        return this.useLanguageMessage('titleArrTip')
       } if (this.activeName === 'confirmArr') {
-        return '随机励志按钮'
+        return this.useLanguageMessage('confirmArrTip')
       }
       return ''
     },

@@ -90,7 +90,7 @@
 	// 向地址栏注册一个关键字以提供搜索建议，只能设置一个关键字
 	"omnibox": { "keyword" : "go" },
 	// 默认语言
-	"default_locale": "zh_CN",
+	"default_locale": "en",
 	"offline_enabled": true, // 标记离线使用
 	// devtools页面入口，注意只能指向一个HTML文件，不能是JS文件
 	"devtools_page": "devtools.html"

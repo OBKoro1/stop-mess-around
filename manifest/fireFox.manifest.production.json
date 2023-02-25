@@ -32,6 +32,5 @@
   ],
   "omnibox": { "keyword": "stopmessaround" },
   "offline_enabled": true,
-  "web_accessible_resources": ["fonts/*.*"],
-  "default_locale": "zh_CN"
+  "web_accessible_resources": ["fonts/*.*"]
 }

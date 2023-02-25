@@ -2,7 +2,7 @@
   <div>
     <el-tabs v-model="activeName">
       <el-tab-pane
-        label="随机励志语录"
+        :label="useLanguageMessage('tipArrTip')"
         name="tipArr"
       >
         <TipActive
@@ -13,7 +13,7 @@
         />
       </el-tab-pane>
       <el-tab-pane
-        label="随机励志标题"
+        :label="useLanguageMessage('titleArrTip')"
         name="titleArr"
       >
         <div class="random-content">
@@ -26,7 +26,7 @@
               width="50"
             />
             <el-table-column
-              label="摸鱼提醒弹窗标题"
+              :label="useLanguageMessage('tipTitle')"
               show-overflow-tooltip
               width="300"
             >
@@ -34,16 +34,16 @@
                 <p>{{ scope.row }}</p>
               </template>
             </el-table-column>
-            <el-table-column label="操作">
+            <el-table-column :label="useLanguageMessage('tipArrTipAction')">
               <template slot-scope="scope">
                 <el-button
                   size="mini"
                   @click="showEdit(scope.$index, scope.row)"
                 >
-                  编辑
+                  {{ useLanguageMessage('edit') }}
                 </el-button>
                 <el-popconfirm
-                  title="确认删除？"
+                  :title="useLanguageMessage('checkDel')"
                   @confirm="handleDelete(scope.$index)"
                 >
                   <el-button
@@ -53,7 +53,7 @@
                     class="marginRL"
                     type="danger"
                   >
-                    {{ '删除' }}
+                    {{ useLanguageMessage('del') }}
                   </el-button>
                 </el-popconfirm>
               </template>
@@ -62,7 +62,7 @@
         </div>
       </el-tab-pane>
       <el-tab-pane
-        label="随机励志关闭按钮"
+        :label="useLanguageMessage('confirmArrTip')"
         name="confirmArr"
       >
         <div class="random-content">
@@ -75,7 +75,7 @@
               width="50"
             />
             <el-table-column
-              label="摸鱼提醒弹窗关闭页面按钮"
+              :label="useLanguageMessage('tipBtn')"
               show-overflow-tooltip
               width="300"
             >
@@ -83,16 +83,16 @@
                 <p>{{ scope.row }}</p>
               </template>
             </el-table-column>
-            <el-table-column label="操作">
+            <el-table-column :label="useLanguageMessage('tipArrTipAction')">
               <template slot-scope="scope">
                 <el-button
                   size="mini"
                   @click="showEdit(scope.$index, scope.row)"
                 >
-                  编辑
+                  {{ useLanguageMessage('edit') }}
                 </el-button>
                 <el-popconfirm
-                  title="确认删除？"
+                  :title="useLanguageMessage('checkDel')"
                   @confirm="handleDelete(scope.$index)"
                 >
                   <el-button
@@ -102,7 +102,7 @@
                     class="marginRL"
                     type="danger"
                   >
-                    {{ '删除' }}
+                    {{ useLanguageMessage('del') }}
                   </el-button>
                 </el-popconfirm>
               </template>
@@ -111,7 +111,7 @@
         </div>
       </el-tab-pane>
       <el-tab-pane
-        label="添加"
+        :label="useLanguageMessage('add')"
         name="add"
       >
         <AddActive

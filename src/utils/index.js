@@ -136,9 +136,14 @@ export const utils = {
    * @param * zh 还没同步到language 临时使用汉字
    */
   getLanguageMessage(name, zh) {
+    // console.log(name,zh,chrome.i18n)
     if (zh) {
       return zh
     }
+    // console.log(chrome);
+    // console.log(chrome.i18n.detectLanguage(name,function(res){
+    //   console.log(res)
+    // }),'--1----1--1--1-1--1-1-')
     return chrome.i18n.getMessage(name)
   },
   /**

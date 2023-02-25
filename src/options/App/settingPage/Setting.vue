@@ -20,7 +20,7 @@
       slot="title"
       class="dialog_title"
     >
-      {{ '设置' }}
+      {{ useLanguageMessage('set') }}
     </div>
     <div class="form-class">
       <el-form
@@ -35,29 +35,29 @@
         >
           <span slot="label">
             <el-tooltip
-              :content="'网址摸鱼网址匹配规则: 包含=> 包含,通常输入一个域名即可, 开头全等 => 前面的必须一模一样，严格相等=>一模一样'"
+              :content="useLanguageMessage('mathRuleTip')"
               placement="top"
             >
-              <span>{{ '摸鱼网址匹配规则' }}</span>
+              <span>{{ useLanguageMessage('matchRule') }}</span>
             </el-tooltip>
           </span>
           <el-radio
             v-model="ruleForm.matchRule"
             label="includes"
           >
-            {{ '包含' }}
+            {{ useLanguageMessage('includesRule') }}
           </el-radio>
           <el-radio
             v-model="ruleForm.matchRule"
             label="start"
           >
-            {{ '开头全等' }}
+            {{ useLanguageMessage('startRule') }}
           </el-radio>
           <el-radio
             v-model="ruleForm.matchRule"
             label="strict"
           >
-            {{ '严格相等' }}
+            {{ useLanguageMessage('strictRule') }}
           </el-radio>
         </el-form-item>
         <el-form-item
@@ -66,10 +66,10 @@
         >
           <span slot="label">
             <el-tooltip
-              :content="'当需要放松时,一键关闭所有摸鱼网站检测，间隔几分钟将再次开启检测'"
+              :content="useLanguageMessage('checkoutStudy')"
               placement="top"
             >
-              <span>{{ '一键开启全局休息' }}</span>
+              <span>{{ useLanguageMessage('resetKey') }}</span>
             </el-tooltip>
           </span>
           <el-input
@@ -84,10 +84,10 @@
         >
           <span slot="label">
             <el-tooltip
-              :content="'匹配摸鱼网站后, 如果未点击休息一下，将在倒计时后关闭页面, 设置成0则关闭该功能'"
+              :content="useLanguageMessage('mathClosePageTip')"
               placement="top"
             >
-              <span>{{ '匹配后倒计时关闭' }}</span>
+              <span>{{ useLanguageMessage('matchClosePage') }}</span>
             </el-tooltip>
           </span>
           <el-input
@@ -103,10 +103,10 @@
         >
           <span slot="label">
             <el-tooltip
-              :content="'点击关闭弹窗后, 点击关闭停留几秒关闭网页'"
+              :content="useLanguageMessage('timeCloseTip')"
               placement="top"
             >
-              <span>{{ '点击关闭停留几秒' }}</span>
+              <span>{{ useLanguageMessage('timeClose') }}</span>
             </el-tooltip>
           </span>
           <el-input
@@ -122,23 +122,23 @@
         >
           <span slot="label">
             <el-tooltip
-              :content="'网址匹配后，不关闭页面，跳转到其他页面'"
+              :content="useLanguageMessage('jumpTip')"
               placement="top"
             >
-              <span>{{ '跳转' }}</span>
+              <span>{{ useLanguageMessage('jump') }}</span>
             </el-tooltip>
           </span>
           <el-radio
             v-model="ruleForm.jump"
             :label="true"
           >
-            {{ '开启' }}
+            {{ useLanguageMessage('open') }}
           </el-radio>
           <el-radio
             v-model="ruleForm.jump"
             :label="false"
           >
-            {{ '关闭' }}
+            {{ useLanguageMessage('close') }}
           </el-radio>
         </el-form-item>
         <el-form-item
@@ -147,16 +147,16 @@
         >
           <span slot="label">
             <el-tooltip
-              :content="'为空则使用全局跳转链接'"
+              :content="useLanguageMessage('jumpUrlTip')"
               placement="top"
             >
-              <span>{{ '关闭页面跳转链接' }}</span>
+              <span>{{ useLanguageMessage('jumpUrl') }}</span>
             </el-tooltip>
           </span>
           <el-input
             v-model="ruleForm.jumpUrl"
             class="input-class"
-            :placeholder="'为空则使用全局跳转链接'"
+            :placeholder="useLanguageMessage('jumpUrlTip')"
           />
         </el-form-item>
         <el-form-item
@@ -165,23 +165,23 @@
         >
           <span slot="label">
             <el-tooltip
-              :content="'插入网页的代码是否开启日志，方便定位问题'"
+              :content="useLanguageMessage('logTip')"
               placement="top"
             >
-              <span>{{ '网页日志' }}</span>
+              <span>{{ useLanguageMessage('log') }}</span>
             </el-tooltip>
           </span>
           <el-radio
             v-model="ruleForm.log"
             :label="true"
           >
-            {{ '开启' }}
+            {{ useLanguageMessage('open') }}
           </el-radio>
           <el-radio
             v-model="ruleForm.log"
             :label="false"
           >
-            {{ '关闭' }}
+            {{ useLanguageMessage('close') }}
           </el-radio>
         </el-form-item>
         <el-form-item
@@ -190,10 +190,10 @@
         >
           <span slot="label">
             <el-tooltip
-              :content="'关闭摸鱼检测后，网站的右侧是否展示摸鱼提示，以及关闭右侧今日休息时间展示但仍显示倒计时和摸鱼表格'"
+              :content="useLanguageMessage('rightFishTip')"
               placement="top"
             >
-              <span>{{ '右侧摸鱼提示' }}</span>
+              <span>{{ useLanguageMessage('rightFish') }}</span>
             </el-tooltip>
           </span>
           <el-select
@@ -214,10 +214,10 @@
         >
           <span slot="label">
             <el-tooltip
-              :content="'在Github仓库中内嵌按钮, 通过在线版本的 VS Code 来打开 GitHub 上的代码'"
+              :content="useLanguageMessage('viewGithubTip')"
               placement="top"
             >
-              <span>{{ '查看代码功能' }}</span>
+              <span>{{ useLanguageMessage('viewCode') }}</span>
             </el-tooltip>
           </span>
           <el-select
@@ -235,10 +235,10 @@
         <el-form-item prop="feedback">
           <span slot="label">
             <el-tooltip
-              :content="'反馈问题必须复制插件数据'"
+              :content="useLanguageMessage('feedbackTip')"
               placement="top"
             >
-              <span>{{ '插件数据与反馈' }}</span>
+              <span>{{ useLanguageMessage('feedback') }}</span>
             </el-tooltip>
           </span>
           <el-button
@@ -247,7 +247,7 @@
             type="primary"
             @click="jumpCopyPluginData"
           >
-            打开插件数据与反馈问题弹窗
+            {{ useLanguageMessage('openFeedback') }}
           </el-button>
         </el-form-item>
       </el-form>
@@ -257,11 +257,13 @@
       slot="footer"
       class="dialog-footer"
     >
-      <el-button @click="close">取 消</el-button>
+      <el-button @click="close">{{ useLanguageMessage('cancel') }}</el-button>
       <el-button
         type="primary"
         @click="confirmFn"
-      >保 存</el-button>
+      >
+        {{ useLanguageMessage('save') }}
+      </el-button>
     </span>
   </el-dialog>
 </template>
@@ -307,25 +309,25 @@ export default {
       },
       rightTipOptions: [
         {
-          label: '开启',
+          label: this.useLanguageMessage('open'),
           value: 'open',
         },
         {
-          label: '只展示倒计时，不展示休息统计',
+          label: this.useLanguageMessage('closeRestTimeStatistics'),
           value: 'closeRestTimeStatistics',
         },
         {
-          label: '关闭',
+          label: this.useLanguageMessage('close'),
           value: 'close',
         },
       ],
       lookCodeOptions: [
         {
-          label: '开启',
+          label: this.useLanguageMessage('open'),
           value: 'open',
         },
         {
-          label: '关闭',
+          label: this.useLanguageMessage('close'),
           value: 'off',
         },
       ],
