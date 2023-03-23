@@ -22,7 +22,7 @@
       slot="title"
       class="dialog_title"
     >
-      {{ '新增摸鱼网站' }}
+      {{ useLanguageMessage('createFish') }}
     </div>
     <div class="form-class">
       <el-form
@@ -35,68 +35,68 @@
           prop="labelName"
           required
         >
-          <span slot="label">{{ '摸鱼网站名' }}: </span>
+          <span slot="label">{{ useLanguageMessage('fishName') }}: </span>
           <el-input
             v-model="ruleForm.labelName"
             class="input-class"
-            :placeholder="'添加摸鱼网站名'"
+            :placeholder="useLanguageMessage('addFishName')"
           />
         </el-form-item>
         <el-form-item
           prop="site"
           required
         >
-          <span slot="label">{{ '摸鱼网址' }}: </span>
+          <span slot="label">{{ useLanguageMessage('fishWebsite') }}: </span>
           <el-input
             v-model="ruleForm.site"
             class="input-class"
             autosize
             type="textarea"
-            :placeholder="'添加摸鱼网址(唯一)'"
+            :placeholder="useLanguageMessage('addFishWebsite')"
           />
         </el-form-item>
         <el-form-item prop="tip">
           <span slot="label">
             <el-tooltip
-              :content="'匹配到摸鱼网站时显示的励志语录'"
+              :content="useLanguageMessage('matchQuoteName')"
               placement="top"
             >
-              <span>{{ '励志语录' }}</span>
+              <span>{{ useLanguageMessage('quoteName') }}</span>
             </el-tooltip>
           </span>
           <el-input
             v-model="ruleForm.tip"
             class="input-class"
-            :placeholder="'为空则为随机励志语录'"
+            :placeholder="useLanguageMessage('nullQuoteName')"
           />
         </el-form-item>
         <el-form-item prop="time">
           <span slot="label">
             <el-tooltip
-              :content="'点击关闭弹窗后, 点击关闭停留几秒关闭网页'"
+              :content="useLanguageMessage('websiteTip')"
               placement="top"
             >
-              <span>{{ '点击关闭停留几秒' }}</span>
+              <span>{{ useLanguageMessage('closeTip') }}</span>
             </el-tooltip>
           </span>
           <el-input
             v-model.number="ruleForm.time"
-            :placeholder="'为空则为全局设置的停留时间'"
+            :placeholder="useLanguageMessage('nullGloablTip')"
             autocomplete="off"
           />
         </el-form-item>
         <el-form-item prop="checkoutStudy">
           <span slot="label">
             <el-tooltip
-              :content="'关闭检测后多少分钟后重新启用检测'"
+              :content="useLanguageMessage('openAutoTip')"
               placement="top"
             >
-              <span>{{ '自动开启' }}</span>
+              <span>{{ useLanguageMessage('openAuto') }}</span>
             </el-tooltip>
           </span>
           <el-input
             v-model.number="ruleForm.checkoutStudy"
-            :placeholder="'为空则为全局设置的自动开启时间'"
+            :placeholder="useLanguageMessage('nullOpenTip')"
             autocomplete="off"
           />
         </el-form-item>
@@ -106,29 +106,29 @@
         >
           <span slot="label">
             <el-tooltip
-              :content="'网址摸鱼网址匹配规则: 包含=> 包含,通常输入一个域名即可, 开头全等 => 前面的必须一模一样，严格相等=>一模一样'"
+              :content="useLanguageMessage('fishRuleByURLTip')"
               placement="top"
             >
-              <span>{{ '摸鱼网址匹配规则' }}</span>
+              <span>{{ useLanguageMessage('fishRuleByURL') }}</span>
             </el-tooltip>
           </span>
           <el-radio
             v-model="ruleForm.matchRule"
             label="includes"
           >
-            {{ '包含' }}
+            {{ useLanguageMessage('includesRule') }}
           </el-radio>
           <el-radio
             v-model="ruleForm.matchRule"
             label="start"
           >
-            {{ '开头全等' }}
+            {{ useLanguageMessage('startRule') }}
           </el-radio>
           <el-radio
             v-model="ruleForm.matchRule"
             label="strict"
           >
-            {{ '严格相等' }}
+            {{ useLanguageMessage('strictRule') }}
           </el-radio>
         </el-form-item>
         <el-form-item
@@ -137,23 +137,23 @@
         >
           <span slot="label">
             <el-tooltip
-              :content="'网址匹配后，不关闭页面，跳转到其他页面'"
+              :content="useLanguageMessage('jumpTip')"
               placement="top"
             >
-              <span>{{ '跳转' }}</span>
+              <span>{{ useLanguageMessage('jump') }}</span>
             </el-tooltip>
           </span>
           <el-radio
             v-model="ruleForm.jump"
             :label="true"
           >
-            {{ '开启' }}
+            {{ useLanguageMessage('open') }}
           </el-radio>
           <el-radio
             v-model="ruleForm.jump"
             :label="false"
           >
-            {{ '关闭' }}
+            {{ useLanguageMessage('close') }}
           </el-radio>
         </el-form-item>
         <el-form-item
@@ -162,16 +162,16 @@
         >
           <span slot="label">
             <el-tooltip
-              :content="'为空则使用全局跳转链接'"
+              :content="useLanguageMessage('jumpUrlTip')"
               placement="top"
             >
-              <span>{{ '关闭页面跳转链接' }}</span>
+              <span>{{ useLanguageMessage('jumpUrl') }}</span>
             </el-tooltip>
           </span>
           <el-input
             v-model="ruleForm.jumpUrl"
             class="input-class"
-            :placeholder="'为空则使用全局跳转链接'"
+            :placeholder="useLanguageMessage('jumpUrlTip')"
           />
         </el-form-item>
       </el-form>
@@ -181,23 +181,23 @@
       class="dialog-footer"
     >
       <el-button @click="close">
-        取 消
+        {{ useLanguageMessage('cancel') }}
       </el-button>
       <el-button
         type="primary"
         @click="confirmFn(false)"
       >
-        添 加
+        {{ useLanguageMessage('add') }}
       </el-button>
       <el-tooltip
         placement="top"
-        :content="'添加,并打开分享摸鱼网站弹窗, 集成到插件的默认配置中, 利人利己, 让插件更好用'"
+        :content="useLanguageMessage('appendTip')"
       >
         <el-button
           type="primary"
           @click="confirmFn(true)"
         >
-          添加并分享集成到插件
+          {{ useLanguageMessage('appendShare') }}
         </el-button>
       </el-tooltip>
     </div>
@@ -235,21 +235,21 @@ export default {
       },
       rules: {
         labelName: [
-          { required: true, message: '请输入摸鱼网站名', trigger: 'blur' },
+          { required: true, message: this.useLanguageMessage('createRulesBylabelName'), trigger: 'blur' },
         ],
         site: [
-          { required: true, message: '请输入摸鱼网址', trigger: 'blur' },
+          { required: true, message: this.useLanguageMessage('createRulesBySite'), trigger: 'blur' },
           {
-            min: 8, message: '至少8个字符', trigger: 'blur',
+            min: 8, message: this.useLanguageMessage('createRulesBySiteLen'), trigger: 'blur',
           },
         ],
         tip: [
-          { message: '请输入励志语录', trigger: 'blur' },
+          { message: this.useLanguageMessage('createRulesByTip'), trigger: 'blur' },
         ],
         jumpUrl: [
-          { required: true, message: '请输入跳转网址', trigger: 'blur' },
+          { required: true, message: this.useLanguageMessage('createRulesByJumpUrl'), trigger: 'blur' },
           {
-            min: 8, message: '至少8个字符', trigger: 'blur',
+            min: 8, message: this.useLanguageMessage('createRulesByJumpUrlLen'), trigger: 'blur',
           },
         ],
       },
@@ -315,14 +315,14 @@ export default {
             obj.siteType = siteTypeTypes.create
             // 添加到开头
             this.tableDataSpliceUpdate(0, 0, obj)
-            this.$message.success('添加摸鱼网站成功~')
+            this.$message.success(this.useLanguageMessage('addFishSuccess'))
             if (isOpenShare) {
               this.openShareDialog()
             } else {
               this.close()
             }
           } else {
-            this.$message.error('摸鱼网址重复, 请重新输入')
+            this.$message.error(this.useLanguageMessage('fishWebSiteTip'))
           }
         } else {
           return false

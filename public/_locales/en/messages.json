@@ -6,10 +6,10 @@
     "message": "use document"
   },
   "tipInstall": {
-    "message": "Local installation, can not be automatically updated, jump app store installation"
+    "message": "local installation does not update automatically,open the Chrome App Store"
   },
   "sponsorship": {
-    "message": "Ask for sponsorship"
+    "message": "Ask For Sponsorship"
   },
   "sponsor": {
     "message": "Use love to generate electricity, ask for patronage😭"
@@ -307,5 +307,191 @@
   },
   "feedbackData":{
     "message":"Feedback problem data"
+  },
+  "createFish":{
+    "message":"New fish website"
+  },
+  "fishName":{
+    "message":"The name of the fish website"
+  },
+  "fishWebsite":{
+    "message":"Fish website"
+  },
+  "quoteName":{
+    "message":"Motivational quote"
+  },
+  "addFishName":{
+    "message":"Add the name of the fish website"
+  },
+  "addFishWebsite":{
+    "message":"Add fishing URL (unique)"
+  },
+  "matchQuoteName":{
+    "message":"Match the motivational quote that shows up on the fishing site"
+  },
+  "nullQuoteName":{
+    "message":"If empty, it's a random motivational quote"
+  },
+  "websiteTip":{
+    "message":"After clicking Close popover, click Close and stay for a few seconds to close the page"
+  },
+  "closeTip":{
+    "message":"Click Close and stay for a few seconds"
+  },
+  "nullGloablTip":{
+    "message":"If the value is blank, it is the globally set residence time"
+  },
+  "openAuto":{
+    "message":"Open automatically"
+  },
+  "openAutoTip":{
+    "message":"How many minutes after disabling the detection, re-enable the detection"
+  },
+  "nullOpenTip":{
+    "message":"If the value is empty, it is the automatically enabled time set globally"
+  },
+  "fishRuleByURL":{
+    "message":"Fish URL matching rules"
+  },
+  "fishRuleByURLTip":{
+    "message":"Url matching rules: Contain => Contain, usually enter a domain name, the beginning of all => the front must be identical, strictly equal => identical"
+  },
+  "append":{
+    "message":"append"
+  },
+  "appendTip":{
+    "message":"Add and open the popup window of the sharing fish website, integrate it into the default configuration of the plug-in, benefit everyone and make the plug-in better"
+  },
+  "appendShare":{
+    "message":"Add and share integrations to plug-ins"
+  },
+  "createRulesBylabelName":{
+    "message":"Please enter the name of the fish website"
+  },
+  "createRulesBySite":{
+    "message":"Please enter the web address of the fish"
+  },
+  "createRulesBySiteLen":{
+    "message":"At least 8 characters"
+  },
+  "createRulesByTip":{
+    "message":"Please enter inspirational quotes"
+  },
+  "createRulesByJumpUrl":{
+    "message":"Please enter the redirect URL"
+  },
+  "createRulesByJumpUrlLen":{
+    "message":"At least 8 characters"
+  },
+  "addFishSuccess":{
+    "message":"Adding fish website successfully"
+  },
+  "fishWebSiteTip":{
+    "message":"The URL of the fish is repeated, please re-enter"
+  },
+  "sharePluginTitle":{
+    "message":"Recommended common touch fish website, let the plug-in better use ~"
+  },
+  "sharePluginTip":{
+    "message":"The purpose of sharing the fish website is to make the plug-in better use, benefit people and self-interest ~"
+  },
+  "pluginConfigByAuto":{
+    "message":"Zero configuration uses plugins that automatically add your commonly used fish sites"
+  },
+  "pluginnConfigByAdd":{
+    "message":"Recommend your commonly used fish website, add to the plug-in default configuration;"
+  },
+  "pluginConfigByWatch":{
+    "message":"After the plug-in is installed, all common fish websites are automatically added. Zero configuration starts to monitor fish websites."
+  },
+  "pluginConfigByUse":{
+    "message":"When you get a new computer, you can use zero configuration;"
+  },
+  "pluginConfigByReset":{
+    "message":"When you reinstall plug-ins, you can use zero configuration;"
+  },
+  "pluginConfigByShare":{
+    "message":"When you recommend plugins to your friends, you can use them with zero configuration."
+  },
+  "sharePluginWebTitle":{
+    "message":"Recommend all walks of life touch fish website, plug-in accurate identification touch fish website"
+  },
+  "sharePluginWebConig":{
+    "message":"People from all walks of life have different Internet habits, recommend your commonly used fish website, add to the default configuration of the plug-in;"
+  },
+  "sharePluginWebMore":{
+    "message":"Everyone adds firewood flame high, so that the plug-in for all walks of life touch fish website configuration more rich;"
+  },
+  "sharePluginWebTime":{
+    "message":"In the process of daily Internet surfing, I can more accurately identify fishing websites and reduce the potential fishing time."
+  },
+  "sharePlugin":{
+    "message":"Sharing is a happy thing"
+  },
+  "sharePluginHelpTip":{
+    "message":"Help people with excellent self-discipline like you to accurately identify fish websites and reduce time spent fishing; Sharing is a happy thing, good people live a safe life"
+  },
+  "howSharePlugin":{
+    "message":"How to share touch fish website integration into the plugin?"
+  },
+  "sharePluginNames":{
+    "message":"Must: Copy fish website data"
+  },
+  "sharePluginNamesTip":{
+    "message":"There is no website different from the plugin default integration of the fish website, can not share the fish website"
+  },
+  "currentPlugin":{
+    "message":"You currently have"
+  },
+  "sharePluginConfig":{
+    "message":"a web site that is added or edited by itself and can be shared and integrated into the default configuration of the plugin"
+  },
+  "sharePluginCopy":{
+    "message":"Copy all the web sites that are different from the plugin's default integration, that is, copy all the web sites that you add and edit yourself"
+  },
+  "sharePluginChoose":{
+    "message":"Manually select your own new and edited fish site"
+  },
+  "sharePluginChooseTip":{
+    "message":"Manually select a web site different from the default configuration"
+  },
+  "sharePluginGithub":{
+    "message":"The Github route is recommended"
+  },
+  "sharePluginIssue":{
+    "message":"Quick share, direct reply to issue: at issue"
+  },
+  "sharePluginReply":{
+    "message":"You can reply to the copied data directly in the comment section"
+  },
+  "sharePluginCopyData":{
+    "message":"Create an issue and fill in the copy data: in"
+  },
+  "sharePluginModel":{
+    "message":"Create an issue template with one click"
+  },
+  "sharePluginBtn":{
+    "message":"The page, select share touch fish website button;"
+  },
+  "sharePluginSysTip1":{
+    "message":"ps: Github is a programmer code hosting platform, do not have an account can register an account, in the future also need ~"
+  },
+  "sharePluginSysTip2":{
+    "message":"ps: Github is restricted in mainland China, students who don't have access to the wall tool may have slower Internet speed ~"
+  },
+  "sharePluginDev":{
+    "message":"Send an email to the developer"
+  },
+  "sharePluginFoxmail":{
+    "message":"mailbox: obkoro1@foxmail.com"
+  },
+  "sharePluginFoxmailTip1":{
+    "message":"Necessary email content: copy fish website data;"
+  },
+  "sharePluginFoxmailTip2":{
+    "message":"Suggested email title: recommended plugin touch fish website;"
+  },
+  "sharePluginFoxmailTip3":{
+    "message":"ps: For those who can't get over the wall, you can choose the form of email. If possible, it is still recommended to use the form of github, because there is a certain probability of email missing 😂"
   }
 }

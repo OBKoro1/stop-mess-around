@@ -17,6 +17,7 @@
           @click="utils.jumpUrl(NET.CHROMESTORE)"
         >
           {{ useLanguageMessage('tipInstall') }}
+          <i class="el-icon-s-unfold" />
         </span>
         <span
           class="cursor-pointer"
