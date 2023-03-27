@@ -6,9 +6,8 @@ import GlobalFunction, { utils } from '@/utils/index'
 
 import NET from '../utils/net'
 import AppComponent from './App/App.vue'
-// import locale from 'element-ui/lib/locale/lang/en'
+import router from './App/router'
 
-// Vue.use(ElementUI, { locale });
 Vue.component('app-component', AppComponent)
 Vue.use(GlobalFunction)
 Vue.use(ElementUI)
@@ -18,5 +17,6 @@ Vue.prototype.useLanguageMessage = utils.getLanguageMessage
 // eslint-disable-next-line no-new
 new Vue({
   el: '#app',
+  router,
   render: (createElement) => createElement(AppComponent),
 })

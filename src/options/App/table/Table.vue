@@ -17,8 +17,13 @@
       :data="showList"
       empty-text="暂无数据,去摸鱼网站列表选择添加，或者手动新增常用的摸鱼网站吧~"
       row-key="site"
+      border
+      style="width: 100%"
     >
-      <el-table-column type="index" />
+      <el-table-column
+        type="index"
+        fixed
+      />
       <el-table-column
         prop="labelName"
         width="120"
@@ -132,7 +137,10 @@
           <span>{{ scope.row.jump ? '开启' : '关闭' }}</span>
         </template>
       </el-table-column>
-      <el-table-column fixed="right">
+      <el-table-column
+        fixed="right"
+        width="200"
+      >
         <template slot="header">
           <span>{{ '操作' }}</span>
         </template>
@@ -163,7 +171,6 @@
             <el-switch
               v-model="scope.row.open"
               size="mini"
-              active-color="rgb(255, 97, 84)"
               @change="(val)=>{
                 checkoutFn(val,scope.row, scope.$index)
               }"

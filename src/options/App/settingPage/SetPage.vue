@@ -83,7 +83,7 @@ export default {
 
 <style scoped>
 .set-page-padding {
-  padding: 15px 20px;
+  padding: 0 20px 15px;
 }
 .set-page-title {
   font-size: 18px;

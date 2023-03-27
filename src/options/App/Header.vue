@@ -146,10 +146,6 @@ export default {
     }, 500)
   },
   methods: {
-    // languageMessage(name){
-    //   console.log('utils', utils)
-    //   return utils.getLanguageMessage(name)
-    // },
     getVersion() {
       const manifestData = chrome.runtime.getManifest()
       return `v${manifestData.version}`
@@ -215,19 +211,14 @@ export default {
 .header {
   padding: 10px 0 10px 15px;
   background: #855f16;
+   color: #fff;
 }
 .header-left {
   justify-content: space-between;
 }
-/* .header-plugin {
-  text-align: right;
-} */
 .header-btns {
   margin-right: 15px;
 }
-/* .header-btns-star {
-  width: 95px;
-} */
 .author {
   margin: 10px 8px 10px 10px;
 }

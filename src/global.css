@@ -34,3 +34,27 @@
   margin-bottom: 6px;
 }
 
+
+/* el样式变更*/
+/* .el-tabs__active-bar,.el-radio__input.is-checked .el-radio__inner{
+  background: #C58940;
+  border-color: #C58940;
+  color: #fff;
+} */
+
+.el-button--danger,.el-switch.is-checked .el-switch__core{
+  background:#dd0000c2;
+  border-color:#dd0000c2;
+}
+
+.el-table--border th.el-table__cell, .el-table__fixed-right-patch{
+  color: #000;
+}
+/* .el-tabs__item.is-active{
+  color: #C58940;
+}
+
+.el-tabs__item:hover,.el-radio__input.is-checked+.el-radio__label{
+  border-color: #C58940;
+  color: #C58940;
+} */

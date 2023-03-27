@@ -10,73 +10,71 @@
 -->
 
 <template>
-  <div class="set-page">
-    <div class="set-page-padding">
-      <div class="set-page-title">
-        {{ useLanguageMessage('setTableTitle') }}
-      </div>
-      <el-input
-        v-model="searchContent"
-        class="search-input"
-        :placeholder="useLanguageMessage('setTableSearch')"
-        @change="search"
-      />
-      <!-- 一键关闭 -->
-      <el-button
-        type="primary"
-        round
-        @click="checkoutAll"
-      >
-        {{ closeOrOpen }}
-      </el-button>
-      <el-button
-        type="primary"
-        round
-        @click="checkoutFn('showCreateItem', true)"
-      >
-        {{ useLanguageMessage('add') }}
-      </el-button>
-      <el-button
-        type="primary"
-        round
-        @click="appDialog"
-      >
-        {{ useLanguageMessage('shareByPlugin') }}
-      </el-button>
-      <el-button
-        type="primary"
-        round
-        @click="checkoutFn('showStatistics', true)"
-      >
-        {{ useLanguageMessage('statistics') }}
-      </el-button>
-      <el-button
-        v-if="subOptions.btnShowBatchItem"
-        type="primary"
-        round
-        @click="checkoutFn('showBatchItem', true)"
-      >
-        {{ useLanguageMessage('fishTitle') }}
-      </el-button>
-
-      <!-- 新增摸鱼网站 -->
-      <CreateItem
-        :show-create-item="showCreateItem"
-        @close="checkoutFn"
-      />
-      <!-- 批量添加摸鱼网站 -->
-      <BatchItem
-        :show-batch-item="showBatchItem"
-        @close="checkoutFn"
-        @showCopyDataFn="checkoutFn('showPluginDataDialog', true)"
-      />
-      <!-- 统计摸鱼时长 -->
-      <RestStatistics
-        :show-statistics="showStatistics"
-        options-page
-        @close="checkoutFn"
-      />
+  <div class="set-page-padding">
+    <div class="set-page-title">
+      {{ useLanguageMessage('setTableTitle') }}
     </div>
+    <el-input
+      v-model="searchContent"
+      class="search-input"
+      :placeholder="useLanguageMessage('setTableSearch')"
+      @change="search"
+    />
+    <!-- 一键关闭 -->
+    <el-button
+      type="primary"
+      round
+      @click="checkoutAll"
+    >
+      {{ closeOrOpen }}
+    </el-button>
+    <el-button
+      type="primary"
+      round
+      @click="checkoutFn('showCreateItem', true)"
+    >
+      {{ useLanguageMessage('add') }}
+    </el-button>
+    <el-button
+      type="primary"
+      round
+      @click="appDialog"
+    >
+      {{ useLanguageMessage('shareByPlugin') }}
+    </el-button>
+    <el-button
+      type="primary"
+      round
+      @click="checkoutFn('showStatistics', true)"
+    >
+      {{ useLanguageMessage('statistics') }}
+    </el-button>
+    <el-button
+      v-if="subOptions.btnShowBatchItem"
+      type="primary"
+      round
+      @click="checkoutFn('showBatchItem', true)"
+    >
+      {{ useLanguageMessage('fishTitle') }}
+    </el-button>
+
+    <!-- 新增摸鱼网站 -->
+    <CreateItem
+      :show-create-item="showCreateItem"
+      @close="checkoutFn"
+    />
+    <!-- 批量添加摸鱼网站 -->
+    <BatchItem
+      :show-batch-item="showBatchItem"
+      @close="checkoutFn"
+      @showCopyDataFn="checkoutFn('showPluginDataDialog', true)"
+    />
+    <!-- 统计摸鱼时长 -->
+    <RestStatistics
+      :show-statistics="showStatistics"
+      options-page
+      @close="checkoutFn"
+    />
   </div>
 </template>
 
@@ -161,12 +159,6 @@ export default {
 </script>
 
 <style scoped>
-.set-page {
-  border-radius: 6px;
-  width: 100%;
-  background: #fff;
-  color: #000;
-}
 .set-page-padding {
   padding: 15px 20px;
 }

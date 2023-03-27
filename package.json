@@ -43,7 +43,8 @@
     "dayjs": "^1.10.7",
     "element-ui": "2.15.7",
     "file-loader": "^6.2.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-router": "^3.5.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
