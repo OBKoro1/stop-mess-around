@@ -1,497 +1,506 @@
 {
   "pluginName": {
-    "message": "stop-mess-around"
+    "message": "stop-mess-around(Stop Messing Around and Wasting Time)"
   },
   "useDoc": {
-    "message": "use document"
+    "message": "User Documentation"
   },
   "tipInstall": {
-    "message": "local installation does not update automatically,open the Chrome App Store"
-  },
-  "sponsorship": {
-    "message": "Ask For Sponsorship"
+    "message": "This is a local install, unable to update automatically, install from the app store."
   },
   "sponsor": {
-    "message": "Use love to generate electricity, ask for patronage😭"
+    "message": "Power your love, support ❤️"
+  },
+  "sponsorship": {
+    "message": "The plugin is great, please support and encourage the author ~ ~"
   },
   "sponsorOne": {
-    "message": "Open source is not easy, and this plugin was developed and maintained in my spare time"
+    "message": "Open source is not easy, the development and maintenance of this plugin are all done in spare time."
   },
   "sponsorTwo": {
-    "message": "Since I started to open source in the community in 18 years, open source work for me is generating electricity with love "
+    "message": "In order to help everyone save time and improve efficiency."
   },
   "sponsorThree": {
-    "message": "If you think this productivity tool is good enough to help you, sponsor it "
+    "message": "In order to provide users with better tools for efficiency, you need your support and encouragement ~"
   },
   "sponsorFour": {
-    "message": "Ten and eight is not too much, three and five is not too little❤️"
+    "message": "If you think this efficiency tool is good, it can help you a little bit and solve your problem ~"
+  },
+  "sponsorFive": {
+    "message": "Scan the code to invite us to have a drink, three or five yuan is not too little, encourage us ~❤️"
   },
   "nextText": {
-    "message": "Next"
+    "message": "Next time for sure"
   },
-  "nextTitle":{
-    "message": "Next"
+  "nextTitle": {
+    "message": "Next time for sure"
   },
-  "nextMsg":{
-    "message": "Whoops, I can only continue to love power generation for open source work😭"
+  "nextMsg": {
+    "message": "Well, we can only love electricity, come on, come on, come on ~"
   },
   "yesText": {
-    "message": "Ok"
+    "message": "Please drink it"
   },
-  "yesTitle":{
-    "message":"Thank you for your affirmation"
+  "yesTitle": {
+    "message": "Thank you~"
   },
-  "yesMsg":{
-    "message":"Thanks for your sponsorship, I am more motivated to stick to open source work and can provide you with better tools😘"
+  "yesMsg": {
+    "message": "Thank you for your encouragement, we will create this efficiency tool more carefully, look forward to helping you save more time and provide more help~😘"
   },
-  "setPage":{
-    "message":"Global Setting"
+  "setPage": {
+    "message": "Global Settings"
   },
-  "setShowTip":{
-    "message":"ToolTip"
+  "setShowTip": {
+    "message": "Motivational Quotes Message Pop Up When Mess Around Internet"
   },
-  "set":{
-    "message":"Set"
+  "set": {
+    "message": "Settings"
   },
-  "feedBack":{
-    "message":"feedBack"
+  "feedBack": {
+    "message": "Plugin Data and Feedback Issues Related"
   },
-  "setTableTitle":{
-    "message":"Touch fish website related"
+  "setTableTitle": {
+    "message": "Mess Around Related Websites"
   },
-  "setTableSearch":{
-    "message":"Search for the site name and URL"
+  "setTableSearch": {
+    "message": "Search Website Name or URL"
   },
-  "keyByClose":{
-    "message":"Close"
+  "keyByClose": {
+    "message": "One-click Close"
   },
-  "keyByOpen":{
-    "message":"Open"
+  "keyByOpen": {
+    "message": "One-click Open"
   },
-  "add":{
-    "message":"Add"
+  "add": {
+    "message": "Add"
   },
-  "shareByPlugin":{
-    "message":"Share the fish website integrated into the plugin"
+  "shareByPlugin": {
+    "message": "Share Common Mess Around Websites to Plugins"
   },
-  "statistics":{
-    "message":"Touch time statistics"
+  "statistics": {
+    "message": "Mess Around Time Length Statistics"
   },
-  "fishTitle":{
-    "message":"List of fish sites"
+  "fishTitle": {
+    "message": "Default Mess Around Website List"
   },
-  "fishTipMsgTitle":{
-    "message":"the fishing website"
+  "fishTipMsgTitle": {
+    "message": "Motivational Message Pop Up When Match Mess Around Websites"
   },
-  "tipArrTip":{
-    "message":"Random motivational quote"
+  "tipArrTip": {
+    "message": "Mess Around Tip Reminder List"
   },
-  "titleArrTip":{
-    "message":"Random inspirational title"
+  "titleArrTip": {
+    "message": "Mess Around Tip Title Reminder List"
   },
-  "confirmArrTip":{
-    "message":"Random motivational button"
+  "confirmArrTip": {
+    "message": "Mess Around Tip Button Reminder List"
   },
-  "tipArrTipColumn":{
-    "message":"Fish List"
+  "tipArrTipColumn": {
+    "message": "Mess Around Tip Pop Up Motivational Quotes List"
   },
-  "tipArrTipAction":{
-    "message":"operation"
+  "tipArrTipAction": {
+    "message": "Action"
   },
-  "edit":{
-    "message":"edit"
+  "edit": {
+    "message": "Edit"
   },
-  "del":{
-    "message":"delete"
+  "del": {
+    "message": "Delete"
   },
-  "checkDel":{
-    "message":"Do you want to delete?"
+  "checkDel": {
+    "message": "Confirm Delete？"
   },
-  "delSelected":{
-    "message":"Delete selected"
+  "delSelected": {
+    "message": "Delete Selected"
   },
-  "restoreDeleted":{
-    "message":"Restore deleted"
+  "restoreDeleted": {
+    "message": "Deleted List"
   },
-  "confirmClear":{
-    "message":"Confirm to clear?"
+  "confirmClear": {
+    "message": "Confirm Clear？"
   },
-  "clearAll":{
-    "message":"Clear all"
+  "clearAll": {
+    "message": "Clear All"
   },
-  "confirmRestore":{
-    "message":"Confirm restore?"
+  "confirmRestore": {
+    "message": "Confirm Restore？"
   },
-  "restoreSet":{
-    "message":"Restore default Settings"
+  "restoreSet": {
+    "message": "Restore Default Settings"
   },
-  "tipTitle":{
-    "message":"Touch fish remind pop-up title"
+  "tipTitle": {
+    "message": "Mess Around Tip Pop Up Title"
   },
-  "tipBtn":{
-    "message":"Close button text"
+  "tipBtn": {
+    "message": "Mess Around Tip Pop Up Close Button"
   },
-  "addMotivationalQuotes":{
-    "message":"Add Motivational Quotes"
+  "addMotivationalQuotes": {
+    "message": "Add Mess Around Motivational Quotes"
   },
-  "addMotivationalTitle":{
-    "message":"Add Motivational Title"
+  "addMotivationalTitle": {
+    "message": "Add Mess Around Motivational Title"
   },
-  "addMotivationalBtn":{
-    "message":"Add a motivational button"
+  "addMotivationalBtn": {
+    "message": "Add Mess Around Motivational Button"
   },
-  "placeholderText":{
-    "message":"Please enter the content"
+  "placeholderText": {
+    "message": "Please enter content"
   },
-  "saveAdd":{
-    "message":"Save add"
+  "saveAdd": {
+    "message": "Save Add"
   },
-  "shareTip":{
-    "message":"Share common touch fish website, benefit oneself, let the plug-in better use, zero configuration quickly get started ~"
+  "shareTip": {
+    "message": "Share commonly visited websites, benefit others and yourself, make the plugin more useful, and get started quickly without configuration~"
   },
-  "openShare":{
-    "message":"Open share Dialog"
+  "openShare": {
+    "message": "Open Share Mess Around Internet Window"
   },
-  "addSuccess":{
-    "message":"Add Success"
+  "addSuccess": {
+    "message": "Added Successfully"
   },
-  "matchRule":{
-    "message":"Match rule"
+  "matchRule": {
+    "message": "Mess Around Internet Matching Rules"
   },
-  "mathRuleTip":{
-    "message":"Url matching rules: Contain => Contain, usually enter a domain name, the beginning of all => the front must be identical, strictly equal => identical"
+  "mathRuleTip": {
+    "message": "Mess Around Internet Matching Rules: Contain => Contain, usually enter the domain name of the website (such as douyu.com), starting with equal => the front must be the same, strictly equal => the same"
   },
-  "includesRule":{
-    "message":"includes"
+  "includesRule": {
+    "message": "Contain"
   },
-  "startRule":{
-    "message":"beginning congruence"
+  "startRule": {
+    "message": "Starts with Equal"
   },
-  "strictRule":{
-    "message":"strict equality"
+  "strictRule": {
+    "message": "Strictly Equal"
   },
-  "checkoutStudy":{
-    "message":"When you need to relax, close all the fish website detection with one key, and open the detection again every few minutes"
+  "checkoutStudy": {
+    "message": "When you need to relax, one clickclose all mess around internet detection, the detection will be restarted after a few minutes"
   },
-  "resetKey":{
-    "message":"Global rest is enabled with one key"
+  "resetKey": {
+    "message": "One-click Open Global Rest"
   },
-  "matchClosePage":{
-    "message":"The countdown closes after matching"
+  "matchClosePage": {
+    "message": "Countdown Close After Match"
   },
-  "mathClosePageTip":{
-    "message":"After matching the website, if you do not click the rest, the page will be closed after the countdown. If it is set to 0, the function will be closed"
+  "mathClosePageTip": {
+    "message": "After matching the mess around website, if you do not click to take a break, the page will be closed after the countdown, set to 0 to close this function"
   },
-  "timeClose":{
-    "message":"Click Close and stay for a few seconds"
+  "timeClose": {
+    "message": "Suddenly Close Mess Around Website"
   },
-  "timeCloseTip":{
-    "message":"After clicking Close popover, click Close and stay for a few seconds to close the page"
+  "timeCloseTip": {
+    "message": "After clicking the close window button, suddenly close the page after a few seconds. This function is used to let yourself browse the mess around website for a while, and then suddenly close the mess around website to get yourself out of the mess around website."
   },
-  "jump":{
-    "message":"jump"
+  "jump": {
+    "message": "Jump"
   },
-  "jumpTip":{
-    "message":"If the URL matches, do not close the page and go to another page"
+  "jumpTip": {
+    "message": "After matching the mess around website, click the close button without closing the page, jump to a website, such as a brush question or English learning website"
   },
-  "open":{
-    "message":"open"
+  "open": {
+    "message": "Open"
   },
-  "close":{
-    "message":"close"
+  "close": {
+    "message": "Close"
   },
-  "jumpUrl":{
-    "message":"jump url"
+  "jumpUrl": {
+    "message": "Jump to Learning Website"
   },
-  "jumpUrlip":{
-    "message":"Null uses global jump links"
+  "jumpUrlTip": {
+    "message": "If this item is empty, use the global jump learning website"
   },
-  "log":{
-    "message":"log"
+  "log": {
+    "message": "Page Log"
   },
-  "logTip":{
-    "message":"Whether to enable the log of the code inserted into the web page to facilitate the location of problems"
+  "logTip": {
+    "message": "Usually used when the plug-in is wrong, convenient for feedback and troubleshooting, this item can be used with the plug-in data function."
   },
-  "rightFish":{
-    "message":"Touch the fish on the right"
+  "rightFish": {
+    "message": "Right Mess Around Prompt"
   },
-  "rightFishTip":{
-    "message":"After the fish detection is closed, the right side of the website will display whether to display the fish tip, and close the display of rest time today on the right side but still display the countdown and fish form"
+  "rightFishTip": {
+    "message": "After closing the mess around website detection, whether the right side of the page shows the prompt to close the mess around, and the close right today rest time show but still show the countdown and mess around record table"
   },
-  "closeRestTimeStatistics":{
-    "message":"Only countdowns are shown, not rest statistics"
+  "closeRestTimeStatistics": {
+    "message": "Only show mess around countdown detection, do not show rest statistics"
   },
-  "viewCode":{
-    "message":"View code"
+  "viewCode": {
+    "message": "View Code Function"
   },
-  "viewGithubTip":{
-    "message":"Built-in buttons in the Github repository to open Code on GitHub via the online version of VS Code"
+  "viewGithubTip": {
+    "message": "Embedded button in the Github repository, open the Github repository code through online VS Code, browse the repository code without downloading."
   },
-  "feedback":{
-    "message":"Plugin feedback"
+  "feedback": {
+    "message": "Plugin Data and Feedback"
   },
-  "feedbackTip":{
-    "message":"Plug-in data must be copied for feedback problems"
+  "feedbackTip": {
+    "message": "Feedback issues must copy plugin data"
   },
-  "openFeedback":{
-    "message":"Open the plug-in data and feedback problem popup window"
+  "openFeedback": {
+    "message": "Open plugin data and feedback window"
   },
-  "cancel":{
-    "message":"cancel"
+  "cancel": {
+    "message": "Cancel"
   },
-  "save":{
-    "message":"save"
+  "save": {
+    "message": "Save"
   },
-  "feedbackIssues":{
-    "message":"Plug-in data is related to feedback issues"
+  "feedbackIssues": {
+    "message": "Plugin data and feedback issues related"
   },
-  "feedbackPlaceholder":{
-    "message":"Please copy the plug-in data from another computer (remember to click the Copy button for initializing data) and paste it here. The replacement plug-in data is usually used for initializing plug-in data. \n Only the plug-in data can be stored locally due to the limitation of the data synchronization capacity of the Google plug-in Manifest v3 version. Therefore, this method is used to initialize data."
+  "feedbackPlaceholder": {
+    "message": "Please copy the plugin data from another computer (remember to click the copy button to initialize the data), paste it here to replace the plugin data, which is generally used to initialize the plugin data. Due to the data synchronization capacity limit of Google Plugin Manifest v3 version, the plugin data can only be stored locally, so this method is used to initialize the data."
   },
-  "copeParams":{
-    "message":"Copy parameters used to raise the issue on Github and initialize the plugin data"
+  "copeParams": {
+    "message": "Copy parameters, used to go to Github to issue and initialize plugin data"
   },
-  "copeData":{
-    "message":"Cope Data"
+  "copeData": {
+    "message": "Copy data"
   },
-  "copyInit":{
-    "message":"Copy plug-in data initialization"
+  "copyInit": {
+    "message": "Copy plugin data initialization"
   },
-  "copyFormat":{
-    "message":"Copy plug-in data feedback problem"
+  "copyFormat": {
+    "message": "Copy plugin data feedback issue"
   },
-  "jumpIssue":{
-    "message":"Jump feedback problem"
+  "jumpIssue": {
+    "message": "Jump to feedback issue"
   },
-  "jumpIssueTip":{
-    "message":"Go to Github and ask an issue according to the spec"
+  "jumpIssueTip": {
+    "message": "Go to Github to submit issue according to the specification"
   },
-  "jumpURL":{
-    "message":"Jump feedback"
+  "jumpURL": {
+    "message": "Jump to feedback"
   },
-  "keySet":{
-    "message":"One-click restore default Settings"
+  "keySet": {
+    "message": "One-click restore default settings"
   },
-  "resetAll":{
-    "message":"Reset all data"
+  "resetAll": {
+    "message": "Reset all data"
   },
-  "keyClear":{
-    "message":"Clear all Settings with one click"
+  "keyClear": {
+    "message": "One-click clear all settings"
   },
-  "resetSome":{
-    "message":"Reset some plugin data"
+  "resetSome": {
+    "message": "Reset some plugin data"
   },
-  "clearList":{
-    "message":"Clear the fish list"
+  "clearList": {
+    "message": "Clear mess around list"
   },
-  "resetSet":{
-    "message":"Reset Settings"
+  "resetSet": {
+    "message": "Reset settings"
   },
-  "confirmReset":{
-    "message":"Confirm reset?"
+  "confirmReset": {
+    "message": "Confirm reset?"
   },
-  "resetTotal":{
-    "message":"Reset fish statistics"
+  "resetTotal": {
+    "message": "Reset mess around statistics"
   },
-  "replacePluginData":{
-    "message":"Replace plug-in data with input data"
+  "replacePluginData": {
+    "message": "Use input data to replace plugin data"
   },
-  "clearListSuccess":{
-    "message":"Succeeded in clearing the fish list"
+  "clearListSuccess": {
+    "message": "Clear mess around list successfully"
   },
-  "copyPluginInitTip":{
-    "message":"The plug-in data has been copied to initialize the data"
+  "copyPluginInitTip": {
+    "message": "Plugin data has been copied, used for initialization data"
   },
-  "copyPluginFeeabackTip":{
-    "message":"Plug-in data has been copied for problem feedback. It cannot be used to initialize data, otherwise it will be invalid"
+  "copyPluginFeeabackTip": {
+    "message": "Plugin data has been copied, used for feedback issue, cannot be used for initialization data, otherwise invalid"
   },
-  "feedbackData":{
-    "message":"Feedback problem data"
+  "feedbackData": {
+    "message": "Feedback issue data"
   },
-  "createFish":{
-    "message":"New fish website"
+  "createFish": {
+    "message": "Create mess around website"
   },
-  "fishName":{
-    "message":"The name of the fish website"
+  "fishName": {
+    "message": "Mess aroundwebsite name"
   },
-  "fishWebsite":{
-    "message":"Fish website"
+  "fishWebsite": {
+    "message": "Mess around website URL"
   },
-  "quoteName":{
-    "message":"Motivational quote"
+  "quoteName": {
+    "message": "Encouraging quote"
   },
-  "addFishName":{
-    "message":"Add the name of the fish website"
+  "addFishName": {
+    "message": "Add mess around website name"
   },
-  "addFishWebsite":{
-    "message":"Add fishing URL (unique)"
+  "addFishWebsite": {
+    "message": "Add mess around website URL"
   },
-  "matchQuoteName":{
-    "message":"Match the motivational quote that shows up on the fishing site"
+  "matchQuoteName": {
+    "message": "Encouraging quote displayed when matching mess around website"
   },
-  "nullQuoteName":{
-    "message":"If empty, it's a random motivational quote"
+  "nullQuoteName": {
+    "message": "Random encouraging quote if not set"
   },
-  "websiteTip":{
-    "message":"After clicking Close popover, click Close and stay for a few seconds to close the page"
+  "websiteTip": {
+    "message": "Click to close the window, stay for a few seconds and suddenly close the page"
   },
-  "closeTip":{
-    "message":"Click Close and stay for a few seconds"
+  "closeTip": {
+    "message": "Sudden close time"
   },
-  "nullGloablTip":{
-    "message":"If the value is blank, it is the globally set residence time"
+  "nullGloablTip": {
+    "message": "Global setting sudden close time if not set"
   },
-  "openAuto":{
-    "message":"Open automatically"
+  "openAuto": {
+    "message": "Auto open"
   },
-  "openAutoTip":{
-    "message":"How many minutes after disabling the detection, re-enable the detection"
+  "openAutoTip": {
+    "message": "Close mess around detection, open again after a few minutes"
   },
-  "nullOpenTip":{
-    "message":"If the value is empty, it is the automatically enabled time set globally"
+  "nullOpenTip": {
+    "message": "If empty, it will be the global setting for automatic opening time"
   },
-  "fishRuleByURL":{
-    "message":"Fish URL matching rules"
+  "fishRuleByURL": {
+    "message": "Mess around website matching rules"
   },
-  "fishRuleByURLTip":{
-    "message":"Url matching rules: Contain => Contain, usually enter a domain name, the beginning of all => the front must be identical, strictly equal => identical"
+  "fishRuleByURLTip": {
+    "message": "Mess around website matching rules: Contain => Contain, usually enter the website domain name (such as douyu.com) can be, the beginning of the full equal => the front must be the same, strictly equal => the same"
   },
-  "append":{
-    "message":"append"
+  "append": {
+    "message": "Add"
   },
-  "appendTip":{
-    "message":"Add and open the popup window of the sharing fish website, integrate it into the default configuration of the plug-in, benefit everyone and make the plug-in better"
+  "appendTip": {
+    "message": "Add and open the share mess around website pop-up window, benefit others and benefit yourself, integrate into the default configuration of the plug-in, make the plug-in better"
   },
-  "appendShare":{
-    "message":"Add and share integrations to plug-ins"
+  "appendShare": {
+    "message": "Add and share mess around website integration into the plug-in"
   },
-  "createRulesBylabelName":{
-    "message":"Please enter the name of the fish website"
+  "createRulesBylabelName": {
+    "message": "Please enter the mess around website name"
   },
-  "createRulesBySite":{
-    "message":"Please enter the web address of the fish"
+  "createRulesBySite": {
+    "message": "Please enter the mess around website"
   },
-  "createRulesBySiteLen":{
-    "message":"At least 8 characters"
+  "createRulesBySiteLen": {
+    "message": "At least 8 characters"
   },
-  "createRulesByTip":{
-    "message":"Please enter inspirational quotes"
+  "createRulesByTip": {
+    "message": "Please enter the refueling quotation"
   },
-  "createRulesByJumpUrl":{
-    "message":"Please enter the redirect URL"
+  "createRulesByJumpUrl": {
+    "message": "Please enter the jump URL"
   },
-  "createRulesByJumpUrlLen":{
-    "message":"At least 8 characters"
+  "createRulesByJumpUrlLen": {
+    "message": "At least 8 characters"
   },
-  "addFishSuccess":{
-    "message":"Adding fish website successfully"
+  "addFishSuccess": {
+    "message": "Add mess around website successfully"
   },
-  "fishWebSiteTip":{
-    "message":"The URL of the fish is repeated, please re-enter"
+  "fishWebSiteTip": {
+    "message": "Mess around website is repeated, please re-enter"
   },
-  "sharePluginTitle":{
-    "message":"Recommended common touch fish website, let the plug-in better use ~"
+  "sharePluginTitle": {
+    "message": "Share mess around website, benefit others and benefit yourself~"
   },
-  "sharePluginTip":{
-    "message":"The purpose of sharing the fish website is to make the plug-in better use, benefit people and self-interest ~"
+  "sharePluginTip": {
+    "message": "The purpose of sharing mess around website is to make the plug-in better, benefit others and benefit yourself~"
   },
-  "pluginConfigByAuto":{
-    "message":"Zero configuration uses plugins that automatically add your commonly used fish sites"
+  "pluginConfigByAuto": {
+    "message": "Zero configuration use plug-in, plug-in default integration your commonly used mess around website"
   },
-  "pluginnConfigByAdd":{
-    "message":"Recommend your commonly used fish website, add to the plug-in default configuration;"
+  "pluginnConfigByAdd": {
+    "message": "Share your commonly used mess around website, let the author integrate into the default configuration of the plug-in;"
   },
-  "pluginConfigByWatch":{
-    "message":"After the plug-in is installed, all common fish websites are automatically added. Zero configuration starts to monitor fish websites."
+  "pluginConfigByWatch": {
+    "message": "After installing the plug-in, zero configuration starts to monitor mess around website, automatically add all common mess around website;"
   },
-  "pluginConfigByUse":{
-    "message":"When you get a new computer, you can use zero configuration;"
+  "pluginConfigByUse": {
+    "message": "When you get a new computer, you can monitor mess around website with zero configuration;"
   },
-  "pluginConfigByReset":{
-    "message":"When you reinstall plug-ins, you can use zero configuration;"
+  "pluginConfigByReset": {
+    "message": "When you recommend the plug-in to your friends, you can monitor mess around website with zero configuration;"
   },
-  "pluginConfigByShare":{
-    "message":"When you recommend plugins to your friends, you can use them with zero configuration."
+  "pluginConfigByShare": {
+    "message": "When you recommend the plug-in to your friends, you can use it with zero configuration;"
   },
-  "sharePluginWebTitle":{
-    "message":"Recommend all walks of life touch fish website, plug-in accurate identification touch fish website"
+  "sharePluginWebTitle": {
+    "message": "More accurate identification of mess around website, share mess around website in all walks of life; "
   },
-  "sharePluginWebConig":{
-    "message":"People from all walks of life have different Internet habits, recommend your commonly used fish website, add to the default configuration of the plug-in;"
+  "sharePluginWebConig": {
+    "message": "People in all walks of life have different surfing habits, recommend your commonly used mess around website, make the configuration of mess around website more abundant for all walks of life;"
   },
-  "sharePluginWebMore":{
-    "message":"Everyone adds firewood flame high, so that the plug-in for all walks of life touch fish website configuration more rich;"
+  "sharePluginWebMore": {
+    "message": "The fire of the firewood is high, benefit others and benefit yourself, make the plug-in better;"
   },
-  "sharePluginWebTime":{
-    "message":"In the process of daily Internet surfing, I can more accurately identify fishing websites and reduce the potential fishing time."
+  "sharePluginWebTime": {
+    "message": "After sharing a rich mess around website, it can be more accurately identified in the daily browsing process, reducing the potential mess around time;"
   },
-  "sharePlugin":{
-    "message":"Sharing is a happy thing"
+  "sharePlugin": {
+    "message": "Sharing is a happy thing"
   },
-  "sharePluginHelpTip":{
-    "message":"Help people with excellent self-discipline like you to accurately identify fish websites and reduce time spent fishing; Sharing is a happy thing, good people live a safe life"
+  "sharePluginHelpTip1": {
+    "message": "Accurately identify mess around website, help people who are eager to improve efficiency like you;"
   },
-  "howSharePlugin":{
-    "message":"How to share touch fish website integration into the plugin?"
+  "sharePluginHelpTip2": {
+    "message": "Share it casually, do a good deed, benefit others and benefit yourself, what can't be done?"
   },
-  "sharePluginNames":{
-    "message":"Must: Copy fish website data"
+  "howSharePlugin": {
+    "message": "How to share mess around website integration into the plug-in?"
   },
-  "sharePluginNamesTip":{
-    "message":"There is no website different from the plugin default integration of the fish website, can not share the fish website"
+  "sharePluginNames": {
+    "message": "Click to copy mess around internet"
   },
-  "currentPlugin":{
-    "message":"You currently have"
+  "sharePluginNamesTip": {
+    "message": "No different websites from the default integrated websites of the plugin, unable to share mess around internet."
   },
-  "sharePluginConfig":{
-    "message":"a web site that is added or edited by itself and can be shared and integrated into the default configuration of the plugin"
+  "currentPlugin": {
+    "message": "You currently have"
   },
-  "sharePluginCopy":{
-    "message":"Copy all the web sites that are different from the plugin's default integration, that is, copy all the web sites that you add and edit yourself"
+  "sharePluginConfig": {
+    "message": "mess around websites, which are newly added or edited by yourself, can be shared and integrated into the default configuration of the plugin."
   },
-  "sharePluginChoose":{
-    "message":"Manually select your own new and edited fish site"
+  "sharePluginCopyTip": {
+    "message": "Newly added and edited mess around websites"
   },
-  "sharePluginChooseTip":{
-    "message":"Manually select a web site different from the default configuration"
+  "sharePluginCopy": {
+    "message": "Copy all custom websites"
   },
-  "sharePluginGithub":{
-    "message":"The Github route is recommended"
+  "sharePluginChoose": {
+    "message": "Manually select custom mess around websites"
   },
-  "sharePluginIssue":{
-    "message":"Quick share, direct reply to issue: at issue"
+  "sharePluginChooseTip": {
+    "message": "Manually select mess around websites different from the default configuration"
   },
-  "sharePluginReply":{
-    "message":"You can reply to the copied data directly in the comment section"
+  "sharePluginGithub": {
+    "message": "Recommend Github approach"
   },
-  "sharePluginCopyData":{
-    "message":"Create an issue and fill in the copy data: in"
+  "sharePluginIssue": {
+    "message": "Quick share, directly reply to the issue: in the"
   },
-  "sharePluginModel":{
-    "message":"Create an issue template with one click"
+  "sharePluginReply": {
+    "message": "comment area directly reply the copied data"
   },
-  "sharePluginBtn":{
-    "message":"The page, select share touch fish website button;"
+  "sharePluginCopyData": {
+    "message": "Create an issue, fill in the copied data: in the"
   },
-  "sharePluginSysTip1":{
-    "message":"ps: Github is a programmer code hosting platform, do not have an account can register an account, in the future also need ~"
+  "sharePluginModel": {
+    "message": "One-click selection to create issue template"
   },
-  "sharePluginSysTip2":{
-    "message":"ps: Github is restricted in mainland China, students who don't have access to the wall tool may have slower Internet speed ~"
+  "sharePluginBtn": {
+    "message": "page, select the share mess around website button;"
   },
-  "sharePluginDev":{
-    "message":"Send an email to the developer"
+  "sharePluginSysTip1": {
+    "message": "ps: Github is a programmer code hosting platform, no account can register an account, will be used later~"
   },
-  "sharePluginFoxmail":{
-    "message":"mailbox: obkoro1@foxmail.com"
+  "sharePluginSysTip2": {
+    "message": "ps: Github is throttled in mainland China, students without wall-climbing tools may have slow speed~"
   },
-  "sharePluginFoxmailTip1":{
-    "message":"Necessary email content: copy fish website data;"
+  "sharePluginDev": {
+    "message": "Send an email to inform the developer"
   },
-  "sharePluginFoxmailTip2":{
-    "message":"Suggested email title: recommended plugin touch fish website;"
+  "sharePluginFoxmail": {
+    "message": "Email: obkoro1@foxmail.com"
   },
-  "sharePluginFoxmailTip3":{
-    "message":"ps: For those who can't get over the wall, you can choose the form of email. If possible, it is still recommended to use the form of github, because there is a certain probability of email missing 😂"
+  "sharePluginFoxmailTip1": {
+    "message": "Must email content: Copy mess around website data;"
+  },
+  "sharePluginFoxmailTip2": {
+    "message": "Suggested email title: Recommend plugin mess around website;"
+  },
+  "sharePluginFoxmailTip3": {
+    "message": "ps: Students who can't climb the wall can choose to send an email. If possible, it is still recommended to use the form of Github, because emails have a certain probability of omission😂。"
   }
 }
