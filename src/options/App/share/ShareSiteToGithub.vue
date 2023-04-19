@@ -2,8 +2,8 @@
  * Author       : OBKoro1 obkoro1@foxmail.com
  * Date         : 2022-06-05 17:42:07
  * Last Author  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2022-10-30 16:55:08
- * FilePath     : /src/options/App/share/ShareSiteToGithub.vue
+ * LastEditTime : 2023-04-11 23:09:14
+ * FilePath     : /stop-mess-around/src/options/App/share/ShareSiteToGithub.vue
  * description  : 推荐摸鱼网站，集成到插件中
  * koroFileheader VSCode插件
  * Copyright (c) 2022 by OBKoro1 email: obkoro1@foxmail.com, All Rights Reserved.
@@ -47,7 +47,8 @@
           :title="useLanguageMessage('sharePlugin')"
           name="3"
         >
-          <div>{{ useLanguageMessage('sharePluginHelpTip') }}🌹;</div>
+          <div>{{ useLanguageMessage('sharePluginHelpTip1') }}🌹;</div>
+          <div>{{ useLanguageMessage('sharePluginHelpTip2') }}🌹;</div>
         </el-collapse-item>
       </el-collapse>
       <div class="page-title1 margin-top">

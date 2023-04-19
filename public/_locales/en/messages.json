@@ -9,7 +9,7 @@
     "message": "This is a local install, unable to update automatically, install from the app store."
   },
   "sponsor": {
-    "message": "Power your love, support ❤️"
+    "message": "Persist in Love, support we ❤️"
   },
   "sponsorship": {
     "message": "The plugin is great, please support and encourage the author ~ ~"
@@ -21,7 +21,7 @@
     "message": "In order to help everyone save time and improve efficiency."
   },
   "sponsorThree": {
-    "message": "In order to provide users with better tools for efficiency, you need your support and encouragement ~"
+    "message": "In order to provide users with better tools for efficiency, we need your support and encouragement ~"
   },
   "sponsorFour": {
     "message": "If you think this efficiency tool is good, it can help you a little bit and solve your problem ~"
@@ -36,10 +36,10 @@
     "message": "Next time for sure"
   },
   "nextMsg": {
-    "message": "Well, we can only love electricity, come on, come on, come on ~"
+    "message": "Well, we can only persist in love, come on, come on, come on ~"
   },
   "yesText": {
-    "message": "Please drink it"
+    "message": "Treat guests to tea"
   },
   "yesTitle": {
     "message": "Thank you~"
@@ -51,7 +51,7 @@
     "message": "Global Settings"
   },
   "setShowTip": {
-    "message": "Motivational Quotes Message Pop Up When Mess Around Internet"
+    "message": "Motivational Quote when Mess Around Internet"
   },
   "set": {
     "message": "Settings"
@@ -87,16 +87,16 @@
     "message": "Motivational Message Pop Up When Match Mess Around Websites"
   },
   "tipArrTip": {
-    "message": "Mess Around Tip Reminder List"
+    "message": "Motivational Quote List for Mess Around Internet"
   },
   "titleArrTip": {
-    "message": "Mess Around Tip Title Reminder List"
+    "message": "Motivational Title List for Mess Around Internet"
   },
   "confirmArrTip": {
-    "message": "Mess Around Tip Button Reminder List"
+    "message": "Motivational Button List for Mess Around Internet"
   },
   "tipArrTipColumn": {
-    "message": "Mess Around Tip Pop Up Motivational Quotes List"
+    "message": "Motivational Quote List for Popup Window"
   },
   "tipArrTipAction": {
     "message": "Action"
@@ -135,13 +135,13 @@
     "message": "Mess Around Tip Pop Up Close Button"
   },
   "addMotivationalQuotes": {
-    "message": "Add Mess Around Motivational Quotes"
+    "message": "Add Motivational Quotes"
   },
   "addMotivationalTitle": {
-    "message": "Add Mess Around Motivational Title"
+    "message": "Add Motivational Title"
   },
   "addMotivationalBtn": {
-    "message": "Add Mess Around Motivational Button"
+    "message": "Add Motivational Button"
   },
   "placeholderText": {
     "message": "Please enter content"
@@ -153,7 +153,7 @@
     "message": "Share commonly visited websites, benefit others and yourself, make the plugin more useful, and get started quickly without configuration~"
   },
   "openShare": {
-    "message": "Open Share Mess Around Internet Window"
+    "message": "Open Dialog to Share Mess Around web site"
   },
   "addSuccess": {
     "message": "Added Successfully"
@@ -321,7 +321,7 @@
     "message": "Mess around website URL"
   },
   "quoteName": {
-    "message": "Encouraging quote"
+    "message": "Motto"
   },
   "addFishName": {
     "message": "Add mess around website name"
@@ -330,10 +330,10 @@
     "message": "Add mess around website URL"
   },
   "matchQuoteName": {
-    "message": "Encouraging quote displayed when matching mess around website"
+    "message": "Motto Showed when Match Mess Around Website"
   },
   "nullQuoteName": {
-    "message": "Random encouraging quote if not set"
+    "message": "Random Motto if Not Set"
   },
   "websiteTip": {
     "message": "Click to close the window, stay for a few seconds and suddenly close the page"
@@ -378,7 +378,7 @@
     "message": "At least 8 characters"
   },
   "createRulesByTip": {
-    "message": "Please enter the refueling quotation"
+    "message": "Please Enter Motto"
   },
   "createRulesByJumpUrl": {
     "message": "Please enter the jump URL"
@@ -423,7 +423,7 @@
     "message": "People in all walks of life have different surfing habits, recommend your commonly used mess around website, make the configuration of mess around website more abundant for all walks of life;"
   },
   "sharePluginWebMore": {
-    "message": "The fire of the firewood is high, benefit others and benefit yourself, make the plug-in better;"
+    "message": " Many hands provide great strength, benefit others and benefit yourself, make the plug-in better;"
   },
   "sharePluginWebTime": {
     "message": "After sharing a rich mess around website, it can be more accurately identified in the daily browsing process, reducing the potential mess around time;"
@@ -474,7 +474,7 @@
     "message": "comment area directly reply the copied data"
   },
   "sharePluginCopyData": {
-    "message": "Create an issue, fill in the copied data: in the"
+    "message": "Create an issue, fill in the copied data: "
   },
   "sharePluginModel": {
     "message": "One-click selection to create issue template"

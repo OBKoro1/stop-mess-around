@@ -81,6 +81,9 @@
       <div class="dialog-font">
         {{ useLanguageMessage('sponsorFour') }}
       </div>
+      <div class="dialog-font">
+        {{ useLanguageMessage('sponsorFive') }}
+      </div>
       <img
         src="/img/pay.jpg"
         class="obkoro1-sponsorship"

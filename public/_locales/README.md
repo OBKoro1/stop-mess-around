@@ -1,3 +1,20 @@
+chatGpt如何对话翻译：
+
+我将给你一个chrome插件中文json格式字符串，我需要你把它翻译成英文json格式。
+要求：
+1. 这是一个浏览器插件效率工具，翻译需要考虑这一点。 
+2. 尽量翻译成偏英文语义化的语言 ，因为这个工具将面向英文使用者。
+3. json中的瞎逛需要翻译成mess around internet。 
+4. json中的格言需要翻译成motto
+
+记住我上面的翻译要求, 继续翻译:
+
+记住我翻译的要求, 尽可能长的翻译，只要我不喊停就继续翻译:
+
+对比三种不同版本的参数，看哪个翻译比较适合
+
+第一版使用chat
+
 {
   "pluginName": {
     "message": "stop-mess-around(停止瞎逛浪费时间)"
@@ -36,7 +53,7 @@
     "message": "下次一定"
   },
   "nextMsg": {
-    "message": "好吧, 我们只能继续用爱发电了, 加油加油加油~"
+    "message": "好吧, 我们只能继续爱发电了, 加油加油加油~"
   },
   "yesText": {
     "message": "请你喝了"
@@ -51,7 +68,7 @@
     "message": "全局设置"
   },
   "setShowTip": {
-    "message": "瞎逛时的加油格言"
+    "message": "瞎逛时的加油语录"
   },
   "set": {
     "message": "设置"
@@ -87,16 +104,16 @@
     "message": "瞎逛网站匹配时出现的弹窗激励信息"
   },
   "tipArrTip": {
-    "message": "瞎逛网站提醒加油格言列表"
+    "message": "瞎逛网站加油语录提醒列表"
   },
   "titleArrTip": {
-    "message": "瞎逛网站提醒加油标题列表"
+    "message": "瞎逛网站加油标题提醒列表"
   },
   "confirmArrTip": {
-    "message": "瞎逛网站提醒加油按钮列表"
+    "message": "瞎逛网站加油按钮提醒列表"
   },
   "tipArrTipColumn": {
-    "message": "瞎逛提醒弹窗加油格言列表"
+    "message": "瞎逛提醒弹窗加油语录列表"
   },
   "tipArrTipAction": {
     "message": "操作"
@@ -135,7 +152,7 @@
     "message": "瞎逛提醒弹窗关闭按钮"
   },
   "addMotivationalQuotes": {
-    "message": "添加瞎逛加油格言"
+    "message": "添加瞎逛加油语录"
   },
   "addMotivationalTitle": {
     "message": "添加瞎逛加油标题"
@@ -148,7 +165,12 @@
   },
   "saveAdd": {
     "message": "保存添加"
-  },
+  }
+}
+
+第二版使用默认参数
+
+{
   "shareTip": {
     "message": "分享常用瞎逛网站， 利人利己, 让插件更好用, 零配置快速上手~"
   },
@@ -229,7 +251,12 @@
   },
   "viewGithubTip": {
     "message": "在Github网站仓库中内嵌按钮, 通过在线 VS Code 来打开 Github仓库代码，不用下载就浏览仓库代码。"
-  },
+  }
+}
+
+第三版使用explain code
+
+{
   "feedback": {
     "message": "插件数据与反馈"
   },
@@ -321,7 +348,7 @@
     "message": "瞎逛网址"
   },
   "quoteName": {
-    "message": "加油格言"
+    "message": "加油语录"
   },
   "addFishName": {
     "message": "添加瞎逛网站名"
@@ -330,10 +357,10 @@
     "message": "添加瞎转网址"
   },
   "matchQuoteName": {
-    "message": "匹配到瞎转网站时显示的加油格言"
+    "message": "匹配到瞎转网站时显示的加油语录"
   },
   "nullQuoteName": {
-    "message": "不设置则为随机加油格言"
+    "message": "不设置则为随机加油语录"
   },
   "websiteTip": {
     "message": "点击关闭弹窗后, 停留几秒后突然关闭网页"
@@ -350,7 +377,12 @@
   "openAutoTip": {
     "message": "关闭瞎逛检测，多少分钟后再开启"
   },
-  "nullOpenTip": {
+}
+
+语法标准英语
+
+{
+ "nullOpenTip": {
     "message": "为空则为全局设置的自动开启时间"
   },
   "fishRuleByURL": {
@@ -378,7 +410,7 @@
     "message": "至少8个字符"
   },
   "createRulesByTip": {
-    "message": "请输入加油格言"
+    "message": "请输入加油语录"
   },
   "createRulesByJumpUrl": {
     "message": "请输入跳转网址"
@@ -439,7 +471,13 @@
   },
   "howSharePlugin": {
     "message": "如何分享瞎逛网站集成到插件中？"
-  },
+  }
+}
+
+
+default-translate 英语转化版本
+
+{
   "sharePluginNames": {
     "message": "点击复制瞎逛网站"
   },
@@ -474,7 +512,7 @@
     "message": "评论区直接回复复制的数据即可"
   },
   "sharePluginCopyData": {
-    "message": "创建issue, 填上复制数据: "
+    "message": "创建issue, 填上复制数据: 在"
   },
   "sharePluginModel": {
     "message": "一键选择创建issue模板"
