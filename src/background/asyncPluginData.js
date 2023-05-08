@@ -1,5 +1,5 @@
 import { utils } from '@/utils/index'
-import { defaultTableAdd, initDefaultTableList, itemSiteType } from '@/utils/tableListUtils'
+import { defaultTableAdd, initDefaultTableList } from '@/utils/tableListUtils'
 import { defaultList, defaultSetting, itemProto } from '@/utils/Default'
 import NET from '@/utils/net'
 import { versionStringCompare } from '@/utils/utils-func'
@@ -35,23 +35,7 @@ class AsyncPluginData {
   async updateVersionData(newVersion) {
     // 版本小于2.0.7
     if (versionStringCompare(newVersion, '2.0.7') > 0) {
-      // TODO: 2.0.7 老数组数据更新siteType数据
-      if (this.setting.lookCode === 'github1s.com' || this.setting.lookCode === 'github.dev') {
-        this.setting.lookCode = 'open'
-        await utils.updateStorageData(this.setting, NET.GLOBALSETTING)
-      }
-      await this.updateListItemVersion((item, itemProtoKey) => {
-        let change = false
-        if (itemProtoKey === 'siteType' && item[itemProtoKey] === undefined) {
-          const res = itemSiteType(item)
-          change = true
-          item.siteType = res.type // 新增
-        }
-        return {
-          newItem: item,
-          isChange: change,
-        }
-      })
+      console.log('do something', this)
     }
   }
 
