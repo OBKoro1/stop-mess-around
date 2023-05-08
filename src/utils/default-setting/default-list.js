@@ -1,13 +1,15 @@
 /*
  * Author       : OBKoro1
  * Date         : 2022-01-12 14:16:59
- * LastEditors  : OBKoro1
- * LastEditTime : 2022-10-19 23:56:29
- * FilePath     : /src/utils/default-setting/default-list.js
+ * LastEditors  : OBKoro1 obkoro1@foxmail.com
+ * LastEditTime : 2023-05-07 16:33:47
+ * FilePath     : /stop-mess-around/src/utils/default-setting/default-list.js
  * description  : 默认摸鱼网站列表
  * koroFileheader VSCode插件
  * Copyright (c) 2022 by OBKoro1, All Rights Reserved.
  */
+
+// TODO: 数据格式重新整理
 export const defaultList = [
   {
     site: 'douyu.com',
