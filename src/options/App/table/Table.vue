@@ -241,6 +241,9 @@ export default {
       })
     },
   },
+  mounted() {
+    this.useGetUILanguage()
+  },
   methods: {
     getMatch(row) {
       if (row.matchRule === 'start') {

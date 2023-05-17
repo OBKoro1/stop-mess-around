@@ -1,9 +1,11 @@
 import { utils } from '@/utils/index'
 import { defaultTableAdd, initDefaultTableList } from '@/utils/tableListUtils'
-import { defaultList, defaultSetting, itemProto } from '@/utils/Default'
+import { initDefaultConfig, useDefalutList } from '@/utils/Default'
 import NET from '@/utils/net'
 import { versionStringCompare } from '@/utils/utils-func'
 
+const defaultSetting = initDefaultConfig(utils.getUILanguage())
+const { defaultList, itemProto } = useDefalutList()
 class AsyncPluginData {
   /**
    * @description: 插件安装或者升级后同步更新数据

@@ -1,7 +1,9 @@
-import { defaultList, itemProto } from '@/utils/Default'
+import { useDefalutList } from '@/utils/Default'
 import { utils } from './index'
 import NET from './net'
 import { siteTypeTypes } from './types'
+
+const { defaultList, itemProto } = useDefalutList()
 
 /**
  * @description: 默认摸鱼列表添加全局设置

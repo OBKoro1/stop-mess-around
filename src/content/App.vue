@@ -97,11 +97,13 @@
 
 <script>
 import { utils } from '@/utils/index'
-import { restTimeArr } from '@/utils/Default'
+import { useDefalutList } from '@/utils/Default'
 import NET from '@/utils/net'
 import dayjs from 'dayjs'
 import LookCode1sVue from './look-code-1s.vue'
 import MessAroundRightTipVue from './mess-around-right-tip.vue'
+
+const { restTimeArr } = useDefalutList()
 
 dayjs.extend(require('dayjs/plugin/duration'))
 

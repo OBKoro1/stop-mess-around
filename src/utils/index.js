@@ -10,7 +10,8 @@
  */
 import dayjs from 'dayjs'
 import NET from '@/utils/net'
-import { defaultSetting } from '@/utils/Default'
+// defaultSetting
+import { initDefaultConfig } from '@/utils/Default'
 import { OpenCheckInstance } from './openCheck'
 import { CloseCheckInstance } from './closeCheck'
 import { AllActionInstance } from './allAction'
@@ -74,6 +75,7 @@ export const utils = {
    */
   async getData() {
     let setting = await utils.getChromeStorage(NET.GLOBALSETTING) || {}
+    const defaultSetting = initDefaultConfig(utils.getUILanguage())
     // setting没值
     if (!setting.matchRule) {
       await utils.updateStorageData(defaultSetting, NET.GLOBALSETTING)
@@ -136,15 +138,14 @@ export const utils = {
    * @param * zh 还没同步到language 临时使用汉字
    */
   getLanguageMessage(name, zh) {
-    // console.log(name,zh,chrome.i18n)
     if (zh) {
       return zh
     }
-    // console.log(chrome);
-    // console.log(chrome.i18n.detectLanguage(name,function(res){
-    //   console.log(res)
-    // }),'--1----1--1--1-1--1-1-')
     return chrome.i18n.getMessage(name)
+  },
+  getUILanguage() {
+    const lang = chrome.i18n.getMessage('lang')
+    return lang
   },
   /**
    * @description 检测当前网站地址是否匹配到列表

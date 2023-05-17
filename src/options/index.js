@@ -14,6 +14,7 @@ Vue.use(GlobalFunction)
 Vue.use(ElementUI)
 Vue.prototype.NET = NET
 Vue.prototype.useLanguageMessage = utils.getLanguageMessage
+Vue.prototype.useGetUILanguage = utils.getUILanguage
 
 // eslint-disable-next-line no-new
 new Vue({

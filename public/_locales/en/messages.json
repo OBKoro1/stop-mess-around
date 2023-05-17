@@ -1,4 +1,7 @@
 {
+  "lang":{
+    "message": "en"
+  },
   "pluginName": {
     "message": "stop-mess-around(Stop Messing Around and Wasting Time)"
   },

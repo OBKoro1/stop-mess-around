@@ -8,6 +8,7 @@
  * koroFileheader VSCode插件
  * Copyright (c) 2022 by OBKoro1, All Rights Reserved.
  */
+
 export const titleArr = [
   '日拱一卒,功不唐捐',
   '积累的力量',

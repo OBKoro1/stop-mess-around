@@ -205,8 +205,10 @@
 </template>
 
 <script>
-import { itemProto } from '@/utils/Default'
+import { useDefalutList } from '@/utils/Default'
 import { siteTypeTypes } from '@/utils/types'
+
+const { itemProto } = useDefalutList()
 
 export default {
   name: 'CreateItem',

@@ -1,28 +1,3 @@
-// gpt获取的 谚语去重
-// function run(...arr) {
-//   const res = []
-//   for (let i = 0; i < arr.length; i += 1) {
-//     const arrEle = arr[i]
-//     for (let j = 0; j < arrEle.length; j += 1) {
-//       const item = arrEle[j]
-//       // 是否重复 中文相等或者英文相等
-//       const find = res.find((ele) => ele.enTip === item.enTip || ele.cnTip === item.cnTip)
-//       //   不重复 添加
-//       if (!find) {
-//         res.push(item)
-//       }
-//     }
-//   }
-//   return res
-// }
-
-// function shuffle(arr) {
-//   return arr.sort(() => (Math.random() - 0.5))
-// }
-
-// const res = shuffle(enTipArr1)
-// console.log('res', res)
-
 // 104条不重复的励志数据
 export const enTipArr = [
   {

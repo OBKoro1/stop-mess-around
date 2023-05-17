@@ -49,7 +49,9 @@
 </template>
 
 <script>
-import { tipArr } from '@/utils/Default'
+import { useDefalutList } from '@/utils/Default'
+
+const { tipArr } = useDefalutList()
 
 export default {
   props: {

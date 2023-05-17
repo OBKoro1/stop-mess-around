@@ -39,9 +39,12 @@
 </template>
 
 <script>
-import { defaultSetting } from '@/utils/Default'
+import { initDefaultConfig } from '@/utils/Default'
+import { utils } from '@/utils/index'
 import DialogFooterDiv from './footer.vue'
 import TabArrayVue from './tabArray.vue'
+
+const defaultSetting = initDefaultConfig(utils.getUILanguage())
 
 export default {
   provide() {
