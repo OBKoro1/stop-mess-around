@@ -2,14 +2,12 @@ import { useDefalutList } from '@/utils/Default'
 import { utils } from './index'
 import NET from './net'
 import { siteTypeTypes } from './types'
-
-const { defaultList, itemProto } = useDefalutList()
-
 /**
  * @description: 默认摸鱼列表添加全局设置
  * @return {Array} 添加后的配置
  */
 export async function defaultTableAdd(list) {
+  const { itemProto } = useDefalutList()
   const { setting } = await utils.getData()
   const filterHasPushArr = await filterHasPush(list)
   const newArr = filterHasPushArr.map((item) => {
@@ -27,6 +25,7 @@ export async function defaultTableAdd(list) {
  * @return {Array}
  */
 export function getDifferentSite(arr) {
+  const { defaultList } = useDefalutList()
   return arr.filter((item) => {
     const find = defaultList.find((ele) => ele.site === item.site)
     return find === undefined // 没有在默认配置中找到 即为不同的
@@ -39,6 +38,7 @@ export function getDifferentSite(arr) {
  * @return {Array} list 用户新增 | 编辑的摸鱼网站
  */
 export function filterArrFn(arr) {
+  const { defaultList } = useDefalutList()
   return defaultList.filter((item) => {
     const find = arr.find((ele) => item.site === ele.site)
     return find === undefined
@@ -65,6 +65,7 @@ export async function filterHasPush(pushArr) {
  */
 export async function initDefaultTableList(setting) {
   if (setting.init) return { init: false }
+  const { defaultList } = useDefalutList()
   const tableList = await defaultTableAdd(defaultList, setting)
   setting.init = true
   await utils.updateStorageData(setting, NET.GLOBALSETTING)
@@ -82,6 +83,7 @@ export async function initDefaultTableList(setting) {
  * @return {type}
  */
 export function itemSiteType(item) {
+  const { defaultList } = useDefalutList()
   const find = defaultList.find((ele) => ele.site === item.site)
   let type = ''
   if (!find) {
@@ -103,4 +105,4 @@ export function itemSiteType(item) {
  * @param {type} type
  * @return {boolean} 是否找到这个type
  */
-export const siteTypeFind = (item, type) => item.siteType.toLowerCase().indexOf(type) !== -1
+export const siteTypeFind = (item, type) => item.siteType && item.siteType.toLowerCase().indexOf(type) !== -1

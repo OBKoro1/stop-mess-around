@@ -13,3 +13,7 @@ export const confirmArr = [
   '关闭页面',
   '日积月累',
 ]
+
+export const confirmArrEn = [
+  'close',
+]

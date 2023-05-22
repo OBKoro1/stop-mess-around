@@ -23,3 +23,7 @@ export const titleArr = [
   '日积月累, 水滴石穿',
   '没有所谓的天才',
 ]
+
+export const enTitleArr = [
+  'Better late than never',
+]

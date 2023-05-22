@@ -6,6 +6,7 @@ import { versionStringCompare } from '@/utils/utils-func'
 
 const defaultSetting = initDefaultConfig(utils.getUILanguage())
 const { defaultList, itemProto } = useDefalutList()
+
 class AsyncPluginData {
   /**
    * @description: 插件安装或者升级后同步更新数据
