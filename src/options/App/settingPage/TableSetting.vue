@@ -19,16 +19,9 @@
         v-model="searchContent"
         class="search-input"
         :placeholder="useLanguageMessage('setTableSearch')"
+        clearable
         @change="search"
       />
-      <!-- 一键关闭 -->
-      <!-- <el-button
-        type="primary"
-        round
-        @click="checkoutAll"
-      >
-        {{ closeOrOpen }}
-      </el-button> -->
       <el-button
         type="primary"
         round
