@@ -22,13 +22,13 @@
         @change="search"
       />
       <!-- 一键关闭 -->
-      <el-button
+      <!-- <el-button
         type="primary"
         round
         @click="checkoutAll"
       >
         {{ closeOrOpen }}
-      </el-button>
+      </el-button> -->
       <el-button
         type="primary"
         round
@@ -113,11 +113,6 @@ export default {
       showStatistics: false,
       showPluginDataDialog: false,
     }
-  },
-  computed: {
-    closeOrOpen() {
-      return this.open ? this.useLanguageMessage('keyByClose') : this.useLanguageMessage('keyByOpen')
-    },
   },
   mounted() {
     // 插件安装初始化 添加所有摸鱼网站，如果已经初始化过了，则再出现摸鱼列表添加

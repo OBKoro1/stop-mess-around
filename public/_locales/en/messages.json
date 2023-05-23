@@ -68,12 +68,6 @@
   "setTableSearch": {
     "message": "Search Website Name or URL"
   },
-  "keyByClose": {
-    "message": "One-click Close"
-  },
-  "keyByOpen": {
-    "message": "One-click Open"
-  },
   "add": {
     "message": "Add"
   },
@@ -91,12 +85,6 @@
   },
   "tipArrTip": {
     "message": "Motivational Quote List for Mess Around Internet"
-  },
-  "titleArrTip": {
-    "message": "Motivational Title List for Mess Around Internet"
-  },
-  "confirmArrTip": {
-    "message": "Motivational Button List for Mess Around Internet"
   },
   "tipArrTipColumn": {
     "message": "Motivational Quote List for Popup Window"

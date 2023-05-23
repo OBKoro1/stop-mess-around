@@ -93,10 +93,6 @@ export default {
     showTabFont() {
       if (this.activeName === 'tipArr') {
         return this.useLanguageMessage('tipArrTip')
-      } if (this.activeName === 'titleArr') {
-        return this.useLanguageMessage('titleArrTip')
-      } if (this.activeName === 'confirmArr') {
-        return this.useLanguageMessage('confirmArrTip')
       }
       return ''
     },
