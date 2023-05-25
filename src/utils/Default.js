@@ -1,11 +1,10 @@
-import { titleArr, enTitleArr } from './default-setting/title-arr'
-import { tipArr } from './default-setting/tip-arr'
-import { confirmArr, confirmArrEn } from './default-setting/confirm-arr'
-import { defaultList } from './default-setting/default-list'
+import { cnTitleArr, enTitleArr } from './default-setting/title-arr'
+import { confirmArrCn, confirmArrEn } from './default-setting/confirm-arr'
+import { defaultCnList } from './default-setting/default-list'
+import { defaultEnList } from './default-setting/en-default-list'
 import { restTimeArr } from './default-setting/rest-time-arr'
 import { itemProto } from './default-setting/item-proto-arr'
-
-import { defaultEnList } from './default-setting/en-default-list'
+import { tipArrCn } from './default-setting/tip-arr'
 import { enTipArr } from './default-setting/tip-arr-en'
 
 const tipArrEn = enTipArr.map((t) => t.enTip)
@@ -22,19 +21,19 @@ export const defaultSettingCn = {
   jumpUrl: 'https://leetcode-cn.com/problemset/all/', // 跳转链接
   checkoutStudy: 30, // 定时自动开启检测分钟 该模式不能关闭
   sponsorshipTime: Date.now(), // 自动显示赞赏的时间
-  defaultList, // 默认的摸鱼网站
-  titleArr, // 标题随机提示数组
-  confirmArr, // 随机确认按钮数组
+  defaultList: defaultCnList, // 默认的摸鱼网站
+  titleArr: cnTitleArr, // 标题随机提示数组
+  confirmArr: confirmArrCn, // 随机确认按钮数组
   matchRule: 'includes', // 摸鱼网址摸鱼网址匹配规则
-  tipArr, // 随机内卷提示数组
+  tipArr: tipArrCn, // 随机内卷提示数组
   addSite: '', // 通过popup添加摸鱼网址
   todayGlobalTouchFish: 0, // 全局摸鱼最晚时间戳
   // 默认值数量更新判断
   defaultNum: {
-    defaultList: defaultList.length,
-    titleArr: titleArr.length,
-    confirmArr: confirmArr.length,
-    tipArr: tipArr.length,
+    defaultList: defaultCnList.length,
+    titleArr: cnTitleArr.length,
+    confirmArr: confirmArrCn.length,
+    tipArr: tipArrCn.length,
   },
   showRightTip: 'open',
   lookCode: 'open',
@@ -45,7 +44,7 @@ export const defaultSettingCn = {
   siteType: 'default', // 网站类型 'default' | 'create' | 'editor'
   init: false, // 是否初始化 初始化设置摸鱼网站。
   version, // 版本是否一致，如果不一致则更新，并更新需要更新的内容。
-  matchClosePage: 15, // 匹配到网址后，在15秒内关闭网页
+  // matchClosePage: 15, // 匹配到网址后，在15秒内关闭网页
 }
 
 export const defaultSettingEn = {
@@ -79,7 +78,7 @@ export const defaultSettingEn = {
   siteType: 'default', // 网站类型 'default' | 'create' | 'editor'
   init: false, // 是否初始化 初始化设置摸鱼网站。
   version, // 版本是否一致，如果不一致则更新，并更新需要更新的内容。
-  matchClosePage: 15, // 匹配到网址后，在15秒内关闭网页
+  // matchClosePage: 15, // 匹配到网址后，在15秒内关闭网页
 }
 
 let ChromeLang = ''
@@ -97,10 +96,10 @@ export const initDefaultConfig = (lang) => {
 }
 
 const defaultListCn = {
-  titleArr,
-  tipArr,
-  confirmArr,
-  defaultList,
+  titleArr: cnTitleArr,
+  tipArr: tipArrCn,
+  confirmArr: confirmArrCn,
+  defaultList: defaultCnList,
   restTimeArr,
   itemProto,
 }

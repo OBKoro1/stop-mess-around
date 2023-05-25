@@ -9,7 +9,7 @@
  * Copyright (c) 2022 by OBKoro1, All Rights Reserved.
  */
 
-export const titleArr = [
+export const cnTitleArr = [
   '日拱一卒,功不唐捐',
   '积累的力量',
   '愚公移山的坚持',

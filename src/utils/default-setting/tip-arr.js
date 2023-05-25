@@ -9,7 +9,7 @@
  * Copyright (c) 2022 by OBKoro1, All Rights Reserved.
  */
 
-export const tipArr = [
+export const tipArrCn = [
   // 方法论
   '刻意练习的四要素，定义明确的目标，极度的专注，有效的反馈，在拉伸区练习。',
   '最好是形成一个知识体系，需要自己沉淀出思维框架，可以逐步提高快速的学习与解决问题的能力',

@@ -10,7 +10,7 @@
  */
 
 // TODO: 数据格式重新整理
-export const defaultList = [
+export const defaultCnList = [
   {
     site: 'douyu.com',
     labelName: '斗鱼直播',

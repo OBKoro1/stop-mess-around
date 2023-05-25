@@ -8,7 +8,7 @@
  * koroFileheader VSCode插件
  * Copyright (c) 2022 by OBKoro1, All Rights Reserved.
  */
-export const confirmArr = [
+export const confirmArrCn = [
   '日拱一卒',
   '关闭页面',
   '日积月累',
