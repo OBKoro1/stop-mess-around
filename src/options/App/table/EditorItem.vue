@@ -72,16 +72,16 @@
               :content="'点击关闭弹窗后, 点击关闭停留几秒关闭网页'"
               placement="top"
             >
-              <span>{{ '点击关闭停留几秒' }}</span>
+              <span>{{ '是否强制关闭' }}</span>
             </el-tooltip>
           </span>
           <el-input
             v-model.number="ruleForm.time"
-            :placeholder="'为空则为全局设置的停留时间'"
+            :placeholder="'为空则强制关闭'"
             autocomplete="off"
           />
         </el-form-item>
-        <el-form-item prop="checkoutStudy">
+        <!-- <el-form-item prop="checkoutStudy">
           <span slot="label">
             <el-tooltip
               :content="'关闭检测后多少分钟后重新启用检测'"
@@ -95,7 +95,7 @@
             :placeholder="'为空则为全局设置的自动开启时间'"
             autocomplete="off"
           />
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item
           prop="matchRule"
           required
@@ -133,7 +133,7 @@
         >
           <span slot="label">
             <el-tooltip
-              :content="'网址匹配后，不关闭页面，跳转到其他页面'"
+              :content="'关闭摸鱼网站则跳转到其他页面'"
               placement="top"
             >
               <span>{{ '跳转' }}</span>
@@ -167,7 +167,6 @@
           <el-input
             v-model="ruleForm.jumpUrl"
             class="input-class"
-            :placeholder="'为空则使用全局跳转链接'"
           />
         </el-form-item>
       </el-form>
@@ -226,7 +225,7 @@ export default {
         site: '', // 摸鱼网站地址
         matchRule: 'includes', // 摸鱼网址匹配规则 start/strict/includes
         time: undefined, // 是否立即关闭摸鱼网站
-        checkoutStudy: undefined, // 定时自动开启
+        // checkoutStudy: undefined, // 定时自动开启
         closeTime: 0, // 关闭的时间
         jump: false, // 检测到摸鱼网址后 跳转到哪个页面
         jumpUrl: '', // 跳转页面
@@ -278,12 +277,11 @@ export default {
     // 初始化填入该摸鱼网站的配置
     syncData() {
       const obj = JSON.parse(JSON.stringify(this.item.row))
-      for (const key in this.ruleForm) {
-        if (obj[key] === undefined) {
-          obj[key] = this.ruleForm[key]
+      for (const key in obj) {
+        if (obj[key]) {
+          this.ruleForm[key] = obj[key]
         }
       }
-      this.ruleForm = obj
     },
     // 摸鱼网站是否添加过
     hasAdd() {

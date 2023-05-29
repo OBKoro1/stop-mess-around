@@ -21,7 +21,6 @@
       <el-table-column type="index" />
       <el-table-column
         prop="labelName"
-        width="120"
         show-overflow-tooltip
       >
         <template slot="header">
@@ -35,7 +34,6 @@
       </el-table-column>
       <el-table-column
         prop="site"
-        width="230"
         show-overflow-tooltip
       >
         <template slot="header">
@@ -47,7 +45,7 @@
           </el-tooltip>
         </template>
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column
         prop="labelName"
         width="120"
         show-overflow-tooltip
@@ -63,7 +61,7 @@
         <template slot-scope="scope">
           <span>{{ getSiteStatus(scope.row) }}</span>
         </template>
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
         prop="tip"
         width="270"
@@ -72,10 +70,10 @@
       >
         <template slot="header">
           <el-tooltip
-            :content="'检测到摸鱼网址, 关闭网页时候显示的提示'"
+            :content="'检测到摸鱼网址, 关闭网页时候显示的格言'"
             placement="top"
           >
-            <span>{{ '关闭网页提示' }}</span>
+            <span>{{ '加油格言' }}</span>
           </el-tooltip>
         </template>
         <template slot-scope="scope">
@@ -84,7 +82,6 @@
       </el-table-column>
       <el-table-column
         prop="time"
-        width="150"
         show-overflow-tooltip
       >
         <template slot="header">
@@ -92,23 +89,22 @@
             :content="'检测到摸鱼网址后，过几秒关闭网页'"
             placement="top"
           >
-            <span>{{ '点击关闭停留几秒' }}</span>
+            <span>{{ '是否强制关闭' }}</span>
           </el-tooltip>
         </template>
         <template slot-scope="scope">
-          <span>{{ typeof scope.row.time !== 'number' ? setting.time : scope.row.time }}秒</span>
+          <span>{{ !!scope.row.time ? '否':'是' }}</span>
         </template>
       </el-table-column>
       <el-table-column
         prop="matchRule"
-        width="150"
       >
         <template slot="header">
           <el-tooltip
-            :content="'网址摸鱼网址匹配规则: 包含=> 包含,通常输入一个域名即可, 开头全等 => 前面的必须一模一样，严格相等=>一模一样'"
+            :content="'摸鱼网址匹配规则: 包含=> 包含,通常输入一个域名即可, 开头全等 => 前面的必须一模一样，严格相等=>一模一样'"
             placement="top"
           >
-            <span>{{ '摸鱼网址匹配规则' }}</span>
+            <span>{{ '网址匹配规则' }}</span>
           </el-tooltip>
         </template>
         <template slot-scope="scope">
@@ -117,22 +113,24 @@
       </el-table-column>
       <el-table-column
         prop="jump"
-        width="100"
         show-overflow-tooltip
       >
         <template slot="header">
           <el-tooltip
-            :content="'网址匹配后，不关闭页面，跳转到其他页面'"
+            :content="'关闭摸鱼网站则跳转到其他页面'"
             placement="top"
           >
-            <span>{{ '跳转' }}</span>
+            <span>{{ '是否跳转' }}</span>
           </el-tooltip>
         </template>
         <template slot-scope="scope">
-          <span>{{ scope.row.jump ? '开启' : '关闭' }}</span>
+          <span>{{ scope.row.jump ? '是' : '否' }}</span>
         </template>
       </el-table-column>
-      <el-table-column fixed="right">
+      <el-table-column
+        fixed="right"
+        width="250"
+      >
         <template slot="header">
           <span>{{ '操作' }}</span>
         </template>
@@ -230,6 +228,7 @@ export default {
   },
   computed: {
     showList() {
+      console.log(this.tableData, '--this.tableData--')
       if (this.search === '') return this.tableData
       return this.tableData.filter((item) => {
         if (item.labelName.indexOf(this.search) !== -1) {

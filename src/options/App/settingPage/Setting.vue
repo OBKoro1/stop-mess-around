@@ -78,7 +78,7 @@
             autocomplete="off"
           />
         </el-form-item>
-        <el-form-item
+        <!-- <el-form-item
           prop="matchClosePage"
           required
         >
@@ -96,8 +96,8 @@
             class="input-width"
             autocomplete="off"
           />
-        </el-form-item>
-        <el-form-item
+        </el-form-item> -->
+        <!-- <el-form-item
           prop="time"
           required
         >
@@ -115,8 +115,8 @@
             class="input-width"
             autocomplete="off"
           />
-        </el-form-item>
-        <el-form-item
+        </el-form-item> -->
+        <!-- <el-form-item
           prop="jump"
           required
         >
@@ -140,8 +140,8 @@
           >
             {{ useLanguageMessage('close') }}
           </el-radio>
-        </el-form-item>
-        <el-form-item
+        </el-form-item> -->
+        <!-- <el-form-item
           v-if="ruleForm.jump"
           prop="jumpUrl"
         >
@@ -158,7 +158,7 @@
             class="input-class"
             :placeholder="useLanguageMessage('jumpUrlTip')"
           />
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item
           prop="log"
           required
@@ -290,22 +290,22 @@ export default {
             required: true, type: 'number', message: '必须为数字值', trigger: 'blur',
           },
         ],
-        matchClosePage: [
-          {
-            required: true, type: 'number', message: '必须为数字值', trigger: 'blur',
-          },
-        ],
+        // matchClosePage: [
+        //   {
+        //     required: true, type: 'number', message: '必须为数字值', trigger: 'blur',
+        //   },
+        // ],
         checkoutStudy: [
           {
             required: true, type: 'number', message: '必须为数字值', trigger: 'blur',
           },
         ],
-        jumpUrl: [
-          { required: true, message: '请输入跳转网址', trigger: 'blur' },
-          {
-            min: 8, message: '至少8个字符', trigger: 'blur',
-          },
-        ],
+        // jumpUrl: [
+        //   { required: true, message: '请输入跳转网址', trigger: 'blur' },
+        //   {
+        //     min: 8, message: '至少8个字符', trigger: 'blur',
+        //   },
+        // ],
       },
       rightTipOptions: [
         {

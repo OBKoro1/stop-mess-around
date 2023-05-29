@@ -74,8 +74,9 @@ export default {
     await this.initTableList()
     await this.sortList()
     await this.setProcessEnv()
-    // 监控配置更改
-    this.interval = setInterval(this.getData, 5000)
+
+    // 监控配置更改 ??为啥要这行代码
+    // this.interval = setInterval(this.getData, 5000)
   },
   beforeDestroy() {
     clearInterval(this.interval)

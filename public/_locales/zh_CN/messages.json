@@ -167,9 +167,6 @@
   "resetKey": {
     "message": "一键开启全局休息"
   },
-  "matchClosePage": {
-    "message": "匹配后倒计时关闭"
-  },
   "mathClosePageTip": {
     "message": "匹配瞎逛网站后, 如果未点击休息一下，将在倒计时后关闭网页, 设置成0则关闭该功能"
   },
@@ -327,16 +324,10 @@
     "message": "点击关闭弹窗后, 停留几秒后突然关闭网页"
   },
   "closeTip": {
-    "message": "突然关闭时间"
+    "message": "是否强制关闭"
   },
   "nullGloablTip": {
-    "message": "不设置则为全局设置的突然关闭时间"
-  },
-  "openAuto": {
-    "message": "自动开启"
-  },
-  "openAutoTip": {
-    "message": "关闭瞎逛检测，多少分钟后再开启"
+    "message": "为空则强制关闭"
   },
   "nullOpenTip": {
     "message": "为空则为全局设置的自动开启时间"

@@ -170,9 +170,6 @@
   "resetKey": {
     "message": "One-click Open Global Rest"
   },
-  "matchClosePage": {
-    "message": "Countdown Close After Match"
-  },
   "mathClosePageTip": {
     "message": "After matching the mess around website, if you do not click to take a break, the page will be closed after the countdown, set to 0 to close this function"
   },
@@ -334,12 +331,6 @@
   },
   "nullGloablTip": {
     "message": "Global setting sudden close time if not set"
-  },
-  "openAuto": {
-    "message": "Auto open"
-  },
-  "openAutoTip": {
-    "message": "Close mess around detection, open again after a few minutes"
   },
   "nullOpenTip": {
     "message": "If empty, it will be the global setting for automatic opening time"

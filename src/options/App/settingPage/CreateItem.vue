@@ -85,7 +85,7 @@
             autocomplete="off"
           />
         </el-form-item>
-        <el-form-item prop="checkoutStudy">
+        <!-- <el-form-item prop="checkoutStudy">
           <span slot="label">
             <el-tooltip
               :content="useLanguageMessage('openAutoTip')"
@@ -99,7 +99,7 @@
             :placeholder="useLanguageMessage('nullOpenTip')"
             autocomplete="off"
           />
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item
           prop="matchRule"
           required
@@ -228,7 +228,7 @@ export default {
         site: '', // 摸鱼网站地址
         matchRule: 'includes', // 摸鱼网址匹配规则 start/strict/includes
         time: undefined, // 是否立即关闭摸鱼网站
-        checkoutStudy: undefined, // 定时自动开启
+        // checkoutStudy: undefined, // 定时自动开启
         jump: false, // 检测到摸鱼网址后 跳转到哪个页面
         jumpUrl: '', // 跳转页面
         open: true, // 是否检测该摸鱼网站
