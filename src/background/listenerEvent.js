@@ -49,7 +49,7 @@ class ListenerEvent {
     this.setting = res.setting
     this.statisticsTime = res.statisticsTime
     this.listArr = res.listArr
-
+    console.log('-1-1--1-1-1-1--1---1----1', 333)
     const options = {
       item: request.item,
       tableArr: this.listArr,

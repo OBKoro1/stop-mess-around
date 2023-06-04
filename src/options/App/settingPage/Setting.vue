@@ -78,7 +78,7 @@
             autocomplete="off"
           />
         </el-form-item>
-        <!-- <el-form-item
+        <el-form-item
           prop="matchClosePage"
           required
         >
@@ -95,70 +95,9 @@
             min="0"
             class="input-width"
             autocomplete="off"
+            :placeholder="useLanguageMessage('matchClosePlaceholder')"
           />
-        </el-form-item> -->
-        <!-- <el-form-item
-          prop="time"
-          required
-        >
-          <span slot="label">
-            <el-tooltip
-              :content="useLanguageMessage('timeCloseTip')"
-              placement="top"
-            >
-              <span>{{ useLanguageMessage('timeClose') }}</span>
-            </el-tooltip>
-          </span>
-          <el-input
-            v-model.number="ruleForm.time"
-            min="0"
-            class="input-width"
-            autocomplete="off"
-          />
-        </el-form-item> -->
-        <!-- <el-form-item
-          prop="jump"
-          required
-        >
-          <span slot="label">
-            <el-tooltip
-              :content="useLanguageMessage('jumpTip')"
-              placement="top"
-            >
-              <span>{{ useLanguageMessage('jump') }}</span>
-            </el-tooltip>
-          </span>
-          <el-radio
-            v-model="ruleForm.jump"
-            :label="true"
-          >
-            {{ useLanguageMessage('open') }}
-          </el-radio>
-          <el-radio
-            v-model="ruleForm.jump"
-            :label="false"
-          >
-            {{ useLanguageMessage('close') }}
-          </el-radio>
-        </el-form-item> -->
-        <!-- <el-form-item
-          v-if="ruleForm.jump"
-          prop="jumpUrl"
-        >
-          <span slot="label">
-            <el-tooltip
-              :content="useLanguageMessage('jumpUrlTip')"
-              placement="top"
-            >
-              <span>{{ useLanguageMessage('jumpUrl') }}</span>
-            </el-tooltip>
-          </span>
-          <el-input
-            v-model="ruleForm.jumpUrl"
-            class="input-class"
-            :placeholder="useLanguageMessage('jumpUrlTip')"
-          />
-        </el-form-item> -->
+        </el-form-item>
         <el-form-item
           prop="log"
           required
@@ -290,22 +229,16 @@ export default {
             required: true, type: 'number', message: '必须为数字值', trigger: 'blur',
           },
         ],
-        // matchClosePage: [
-        //   {
-        //     required: true, type: 'number', message: '必须为数字值', trigger: 'blur',
-        //   },
-        // ],
+        matchClosePage: [
+          {
+            required: true, type: 'number', message: '必须为数字值', trigger: 'blur',
+          },
+        ],
         checkoutStudy: [
           {
             required: true, type: 'number', message: '必须为数字值', trigger: 'blur',
           },
         ],
-        // jumpUrl: [
-        //   { required: true, message: '请输入跳转网址', trigger: 'blur' },
-        //   {
-        //     min: 8, message: '至少8个字符', trigger: 'blur',
-        //   },
-        // ],
       },
       rightTipOptions: [
         {

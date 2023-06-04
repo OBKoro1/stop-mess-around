@@ -34,7 +34,6 @@
       </el-table-column>
       <el-table-column
         prop="site"
-        show-overflow-tooltip
       >
         <template slot="header">
           <el-tooltip
@@ -44,40 +43,14 @@
             <span>{{ '摸鱼网址' }}</span>
           </el-tooltip>
         </template>
-      </el-table-column>
-      <!-- <el-table-column
-        prop="labelName"
-        width="120"
-        show-overflow-tooltip
-      >
-        <template slot="header">
+        <template slot-scope="scope">
           <el-tooltip
-            :content="'摸鱼网址有三种状态: 新增/编辑/插件集成'"
+            effect="dark"
+            :content="getSiteStatus(scope.row)"
             placement="top"
           >
-            <span>{{ '摸鱼网址状态' }}</span>
+            <span>{{ scope.row.site }}</span>
           </el-tooltip>
-        </template>
-        <template slot-scope="scope">
-          <span>{{ getSiteStatus(scope.row) }}</span>
-        </template>
-      </el-table-column> -->
-      <el-table-column
-        prop="tip"
-        width="270"
-        column-key="tip"
-        show-overflow-tooltip
-      >
-        <template slot="header">
-          <el-tooltip
-            :content="'检测到摸鱼网址, 关闭网页时候显示的格言'"
-            placement="top"
-          >
-            <span>{{ '加油格言' }}</span>
-          </el-tooltip>
-        </template>
-        <template slot-scope="scope">
-          <span>{{ getTip(scope.row) }}</span>
         </template>
       </el-table-column>
       <el-table-column
@@ -228,7 +201,6 @@ export default {
   },
   computed: {
     showList() {
-      console.log(this.tableData, '--this.tableData--')
       if (this.search === '') return this.tableData
       return this.tableData.filter((item) => {
         if (item.labelName.indexOf(this.search) !== -1) {
@@ -256,9 +228,9 @@ export default {
     },
     // 摸鱼网址状态
     getSiteStatus(item) {
-      if (siteTypeFind(item, 'create')) return '新增'
-      if (siteTypeFind(item, 'editor')) return '编辑'
-      return '插件默认集成'
+      if (siteTypeFind(item, 'create')) return '网址状态：新增'
+      if (siteTypeFind(item, 'editor')) return '网址状态：编辑'
+      return '网址状态：插件默认集成'
     },
     // 获取随机tip或者本地tip
     getTip(row) {

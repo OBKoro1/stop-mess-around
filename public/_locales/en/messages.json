@@ -170,32 +170,20 @@
   "resetKey": {
     "message": "One-click Open Global Rest"
   },
+  "matchClosePage":{
+    "message":"The countdown closes after matching"
+  }, 
   "mathClosePageTip": {
     "message": "After matching the mess around website, if you do not click to take a break, the page will be closed after the countdown, set to 0 to close this function"
   },
-  "timeClose": {
-    "message": "Suddenly Close Mess Around Website"
-  },
-  "timeCloseTip": {
-    "message": "After clicking the close window button, suddenly close the page after a few seconds. This function is used to let yourself browse the mess around website for a while, and then suddenly close the mess around website to get yourself out of the mess around website."
-  },
-  "jump": {
-    "message": "Jump"
-  },
-  "jumpTip": {
-    "message": "After matching the mess around website, click the close button without closing the page, jump to a website, such as a brush question or English learning website"
+  "matchClosePlaceholder":{
+    "message":"The value is in seconds"
   },
   "open": {
     "message": "Open"
   },
   "close": {
     "message": "Close"
-  },
-  "jumpUrl": {
-    "message": "Jump to Learning Website"
-  },
-  "jumpUrlTip": {
-    "message": "If this item is empty, use the global jump learning website"
   },
   "log": {
     "message": "Page Log"

@@ -75,8 +75,9 @@ export default {
     await this.sortList()
     await this.setProcessEnv()
 
+    //  this.interval =  requestAnimationFrame(this.getData)
     // 监控配置更改 ??为啥要这行代码
-    // this.interval = setInterval(this.getData, 5000)
+    this.interval = setInterval(this.getData, 5000)
   },
   beforeDestroy() {
     clearInterval(this.interval)

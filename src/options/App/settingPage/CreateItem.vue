@@ -55,51 +55,6 @@
             :placeholder="useLanguageMessage('addFishWebsite')"
           />
         </el-form-item>
-        <el-form-item prop="tip">
-          <span slot="label">
-            <el-tooltip
-              :content="useLanguageMessage('matchQuoteName')"
-              placement="top"
-            >
-              <span>{{ useLanguageMessage('quoteName') }}</span>
-            </el-tooltip>
-          </span>
-          <el-input
-            v-model="ruleForm.tip"
-            class="input-class"
-            :placeholder="useLanguageMessage('nullQuoteName')"
-          />
-        </el-form-item>
-        <el-form-item prop="time">
-          <span slot="label">
-            <el-tooltip
-              :content="useLanguageMessage('websiteTip')"
-              placement="top"
-            >
-              <span>{{ useLanguageMessage('closeTip') }}</span>
-            </el-tooltip>
-          </span>
-          <el-input
-            v-model.number="ruleForm.time"
-            :placeholder="useLanguageMessage('nullGloablTip')"
-            autocomplete="off"
-          />
-        </el-form-item>
-        <!-- <el-form-item prop="checkoutStudy">
-          <span slot="label">
-            <el-tooltip
-              :content="useLanguageMessage('openAutoTip')"
-              placement="top"
-            >
-              <span>{{ useLanguageMessage('openAuto') }}</span>
-            </el-tooltip>
-          </span>
-          <el-input
-            v-model.number="ruleForm.checkoutStudy"
-            :placeholder="useLanguageMessage('nullOpenTip')"
-            autocomplete="off"
-          />
-        </el-form-item> -->
         <el-form-item
           prop="matchRule"
           required
@@ -130,49 +85,6 @@
           >
             {{ useLanguageMessage('strictRule') }}
           </el-radio>
-        </el-form-item>
-        <el-form-item
-          prop="jump"
-          required
-        >
-          <span slot="label">
-            <el-tooltip
-              :content="useLanguageMessage('jumpTip')"
-              placement="top"
-            >
-              <span>{{ useLanguageMessage('jump') }}</span>
-            </el-tooltip>
-          </span>
-          <el-radio
-            v-model="ruleForm.jump"
-            :label="true"
-          >
-            {{ useLanguageMessage('open') }}
-          </el-radio>
-          <el-radio
-            v-model="ruleForm.jump"
-            :label="false"
-          >
-            {{ useLanguageMessage('close') }}
-          </el-radio>
-        </el-form-item>
-        <el-form-item
-          v-if="ruleForm.jump"
-          prop="jumpUrl"
-        >
-          <span slot="label">
-            <el-tooltip
-              :content="useLanguageMessage('jumpUrlTip')"
-              placement="top"
-            >
-              <span>{{ useLanguageMessage('jumpUrl') }}</span>
-            </el-tooltip>
-          </span>
-          <el-input
-            v-model="ruleForm.jumpUrl"
-            class="input-class"
-            :placeholder="useLanguageMessage('jumpUrlTip')"
-          />
         </el-form-item>
       </el-form>
     </div>

@@ -51,7 +51,7 @@
             :placeholder="'添加摸鱼网址'"
           />
         </el-form-item>
-        <el-form-item prop="tip">
+        <!-- <el-form-item prop="tip">
           <span slot="label">
             <el-tooltip
               :content="'检测到摸鱼网址显示的励志语录'"
@@ -65,8 +65,8 @@
             class="input-class"
             :placeholder="'为空则为随机励志语录'"
           />
-        </el-form-item>
-        <el-form-item prop="time">
+        </el-form-item> -->
+        <!-- <el-form-item prop="time">
           <span slot="label">
             <el-tooltip
               :content="'点击关闭弹窗后, 点击关闭停留几秒关闭网页'"
@@ -80,7 +80,7 @@
             :placeholder="'为空则强制关闭'"
             autocomplete="off"
           />
-        </el-form-item>
+        </el-form-item> -->
         <!-- <el-form-item prop="checkoutStudy">
           <span slot="label">
             <el-tooltip
@@ -127,9 +127,9 @@
             {{ '严格相等' }}
           </el-radio>
         </el-form-item>
-        <el-form-item
+        <!-- required -->
+        <!-- <el-form-item
           prop="jump"
-          required
         >
           <span slot="label">
             <el-tooltip
@@ -151,8 +151,8 @@
           >
             {{ '关闭' }}
           </el-radio>
-        </el-form-item>
-        <el-form-item
+        </el-form-item> -->
+        <!-- <el-form-item
           v-if="ruleForm.jump"
           prop="jumpUrl"
         >
@@ -168,7 +168,7 @@
             v-model="ruleForm.jumpUrl"
             class="input-class"
           />
-        </el-form-item>
+        </el-form-item> -->
       </el-form>
     </div>
     <div

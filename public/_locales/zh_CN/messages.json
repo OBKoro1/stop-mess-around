@@ -1,4 +1,7 @@
 {
+  "lang":{
+    "message": "cn"
+  },
   "pluginName": {
     "message": "stop-mess-around(停止瞎逛浪费时间)"
   },
@@ -167,32 +170,20 @@
   "resetKey": {
     "message": "一键开启全局休息"
   },
+  "matchClosePage":{
+    "message":"匹配后倒计时关闭"
+  },  
   "mathClosePageTip": {
     "message": "匹配瞎逛网站后, 如果未点击休息一下，将在倒计时后关闭网页, 设置成0则关闭该功能"
   },
-  "timeClose": {
-    "message": "突然关闭瞎逛网页"
-  },
-  "timeCloseTip": {
-    "message": "点击关闭弹窗后, 停留几秒后突然关闭网页，这个功能用于让自己浏览一会儿瞎逛网址，然后突然关闭瞎逛网址，让自己退出瞎逛的网址。"
-  },
-  "jump": {
-    "message": "跳转"
-  },
-  "jumpTip": {
-    "message": "瞎逛网址匹配后，点击关闭按钮，不关闭页面，跳转到某个网站，比如某个刷题或者英语学习网站"
+  "matchClosePlaceholder":{
+    "message":"数值以秒为单位"
   },
   "open": {
     "message": "开启"
   },
   "close": {
     "message": "关闭"
-  },
-  "jumpUrl": {
-    "message": "跳转学习网址"
-  },
-  "jumpUrlTip": {
-    "message": "这一项为空，则使用全局设置的跳转学习网址"
   },
   "log": {
     "message": "网页日志"

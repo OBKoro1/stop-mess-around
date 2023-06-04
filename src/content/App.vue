@@ -311,17 +311,7 @@ export default {
     // 关闭弹窗
     handleClose() {
       this.dialogVisible = false // 先关闭弹窗
-      // 使用全局的停留时间 或者单个的停留时间
-      const time = typeof this.item.time !== 'number' ? this.Setting.time : this.item.time
-      this.closeSetTimeout = setTimeout(() => {
-        if (this.item.jump) {
-          // 跳转
-          window.location.href = this.item.jumpUrl
-        } else {
-          // 关闭
-          this.closePage()
-        }
-      }, time * 1000)
+      this.closePage()
     },
     // 关闭页面
     closePage() {
