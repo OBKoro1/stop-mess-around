@@ -3,7 +3,7 @@
     "message": "en"
   },
   "pluginName": {
-    "message": "stop-mess-around(Stop Messing Around and Wasting Time)"
+    "message": "stop-mess-around"
   },
   "useDoc": {
     "message": "User Documentation"
@@ -205,12 +205,6 @@
   },
   "viewGithubTip": {
     "message": "Embedded button in the Github repository, open the Github repository code through online VS Code, browse the repository code without downloading."
-  },
-  "feedback": {
-    "message": "Plugin Data and Feedback"
-  },
-  "feedbackTip": {
-    "message": "Feedback issues must copy plugin data"
   },
   "openFeedback": {
     "message": "Open plugin data and feedback window"

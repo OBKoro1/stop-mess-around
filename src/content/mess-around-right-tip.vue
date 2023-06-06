@@ -49,7 +49,7 @@
 import NET from '@/utils/net'
 import { utils } from '@/utils/index'
 import dayjs from 'dayjs'
-import RestStatistics from '@/components/rest-statistics.vue'
+import RestStatistics from '@/components/RestStatistics.vue'
 
 dayjs.extend(require('dayjs/plugin/duration'))
 

@@ -27,13 +27,6 @@
     >
       {{ useLanguageMessage('set') }}
     </el-button>
-    <el-button
-      type="primary"
-      round
-      @click="checkoutFn('showPluginDataDialog', true)"
-    >
-      {{ useLanguageMessage('feedBack') }}
-    </el-button>
     <!-- 随机语录设置 -->
     <RandomTip
       :show-tip="showTip"
@@ -54,7 +47,7 @@
 </template>
 
 <script>
-import RandomTip from '@/options/App/tip/index.vue'
+import RandomTip from '../tip/index.vue'
 import Setting from './Setting.vue'
 import ReplacePluginData from './ReplacePluginData.vue'
 

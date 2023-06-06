@@ -11,7 +11,6 @@
 <template>
   <div
     class="main-table"
-    style="width:100%"
   >
     <el-table
       :data="showList"
@@ -101,8 +100,8 @@
         </template>
       </el-table-column>
       <el-table-column
-        fixed="right"
         width="250"
+        fixed="right"
       >
         <template slot="header">
           <span>{{ '操作' }}</span>
@@ -283,5 +282,8 @@ export default {
 <style scoped>
 .main-table {
   margin: 20px 0;
+  height: calc(100% - 230px);
+  width:100%;
+  overflow: auto;
 }
 </style>

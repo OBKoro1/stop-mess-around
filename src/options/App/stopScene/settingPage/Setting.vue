@@ -171,24 +171,6 @@
             />
           </el-select>
         </el-form-item>
-        <el-form-item prop="feedback">
-          <span slot="label">
-            <el-tooltip
-              :content="useLanguageMessage('feedbackTip')"
-              placement="top"
-            >
-              <span>{{ useLanguageMessage('feedback') }}</span>
-            </el-tooltip>
-          </span>
-          <el-button
-            class="button-margin-right"
-            size="small"
-            type="primary"
-            @click="jumpCopyPluginData"
-          >
-            {{ useLanguageMessage('openFeedback') }}
-          </el-button>
-        </el-form-item>
       </el-form>
     </div>
 

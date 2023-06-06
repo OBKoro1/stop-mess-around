@@ -3,7 +3,7 @@
     "message": "cn"
   },
   "pluginName": {
-    "message": "stop-mess-around(停止瞎逛浪费时间)"
+    "message": "stop-mess-around"
   },
   "useDoc": {
     "message": "使用文档"
@@ -205,12 +205,6 @@
   },
   "viewGithubTip": {
     "message": "在Github网站仓库中内嵌按钮, 通过在线 VS Code 来打开 Github仓库代码，不用下载就浏览仓库代码。"
-  },
-  "feedback": {
-    "message": "插件数据与反馈"
-  },
-  "feedbackTip": {
-    "message": "反馈问题必须复制插件数据"
   },
   "openFeedback": {
     "message": "打开插件数据与反馈问题弹窗"

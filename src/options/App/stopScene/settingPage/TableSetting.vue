@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import RestStatistics from '@/components/rest-statistics.vue'
+import RestStatistics from '@/components/RestStatistics.vue'
 import CreateItem from './CreateItem.vue'
 import BatchItem from './BatchItem.vue'
 

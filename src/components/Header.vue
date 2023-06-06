@@ -1,37 +1,5 @@
 <template>
   <div class="header align-center">
-    <div class="header-left align-center">
-      <img
-        src="/img/origin.jpeg"
-        class="header-img"
-        alt=""
-        @click="utils.jumpUrl(NET.CHROMESTORE)"
-      >
-      <div class="header-plugin cursor-pointer">
-        <h2 @click="utils.jumpUrl(NET.GITHUBREPO)">
-          {{ useLanguageMessage('pluginName') }}
-        </h2>
-        <span
-          v-if="development"
-          class="cursor-pointer header-btns"
-          @click="utils.jumpUrl(NET.CHROMESTORE)"
-        >
-          {{ useLanguageMessage('tipInstall') }}
-          <i class="el-icon-s-unfold" />
-        </span>
-        <span
-          class="cursor-pointer"
-          @click="utils.jumpUrl(NET.RELEASES)"
-        >{{ getVersion() }}</span>
-      </div>
-      <div
-        class="author cursor-pointer"
-        @click="utils.jumpUrl(NET.MYSITE)"
-      >
-        by OBKoro1
-      </div>
-    </div>
-
     <el-button
       type="text"
       size="medium"
@@ -48,7 +16,6 @@
     >
       {{ useLanguageMessage('useDoc') }}
     </el-button>
-
     <img
       alt="GitHub Repo stars"
       class="header-btns-star cursor-pointer"
@@ -114,13 +81,12 @@
 <script>
 
 export default {
-  name: 'OptionsHeader',
+  name: 'Header',
   inject: ['getSetting', 'settingUpdate'],
   data() {
     return {
       sponsorship: false,
       disabledSponsorship: true,
-      development: false,
       Setting: {},
     }
   },
@@ -138,12 +104,12 @@ export default {
   },
   mounted() {
     // 本地提示
-    const mode = process.env.VUE_APP_MODE.toLowerCase()
-    console.log('process.env', process.env)
+    // const mode = process.env.VUE_APP_MODE.toLowerCase()
+    // console.log('process.env', process.env)
     // 不是production 即为本地安装
-    if (mode.indexOf('production') === -1) {
-      this.development = true
-    }
+    // if (mode.indexOf('production') === -1) {
+    //   this.development = true
+    // }
     setTimeout(() => {
       this.sponsorshipShow()
     }, 500)
@@ -208,7 +174,7 @@ export default {
 
 <style scoped>
 .dropdown-color {
-  color: #fff;
+  color: #000;
 }
 .dialog-font {
   font-size: 15px;
@@ -217,20 +183,15 @@ export default {
 }
 .header {
   padding: 10px 0 10px 15px;
-  background: #855f16;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10px;
+  height: 55px;
+  border-bottom: 1px solid  rgb(238, 238, 238);
 }
-.header-left {
-  justify-content: space-between;
-}
-/* .header-plugin {
-  text-align: right;
-} */
 .header-btns {
   margin-right: 15px;
 }
-/* .header-btns-star {
-  width: 95px;
-} */
 .author {
   margin: 10px 8px 10px 10px;
 }
