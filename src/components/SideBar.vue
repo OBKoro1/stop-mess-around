@@ -43,7 +43,7 @@ export default {
     return {
       sidebarList: [
         {
-          label: '停止摸鱼网站',
+          label: '停止瞎逛',
           url: '/stop',
           icon: 'el-icon-s-release',
         },

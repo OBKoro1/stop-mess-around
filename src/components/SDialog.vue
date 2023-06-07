@@ -1,11 +1,10 @@
 <template>
   <el-dialog
-    :close-on-click-modal="false"
     append-to-body
+    :close-on-click-modal="false"
     :close-on-press-escape="false"
     :visible.sync="dialogVisible"
     :show-close="false"
-    :before-close="resetFields"
     width="650px"
     v-bind="$attrs"
   >
@@ -27,11 +26,15 @@
         v-if="showFooter"
         class=""
       >
-        <el-button @click="onClose">
+        <el-button
+          size="medium"
+          @click="onClose"
+        >
           取消
         </el-button>
         <el-button
           type="primary"
+          size="medium"
           @click="onSet"
         >
           确定
@@ -55,11 +58,6 @@ export default {
       default: true,
     },
   },
-  data() {
-    return {
-
-    }
-  },
   computed: {
     dialogVisible: {
       get() {
@@ -71,7 +69,6 @@ export default {
     },
   },
   methods: {
-    resetFields() {},
     onClose() {
       this.$emit('close', false)
     },
