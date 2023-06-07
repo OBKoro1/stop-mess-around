@@ -129,6 +129,6 @@ export const defaultEnList = [
   },
   {
     site: 'chaturbate.com',
-    labelName: 'chaturbate', // 游戏
+    labelName: 'chaturbate',
   },
 ]
