@@ -2,7 +2,9 @@ import { defaultSettingCn, defaultSettingEn } from './Default'
 import { tipArr } from './default-setting/tip-arr-en'
 
 // 包装stops
-export const packStops = (stops) => (stops.map((t) => ({ ...t, checked: false, hide: false })))
+export const packStops = (stops) => (stops.map((t) => ({
+  ...t, checked: false, hide: false, version: process.env.npm_package_version,
+})))
 
 // 包装cheers
 export const packCheers = (cheers, lang) => (cheers.map((t) => ({

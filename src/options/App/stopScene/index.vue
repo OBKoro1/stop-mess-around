@@ -39,10 +39,10 @@
         <span class="title-body-4">已阻止的网站</span>
       </div>
       <div
-        v-if="lists.length"
+        v-if="stops.length"
         class="body-list mt-10"
       >
-        <template v-for="(item,index) in lists">
+        <template v-for="(item,index) in stops">
           <div
             :key="index"
             class="item-content"
@@ -101,12 +101,14 @@ export default {
       visibleStop: false,
       visibleCheer: false,
       visibleSet: false,
-      lists: [],
     }
   },
   computed: {
     config() {
       return this.$root.$options.store.state.config
+    },
+    stops() {
+      return this.config.stops || []
     },
   },
   methods: {
@@ -131,8 +133,7 @@ export default {
     handlerSuccess(type, list) {
       if (type === 'stop') {
         this.visibleStop = false
-        this.lists = list
-        this.$root.$options.store.dispatch('asyncUpdateConfig', [this.lists, 'stops'])
+        this.$root.$options.store.dispatch('asyncUpdateConfig', [list, 'stops'])
       } else if (type === 'cheer') {
         this.visibleCheer = false
       } else if (type === 'set') {
@@ -141,14 +142,14 @@ export default {
     },
     onDel(item) {
       item.checked = !item.checked
-      this.lists = this.lists.filter((t) => t.site !== item.site)
-      this.$root.$options.store.dispatch('asyncUpdateConfig', [this.lists, 'stops'])
+      const list = this.stops.filter((t) => t.site !== item.site)
+      this.$root.$options.store.dispatch('asyncUpdateConfig', [list, 'stops'])
     },
   },
   // watch:{
   //   config:{
   //     handler(val){
-  //       console.log(val)
+  //       console.log(val,'-1--1-1')
   //     },
   //     deep:true
   //   }

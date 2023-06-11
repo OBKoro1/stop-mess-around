@@ -116,7 +116,7 @@ export default {
       keyWord: '',
       keyWordList: [],
       disabled: true,
-      maxLen: 5,
+      maxLen: 50,
     }
   },
   computed: {

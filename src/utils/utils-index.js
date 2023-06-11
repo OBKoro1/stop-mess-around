@@ -31,11 +31,14 @@ export const utils = {
    */
   async getConfig() {
     let setting = await utils.getChromeStorage(NET.GLOBALSETTING) || null
-    const defaultSetting = initDefaultConfig(utils.getUILanguage())
+    console.log('setting', setting)
     if (!setting) {
+      const defaultSetting = initDefaultConfig(utils.getUILanguage())
+      console.log('defaultSetting', defaultSetting)
       setting = defaultSetting
     }
-    await utils.updateStorageData(defaultSetting, NET.GLOBALSETTING)
+    await utils.updateStorageData(setting, NET.GLOBALSETTING)
+    console.log('setting', setting)
     return JSON.parse(JSON.stringify(setting))
   },
   /**
@@ -152,6 +155,22 @@ export const utils = {
     return new Promise((resolve) => {
       const str = JSON.stringify(val)
       chrome.storage.local.set({ [key]: str }, () => {
+        resolve()
+      })
+    })
+  },
+  /**
+   * 更新数据：GLOBALSETTING中的某个key
+   * @param {*} val
+   * @param {*} key
+   * @returns
+   */
+  async updateStorageKey(val, key) {
+    return new Promise(async (resolve) => {
+      const config = await utils.getChromeStorage(NET.GLOBALSETTING) || {}
+      config[key] = val
+      const str = JSON.stringify(config)
+      chrome.storage.local.set({ [NET.GLOBALSETTING]: str }, () => {
         resolve()
       })
     })
