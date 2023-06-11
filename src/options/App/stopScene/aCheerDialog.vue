@@ -1,8 +1,7 @@
 <template>
   <SDialog
     v-bind="$attrs"
-    @ok="onOk"
-    @close="onClose"
+    :show-footer="false"
   >
     <template v-slot:title>
       <div class="title-body-1">
@@ -24,6 +23,11 @@
                 size="medium"
                 placeholder="请输入内容"
                 type="textarea"
+                maxlength="100"
+                minlength="3"
+                show-word-limit
+                clearable
+                rows="4"
               />
               <div class="mt-10">
                 <el-button
@@ -50,17 +54,20 @@
               自定义加油格言
             </el-button>
           </el-popover>
-          <el-button>还原默认设置</el-button>
+          <el-button @click="onDefaultSet">
+            还原默认设置
+          </el-button>
         </div>
         <div class="body-list">
-          <template v-for="(item,index) in cheerList">
+          <template v-for="(item,index) in config.cheers">
             <div
+              v-if="!item.hide"
               :key="index"
               class="item-row"
             >
               <div class="row-name flex-row">
-                <el-checkbox />
-                <span class="ml-10">{{ item }}</span>
+                <el-checkbox v-model="item.checked" />
+                <span class="ml-10">{{ item.tip }}</span>
               </div>
               <el-button
                 type="danger"
@@ -68,6 +75,7 @@
                 size="mini"
                 circle
                 class="cursor-pointer"
+                @click="onDel('single',item)"
               />
             </div>
           </template>
@@ -75,13 +83,22 @@
       </div>
     </template>
     <template v-slot:footer>
-      <div>
-        <span class="title-body-3 mr-10">已选中{{ checkedList.length }}</span>
+      <div class="flex-row cheers-footer">
+        <div>
+          <span class="title-body-3 mr-10">已选中{{ checkedLen }}</span>
+          <el-button
+            type="danger"
+            size="mini"
+            @click="onDel('group')"
+          >
+            删除
+          </el-button>
+        </div>
         <el-button
-          type="danger"
-          size="mini"
+          type="defaut"
+          @click="onClose"
         >
-          删除
+          关闭
         </el-button>
       </div>
     </template>
@@ -90,10 +107,18 @@
 
 <script>
 import SDialog from '@/components/SDialog.vue'
+import { packCheers } from '@/utils/utils-init'
+import { tipArr } from '@/utils/default-setting/tip-arr-en'
 
 export default {
   components: {
     SDialog,
+  },
+  props: {
+    config: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   data() {
     return {
@@ -103,18 +128,48 @@ export default {
       popVisible: false,
     }
   },
-  methods: {
-    onOk() {
-      this.$emit('success', this.stopList)
+  computed: {
+    checkedLen() {
+      return (this.config.cheers || []).filter((t) => t.checked && !t.hide).length
     },
+  },
+  methods: {
     onClose() {
-      this.$emit('cancel', this.stopList)
+      this.$emit('cancel')
     },
     onSet() {
-      this.popVisible = false
+      const { cheers } = this.config
+      cheers.unshift({
+        tip: this.keyWord,
+        checked: false,
+        hide: false,
+        custom: true,
+      })
+      this.$root.$options.store.dispatch('asyncUpdateConfig', [cheers, 'cheers'])
+      this.onCancle()
     },
     onCancle() {
+      this.keyWord = ''
       this.popVisible = false
+    },
+    onDel(type, item) {
+      if (type === 'group') {
+        const cheers = this.config.cheers.map((t) => {
+          if (t.checked) {
+            t.hide = true
+          } else {
+            t.hide = false
+          }
+          return t
+        })
+        this.$root.$options.store.dispatch('asyncUpdateConfig', [cheers, 'cheers'])
+      } else {
+        item.hide = true
+      }
+    },
+    onDefaultSet() {
+      const tips = packCheers(tipArr, this.config.ChromeLang)
+      this.$root.$options.store.dispatch('asyncUpdateConfig', [tips, 'cheers'])
     },
   },
 }
@@ -154,5 +209,10 @@ export default {
 }
 .pop-body{
   align-items: flex-end;
+}
+.cheers-footer{
+  min-width: 605px;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

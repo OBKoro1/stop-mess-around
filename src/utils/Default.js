@@ -5,9 +5,9 @@ import { defaultEnList } from './default-setting/en-default-list'
 import { restTimeArr } from './default-setting/rest-time-arr'
 import { itemProto } from './default-setting/item-proto-arr'
 import { tipArrCn } from './default-setting/tip-arr'
-import { enTipArr } from './default-setting/tip-arr-en'
+import { tipArr } from './default-setting/tip-arr-en'
 
-const tipArrEn = enTipArr.map((t) => t.enTip)
+const tipArrEn = tipArr.map((t) => t.enTip)
 
 // const manifestData = chrome.runtime.getManifest() || {}
 // const { version = '' } = manifestData
@@ -18,7 +18,6 @@ export const defaultSettingCn = {
   defaultStops: defaultCnList,
   stopMax: 5,
   cheers: [],
-  defaultCheers: [],
   stopObj: {
     needStopTime: false,
     stopTime: '',
@@ -31,7 +30,6 @@ export const defaultSettingEn = {
   defaultStops: defaultCnList,
   stopMax: 5,
   cheers: [],
-  defaultCheers: [],
   stopObj: {
     needStopTime: false,
     stopTime: '',

@@ -1,5 +1,5 @@
 // 104条不重复的励志数据
-export const enTipArr = [
+export const tipArr = [
   {
     enTip: 'The best preparation for tomorrow is doing your best today.',
     cnTip: '对明天做好的准备就是今天做到最好。',

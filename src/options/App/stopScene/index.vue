@@ -75,7 +75,6 @@
       :visible="visibleCheer"
       :config="config"
       @cancel="(nv)=>handlerCancle('cheer',nv)"
-      @success="(nv)=>handlerSuccess('cheer',nv)"
     />
     <AddSetDialog
       :visible="visibleSet"
