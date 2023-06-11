@@ -6,7 +6,7 @@
       class="dropdown-color marginRL"
       @click="openSponsorship"
     >
-      {{ useLanguageMessage('sponsor') }}
+      {{ utils.getLanguageMessage('sponsor') }}
     </el-button>
     <el-button
       type="text"
@@ -14,7 +14,7 @@
       class="dropdown-color marginRL"
       @click="utils.jumpUrl(NET.DOCS)"
     >
-      {{ useLanguageMessage('useDoc') }}
+      {{ utils.getLanguageMessage('useDoc') }}
     </el-button>
     <img
       alt="GitHub Repo stars"
@@ -34,22 +34,22 @@
         slot="title"
         class="dialog_title"
       >
-        {{ useLanguageMessage('sponsorship') }}
+        {{ utils.getLanguageMessage('sponsorship') }}
       </div>
       <div class="dialog-font">
-        {{ useLanguageMessage('sponsorOne') }}
+        {{ utils.getLanguageMessage('sponsorOne') }}
       </div>
       <div class="dialog-font">
-        {{ useLanguageMessage('sponsorTwo') }}
+        {{ utils.getLanguageMessage('sponsorTwo') }}
       </div>
       <div class="dialog-font">
-        {{ useLanguageMessage('sponsorThree') }}
+        {{ utils.getLanguageMessage('sponsorThree') }}
       </div>
       <div class="dialog-font">
-        {{ useLanguageMessage('sponsorFour') }}
+        {{ utils.getLanguageMessage('sponsorFour') }}
       </div>
       <div class="dialog-font">
-        {{ useLanguageMessage('sponsorFive') }}
+        {{ utils.getLanguageMessage('sponsorFive') }}
       </div>
       <img
         src="/img/pay.jpg"
@@ -64,14 +64,14 @@
           :disabled="disabledSponsorship"
           @click="confirmSponsorship('no')"
         >
-          {{ useLanguageMessage('nextText') }}
+          {{ utils.getLanguageMessage('nextText') }}
         </el-button>
         <el-button
           type="primary"
           :disabled="disabledSponsorship"
           @click="confirmSponsorship('yes')"
         >
-          {{ useLanguageMessage('yesText') }}
+          {{ utils.getLanguageMessage('yesText') }}
         </el-button>
       </span>
     </el-dialog>
@@ -145,7 +145,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   padding: 0 10px;
-  height: 55px;
+  height: 65px;
   border-bottom: 1px solid  rgb(238, 238, 238);
 }
 .header-btns {

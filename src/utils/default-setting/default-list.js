@@ -1,15 +1,3 @@
-/*
- * Author       : OBKoro1
- * Date         : 2022-01-12 14:16:59
- * LastEditors  : OBKoro1 obkoro1@foxmail.com
- * LastEditTime : 2023-05-07 16:33:47
- * FilePath     : /stop-mess-around/src/utils/default-setting/default-list.js
- * description  : 默认摸鱼网站列表
- * koroFileheader VSCode插件
- * Copyright (c) 2022 by OBKoro1, All Rights Reserved.
- */
-
-// TODO: 数据格式重新整理
 export const defaultCnList = [
   {
     site: 'douyu.com',
@@ -73,4 +61,3 @@ export const defaultCnList = [
     labelName: '鱼塘热榜',
   },
 ]
-// 鱼塘热榜：https://mo.fish/?class_id=%E5%85%A8%E9%83%A8&hot_id=1053

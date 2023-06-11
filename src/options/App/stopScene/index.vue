@@ -7,14 +7,9 @@
           <el-button
             type="primary"
             size="medium"
+            @click="addList('set')"
           >
-            重定向
-          </el-button>
-          <el-button
-            type="primary"
-            size="medium"
-          >
-            设定时间
+            一键设置
           </el-button>
         </div>
       </div>
@@ -22,7 +17,7 @@
         按计划或者按照配置阻止网站
       </div>
     </div>
-    <div class="stop-action">
+    <div class="stop-action mt-20 mb-20">
       <el-button
         type="primary"
         icon="el-icon-plus"
@@ -43,13 +38,16 @@
       <div class="list-header">
         <span class="title-body-4">已阻止的网站</span>
       </div>
-      <div class="body-list mt-10">
+      <div
+        v-if="lists.length"
+        class="body-list mt-10"
+      >
         <template v-for="(item,index) in lists">
           <div
             :key="index"
             class="item-content"
           >
-            <span class="mr-10">{{ item.name }}</span>
+            <span class="mr-10">{{ item.labelName }}</span>
             <el-button
               :key="index"
               type="danger"
@@ -57,20 +55,33 @@
               size="mini"
               circle
               class="cursor-pointer"
+              @click="onDel(item)"
             />
           </div>
         </template>
       </div>
+      <el-empty
+        v-else
+        description="暂无网站"
+      />
     </div>
     <AddStopDialog
       :visible="visibleStop"
-      @cancel="(nv)=>handler('stop',nv)"
-      @success="(nv)=>handler('stop',nv)"
+      :config="config"
+      @cancel="()=>handlerCancle('stop')"
+      @success="(nv)=>handlerSuccess('stop',nv)"
     />
     <AddCheerDialog
       :visible="visibleCheer"
-      @cancel="(nv)=>handler('cheer',nv)"
-      @success="(nv)=>handler('cheer',nv)"
+      :config="config"
+      @cancel="(nv)=>handlerCancle('cheer',nv)"
+      @success="(nv)=>handlerSuccess('cheer',nv)"
+    />
+    <AddSetDialog
+      :visible="visibleSet"
+      :config="config"
+      @cancel="(nv)=>handlerCancle('set',nv)"
+      @success="(nv)=>handlerSuccess('set',nv)"
     />
   </div>
 </template>
@@ -78,43 +89,71 @@
 <script>
 import AddStopDialog from './aStopDialog.vue'
 import AddCheerDialog from './aCheerDialog.vue'
+import AddSetDialog from './aSetDialog.vue'
 
 export default {
   components: {
     AddStopDialog,
     AddCheerDialog,
+    AddSetDialog,
   },
   data() {
     return {
       visibleStop: false,
       visibleCheer: false,
-      lists: [
-        {
-          name: 1111,
-        },
-        {
-          name: 1111,
-        },
-      ],
+      visibleSet: false,
+      lists: [],
     }
+  },
+  computed: {
+    config() {
+      return this.$root.$options.store.state.config
+    },
   },
   methods: {
     addList(type) {
       if (type === 'stop') {
         this.visibleStop = true
-      } else {
+      } else if (type === 'cheer') {
         this.visibleCheer = true
+      } else if (type === 'set') {
+        this.visibleSet = true
       }
     },
-    handler(type, list) {
+    handlerCancle(type) {
       if (type === 'stop') {
         this.visibleStop = false
-      } else {
+      } else if (type === 'cheer') {
         this.visibleCheer = false
+      } else if (type === 'set') {
+        this.visibleSet = false
       }
-      this.lists = list
+    },
+    handlerSuccess(type, list) {
+      if (type === 'stop') {
+        this.visibleStop = false
+        this.lists = list
+        this.$root.$options.store.dispatch('asyncUpdateConfig', [this.lists, 'stops'])
+      } else if (type === 'cheer') {
+        this.visibleCheer = false
+      } else if (type === 'set') {
+        this.visibleSet = false
+      }
+    },
+    onDel(item) {
+      item.checked = !item.checked
+      this.lists = this.lists.filter((t) => t.site !== item.site)
+      this.$root.$options.store.dispatch('asyncUpdateConfig', [this.lists, 'stops'])
     },
   },
+  // watch:{
+  //   config:{
+  //     handler(val){
+  //       console.log(val)
+  //     },
+  //     deep:true
+  //   }
+  // }
 }
 </script>
 

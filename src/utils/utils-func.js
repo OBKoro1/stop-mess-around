@@ -37,17 +37,18 @@ export function versionStringCompare(preVersion = '', lastVersion = '') {
   return result
 }
 
-// let result = versionStringCompare('1.0.2', '1.0');
-// console.log(result);    //1
+// 检测是否是正确的url地址
+export function checkURL(URL) {
+  const str = URL
+  // 判断URL地址的正则表达式为:http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?
+  // 下面的代码中应用了转义字符"\"输出一个字符"/"
+  const Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/
+  const objExp = new RegExp(Expression)
+  return objExp.test(str)
+}
 
-// let result = versionStringCompare('1.0.0', '1.1');
-// console.log(result);    //-1
-
-// let result = versionStringCompare('11.0.2', '5.5.6');
-// console.log(result);    //1
-
-// let result = versionStringCompare('5.5.0', '5.5');
-// console.log(result);    //0
-
-// let result = versionStringCompare('1.1.a', '1.1.1');
-// console.log(result);    //1
+// 获取url字符串信息
+export function getURLInfo(urlStr) {
+  const url = new URL(urlStr)
+  return url
+}

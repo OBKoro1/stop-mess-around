@@ -20,30 +20,9 @@ import Sidebar from '@/components/SideBar.vue'
 
 export default {
   name: 'OptionsApp',
-  // provide() {
-  //   return {
-  //     getSetting: () => this.Setting,
-  //     settingUpdate: this.settingUpdate,
-  //   }
-  // },
   components: {
     Header,
     Sidebar,
-  },
-  data() {
-    return {
-      Setting: {},
-    }
-  },
-  async mounted() {
-    ({ setting: this.Setting } = await this.utils.getData())
-  },
-  methods: {
-    settingUpdate(obj) {
-      this.Setting = JSON.parse(JSON.stringify(obj))
-      return this.utils.updateStorageData(this.Setting, this.NET.GLOBALSETTING)
-    },
-
   },
 }
 </script>

@@ -21,10 +21,11 @@
       slot="footer"
       class="dialog-footer"
     >
-      <slot name="footer" />
+      <div>
+        <slot name="footer" />
+      </div>
       <div
         v-if="showFooter"
-        class=""
       >
         <el-button
           size="medium"
@@ -83,6 +84,6 @@ export default {
 .dialog-footer{
   display: flex;
   justify-content: space-between;
-  align-items: center;;
+  align-items: center;
 }
 </style>

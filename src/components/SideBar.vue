@@ -9,7 +9,7 @@
       >
       <div class="header-plugin cursor-pointer">
         <h2 @click="utils.jumpUrl(NET.GITHUBREPO)">
-          {{ useLanguageMessage('pluginName') }}
+          {{ utils.getLanguageMessage('pluginName') }}
         </h2>
         <span
           class="cursor-pointer"
@@ -88,7 +88,7 @@ export default {
     border-right:1px solid rgb(238, 238, 238);
 }
 .sider-header{
-    height: 55px;
+    height: 65px;
     display: flex;
     justify-content: flex-start;
     align-items: center;

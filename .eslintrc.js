@@ -25,6 +25,7 @@ module.exports = {
   },
   rules: {
     semi: ['error', 'never', { beforeStatementContinuationChars: 'never' }],
+    'no-useless-escape':'off',
     'no-console': 'off',
     'no-restricted-syntax': 'off',
     'no-continue': 'off',
