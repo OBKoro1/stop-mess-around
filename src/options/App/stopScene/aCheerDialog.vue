@@ -137,7 +137,7 @@ export default {
     onClose() {
       this.$emit('cancel')
     },
-    onSet() {
+    async onSet() {
       const { cheers } = this.config
       cheers.unshift({
         tip: this.keyWord,
@@ -145,14 +145,14 @@ export default {
         hide: false,
         custom: true,
       })
-      this.$root.$options.store.dispatch('asyncUpdateConfig', [cheers, 'cheers'])
+      await this.$root.$options.store.dispatch('asyncUpdateConfig', [cheers, 'cheers'])
       this.onCancle()
     },
     onCancle() {
       this.keyWord = ''
       this.popVisible = false
     },
-    onDel(type, item) {
+    async onDel(type, item) {
       if (type === 'group') {
         const cheers = this.config.cheers.map((t) => {
           if (t.checked) {
@@ -162,14 +162,14 @@ export default {
           }
           return t
         })
-        this.$root.$options.store.dispatch('asyncUpdateConfig', [cheers, 'cheers'])
+        await this.$root.$options.store.dispatch('asyncUpdateConfig', [cheers, 'cheers'])
       } else {
         item.hide = true
       }
     },
-    onDefaultSet() {
+    async onDefaultSet() {
       const tips = packCheers(tipArr, this.config.ChromeLang)
-      this.$root.$options.store.dispatch('asyncUpdateConfig', [tips, 'cheers'])
+      await this.$root.$options.store.dispatch('asyncUpdateConfig', [tips, 'cheers'])
     },
   },
 }

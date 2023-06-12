@@ -21,8 +21,15 @@ const store = new Vuex.Store({
       context.commit('updateConfig', config)
     },
     async asyncUpdateConfig(context, [val, key]) {
-      await utils.updateStorageKey(val, key)
-      context.commit('updateConfig', { ...context.state.config, [key]: val })
+      return new Promise(async (resolve, reject) => {
+        try {
+          await utils.updateStorageKey(val, key)
+          context.commit('updateConfig', { ...context.state.config, [key]: val })
+          resolve()
+        } catch (err) {
+          reject(err)
+        }
+      })
     },
   },
 })

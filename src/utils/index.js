@@ -10,8 +10,7 @@
  */
 import dayjs from 'dayjs'
 import NET from '@/utils/net'
-// defaultSetting
-import { initDefaultConfig } from '@/utils/Default'
+import { initDefaultConfig } from '@/utils/utils-init'
 import { OpenCheckInstance } from './openCheck'
 import { CloseCheckInstance } from './closeCheck'
 import { AllActionInstance } from './allAction'

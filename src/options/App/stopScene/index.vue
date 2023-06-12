@@ -39,10 +39,10 @@
         <span class="title-body-4">已阻止的网站</span>
       </div>
       <div
-        v-if="stops.length"
+        v-if="blockSite.length"
         class="body-list mt-10"
       >
-        <template v-for="(item,index) in stops">
+        <template v-for="(item,index) in blockSite">
           <div
             :key="index"
             class="item-content"
@@ -107,8 +107,8 @@ export default {
     config() {
       return this.$root.$options.store.state.config
     },
-    stops() {
-      return this.config.stops || []
+    blockSite() {
+      return this.config.blockSite || []
     },
   },
   methods: {
@@ -130,30 +130,23 @@ export default {
         this.visibleSet = false
       }
     },
-    handlerSuccess(type, list) {
+    handlerSuccess(type) {
       if (type === 'stop') {
         this.visibleStop = false
-        this.$root.$options.store.dispatch('asyncUpdateConfig', [list, 'stops'])
       } else if (type === 'cheer') {
         this.visibleCheer = false
       } else if (type === 'set') {
         this.visibleSet = false
       }
     },
-    onDel(item) {
-      item.checked = !item.checked
-      const list = this.stops.filter((t) => t.site !== item.site)
-      this.$root.$options.store.dispatch('asyncUpdateConfig', [list, 'stops'])
+    async onDel(item) {
+      const list = this.blockSite.filter((t) => t.site !== item.site)
+      const configItem = this.config.defaultStops.find((t) => t.site === item.site)
+      configItem.checked = !configItem.checked
+      await this.$root.$options.store.dispatch('asyncUpdateConfig', [list, 'blockSite'])
+      await this.$root.$options.store.dispatch('asyncUpdateConfig', [this.config.defaultStops, 'defaultStops'])
     },
   },
-  // watch:{
-  //   config:{
-  //     handler(val){
-  //       console.log(val,'-1--1-1')
-  //     },
-  //     deep:true
-  //   }
-  // }
 }
 </script>
 

@@ -30,15 +30,13 @@ export const utils = {
    * @return object
    */
   async getConfig() {
-    let setting = await utils.getChromeStorage(NET.GLOBALSETTING) || null
-    console.log('setting', setting)
+    let setting = await utils.getChromeStorage(NET.GLOBALSETTING)
+    const defaultSetting = initDefaultConfig(utils.getUILanguage())
+    console.log(setting, defaultSetting, '-1--1-1-')
     if (!setting) {
-      const defaultSetting = initDefaultConfig(utils.getUILanguage())
-      console.log('defaultSetting', defaultSetting)
       setting = defaultSetting
     }
     await utils.updateStorageData(setting, NET.GLOBALSETTING)
-    console.log('setting', setting)
     return JSON.parse(JSON.stringify(setting))
   },
   /**
@@ -170,6 +168,7 @@ export const utils = {
       const config = await utils.getChromeStorage(NET.GLOBALSETTING) || {}
       config[key] = val
       const str = JSON.stringify(config)
+      console.log(config, '----config---')
       chrome.storage.local.set({ [NET.GLOBALSETTING]: str }, () => {
         resolve()
       })

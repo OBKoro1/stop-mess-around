@@ -6,13 +6,13 @@
   >
     <template v-slot:title>
       <div class="title-body-1">
-        一键设置
+        设置
       </div>
     </template>
     <template v-slot:body>
       <div class="add-body">
         <div>
-          <el-switch v-model="stopFlag" />
+          <el-switch v-model="flag" />
           <span class="ml-10">需设定阻止时间(以小时为单位)</span>
           <el-tooltip
             effect="dark"
@@ -21,9 +21,9 @@
           >
             <i class="el-icon-question" />
           </el-tooltip>
-          <template v-if="stopFlag">
+          <template v-if="flag">
             <el-input-number
-              v-model="stopNum"
+              v-model="num"
               class="ml-10"
               size="small"
               :min="1"
@@ -37,11 +37,9 @@
             v-model="urlVal"
             placeholder="请输入内容"
             style="width:65%"
-          >
-            <template slot="prepend">
-              Http://
-            </template>
-          </el-input>
+            clearable
+            @input="onInput"
+          />
           <span class="ml-10">被阻止的网站重定向地址</span>
         </div>
       </div>
@@ -51,27 +49,58 @@
 
 <script>
 import SDialog from '@/components/SDialog.vue'
+import { checkURL } from '@/utils/utils-func'
 
 export default {
   components: {
     SDialog,
   },
+  props: {
+    config: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
   data() {
     return {
-      stopNum: 1,
-      stopFlag: false,
+      num: 1,
+      flag: false,
       urlVal: '',
+      checkUrl: true,
     }
   },
+  watch: {
+    config: {
+      handler(nv) {
+        if (nv.blockSiteObj) {
+          this.num = nv.blockSiteObj.restTime
+          this.flag = nv.blockSiteObj.needRest
+          this.urlVal = nv.blockSiteObj.redirectUrl
+        }
+      },
+      deep: true,
+    },
+  },
   methods: {
-    onOk() {
-      this.$emit('success', this.stopList)
+    async onOk() {
+      if (!this.checkUrl) return
+      const params = {
+        needRest: this.flag,
+        restTime: this.flag ? this.num : 0,
+        redirectUrl: this.urlVal,
+      }
+      await this.$root.$options.store.dispatch('asyncUpdateConfig', [params, 'blockSiteObj'])
+      this.$emit('success')
     },
     onClose() {
-      this.$emit('cancel', this.stopList)
+      this.$emit('cancel')
     },
     handleChange() {
-
+      if (!this.flag) return
+    },
+    onInput(url) {
+      this.checkUrl = checkURL(url)
+      if (!this.checkUrl) return this.$message.error('网站不符合规范')
     },
   },
 }

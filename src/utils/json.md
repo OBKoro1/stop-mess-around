@@ -1,7 +1,7 @@
 {
     blockSite:[],         //已阻止的网址(全局公用)
-    defaultStops:[], //默认阻止的网址(全局公用)
-    stopMax:5,      //阻止的最大数(全局公用)
+    defaultStops:[], //默认阻止的网址(全局公用) =>去掉打算 优化代码
+    blockMax:5,      //阻止的最大数(全局公用)
     cheers:[
         {
             checked: false,  // 是否选中
@@ -10,8 +10,8 @@
         }
     ],  // 加油格言
     blockSiteObj:{
-        needStopTime:false  //是否需要设定阻止时间,默认不设定；表示无需休息
-        stopTime:'',        // 设定时间
+        needRest:false  //是否需要设定阻止时间,默认不设定；表示无需休息
+        restTime:'',        // 设定时间
         redirectUrl:''      // 重定向地址
     }
     todolistObj: {}

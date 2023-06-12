@@ -1,81 +1,61 @@
-import { cnTitleArr, enTitleArr } from './default-setting/title-arr'
-import { confirmArrCn, confirmArrEn } from './default-setting/confirm-arr'
 import { defaultCnList } from './default-setting/default-list'
 import { defaultEnList } from './default-setting/en-default-list'
-import { restTimeArr } from './default-setting/rest-time-arr'
-import { itemProto } from './default-setting/item-proto-arr'
-import { tipArrCn } from './default-setting/tip-arr'
-import { tipArr } from './default-setting/tip-arr-en'
 
-const tipArrEn = tipArr.map((t) => t.enTip)
-
-// const manifestData = chrome.runtime.getManifest() || {}
-// const { version = '' } = manifestData
+const manifestData = chrome.runtime.getManifest() || {}
+const { version = '' } = manifestData
 
 // 中文默认全局设置
 export const defaultSettingCn = {
-  stops: [],
+  version,
+  blockSite: [],
   defaultStops: defaultCnList,
-  stopMax: 5,
+  blockMax: 50,
   cheers: [],
-  stopObj: {
-    needStopTime: false,
-    stopTime: '',
+  blockSiteObj: {
+    needRest: false,
+    restTime: '',
     redirectUrl: '',
   },
 }
 
 export const defaultSettingEn = {
-  stops: [],
-  defaultStops: defaultCnList,
-  stopMax: 5,
+  version,
+  blockSite: [],
+  defaultStops: defaultEnList,
+  blockMax: 50,
   cheers: [],
-  stopObj: {
-    needStopTime: false,
-    stopTime: '',
+  blockSiteObj: {
+    needRest: false,
+    restTime: '',
     redirectUrl: '',
   },
 }
 
-let ChromeLang = ''
+// const defaultListCn = {
+//   titleArr: cnTitleArr,
+//   tipArr: tipArrCn,
+//   confirmArr: confirmArrCn,
+//   defaultList: defaultCnList,
+//   restTimeArr,
+//   itemProto,
+// }
 
-export const initDefaultConfig = (lang) => {
-  ChromeLang = lang
-  if (lang === 'en') {
-    return {
-      ...defaultSettingEn,
-    }
-  }
-  return {
-    ...defaultSettingCn,
-  }
-}
+// const defaultListEn = {
+//   titleArr: enTitleArr,
+//   tipArr: tipArrEn,
+//   confirmArr: confirmArrEn,
+//   defaultList: defaultEnList,
+//   restTimeArr,
+//   itemProto,
+// }
 
-const defaultListCn = {
-  titleArr: cnTitleArr,
-  tipArr: tipArrCn,
-  confirmArr: confirmArrCn,
-  defaultList: defaultCnList,
-  restTimeArr,
-  itemProto,
-}
-
-const defaultListEn = {
-  titleArr: enTitleArr,
-  tipArr: tipArrEn,
-  confirmArr: confirmArrEn,
-  defaultList: defaultEnList,
-  restTimeArr,
-  itemProto,
-}
-
-export const useDefalutList = () => {
-  if (ChromeLang === 'en') {
-    return {
-      ...defaultListEn,
-    }
-  }
-  return {
-    ...defaultListCn,
-  }
-}
+// export const useDefalutList = () => {
+//   if (ChromeLang === 'en') {
+//     return {
+//       ...defaultListEn,
+//     }
+//   }
+//   return {
+//     ...defaultListCn,
+//   }
+// }

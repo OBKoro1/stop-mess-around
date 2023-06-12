@@ -8,8 +8,8 @@
  * koroFileheader插件
  * Copyright (c) ${now_year} by OBKoro1, All Rights Reserved.
  */
+
 import AsyncPluginData from './asyncPluginData'
-import { IntervalTaskInstance } from './intervalTask'
 import { ListenerEventInstance } from './listenerEvent'
 
 main()
@@ -17,8 +17,6 @@ main()
 function main() {
   // 插件安装或者升级后更新数据
   AsyncPluginData.run()
-  // 定时任务
-  IntervalTaskInstance.run()
   // 监听任务
   ListenerEventInstance.run()
 }

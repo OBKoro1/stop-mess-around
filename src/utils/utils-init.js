@@ -15,7 +15,7 @@ let ChromeLang = ''
 export const initDefaultConfig = (lang) => {
   ChromeLang = lang
   const config = lang === 'en' ? defaultSettingEn : defaultSettingCn
-  config.stops = packStops(config.stops)
+  config.blockSite = packStops(config.blockSite)
   config.defaultStops = packStops(config.defaultStops)
   config.cheers = packCheers(tipArr, lang)
   return { ...config, ChromeLang }

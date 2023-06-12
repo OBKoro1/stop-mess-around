@@ -116,18 +116,20 @@ export default {
       keyWord: '',
       keyWordList: [],
       disabled: true,
-      maxLen: 50,
     }
   },
   computed: {
+    maxLen() {
+      return this.config.blockMax || 50
+    },
     stopLen() {
-      const stopLen = (this.config.stops || []).length
+      const stopLen = (this.config.blockSite || []).length
       const len = this.keyWordList.length + (this.config.defaultStops || []).filter((t) => t.checked).length
       return stopLen < len ? len : stopLen
     },
     stopList() {
       const arrs = [];
-      [...this.keyWordList, ...this.config.defaultStops, ...this.config.stops].forEach((t) => {
+      [...this.keyWordList, ...this.config.defaultStops, ...this.config.blockSite].forEach((t) => {
         const item = arrs.find((v) => v.site === t.site)
         if (t.checked && !item) arrs.push(t)
       })
@@ -138,7 +140,9 @@ export default {
     },
   },
   methods: {
-    onOk() {
+    async onOk() {
+      await this.$root.$options.store.dispatch('asyncUpdateConfig', [this.stopList, 'blockSite'])
+      await this.$root.$options.store.dispatch('asyncUpdateConfig', [this.config.defaultStops, 'defaultStops'])
       this.$emit('success', this.stopList)
       this.keyWordList = []
     },
@@ -147,7 +151,7 @@ export default {
     },
     onInput(url) {
       const bool = !checkURL(url)
-      const item = (this.config.stops || this.keyWordList).find((t) => t.site === url)
+      const item = (this.config.blockSite || this.keyWordList).find((t) => t.site === url)
       this.disabled = bool || !!item || this.battleLen
     },
     onAdd(type, item) {

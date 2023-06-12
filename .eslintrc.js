@@ -25,6 +25,7 @@ module.exports = {
   },
   rules: {
     semi: ['error', 'never', { beforeStatementContinuationChars: 'never' }],
+    'class-methods-use-this':'off',
     'no-useless-escape':'off',
     'no-async-promise-executor':'off',
     'no-console': 'off',
