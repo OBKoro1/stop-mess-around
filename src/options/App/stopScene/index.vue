@@ -1,7 +1,7 @@
 <template>
   <div class="stop-content">
     <div class="flex-column mb-20">
-      <div class="title-body-1 mb-10 stop-header">
+      <div class="title-body-1 mb-10 header">
         <span>阻止网站</span>
         <div>
           <el-button
@@ -86,9 +86,9 @@
 </template>
 
 <script>
-import AddStopDialog from './aStopDialog.vue'
-import AddCheerDialog from './aCheerDialog.vue'
-import AddSetDialog from './aSetDialog.vue'
+import AddStopDialog from './sStopDialog.vue'
+import AddCheerDialog from './sCheerDialog.vue'
+import AddSetDialog from './sSetDialog.vue'
 
 export default {
   components: {
@@ -153,11 +153,6 @@ export default {
 <style scoped>
 .stop-content{
   padding: 35px;
-}
-.stop-header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 .list-header{
   display: flex;

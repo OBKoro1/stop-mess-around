@@ -32,6 +32,10 @@
         <span class="label">{{ item.label }}</span>
       </p>
     </template>
+    <p class="title">
+      <span class="mr-10">开启</span>
+      <el-switch />
+    </p>
   </div>
 </template>
 
