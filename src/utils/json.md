@@ -15,7 +15,14 @@
         redirectUrl:''      // 重定向地址
     }
     todolistObj: {}
-
+    // 白噪音资源数组
+    [
+        {
+            audio: 'xxx.mp3', // 音源
+            img: 'xxx.jpeg', // 图片
+            background: 'none' // 可能需要设置背景 这个还要收集一下资源
+        }
+    ]
 }
 
 <!-- 页面的数据流 -->
