@@ -34,7 +34,7 @@
     </template>
     <p class="title">
       <span class="mr-10">开启</span>
-      <el-switch />
+      <el-switch v-model="openAll" />
     </p>
   </div>
 </template>
@@ -45,6 +45,7 @@ export default {
   inject: [],
   data() {
     return {
+      openAll: true,
       sidebarList: [
         {
           label: '停止瞎逛',

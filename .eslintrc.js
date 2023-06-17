@@ -25,6 +25,10 @@ module.exports = {
   },
   rules: {
     semi: ['error', 'never', { beforeStatementContinuationChars: 'never' }],
+    'radix':'off',
+    'no-plusplus':'off',
+    'no-mixed-spaces-and-tabs':'off',
+    'no-tabs':'off',
     'class-methods-use-this':'off',
     'no-useless-escape':'off',
     'no-async-promise-executor':'off',
